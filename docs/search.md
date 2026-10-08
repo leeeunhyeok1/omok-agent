@@ -364,3 +364,46 @@ change when retaining old namespaces is undesirable.
 
 Run `python3 -m unittest tests.test_transposition -v`. See
 [issue #13 acceptance](verification/issue-13.md) for checks and review evidence.
+
+## Issue #14: integrated diagnostics
+
+`IterativePlayer.diagnostics()` explicitly returns a JSON-ready snapshot of the
+latest successful call, or `None` after an error/before a call. It preserves the
+coordinate return contract and includes engine version, evaluator identity and
+configuration (depth/node/time policy, tactical radius/cap/full-width/rank identity,
+candidate and ordering identities, compatibility token, table capacity). Callable
+identities are qualified names bounded to 256 characters. For custom callbacks with
+mutable configuration, callers must version that state using the existing explicit
+compatibility token; a name alone does not fingerprint callback contents.
+
+Move, latest root candidate count, tactical enumeration completeness flags and
+cancellation, fallback reason, completed/attempted depth and committed score are
+recorded. Skipped tactics are `None`. Tactical reports may describe an interrupted
+new iteration alongside a committed older score/line. PV coordinates are capped at
+64 plies: status is `truncated` if shortened, otherwise the result's `complete` or
+`unavailable`. A complete line reaches completed depth or an earlier rules terminal;
+no partial deeper PV is substituted. Elapsed time covers the public call from entry
+through conversion/search/return preparation; allocated and incoming remaining
+milliseconds and cancellation reason accompany it. The runner's independently
+measured public elapsed time remains authoritative for cumulative clock accounting.
+
+Counters on `SearchResult` and diagnostics cover all iterations of that call,
+including interrupted work, and start at zero each call:
+
+- `nodes`: recursive node visits admitted by the node limit, including roots/leaves;
+  tactical simulator checks and move hints are excluded.
+- `cutoffs`: recursive alpha-beta closed-window cutoffs, including cached bound
+  closures; exact cache returns are excluded.
+- `table_probes`: exact-depth value lookups at nonterminal recursive children,
+  including depth-zero leaves. Root/hint lookups and reference traversal are excluded.
+- `table_hits`: those probes that find a compatible same-depth entry, before
+  best-move/membership validation. An unusable entry may count as a hit.
+- `table_value_cutoffs`: probes whose exact value or closed bound window avoids
+  further recursion/evaluation, including exact cached leaves.
+- `table_size`: retained entries at snapshot time, persistent across turns and
+  bounded by configured capacity. It is separate from per-call counters and the
+  table's older lifetime `hits`/`evictions` diagnostics.
+
+Low-time fallback has zero counters, absent score, unavailable PV and no tactical
+completeness claim. The engine retains only its last result; snapshots contain no
+boards, full tactical move sets, table entries or per-node logs.

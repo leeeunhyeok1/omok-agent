@@ -66,7 +66,8 @@ def run_game(black: DevelopmentPlayer, white: DevelopmentPlayer, *,
              initial: Position | None = None,
              budgets_ms: tuple[float | None, float | None] = (60000, 60000),
              move_cap: int = 1000, clock: Callable[[], float] = monotonic,
-             config: dict[str, Any] | None = None) -> dict[str, Any]:
+             config: dict[str, Any] | None = None,
+             diagnostics: Callable[[DevelopmentPlayer], dict[str, Any] | None] | None = None) -> dict[str, Any]:
     if black is white or (black.color, white.color) != (0, 1):
         raise ValueError('Independent players must be assigned black=0 and white=1.')
     if type(move_cap) is not int or move_cap < 0:
@@ -119,6 +120,18 @@ def run_game(black: DevelopmentPlayer, white: DevelopmentPlayer, *,
         trace['events'].append({'type': 'returned', 'color': color,
                                 'returned': repr(returned), 'move': returned_move(returned),
                                 'elapsed_ms': elapsed, 'remaining_ms': remaining[color]})
+        # AI-written by OpenAI Codex, for issue #14. Snapshot after timing;
+        # optional observational errors must not alter moves or clock accounting.
+        if diagnostics is not None:
+            try:
+                report = diagnostics(players[color])
+                if report is not None:
+                    encoded = json.dumps(report, allow_nan=False)
+                    if len(encoded) > 16384 or not isinstance(report, dict):
+                        raise ValueError('Diagnostics must be a JSON object of at most 16384 characters.')
+                    trace['events'][-1]['search'] = json.loads(encoded)
+            except Exception as error:
+                trace['events'][-1]['diagnostics_error'] = type(error).__name__
         violations = []
         if exception is not None:
             violations.append('exception')

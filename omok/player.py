@@ -1,10 +1,10 @@
 # AI-written by OpenAI Codex, for issues #4 and #5.
 """Development move-selection boundary; official Player inheritance is pending."""
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 from collections.abc import Sequence
 from math import isfinite
 from time import monotonic
-from typing import Protocol, SupportsIndex
+from typing import Any, Protocol, SupportsIndex
 
 from omok.simulator import Coordinate, EMPTY, Position, SIZE, Transition
 from omok.search import FixedDepthSearch, SearchLimits, SearchResult, legal_moves
@@ -104,13 +104,16 @@ class IterativePlayer:
         self.last_result: SearchResult | None = None
         self.last_elapsed_ms: float | None = None
         self.last_allocation_ms: float | None = None
+        self.last_remaining_ms: float | None = None
 
     def take_turn(self, board: Sequence[Sequence[SupportsIndex]], time: float) -> Coordinate:
         start = self.search.clock()
         self.last_result = None
         self.last_elapsed_ms = None
         self.last_allocation_ms = None
+        self.last_remaining_ms = None
         allowance = self.policy.allowance(time)
+        self.last_remaining_ms = time
         self.last_allocation_ms = allowance
         position = Position(board, self.color)
         if position.outcome != 'ongoing':
@@ -128,6 +131,52 @@ class IterativePlayer:
         self.last_result = result
         self.last_elapsed_ms = (self.search.clock() - start) * 1000
         return result.move
+
+
+    # AI-written by OpenAI Codex, for issue #14.
+    def diagnostics(self) -> dict[str, Any] | None:
+        """Explicit bounded snapshot; never writes, prints or changes coordinates."""
+        result = self.last_result
+        if result is None:
+            return None
+        def identity(value: Any) -> str | None:
+            if value is None:
+                return None
+            return (getattr(value, '__module__', type(value).__module__) + '.' +
+                    getattr(value, '__qualname__', type(value).__qualname__))[:256]
+        tactics = self.search.tactics
+        table = self.search.table
+        line = result.principal_variation[:64]
+        return {
+            'engine': 'iterative-negamax-v1',
+            'evaluator': identity(self.search.cooperative_evaluator or self.search.evaluator),
+            'config': {
+                'max_depth': self.max_depth, 'max_nodes': self.max_nodes,
+                'time_policy': asdict(self.policy),
+                'tactics': None if tactics is None else {
+                    'radius': tactics.radius, 'cap': tactics.cap,
+                    'full_width': tactics.full_width, 'ordinary_rank': identity(tactics.ordinary_rank)},
+                'candidates': identity(self.search.cooperative_candidates or self.search.candidates),
+                'ordering': identity(self.search.ordering),
+                'compatibility': repr(self.search.compatibility)[:256],
+                'table_capacity': 0 if table is None else table.capacity,
+            },
+            'move': list(result.move) if result.move is not None else None,
+            'root_candidate_count': result.root_candidate_count,
+            'tactics': None if result.tactics is None else {
+                name: getattr(result.tactics, name) for name in
+                ('complete', 'wins_complete', 'threats_complete', 'defenses_complete', 'cancellation')},
+            'fallback_reason': result.cancellation if result.completed_depth == 0 else None,
+            'completed_depth': result.completed_depth, 'attempted_depth': result.attempted_depth,
+            'score': result.score, 'principal_variation': [list(move) for move in line],
+            'pv_status': 'truncated' if len(line) < len(result.principal_variation) else result.pv_status,
+            'nodes': result.nodes, 'cutoffs': result.cutoffs,
+            'table_probes': result.table_probes, 'table_hits': result.table_hits,
+            'table_value_cutoffs': result.table_value_cutoffs,
+            'table_size': 0 if table is None else len(table),
+            'elapsed_ms': self.last_elapsed_ms, 'allocated_ms': self.last_allocation_ms,
+            'remaining_ms': self.last_remaining_ms, 'cancellation': result.cancellation,
+        }
 
 
 class LegalBaseline:

@@ -9,7 +9,7 @@ from threading import RLock
 from types import ModuleType
 from typing import Any
 
-from omok.player import DevelopmentPlayer, LegalBaseline
+from omok.player import DevelopmentPlayer, IterativePlayer, LegalBaseline
 
 SOURCES = Path(__file__).resolve().parents[1] / 'players'
 _LOAD_LOCK = RLock()
@@ -63,4 +63,12 @@ def load_players() -> ProvidedPlayers:
 
         baseline = type('ProvidedBaseline', (LegalBaseline, base),
                         {'__init__': initialize, '__module__': __name__})
-        return ProvidedPlayers(base, {'random': random, 'simple': simple, 'baseline': baseline})
+        # AI-written by OpenAI Codex, for issue #14.
+        def initialize_search(self: Any, color: int) -> None:
+            base.__init__(self, color)
+            IterativePlayer.__init__(self, color)
+
+        search = type('ProvidedSearch', (IterativePlayer, base),
+                      {'__init__': initialize_search, '__module__': __name__})
+        return ProvidedPlayers(base, {'random': random, 'simple': simple,
+                                     'baseline': baseline, 'search': search})

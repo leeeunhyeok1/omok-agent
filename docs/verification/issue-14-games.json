@@ -1,0 +1,156 @@
+{
+  "python": "3.14.3",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+  "workers": 1,
+  "budgets_ms": [
+    60000,
+    60000
+  ],
+  "move_cap": 12,
+  "games": [
+    {
+      "opponent": "baseline",
+      "search_color": 0,
+      "trace": ".scratch/issue-14/baseline-0.json",
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 12,
+      "failure": null,
+      "remaining_ms": [
+        59434.246909999274,
+        59909.70183900208
+      ],
+      "verified_complete_pvs": 6,
+      "completed_depths": [
+        3,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "max_public_elapsed_ms": 100.16611500032013,
+      "max_table_size": 855
+    },
+    {
+      "opponent": "baseline",
+      "search_color": 1,
+      "trace": ".scratch/issue-14/baseline-1.json",
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 12,
+      "failure": null,
+      "remaining_ms": [
+        59910.14576699672,
+        59399.619676998554
+      ],
+      "verified_complete_pvs": 6,
+      "completed_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "max_public_elapsed_ms": 100.09566400003678,
+      "max_table_size": 1061
+    },
+    {
+      "opponent": "random",
+      "search_color": 0,
+      "trace": ".scratch/issue-14/random-0.json",
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 12,
+      "failure": null,
+      "remaining_ms": [
+        59399.55614099745,
+        59999.70407999899
+      ],
+      "verified_complete_pvs": 6,
+      "completed_depths": [
+        3,
+        2,
+        2,
+        1,
+        2,
+        1
+      ],
+      "max_public_elapsed_ms": 100.10700100065151,
+      "max_table_size": 837
+    },
+    {
+      "opponent": "random",
+      "search_color": 1,
+      "trace": ".scratch/issue-14/random-1.json",
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 12,
+      "failure": null,
+      "remaining_ms": [
+        59999.673647000236,
+        59399.56650400018
+      ],
+      "verified_complete_pvs": 6,
+      "completed_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        1
+      ],
+      "max_public_elapsed_ms": 100.09330399952887,
+      "max_table_size": 924
+    },
+    {
+      "opponent": "simple",
+      "search_color": 0,
+      "trace": ".scratch/issue-14/simple-0.json",
+      "status": "completed",
+      "reason": "exact_five",
+      "moves": 12,
+      "failure": null,
+      "remaining_ms": [
+        59399.57434600001,
+        59993.77113800074
+      ],
+      "verified_complete_pvs": 6,
+      "completed_depths": [
+        3,
+        2,
+        2,
+        2,
+        2,
+        1
+      ],
+      "max_public_elapsed_ms": 100.08942900094553,
+      "max_table_size": 891
+    },
+    {
+      "opponent": "simple",
+      "search_color": 1,
+      "trace": ".scratch/issue-14/simple-1.json",
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 12,
+      "failure": null,
+      "remaining_ms": [
+        59991.87019999772,
+        59399.53865100142
+      ],
+      "verified_complete_pvs": 6,
+      "completed_depths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "max_public_elapsed_ms": 100.09913300018525,
+      "max_table_size": 881
+    }
+  ]
+}

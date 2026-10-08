@@ -75,6 +75,9 @@ class SearchResult:
     pv_status: str = 'unavailable'
     tactics: 'TacticalResult | None' = None
     root_candidate_count: int = 0
+    table_probes: int = 0
+    table_hits: int = 0
+    table_value_cutoffs: int = 0
 
 
 @dataclass(slots=True)
@@ -83,12 +86,20 @@ class _Traversal:
     clock: Callable[[], float]
     nodes: int = 0
     cutoffs: int = 0
+    table_probes: int = 0
+    table_hits: int = 0
+    table_value_cutoffs: int = 0
     compatibility: Hashable = None
     use_table: bool = True
     root: Position | None = None
     root_tactics: 'TacticalResult | None' = None
     root_candidate_count: int = 0
     pv_moves: dict[Position, Coordinate] = field(default_factory=dict)
+
+    def report(self, result: SearchResult) -> SearchResult:
+        return replace(result, nodes=self.nodes, cutoffs=self.cutoffs,
+                       table_probes=self.table_probes, table_hits=self.table_hits,
+                       table_value_cutoffs=self.table_value_cutoffs)
 
     def check(self) -> None:
         self.limits.check(self.clock)
@@ -239,15 +250,15 @@ class FixedDepthSearch:
                                compatibility=self.cache_compatibility(), use_table=not reference,
                                root=position)
         try:
-            return replace(self._root(position, depth, reference, traversal),
+            return traversal.report(replace(self._root(position, depth, reference, traversal),
                            completed_depth=depth, attempted_depth=depth, pv_status='complete',
-                           tactics=traversal.root_tactics, root_candidate_count=traversal.root_candidate_count)
+                           tactics=traversal.root_tactics, root_candidate_count=traversal.root_candidate_count))
         except SearchCancelled as error:
             if traversal.root_tactics is not None and traversal.root_tactics.wins:
                 fallback = traversal.root_tactics.wins[0]
-            return SearchResult(fallback, None, False, tactics=traversal.root_tactics,
+            return traversal.report(SearchResult(fallback, None, False, tactics=traversal.root_tactics,
                                 root_candidate_count=traversal.root_candidate_count, nodes=traversal.nodes,
-                                cutoffs=traversal.cutoffs, cancellation=str(error), attempted_depth=depth)
+                                cutoffs=traversal.cutoffs, cancellation=str(error), attempted_depth=depth))
 
     def _leaf(self, position: Position, perspective: int, traversal: _Traversal) -> int:
         traversal.check()
@@ -307,10 +318,15 @@ class FixedDepthSearch:
         # Terminal side_to_move retains the mover: score by explicit perspective.
         if position.outcome != 'ongoing':
             return self._leaf(position, perspective, traversal), ()
-        entry = (None if self.table is None else
-                 self.table.probe(position, traversal.compatibility, depth))
+        entry = None
+        if self.table is not None:
+            traversal.table_probes += 1
+            entry = self.table.probe(position, traversal.compatibility, depth)
+            if entry is not None:
+                traversal.table_hits += 1
         if depth == 0:
             if entry is not None and entry.bound == 'exact':
+                traversal.table_value_cutoffs += 1
                 return entry.score, ()
             value = self._leaf(position, perspective, traversal)
             self._store(position, depth, value, 'exact', (), traversal)
@@ -320,6 +336,7 @@ class FixedDepthSearch:
         if (entry is not None and self._valid_hint(entry.best_move, moves)
                 and entry.principal_variation and entry.principal_variation[0] == entry.best_move):
             if entry.bound == 'exact':
+                traversal.table_value_cutoffs += 1
                 return entry.score, entry.principal_variation
             if entry.bound == 'lower':
                 alpha = max(alpha, entry.score)
@@ -327,6 +344,7 @@ class FixedDepthSearch:
                 beta = min(beta, entry.score)
             if alpha >= beta:
                 traversal.cutoffs += 1
+                traversal.table_value_cutoffs += 1
                 return entry.score, entry.principal_variation
         # Classify against the effective window, AFTER any cached tightening.
         start_alpha, start_beta = alpha, beta
@@ -365,8 +383,7 @@ class FixedDepthSearch:
         try:
             for depth in range(1, max_depth + 1):
                 if soft_deadline is not None and self.clock() >= soft_deadline:
-                    return replace(committed, nodes=traversal.nodes, cutoffs=traversal.cutoffs,
-                                   cancellation='soft_stop')
+                    return traversal.report(replace(committed, cancellation='soft_stop'))
                 attempted = depth
                 traversal.check()
                 result = self._root(position, depth, False, traversal)
@@ -385,7 +402,8 @@ class FixedDepthSearch:
                             else committed.move)
                 committed = replace(committed, move=fallback, tactics=traversal.root_tactics,
                                     root_candidate_count=traversal.root_candidate_count)
-            return replace(committed, nodes=traversal.nodes, cutoffs=traversal.cutoffs,
-                           tactics=traversal.root_tactics, root_candidate_count=traversal.root_candidate_count,
-                           attempted_depth=attempted, cancellation=str(error))
-        return committed
+            return traversal.report(replace(
+                committed, tactics=traversal.root_tactics,
+                root_candidate_count=traversal.root_candidate_count,
+                attempted_depth=attempted, cancellation=str(error)))
+        return traversal.report(committed)

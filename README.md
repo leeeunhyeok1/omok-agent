@@ -65,3 +65,13 @@ Issue #5 decisions, AI attribution, and acceptance evidence are in
 at user request.
 Issue #6 record/replay decisions and validation are in
 [its report](docs/verification/issue-6.md). No LLM usage records were created.
+
+Issue #14 exposes the integrated search player in the existing offline CLI and
+supplied inheritance adapter, with optional bounded replay-compatible diagnostics.
+See [the runner contract](docs/runner.md) and [acceptance evidence](docs/verification/issue-14.md).
+
+```sh
+python3 -m offline --engine search --agent-color black --opponent baseline --diagnostics --move-cap 12 --output .scratch/search.json
+python3 -m verification.integration
+python3 -m unittest tests.test_integration -v
+```

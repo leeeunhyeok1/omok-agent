@@ -182,3 +182,40 @@ were AI-written by OpenAI Codex. `--issue 5` saves separate smoke summaries in
 `docs/verification/issue-5-smoke.json` and traces in `.scratch/issue-5-smoke/`.
 See [issue #5 acceptance evidence](verification/issue-5.md) for the decisions and
 checks. Interaction transcripts were not recorded for this issue at user request.
+
+## Issue #14: selecting search and recording diagnostics
+
+The existing command defaults to the retained `LegalBaseline`. Select the integrated
+`IterativePlayer` with `--engine search`; choose its explicit color with
+`--agent-color black|white`. The older `--baseline-color` spelling remains an alias.
+`--opponent baseline|smoke|random|simple` includes the retained local baseline and
+unchanged supplied bots. Supplied games construct `ProvidedSearch`, which inherits
+the recovered supplied `Player` base and initializes its verified color constructor.
+This offline adapter imports no opponents into `omok/`.
+
+```sh
+python3 -m offline --engine search --agent-color white --opponent simple --diagnostics --move-cap 12 --output .scratch/search.json
+python3 -m offline --replay .scratch/search.json
+python3 -m verification.integration
+```
+
+`run_game(..., diagnostics=callback)` is the explicit opt-in route. The callback
+receives the player after the public turn has returned and been timed. It may return
+`None` or a finite JSON object of at most 16384 characters. A detached copy is saved
+as `search` on that turn's existing `returned` event. Callback/serialization failures
+record only `diagnostics_error` (exception type) and do not change execution failure
+classification, authoritative moves, clock debits or event ordering. Diagnostic work
+is offline observation outside the player's timed call. The CLI's callback records
+only iterative players. With diagnostics disabled, no snapshot callback runs.
+
+The trace format stays `omok-game-v2`, and existing v1/v2 replay readers continue to
+use moves, captures, states and clocks. Diagnostics are advisory: replay does not
+trust or validate their search claims. `verification.integration` independently
+replays actual transitions and every selected complete PV through reference rules.
+Engine code never writes per-turn files or prints diagnostics; the CLI writes the
+completed trace once when `--output` is provided.
+
+Official board types/runtime, final team class/file names, and official unlimited
+clock translation remain external gates. Offline `None` clocks pass `-1`, which
+still has a finite local search allocation. Cooperative cancellation and post-return
+timeout reporting remain unchanged; no hard isolation or leagues are introduced.
