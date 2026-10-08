@@ -1,5 +1,6 @@
 # AI-written by OpenAI Codex, for issues #4 and #5.
 """Development move-selection boundary; official Player inheritance is pending."""
+from dataclasses import dataclass
 from collections.abc import Sequence
 from math import isfinite
 from time import monotonic
@@ -56,6 +57,75 @@ class FixedDepthPlayer:
         if self.last_result.move is None:
             raise RuntimeError('Positive-depth live search returned no move.')
         return self.last_result.move
+
+
+# AI-written by OpenAI Codex, for issue #11.
+@dataclass(frozen=True, slots=True)
+class TimePolicy:
+    max_time_ms: float = 100.0
+    return_margin_ms: float = 2.0
+    reserve_fraction: float = 0.5
+    turn_fraction: float = 0.1
+    soft_fraction: float = 0.8
+
+    def __post_init__(self) -> None:
+        for value in (self.max_time_ms, self.return_margin_ms):
+            if isinstance(value, bool) or not isfinite(value) or value < 0:
+                raise ValueError('Time bounds must be finite and nonnegative.')
+        for value in (self.reserve_fraction, self.turn_fraction, self.soft_fraction):
+            if isinstance(value, bool) or not isfinite(value) or not 0 < value < 1:
+                raise ValueError('Time fractions must be finite and strictly between 0 and 1.')
+
+    def allowance(self, remaining_ms: float) -> float:
+        if isinstance(remaining_ms, bool) or not isfinite(remaining_ms):
+            raise ValueError('Remaining time must be finite milliseconds.')
+        if remaining_ms == -1:
+            return self.max_time_ms  # Bounded local convention; official semantics unresolved.
+        spendable = max(0.0, remaining_ms - self.return_margin_ms)
+        return min(self.max_time_ms, spendable * (1 - self.reserve_fraction) * self.turn_fraction)
+
+
+class IterativePlayer:
+    """Development public boundary with a remaining-total-clock allocation."""
+
+    def __init__(self, color: int, *, max_depth: int = 8, max_nodes: int = 10000,
+                 policy: TimePolicy | None = None, search: FixedDepthSearch | None = None) -> None:
+        if type(color) is not int or color not in (0, 1):
+            raise ValueError('Color must be 0 or 1.')
+        if type(max_depth) is not int or max_depth < 1:
+            raise ValueError('Maximum depth must be a positive integer.')
+        if type(max_nodes) is not int or max_nodes < 0:
+            raise ValueError('Node limit must be a nonnegative integer.')
+        self.color, self.max_depth, self.max_nodes = color, max_depth, max_nodes
+        self.policy = TimePolicy() if policy is None else policy
+        self.search = FixedDepthSearch() if search is None else search
+        self.last_result: SearchResult | None = None
+        self.last_elapsed_ms: float | None = None
+        self.last_allocation_ms: float | None = None
+
+    def take_turn(self, board: Sequence[Sequence[SupportsIndex]], time: float) -> Coordinate:
+        start = self.search.clock()
+        self.last_result = None
+        self.last_elapsed_ms = None
+        self.last_allocation_ms = None
+        allowance = self.policy.allowance(time)
+        self.last_allocation_ms = allowance
+        position = Position(board, self.color)
+        if position.outcome != 'ongoing':
+            raise ValueError('take_turn requires a live position.')
+        fallback = next(legal_moves(position))
+        if allowance == 0:
+            result = SearchResult(fallback, None, False, cancellation='low_time')
+        else:
+            result = self.search.iterative(
+                position, self.max_depth,
+                limits=SearchLimits(max_nodes=self.max_nodes, deadline=start + allowance / 1000),
+                soft_deadline=start + allowance * self.policy.soft_fraction / 1000)
+        if result.move is None:
+            raise RuntimeError('Positive-depth live search returned no move.')
+        self.last_result = result
+        self.last_elapsed_ms = (self.search.clock() - start) * 1000
+        return result.move
 
 
 class LegalBaseline:

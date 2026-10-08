@@ -120,3 +120,76 @@ packaging remain deferred; this class makes no new compatibility claim.
 Run `python3 -m unittest tests.test_search -v` and
 `python3 -m verification.search`. Acceptance evidence is in
 [issue-10.md](verification/issue-10.md).
+
+## Issue #11: committed iterations and total-clock policy
+
+`FixedDepthSearch.iterative(position, max_depth, limits=None, soft_deadline=None)`
+searches depths 1 through the configured maximum under one cumulative node/deadline
+budget. It establishes a row-major legal fallback before invoking callbacks. Only a
+fully completed root search replaces the committed result. `completed` means a
+coherent iteration exists, even when a later iteration was canceled; inspect
+`cancellation` to determine why work stopped. A terminal entry has a score and no
+move, with depth zero.
+
+`SearchResult` now also contains `completed_depth`, `attempted_depth`,
+`principal_variation`, and `pv_status`. On cancellation before depth 1, the score
+is absent, completed depth is zero, and PV status is `unavailable`. After completion,
+PV status is `complete`: replay the committed line until its depth horizon or an
+earlier rules terminal. Partial deeper diagnostic lines are discarded rather than
+exposed as completed PVs. `attempted_depth` records the interrupted iteration;
+a `soft_stop` between iterations leaves it at the last attempted depth. Nodes and
+cutoffs count all iterations, including interrupted work; they are not part of the
+committed score/line. There is no persistent tree, hash, table, or mutable board.
+
+`IterativePlayer(color, max_depth=8, max_nodes=10000, policy=None, search=None)`
+implements the development public turn boundary. `last_result`, `last_elapsed_ms`,
+and `last_allocation_ms` expose cheap diagnostics without writing or printing.
+The monotonic timer starts before input conversion. Conversion validates the whole
+board and its live outcome; fallback is established before optional search work.
+Errors propagate, with no result from an earlier turn retained.
+
+`TimePolicy` exposes provisional tunable defaults:
+
+- Return margin: 2 ms.
+- Later-turn reserve fraction: 0.5 of the time after that margin.
+- Turn fraction: 0.1 of the unreserved remainder.
+- Maximum allocation: 100 ms.
+- Soft deadline: 0.8 of that allocation, measured from public entry.
+
+For positive remaining milliseconds R, allocation is
+`min(100, max(0, R - 2) * (1 - 0.5) * 0.1)` ms. The hard cooperative deadline is
+public entry plus that allocation. The soft deadline prevents starting another
+iteration late in the allocation; work already started may continue up to the
+hard deadline. All overhead consumes the same allocation. No empty-cell count or
+fixed maximum number of future placements enters this formula. Fractions are
+strictly between zero and one; nonfinite/bool time values are rejected. Zero and
+negative time select fallback, except exactly `-1`: the established **local**
+unlimited convention still receives a 100 ms allocation and finite depth/node
+limits. The supplied Player base and bots do not resolve official sentinel
+translation. This remains a development player, pending final inheritance/naming.
+
+`SearchLimits.check(clock)` is the shared cancellation mechanism available to the
+later tactical layer. Candidate enumeration, recursion, and leaf entry/exit check
+it; default material evaluation also checks per row. Expensive extensions may use
+`cooperative_candidates(position, check)`,
+`cooperative_evaluator(position, check)`, or `ordering(position, move, check)`.
+Each should invoke its supplied checkpoint inside expensive loops. Ordering ranks
+validated candidate coordinates by descending integer priority, with stable ties;
+it does not alter membership. Both fixed-depth algorithms use the same ordering.
+Legacy one-argument callbacks remain supported with checks before/after their work.
+Only `SearchCancelled` is caught. Unexpected errors remain visible to the runner.
+
+Simulator conversion/transitions, built-in sorting (at most 361 moves), and legacy
+callbacks remain atomic. Cooperative checks cannot preempt blocking callbacks or
+OS scheduling. The 2 ms margin is provisional, not a hard-timeout guarantee.
+The actual timing report records tiny-clock overruns and an unexplained 143 ms
+spike on a 100 ms allocation. The runner's cumulative clocks and failure reporting
+remain authoritative. Tactical membership, transposition caching, tuning, and
+full Phase 02 acceptance remain later tickets.
+
+```sh
+python3 -m unittest tests.test_iterative -v
+python3 -m verification.iterative
+```
+
+See [issue #11 evidence](verification/issue-11.md).

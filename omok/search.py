@@ -1,6 +1,6 @@
-# AI-written by OpenAI Codex, for issue #10.
-"""Deterministic fixed-depth search over immutable simulator positions."""
-from dataclasses import dataclass
+# AI-written by OpenAI Codex, for issues #10 and #11.
+"""Fixed-depth and committed iterative search over immutable positions."""
+from dataclasses import dataclass, replace
 from collections.abc import Callable, Iterable, Iterator
 from math import isfinite
 from time import monotonic
@@ -24,6 +24,13 @@ class SearchLimits:
     deadline: float | None = None
     cancelled: Callable[[], bool] | None = None
 
+    def check(self, clock: Callable[[], float] = monotonic) -> None:
+        """Shared cooperative checkpoint, also available to tactical callbacks."""
+        if self.cancelled is not None and self.cancelled():
+            raise SearchCancelled('requested')
+        if self.deadline is not None and clock() >= self.deadline:
+            raise SearchCancelled('deadline')
+
     def __post_init__(self) -> None:
         if self.max_nodes is not None and (type(self.max_nodes) is not int or self.max_nodes < 0):
             raise ValueError('Node limit must be a nonnegative integer or None.')
@@ -38,10 +45,14 @@ def legal_moves(position: Position) -> Iterator[Coordinate]:
                 yield row, col
 
 
-def material_evaluation(position: Position) -> int:
+def material_evaluation(position: Position, *,
+                        check: Callable[[], None] = lambda: None) -> int:
     """Untuned black-centric material difference; range [-361, 361]."""
-    return sum(1 if cell == 0 else -1 if cell == 1 else 0
-               for row in position.board for cell in row)
+    value = 0
+    for row in position.board:
+        check()
+        value += sum(1 if cell == 0 else -1 if cell == 1 else 0 for cell in row)
+    return value
 
 
 @dataclass(frozen=True, slots=True)
@@ -53,6 +64,10 @@ class SearchResult:
     nodes: int = 0
     cutoffs: int = 0
     cancellation: str | None = None
+    completed_depth: int = 0
+    attempted_depth: int = 0
+    principal_variation: tuple[Coordinate, ...] = ()
+    pv_status: str = 'unavailable'
 
 
 @dataclass(slots=True)
@@ -63,10 +78,7 @@ class _Traversal:
     cutoffs: int = 0
 
     def check(self) -> None:
-        if self.limits.cancelled is not None and self.limits.cancelled():
-            raise SearchCancelled('requested')
-        if self.limits.deadline is not None and self.clock() >= self.limits.deadline:
-            raise SearchCancelled('deadline')
+        self.limits.check(self.clock)
 
     def visit(self) -> None:
         self.check()
@@ -78,12 +90,19 @@ class _Traversal:
 class FixedDepthSearch:
     def __init__(self, *, candidates: CandidateSource = legal_moves,
                  evaluator: Evaluator = material_evaluation,
-                 clock: Callable[[], float] = monotonic) -> None:
+                 clock: Callable[[], float] = monotonic,
+                 cooperative_candidates: Callable[[Position, Callable[[], None]], Iterable[Coordinate]] | None = None,
+                 cooperative_evaluator: Callable[[Position, Callable[[], None]], int] | None = None,
+                 ordering: Callable[[Position, Coordinate, Callable[[], None]], int] | None = None) -> None:
         self.candidates = candidates
         self.evaluator = evaluator
         self.clock = clock
+        self.cooperative_candidates = cooperative_candidates
+        self.cooperative_evaluator = cooperative_evaluator
+        self.ordering = ordering
 
-    def score(self, position: Position, perspective: int) -> int:
+    def score(self, position: Position, perspective: int, *,
+              check: Callable[[], None] = lambda: None) -> int:
         if type(perspective) is not int or perspective not in (0, 1):
             raise ValueError('Perspective must be 0 or 1.')
         if position.outcome == 'draw':
@@ -91,14 +110,22 @@ class FixedDepthSearch:
         if position.outcome != 'ongoing':
             winner = 0 if position.outcome == 'black_win' else 1
             return WIN_SCORE if perspective == winner else -WIN_SCORE
-        value = self.evaluator(position)
+        if self.cooperative_evaluator is not None:
+            value = self.cooperative_evaluator(position, check)
+        elif self.evaluator is material_evaluation:
+            value = material_evaluation(position, check=check)
+        else:
+            value = self.evaluator(position)
         if type(value) is not int or abs(value) > EVALUATION_LIMIT:
             raise ValueError('Evaluator must return a bounded black-centric integer.')
         return value if perspective == 0 else -value
 
     def _moves(self, position: Position, traversal: _Traversal) -> tuple[Coordinate, ...]:
         moves: dict[Coordinate, None] = {}
-        for move in self.candidates(position):
+        traversal.check()
+        source = (self.candidates(position) if self.cooperative_candidates is None else
+                  self.cooperative_candidates(position, traversal.check))
+        for move in source:
             traversal.check()
             row, col = move
             if (type(row) is not int or type(col) is not int
@@ -111,7 +138,16 @@ class FixedDepthSearch:
                 traversal.check()
                 moves[move] = None
         traversal.check()
-        return tuple(moves)
+        if self.ordering is None:
+            return tuple(moves)
+        ranked = []
+        for move in moves:
+            traversal.check()
+            ranked.append((self.ordering(position, move, traversal.check), move))
+        traversal.check()
+        ranked.sort(key=lambda item: -item[0])
+        traversal.check()
+        return tuple(move for _, move in ranked)
 
     def search(self, position: Position, depth: int, *,
                reference: bool = False, limits: SearchLimits | None = None) -> SearchResult:
@@ -122,14 +158,15 @@ class FixedDepthSearch:
         fallback = next(legal_moves(position))
         traversal = _Traversal(SearchLimits() if limits is None else limits, self.clock)
         try:
-            return self._root(position, depth, reference, traversal)
+            return replace(self._root(position, depth, reference, traversal),
+                           completed_depth=depth, attempted_depth=depth, pv_status='complete')
         except SearchCancelled as error:
             return SearchResult(fallback, None, False, nodes=traversal.nodes,
-                                cutoffs=traversal.cutoffs, cancellation=str(error))
+                                cutoffs=traversal.cutoffs, cancellation=str(error), attempted_depth=depth)
 
     def _leaf(self, position: Position, perspective: int, traversal: _Traversal) -> int:
         traversal.check()
-        value = self.score(position, perspective)
+        value = self.score(position, perspective, check=traversal.check)
         traversal.check()
         return value
 
@@ -141,45 +178,87 @@ class FixedDepthSearch:
                                 True, nodes=traversal.nodes)
         best = -FULL_WINDOW
         optimal: list[Coordinate] = []
+        best_line: tuple[Coordinate, ...] = ()
         for move in self._moves(position, traversal):
             traversal.check()
             child = position.play(move).position
             if reference:
-                value = -self._unpruned(child, depth - 1, 1 - position.side_to_move, traversal)
+                child_value, line = self._unpruned(child, depth - 1, 1 - position.side_to_move, traversal)
             else:
-                value = -self._alpha_beta(child, depth - 1, 1 - position.side_to_move,
+                child_value, line = self._alpha_beta(child, depth - 1, 1 - position.side_to_move,
                                           -FULL_WINDOW, -best, traversal)
+            value = -child_value
             if value > best:
                 best, optimal = value, [move]
+                best_line = (move,) + line
             elif value == best:
                 optimal.append(move)
         traversal.check()
         return SearchResult(optimal[0], best, True, tuple(optimal) if reference else None,
-                            traversal.nodes, traversal.cutoffs)
+                            traversal.nodes, traversal.cutoffs, principal_variation=best_line)
 
     def _unpruned(self, position: Position, depth: int, perspective: int,
-                  traversal: _Traversal) -> int:
+                  traversal: _Traversal) -> tuple[int, tuple[Coordinate, ...]]:
         traversal.visit()
         if position.outcome != 'ongoing' or depth == 0:
-            return self._leaf(position, perspective, traversal)
-        return max(-self._unpruned(position.play(move).position, depth - 1, 1 - perspective, traversal)
-                   for move in self._moves(position, traversal))
+            return self._leaf(position, perspective, traversal), ()
+        best = -FULL_WINDOW
+        best_line: tuple[Coordinate, ...] = ()
+        for move in self._moves(position, traversal):
+            traversal.check()
+            value, line = self._unpruned(position.play(move).position, depth - 1,
+                                         1 - perspective, traversal)
+            if -value > best:
+                best, best_line = -value, (move,) + line
+        return best, best_line
 
     def _alpha_beta(self, position: Position, depth: int, perspective: int,
-                    alpha: int, beta: int, traversal: _Traversal) -> int:
+                    alpha: int, beta: int, traversal: _Traversal
+                    ) -> tuple[int, tuple[Coordinate, ...]]:
         """Fail-soft: return the best observed value even beyond the window."""
         traversal.visit()
         if position.outcome != 'ongoing' or depth == 0:
-            return self._leaf(position, perspective, traversal)
+            return self._leaf(position, perspective, traversal), ()
         best = -FULL_WINDOW
+        best_line: tuple[Coordinate, ...] = ()
         for move in self._moves(position, traversal):
             traversal.check()
             child = position.play(move).position
-            value = -self._alpha_beta(child, depth - 1, 1 - perspective,
-                                      -beta, -alpha, traversal)
-            best = max(best, value)
+            value, line = self._alpha_beta(child, depth - 1, 1 - perspective,
+                                           -beta, -alpha, traversal)
+            if -value > best:
+                best, best_line = -value, (move,) + line
             alpha = max(alpha, best)
             if alpha >= beta:
                 traversal.cutoffs += 1
                 break
-        return best
+        return best, best_line
+
+    def iterative(self, position: Position, max_depth: int, *,
+                  limits: SearchLimits | None = None,
+                  soft_deadline: float | None = None) -> SearchResult:
+        """Commit only complete iterations under one shared traversal budget."""
+        if type(max_depth) is not int or max_depth < 1:
+            raise ValueError('Maximum depth must be a positive integer.')
+        if soft_deadline is not None and not isfinite(soft_deadline):
+            raise ValueError('Soft deadline must be finite or None.')
+        if position.outcome != 'ongoing':
+            return SearchResult(None, self.score(position, position.side_to_move), True,
+                                pv_status='complete')
+        committed = SearchResult(next(legal_moves(position)), None, False)
+        traversal = _Traversal(SearchLimits() if limits is None else limits, self.clock)
+        attempted = 0
+        try:
+            for depth in range(1, max_depth + 1):
+                if soft_deadline is not None and self.clock() >= soft_deadline:
+                    return replace(committed, nodes=traversal.nodes, cutoffs=traversal.cutoffs,
+                                   cancellation='soft_stop')
+                attempted = depth
+                traversal.check()
+                result = self._root(position, depth, False, traversal)
+                committed = replace(result, completed_depth=depth, attempted_depth=depth,
+                                    pv_status='complete')
+        except SearchCancelled as error:
+            return replace(committed, nodes=traversal.nodes, cutoffs=traversal.cutoffs,
+                           attempted_depth=attempted, cancellation=str(error))
+        return committed

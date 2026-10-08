@@ -1,0 +1,248 @@
+{
+  "python": "3.14.3",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+  "workers": 1,
+  "notes": "Sequential follow-up of the unexplained initial 143 ms spike; no parent typecheck launched concurrently. Background machine load is uncontrolled.",
+  "probes": [
+    {
+      "fixture": "empty",
+      "mode": "spike_followup",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.06162600075186,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 1,
+      "attempted_depth": 2,
+      "fallback": false,
+      "cancellation": "deadline",
+      "nodes": 1094,
+      "pv_status": "complete",
+      "exceeds_incoming_clock": false,
+      "failures": []
+    },
+    {
+      "fixture": "empty",
+      "mode": "spike_followup",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.04675600066548,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 1,
+      "attempted_depth": 2,
+      "fallback": false,
+      "cancellation": "deadline",
+      "nodes": 1067,
+      "pv_status": "complete",
+      "exceeds_incoming_clock": false,
+      "failures": []
+    },
+    {
+      "fixture": "empty",
+      "mode": "spike_followup",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.04691900030593,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 1,
+      "attempted_depth": 2,
+      "fallback": false,
+      "cancellation": "deadline",
+      "nodes": 1087,
+      "pv_status": "complete",
+      "exceeds_incoming_clock": false,
+      "failures": []
+    },
+    {
+      "fixture": "empty",
+      "mode": "spike_followup",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.04255400053808,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 1,
+      "attempted_depth": 2,
+      "fallback": false,
+      "cancellation": "deadline",
+      "nodes": 1089,
+      "pv_status": "complete",
+      "exceeds_incoming_clock": false,
+      "failures": []
+    },
+    {
+      "fixture": "empty",
+      "mode": "spike_followup",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.03879400028381,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 1,
+      "attempted_depth": 2,
+      "fallback": false,
+      "cancellation": "deadline",
+      "nodes": 1097,
+      "pv_status": "complete",
+      "exceeds_incoming_clock": false,
+      "failures": []
+    },
+    {
+      "fixture": "empty",
+      "mode": "spike_followup",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.0412180001149,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 1,
+      "attempted_depth": 2,
+      "fallback": false,
+      "cancellation": "deadline",
+      "nodes": 1101,
+      "pv_status": "complete",
+      "exceeds_incoming_clock": false,
+      "failures": []
+    },
+    {
+      "fixture": "empty",
+      "mode": "spike_followup",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.04172600019956,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 1,
+      "attempted_depth": 2,
+      "fallback": false,
+      "cancellation": "deadline",
+      "nodes": 1089,
+      "pv_status": "complete",
+      "exceeds_incoming_clock": false,
+      "failures": []
+    },
+    {
+      "fixture": "empty",
+      "mode": "spike_followup",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.25662199950602,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 1,
+      "attempted_depth": 2,
+      "fallback": false,
+      "cancellation": "deadline",
+      "nodes": 1044,
+      "pv_status": "complete",
+      "exceeds_incoming_clock": false,
+      "failures": []
+    },
+    {
+      "fixture": "empty",
+      "mode": "spike_followup",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.19525499956217,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 1,
+      "attempted_depth": 2,
+      "fallback": false,
+      "cancellation": "deadline",
+      "nodes": 1049,
+      "pv_status": "complete",
+      "exceeds_incoming_clock": false,
+      "failures": []
+    },
+    {
+      "fixture": "empty",
+      "mode": "spike_followup",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.08026899959077,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 1,
+      "attempted_depth": 2,
+      "fallback": false,
+      "cancellation": "deadline",
+      "nodes": 1077,
+      "pv_status": "complete",
+      "exceeds_incoming_clock": false,
+      "failures": []
+    },
+    {
+      "fixture": "empty",
+      "mode": "spike_followup",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.07373200096481,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 1,
+      "attempted_depth": 2,
+      "fallback": false,
+      "cancellation": "deadline",
+      "nodes": 1038,
+      "pv_status": "complete",
+      "exceeds_incoming_clock": false,
+      "failures": []
+    },
+    {
+      "fixture": "empty",
+      "mode": "spike_followup",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.05656899920723,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 1,
+      "attempted_depth": 2,
+      "fallback": false,
+      "cancellation": "deadline",
+      "nodes": 1087,
+      "pv_status": "complete",
+      "exceeds_incoming_clock": false,
+      "failures": []
+    }
+  ]
+}

@@ -36,11 +36,14 @@ The local player and runner contracts and commands are documented in
 [docs/runner.md](docs/runner.md). Issue #10 adds a bounded fixed-depth search player
 and deterministic unpruned reference; [docs/search.md](docs/search.md) describes
 the APIs, score bounds and cancellation behavior. `LegalBaseline` remains available.
-Iterative deepening, tactical candidates, caching and final packaging are deferred.
+Issue #11 adds committed iterative deepening and remaining-total-clock allocation
+through `IterativePlayer`; tactical candidates, caching and final packaging are deferred.
 
 ```sh
 python3 -m unittest tests.test_search -v
 python3 -m verification.search
+python3 -m unittest tests.test_iterative -v
+python3 -m verification.iterative
 python3 -I -S verification/offline_engine.py --search
 ```
 
