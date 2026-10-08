@@ -1,6 +1,7 @@
 # omok-agent
 
-Omok++ simulator, verified one-ply baseline, and bounded local runner implemented for GitHub issues #3–#5. Python **3.14.3** is the
+Omok++ simulator, verified one-ply baseline, bounded local runner, and versioned
+record/replay implemented for GitHub issues #3–#6. Python **3.14.3** is the
 verified local runtime; the grader runtime is not yet known. Engine and rule
 verification use only Python's standard library.
 
@@ -12,6 +13,7 @@ python3 -m verification.benchmark
 python3 -m offline --seed 20261008 --output .scratch/game.json
 python3 -m offline --replay .scratch/game.json
 python3 -m verification.smoke --issue 5
+python3 -m verification.smoke --issue 6
 ```
 
 The differential command defaults to 16 ordinary and 16 capture-biased sequences,
@@ -32,3 +34,5 @@ Earlier AI attribution and interaction records are in [llm-usage](llm-usage/READ
 Issue #5 decisions, AI attribution, and acceptance evidence are in
 [its report](docs/verification/issue-5.md); no new interaction transcript was recorded
 at user request.
+Issue #6 record/replay decisions and validation are in
+[its report](docs/verification/issue-6.md). No LLM usage records were created.

@@ -1,4 +1,4 @@
-# AI-written by OpenAI Codex (GPT-6.1-sol), for issue #4.
+# AI-written by OpenAI Codex, for issues #4 and #6.
 """Run one local game or replay its trace; see docs/runner.md."""
 import argparse
 import json
@@ -8,7 +8,7 @@ from typing import Any
 
 from offline.fixtures import NAMES, fixture
 from offline.opponents import SeededSmokePlayer
-from offline.replay import replay
+from offline.replay import load_trace, replay
 from offline.runner import run_game
 from omok.player import DevelopmentPlayer, LegalBaseline
 from omok.simulator import Position
@@ -34,7 +34,7 @@ def main() -> None:
     args = parser.parse_args()
     try:
         if args.replay:
-            position = replay(json.loads(args.replay.read_text()))
+            position = replay(load_trace(args.replay))
             print(json.dumps({'replay': 'valid', 'outcome': position.outcome, 'reason': position.reason}))
             return
         initial = fixture(args.fixture)
@@ -56,7 +56,7 @@ def main() -> None:
                          budgets_ms=(args.black_ms, args.white_ms), move_cap=args.move_cap, config=config)
         if args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)
-            args.output.write_text(json.dumps(trace, indent=2) + '\n')
+            args.output.write_text(json.dumps(trace, indent=2, allow_nan=False) + '\n', encoding='utf-8')
         print(json.dumps({key: trace[key] for key in
                           ('status', 'reason', 'winner', 'remaining_ms', 'failure')} | {'moves': len(trace['moves'])}))
     except (ValueError, TypeError, KeyError, OSError) as error:

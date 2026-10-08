@@ -12,6 +12,7 @@ python3 -m offline --black-ms -1 --white-ms -1 --move-cap 100
 python3 -m offline --replay .scratch/game.json
 python3 -m verification.smoke
 python3 -m verification.smoke --issue 5
+python3 -m verification.smoke --issue 6
 python3 -m unittest discover -s tests -v
 ```
 
@@ -84,22 +85,57 @@ execution (exit 0); invalid configuration/replay errors exit 2. Inspect `status`
 
 ## Trace contract
 
-`omok-game-v1` JSON contains initial/final board, explicit side and rules result,
-player identifiers/colors, budgets, cap, configuration/seed/version/runtime metadata,
-accepted moves with mover, captures and prior values, call durations and remaining
-clocks, final status/reason/winner, and a separate failure event. Failed returned
-values are recorded as their representation for diagnostics and never replayed.
-Rule winners are color 0/1; draws, caps, and failures have null winner. Each accepted
-move records its normalized returned coordinate. Configuration in the Python API
-must be JSON serializable if the caller intends to write JSON.
+New records use **`omok-game-v2`**, one complete UTF-8 JSON object written with the
+standard library. The replay reader also accepts existing `omok-game-v1` records.
+The root fields are `format`, `initial`, `players`, `budgets_ms`, `move_cap`, `config`,
+`moves`, `events`, `failure`, `status`, `reason`, `final`, `remaining_ms`, and `winner`.
+`initial` and `final` contain `board`, `side_to_move`, `outcome`, and rules `reason`.
+Players are in black/white order, each with `color`, class-name `identifier`, and
+`source`: module, qualified class name, and SHA-256 of its defining file, or null
+hash when source is unavailable. Hashes identify that file, not all dependencies;
+replay validates their shape without importing players or reading their source.
+CLI configuration includes seed, baseline/opponent versions, start, runtime,
+hardware, and worker count. API callers supply applicable seed/version settings in
+`config`; it is copied through JSON before execution and must be a finite JSON
+object. No seed or version is invented for an unknown player.
+
+`events` is ordered execution evidence:
+
+- `returned`: color, diagnostic `returned` representation, normalized integer-pair
+  `move` when representable (null otherwise), `elapsed_ms`, and own `remaining_ms`.
+  This event follows each attempted call, including calls that raise exceptions.
+- `applied`: color, accepted `move`, explicit `captured` cells with `prior_value`,
+  elapsed/remaining time, and resulting complete `state`. Only this event changes
+  the board. `moves` retains the accepted-move summary for existing consumers;
+  replay checks it against the events, never silently choosing one over the other.
+- `failure`: player/color, primary reason, ordered violations, `called`, diagnostic
+  returned value, exception type/message, elapsed and remaining time. A timeout
+  before a call has only this event; a failure after a call follows `returned` and
+  has no `applied` event. The root `failure` mirrors its diagnostic fields.
+
+Captures are sets: order is immaterial; duplicates, wrong coordinates or prior
+values are errors. Time is milliseconds, null for unlimited remaining clocks.
+Rule winners are color 0/1; draws, caps, and failures have null winner. Terminal
+moves retain the mover as side to move, matching the simulator's convention.
+`completed` must match an actual rules outcome; `capped`/`move_cap` and execution
+failures leave the rules outcome `ongoing`. A complete final object is required
+even for caps and failures; an interrupted partial write is rejected.
 
 `offline.replay.replay` never invokes players. It reapplies moves through the verified
 simulator and compares captures, alternation, initial/final rules state, terminal
-status, cap, and cumulative accounting. Truncated/invalid JSON is rejected by the
-CLI; malformed and inconsistent traces raise `ValueError`. Durations are validated
+status, cap, cumulative accounting, and v2 intermediate states and event order.
+`load_trace(Path(...))` reads JSON and rejects duplicate keys, nonfinite numbers,
+and non-object roots. Truncated/invalid JSON is rejected by the CLI; malformed and
+inconsistent traces raise `ValueError`. Durations are validated
 for accounting, not reproduced. Failure claims are retained execution evidence:
 replay cannot prove that a player really raised an exception or mutated its snapshot.
 This is a consistency format, not a cryptographically authenticated log.
+
+Keep generated traces under `.scratch/` or another experiment-output directory,
+outside `omok/` and the eventual submitted agent. Existing supplied-player files,
+AI attribution, and earlier interaction records are preserved. Issue #6 source and
+documentation additions are AI-written by OpenAI Codex; no new LLM usage records
+were created at the user's request.
 
 ## Limits and verification
 
