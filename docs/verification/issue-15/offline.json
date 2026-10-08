@@ -1,0 +1,1 @@
+{"engine": "iterative", "isolated": 1, "no_site": 1, "network": "Python socket operations denied", "imports": "engine and standard library only", "moves": [{"color": 0, "move": [9, 9], "outcome": "ongoing"}, {"color": 1, "move": [9, 9], "outcome": "ongoing"}]}

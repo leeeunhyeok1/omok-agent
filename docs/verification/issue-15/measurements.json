@@ -1,0 +1,2405 @@
+{
+  "environment": {
+    "python": "3.14.3 (v3.14.3:323c59a5e34, Feb  3 2026, 11:41:37) [Clang 16.0.0 (clang-1600.0.26.6)]",
+    "executable": "/usr/local/bin/python3",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+    "machine": "x86_64",
+    "logical_cpus": 4,
+    "hardware": {
+      "machdep.cpu.brand_string": "Intel(R) Core(TM) i5-7360U CPU @ 2.30GHz",
+      "hw.memsize": "8589934592",
+      "hw.physicalcpu": "2",
+      "hw.logicalcpu": "4"
+    },
+    "workers": 1,
+    "source_commit": "ba9335ac078b02f9a57a234ad867c53c8fcdfb41",
+    "engine_sha256": {
+      "omok/__init__.py": "8fa4256f87cb48053e42cc4b325076ddcec37235cfa8d6ce9580704b8bcfc954",
+      "omok/player.py": "c2073eddb17f782ede4ea9a0b0a07beeb7965e579170cedec4f890e8536867da",
+      "omok/search.py": "e1191850e9182236c3eeb05fa5bd451cbabb681992d9b9953005e19a487cecc1",
+      "omok/simulator.py": "3dde4fd4c62df6123d920579e2b91e529d866ac608513701db38bf563acb1837",
+      "omok/tactics.py": "9cdb4f90a424157a22c7a2505c2ce6618aa16c3702f0b846485ce1020dd56a35",
+      "omok/transposition.py": "daf69437752d5b4cb8814fa1a0f3c94d3144f0f86255e4eed2296216b6b345d8"
+    },
+    "configuration": {
+      "max_depth": 8,
+      "max_nodes": 10000,
+      "time_policy": {
+        "max_time_ms": 100.0,
+        "return_margin_ms": 2.0,
+        "reserve_fraction": 0.5,
+        "turn_fraction": 0.1,
+        "soft_fraction": 0.8
+      },
+      "tactics": {
+        "radius": 2,
+        "cap": 24,
+        "full_width": false,
+        "ordinary_rank": "omok.tactics.static_rank"
+      },
+      "candidates": "omok.search.legal_moves",
+      "ordering": null,
+      "compatibility": "None",
+      "table_capacity": 4096
+    },
+    "evaluator": "omok.search.material_evaluation"
+  },
+  "timing_distributions_ms": {
+    "independent_probe:-2": {
+      "count": 24,
+      "min": 0.10273199950461276,
+      "median": 0.11950450061704032,
+      "p95_nearest_rank": 0.5694130013580434,
+      "max": 0.7616290004079929
+    },
+    "independent_probe:0": {
+      "count": 24,
+      "min": 0.10090300020237919,
+      "median": 0.10834250042535132,
+      "p95_nearest_rank": 0.5604540001513669,
+      "max": 0.7868800003052456
+    },
+    "independent_probe:0.001": {
+      "count": 24,
+      "min": 0.10020400077337399,
+      "median": 0.107515500531008,
+      "p95_nearest_rank": 0.5563689992413856,
+      "max": 0.5794970002170885
+    },
+    "independent_probe:0.1": {
+      "count": 24,
+      "min": 0.10006699994846713,
+      "median": 0.11530200026754756,
+      "p95_nearest_rank": 0.5588929998339154,
+      "max": 0.6407230011973297
+    },
+    "independent_probe:1": {
+      "count": 24,
+      "min": 0.10018099965236615,
+      "median": 0.11447250017226906,
+      "p95_nearest_rank": 0.5503079992195126,
+      "max": 0.55122300000221
+    },
+    "independent_probe:3": {
+      "count": 24,
+      "min": 0.13224000031186733,
+      "median": 0.1479619995734538,
+      "p95_nearest_rank": 0.5939870006841375,
+      "max": 0.7936879992485046
+    },
+    "independent_probe:5": {
+      "count": 24,
+      "min": 0.14296099834609777,
+      "median": 0.21733450012106914,
+      "p95_nearest_rank": 0.5770209991169395,
+      "max": 0.5796379991807044
+    },
+    "independent_probe:20": {
+      "count": 24,
+      "min": 0.9382299995195353,
+      "median": 0.959582500399847,
+      "p95_nearest_rank": 1.2104969991924008,
+      "max": 1.2819630010199035
+    },
+    "independent_probe:200": {
+      "count": 24,
+      "min": 8.517862001099274,
+      "median": 9.951327999260684,
+      "p95_nearest_rank": 9.987370000089868,
+      "max": 10.010807000071509
+    },
+    "independent_probe:60000": {
+      "count": 24,
+      "min": 22.00703699963924,
+      "median": 100.06718499971612,
+      "p95_nearest_rank": 100.33211399968422,
+      "max": 100.68582300118578
+    },
+    "independent_probe:-1": {
+      "count": 24,
+      "min": 22.26754500043171,
+      "median": 100.06138299922895,
+      "p95_nearest_rank": 100.41341000032844,
+      "max": 100.46563300056732
+    },
+    "cumulative_clock:40.0": {
+      "count": 8,
+      "min": 1.934994999828632,
+      "median": 1.950565499100776,
+      "p95_nearest_rank": 1.9693989997904282,
+      "max": 1.9693989997904282
+    },
+    "cumulative_clock:38.06500500017137": {
+      "count": 1,
+      "min": 1.8421719996695174,
+      "median": 1.8421719996695174,
+      "p95_nearest_rank": 1.8421719996695174,
+      "max": 1.8421719996695174
+    },
+    "cumulative_clock:36.22283300050185": {
+      "count": 1,
+      "min": 1.7529130000184523,
+      "median": 1.7529130000184523,
+      "p95_nearest_rank": 1.7529130000184523,
+      "max": 1.7529130000184523
+    },
+    "cumulative_clock:34.4699200004834": {
+      "count": 1,
+      "min": 1.6570549996686168,
+      "median": 1.6570549996686168,
+      "p95_nearest_rank": 1.6570549996686168,
+      "max": 1.6570549996686168
+    },
+    "cumulative_clock:32.81286500081478": {
+      "count": 1,
+      "min": 1.600056000825134,
+      "median": 1.600056000825134,
+      "p95_nearest_rank": 1.600056000825134,
+      "max": 1.600056000825134
+    },
+    "cumulative_clock:31.212808999989647": {
+      "count": 1,
+      "min": 1.509599998826161,
+      "median": 1.509599998826161,
+      "p95_nearest_rank": 1.509599998826161,
+      "max": 1.509599998826161
+    },
+    "cumulative_clock:29.703209001163486": {
+      "count": 1,
+      "min": 1.443516001017997,
+      "median": 1.443516001017997,
+      "p95_nearest_rank": 1.443516001017997,
+      "max": 1.443516001017997
+    },
+    "cumulative_clock:28.25969300014549": {
+      "count": 1,
+      "min": 1.3582520005002152,
+      "median": 1.3582520005002152,
+      "p95_nearest_rank": 1.3582520005002152,
+      "max": 1.3582520005002152
+    },
+    "cumulative_clock:26.901440999645274": {
+      "count": 1,
+      "min": 1.286062999497517,
+      "median": 1.286062999497517,
+      "p95_nearest_rank": 1.286062999497517,
+      "max": 1.286062999497517
+    },
+    "cumulative_clock:25.615378000147757": {
+      "count": 1,
+      "min": 1.225910000357544,
+      "median": 1.225910000357544,
+      "p95_nearest_rank": 1.225910000357544,
+      "max": 1.225910000357544
+    },
+    "cumulative_clock:24.389467999790213": {
+      "count": 1,
+      "min": 1.1603019993344788,
+      "median": 1.1603019993344788,
+      "p95_nearest_rank": 1.1603019993344788,
+      "max": 1.1603019993344788
+    },
+    "cumulative_clock:23.229166000455734": {
+      "count": 1,
+      "min": 1.100541001505917,
+      "median": 1.100541001505917,
+      "p95_nearest_rank": 1.100541001505917,
+      "max": 1.100541001505917
+    },
+    "cumulative_clock:38.06441100008669": {
+      "count": 1,
+      "min": 1.8442750006215647,
+      "median": 1.8442750006215647,
+      "p95_nearest_rank": 1.8442750006215647,
+      "max": 1.8442750006215647
+    },
+    "cumulative_clock:36.22013599946513": {
+      "count": 1,
+      "min": 1.7481249997217674,
+      "median": 1.7481249997217674,
+      "p95_nearest_rank": 1.7481249997217674,
+      "max": 1.7481249997217674
+    },
+    "cumulative_clock:34.47201099974336": {
+      "count": 1,
+      "min": 1.6577049991610693,
+      "median": 1.6577049991610693,
+      "p95_nearest_rank": 1.6577049991610693,
+      "max": 1.6577049991610693
+    },
+    "cumulative_clock:32.81430600058229": {
+      "count": 1,
+      "min": 1.585112999237026,
+      "median": 1.585112999237026,
+      "p95_nearest_rank": 1.585112999237026,
+      "max": 1.585112999237026
+    },
+    "cumulative_clock:31.229193001345266": {
+      "count": 1,
+      "min": 1.6612649997114204,
+      "median": 1.6612649997114204,
+      "p95_nearest_rank": 1.6612649997114204,
+      "max": 1.6612649997114204
+    },
+    "cumulative_clock:29.567928001633845": {
+      "count": 1,
+      "min": 1.4314299987745471,
+      "median": 1.4314299987745471,
+      "p95_nearest_rank": 1.4314299987745471,
+      "max": 1.4314299987745471
+    },
+    "cumulative_clock:28.136498002859298": {
+      "count": 1,
+      "min": 1.3485540002875496,
+      "median": 1.3485540002875496,
+      "p95_nearest_rank": 1.3485540002875496,
+      "max": 1.3485540002875496
+    },
+    "cumulative_clock:26.78794400257175": {
+      "count": 1,
+      "min": 1.2797629988199333,
+      "median": 1.2797629988199333,
+      "p95_nearest_rank": 1.2797629988199333,
+      "max": 1.2797629988199333
+    },
+    "cumulative_clock:25.508181003751815": {
+      "count": 1,
+      "min": 1.3494920003722655,
+      "median": 1.3494920003722655,
+      "p95_nearest_rank": 1.3494920003722655,
+      "max": 1.3494920003722655
+    },
+    "cumulative_clock:24.15868900337955": {
+      "count": 1,
+      "min": 1.1656360002234578,
+      "median": 1.1656360002234578,
+      "p95_nearest_rank": 1.1656360002234578,
+      "max": 1.1656360002234578
+    },
+    "cumulative_clock:22.993053003156092": {
+      "count": 1,
+      "min": 1.1242090004088823,
+      "median": 1.1242090004088823,
+      "p95_nearest_rank": 1.1242090004088823,
+      "max": 1.1242090004088823
+    },
+    "cumulative_clock:38.044396001205314": {
+      "count": 1,
+      "min": 1.8753949989331886,
+      "median": 1.8753949989331886,
+      "p95_nearest_rank": 1.8753949989331886,
+      "max": 1.8753949989331886
+    },
+    "cumulative_clock:36.169001002272125": {
+      "count": 1,
+      "min": 1.7545110003993614,
+      "median": 1.7545110003993614,
+      "p95_nearest_rank": 1.7545110003993614,
+      "max": 1.7545110003993614
+    },
+    "cumulative_clock:34.414490001872764": {
+      "count": 1,
+      "min": 1.664458000959712,
+      "median": 1.664458000959712,
+      "p95_nearest_rank": 1.664458000959712,
+      "max": 1.664458000959712
+    },
+    "cumulative_clock:32.75003200091305": {
+      "count": 1,
+      "min": 1.5990009997040033,
+      "median": 1.5990009997040033,
+      "p95_nearest_rank": 1.5990009997040033,
+      "max": 1.5990009997040033
+    },
+    "cumulative_clock:31.15103100120905": {
+      "count": 1,
+      "min": 1.4996869995229645,
+      "median": 1.4996869995229645,
+      "p95_nearest_rank": 1.4996869995229645,
+      "max": 1.4996869995229645
+    },
+    "cumulative_clock:29.651344001686084": {
+      "count": 1,
+      "min": 1.4232989997253753,
+      "median": 1.4232989997253753,
+      "p95_nearest_rank": 1.4232989997253753,
+      "max": 1.4232989997253753
+    },
+    "cumulative_clock:28.22804500196071": {
+      "count": 1,
+      "min": 1.3512109999282984,
+      "median": 1.3512109999282984,
+      "p95_nearest_rank": 1.3512109999282984,
+      "max": 1.3512109999282984
+    },
+    "cumulative_clock:26.87683400203241": {
+      "count": 1,
+      "min": 1.2830500018026214,
+      "median": 1.2830500018026214,
+      "p95_nearest_rank": 1.2830500018026214,
+      "max": 1.2830500018026214
+    },
+    "cumulative_clock:25.59378400022979": {
+      "count": 1,
+      "min": 1.2192120011604857,
+      "median": 1.2192120011604857,
+      "p95_nearest_rank": 1.2192120011604857,
+      "max": 1.2192120011604857
+    },
+    "cumulative_clock:24.374571999069303": {
+      "count": 1,
+      "min": 1.1574039999686647,
+      "median": 1.1574039999686647,
+      "p95_nearest_rank": 1.1574039999686647,
+      "max": 1.1574039999686647
+    },
+    "cumulative_clock:23.21716799910064": {
+      "count": 1,
+      "min": 1.0998289999406552,
+      "median": 1.0998289999406552,
+      "p95_nearest_rank": 1.0998289999406552,
+      "max": 1.0998289999406552
+    },
+    "cumulative_clock:38.03722800061223": {
+      "count": 1,
+      "min": 1.8375380004727049,
+      "median": 1.8375380004727049,
+      "p95_nearest_rank": 1.8375380004727049,
+      "max": 1.8375380004727049
+    },
+    "cumulative_clock:36.199690000139526": {
+      "count": 1,
+      "min": 1.7440860010538017,
+      "median": 1.7440860010538017,
+      "p95_nearest_rank": 1.7440860010538017,
+      "max": 1.7440860010538017
+    },
+    "cumulative_clock:34.455603999085724": {
+      "count": 1,
+      "min": 1.6821810004330473,
+      "median": 1.6821810004330473,
+      "p95_nearest_rank": 1.6821810004330473,
+      "max": 1.6821810004330473
+    },
+    "cumulative_clock:32.77342299865268": {
+      "count": 1,
+      "min": 1.5840599990042392,
+      "median": 1.5840599990042392,
+      "p95_nearest_rank": 1.5840599990042392,
+      "max": 1.5840599990042392
+    },
+    "cumulative_clock:31.189362999648438": {
+      "count": 1,
+      "min": 1.5023819996713428,
+      "median": 1.5023819996713428,
+      "p95_nearest_rank": 1.5023819996713428,
+      "max": 1.5023819996713428
+    },
+    "cumulative_clock:29.686980999977095": {
+      "count": 1,
+      "min": 1.4247700000851182,
+      "median": 1.4247700000851182,
+      "p95_nearest_rank": 1.4247700000851182,
+      "max": 1.4247700000851182
+    },
+    "cumulative_clock:28.262210999891977": {
+      "count": 1,
+      "min": 1.3711890005652094,
+      "median": 1.3711890005652094,
+      "p95_nearest_rank": 1.3711890005652094,
+      "max": 1.3711890005652094
+    },
+    "cumulative_clock:26.891021999326767": {
+      "count": 1,
+      "min": 1.2923609992867569,
+      "median": 1.2923609992867569,
+      "p95_nearest_rank": 1.2923609992867569,
+      "max": 1.2923609992867569
+    },
+    "cumulative_clock:25.59866100004001": {
+      "count": 1,
+      "min": 1.2208580010337755,
+      "median": 1.2208580010337755,
+      "p95_nearest_rank": 1.2208580010337755,
+      "max": 1.2208580010337755
+    },
+    "cumulative_clock:24.377802999006235": {
+      "count": 1,
+      "min": 1.1592709997785278,
+      "median": 1.1592709997785278,
+      "p95_nearest_rank": 1.1592709997785278,
+      "max": 1.1592709997785278
+    },
+    "cumulative_clock:23.218531999227707": {
+      "count": 1,
+      "min": 1.1303350001981016,
+      "median": 1.1303350001981016,
+      "p95_nearest_rank": 1.1303350001981016,
+      "max": 1.1303350001981016
+    },
+    "cumulative_clock:38.04895000124816": {
+      "count": 1,
+      "min": 1.8653110000741435,
+      "median": 1.8653110000741435,
+      "p95_nearest_rank": 1.8653110000741435,
+      "max": 1.8653110000741435
+    },
+    "cumulative_clock:36.183639001174015": {
+      "count": 1,
+      "min": 1.764972001183196,
+      "median": 1.764972001183196,
+      "p95_nearest_rank": 1.764972001183196,
+      "max": 1.764972001183196
+    },
+    "cumulative_clock:34.41866699999082": {
+      "count": 1,
+      "min": 1.6951050001807744,
+      "median": 1.6951050001807744,
+      "p95_nearest_rank": 1.6951050001807744,
+      "max": 1.6951050001807744
+    },
+    "cumulative_clock:32.723561999810045": {
+      "count": 1,
+      "min": 1.6080179993878119,
+      "median": 1.6080179993878119,
+      "p95_nearest_rank": 1.6080179993878119,
+      "max": 1.6080179993878119
+    },
+    "cumulative_clock:31.115544000422233": {
+      "count": 1,
+      "min": 1.5236219987855293,
+      "median": 1.5236219987855293,
+      "p95_nearest_rank": 1.5236219987855293,
+      "max": 1.5236219987855293
+    },
+    "cumulative_clock:29.591922001636703": {
+      "count": 1,
+      "min": 1.4475349998974707,
+      "median": 1.4475349998974707,
+      "p95_nearest_rank": 1.4475349998974707,
+      "max": 1.4475349998974707
+    },
+    "cumulative_clock:28.144387001739233": {
+      "count": 1,
+      "min": 1.3530380001611775,
+      "median": 1.3530380001611775,
+      "p95_nearest_rank": 1.3530380001611775,
+      "max": 1.3530380001611775
+    },
+    "cumulative_clock:26.791349001578055": {
+      "count": 1,
+      "min": 1.2794869999197545,
+      "median": 1.2794869999197545,
+      "p95_nearest_rank": 1.2794869999197545,
+      "max": 1.2794869999197545
+    },
+    "cumulative_clock:25.5118620016583": {
+      "count": 1,
+      "min": 1.2248170005477732,
+      "median": 1.2248170005477732,
+      "p95_nearest_rank": 1.2248170005477732,
+      "max": 1.2248170005477732
+    },
+    "cumulative_clock:24.287045001110528": {
+      "count": 1,
+      "min": 1.1756240000977414,
+      "median": 1.1756240000977414,
+      "p95_nearest_rank": 1.1756240000977414,
+      "max": 1.1756240000977414
+    },
+    "cumulative_clock:23.111421001012786": {
+      "count": 1,
+      "min": 1.119264001317788,
+      "median": 1.119264001317788,
+      "p95_nearest_rank": 1.119264001317788,
+      "max": 1.119264001317788
+    },
+    "cumulative_clock:38.055613999895286": {
+      "count": 1,
+      "min": 1.8452320000506006,
+      "median": 1.8452320000506006,
+      "p95_nearest_rank": 1.8452320000506006,
+      "max": 1.8452320000506006
+    },
+    "cumulative_clock:36.210381999844685": {
+      "count": 1,
+      "min": 1.7491439994046232,
+      "median": 1.7491439994046232,
+      "p95_nearest_rank": 1.7491439994046232,
+      "max": 1.7491439994046232
+    },
+    "cumulative_clock:34.46123800044006": {
+      "count": 1,
+      "min": 1.6620389997115126,
+      "median": 1.6620389997115126,
+      "p95_nearest_rank": 1.6620389997115126,
+      "max": 1.6620389997115126
+    },
+    "cumulative_clock:32.79919900072855": {
+      "count": 1,
+      "min": 1.5888039997662418,
+      "median": 1.5888039997662418,
+      "p95_nearest_rank": 1.5888039997662418,
+      "max": 1.5888039997662418
+    },
+    "cumulative_clock:31.210395000962308": {
+      "count": 1,
+      "min": 1.4990990002843319,
+      "median": 1.4990990002843319,
+      "p95_nearest_rank": 1.4990990002843319,
+      "max": 1.4990990002843319
+    },
+    "cumulative_clock:29.711296000677976": {
+      "count": 1,
+      "min": 1.4337409993459005,
+      "median": 1.4337409993459005,
+      "p95_nearest_rank": 1.4337409993459005,
+      "max": 1.4337409993459005
+    },
+    "cumulative_clock:28.277555001332075": {
+      "count": 1,
+      "min": 1.356492999548209,
+      "median": 1.356492999548209,
+      "p95_nearest_rank": 1.356492999548209,
+      "max": 1.356492999548209
+    },
+    "cumulative_clock:26.921062001783866": {
+      "count": 1,
+      "min": 1.2849859995185398,
+      "median": 1.2849859995185398,
+      "p95_nearest_rank": 1.2849859995185398,
+      "max": 1.2849859995185398
+    },
+    "cumulative_clock:25.636076002265327": {
+      "count": 1,
+      "min": 1.6733470001781825,
+      "median": 1.6733470001781825,
+      "p95_nearest_rank": 1.6733470001781825,
+      "max": 1.6733470001781825
+    }
+  },
+  "incoming_clock_overruns": [
+    {
+      "fixture": "empty",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.10153499897569418,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "empty",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.10020400077337399,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "empty",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.10036499952548184,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "empty",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.10346700037189294,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "empty",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.10006699994846713,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "empty",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.14886200006003492,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "empty",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.11572799849091098,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "empty",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.10857899906113744,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "empty",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.10199099961027969,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "empty",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.10331300109100994,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "empty",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.10102600026584696,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "empty",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.10071100041386671,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "sparse",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.10634600039338693,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "sparse",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.10555399967415724,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "sparse",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.105372999314568,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "sparse",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.10543800090090372,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "sparse",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.10503100020287093,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "sparse",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.10497000039322302,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "sparse",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.10750600085884798,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "sparse",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.10579999980109278,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "sparse",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.10464199840498623,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "sparse",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.10614399980113376,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "sparse",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.14514299982693046,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "sparse",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.12401099957060069,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "tactical",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.10738099990703631,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "tactical",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.10752500020316802,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "tactical",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.10700900020310655,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "tactical",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.10726500113378279,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "tactical",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.18289999934495427,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "tactical",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.12006299948552623,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "tactical",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.1087279997591395,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "tactical",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.12025800060655456,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "tactical",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.14803200065216515,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "tactical",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.1251540015800856,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "tactical",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.11054100104956888,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "tactical",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.10900300003413577,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "dense",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.5509719994734041,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "dense",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.5514630011020927,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "dense",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.5794970002170885,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "dense",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.5514700005733175,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "dense",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.5486709997057915,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "dense",
+      "mode": "independent_probe",
+      "color": 0,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.5478430011862656,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "dense",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.5563689992413856,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "dense",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.5560179997701198,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "dense",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.001,
+      "elapsed_ms": 0.5504829987330595,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    },
+    {
+      "fixture": "dense",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.5498310001712525,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 0
+    },
+    {
+      "fixture": "dense",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.5588929998339154,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 1
+    },
+    {
+      "fixture": "dense",
+      "mode": "independent_probe",
+      "color": 1,
+      "remaining_ms": 0.1,
+      "elapsed_ms": 0.6407230011973297,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "completed_depth": 0,
+      "attempted_depth": 0,
+      "fallback": true,
+      "cancellation": "low_time",
+      "nodes": 0,
+      "pv_status": "unavailable",
+      "exceeds_incoming_clock": true,
+      "failures": [],
+      "repeat": 2
+    }
+  ],
+  "failures": [],
+  "profile": {
+    "calls": [
+      {
+        "engine": "iterative-negamax-v1",
+        "evaluator": "omok.search.material_evaluation",
+        "config": {
+          "max_depth": 8,
+          "max_nodes": 10000,
+          "time_policy": {
+            "max_time_ms": 100.0,
+            "return_margin_ms": 2.0,
+            "reserve_fraction": 0.5,
+            "turn_fraction": 0.1,
+            "soft_fraction": 0.8
+          },
+          "tactics": {
+            "radius": 2,
+            "cap": 24,
+            "full_width": false,
+            "ordinary_rank": "omok.tactics.static_rank"
+          },
+          "candidates": "omok.search.legal_moves",
+          "ordering": null,
+          "compatibility": "None",
+          "table_capacity": 4096
+        },
+        "move": [
+          9,
+          9
+        ],
+        "root_candidate_count": 24,
+        "tactics": {
+          "complete": true,
+          "wins_complete": true,
+          "threats_complete": true,
+          "defenses_complete": true,
+          "cancellation": null
+        },
+        "fallback_reason": null,
+        "completed_depth": 1,
+        "attempted_depth": 2,
+        "score": 2,
+        "principal_variation": [
+          [
+            9,
+            9
+          ]
+        ],
+        "pv_status": "complete",
+        "nodes": 82,
+        "cutoffs": 15,
+        "table_probes": 80,
+        "table_hits": 0,
+        "table_value_cutoffs": 0,
+        "table_size": 80,
+        "elapsed_ms": 100.11912600020878,
+        "allocated_ms": 100.0,
+        "remaining_ms": 60000,
+        "cancellation": "deadline"
+      },
+      {
+        "engine": "iterative-negamax-v1",
+        "evaluator": "omok.search.material_evaluation",
+        "config": {
+          "max_depth": 8,
+          "max_nodes": 10000,
+          "time_policy": {
+            "max_time_ms": 100.0,
+            "return_margin_ms": 2.0,
+            "reserve_fraction": 0.5,
+            "turn_fraction": 0.1,
+            "soft_fraction": 0.8
+          },
+          "tactics": {
+            "radius": 2,
+            "cap": 24,
+            "full_width": false,
+            "ordinary_rank": "omok.tactics.static_rank"
+          },
+          "candidates": "omok.search.legal_moves",
+          "ordering": null,
+          "compatibility": "None",
+          "table_capacity": 4096
+        },
+        "move": [
+          9,
+          9
+        ],
+        "root_candidate_count": 24,
+        "tactics": {
+          "complete": true,
+          "wins_complete": true,
+          "threats_complete": true,
+          "defenses_complete": true,
+          "cancellation": null
+        },
+        "fallback_reason": null,
+        "completed_depth": 1,
+        "attempted_depth": 2,
+        "score": 2,
+        "principal_variation": [
+          [
+            9,
+            9
+          ]
+        ],
+        "pv_status": "complete",
+        "nodes": 51,
+        "cutoffs": 19,
+        "table_probes": 49,
+        "table_hits": 40,
+        "table_value_cutoffs": 40,
+        "table_size": 88,
+        "elapsed_ms": 100.60862199861731,
+        "allocated_ms": 100.0,
+        "remaining_ms": 60000,
+        "cancellation": "deadline"
+      },
+      {
+        "engine": "iterative-negamax-v1",
+        "evaluator": "omok.search.material_evaluation",
+        "config": {
+          "max_depth": 8,
+          "max_nodes": 10000,
+          "time_policy": {
+            "max_time_ms": 100.0,
+            "return_margin_ms": 2.0,
+            "reserve_fraction": 0.5,
+            "turn_fraction": 0.1,
+            "soft_fraction": 0.8
+          },
+          "tactics": {
+            "radius": 2,
+            "cap": 24,
+            "full_width": false,
+            "ordinary_rank": "omok.tactics.static_rank"
+          },
+          "candidates": "omok.search.legal_moves",
+          "ordering": null,
+          "compatibility": "None",
+          "table_capacity": 4096
+        },
+        "move": [
+          9,
+          9
+        ],
+        "root_candidate_count": 24,
+        "tactics": {
+          "complete": true,
+          "wins_complete": true,
+          "threats_complete": true,
+          "defenses_complete": true,
+          "cancellation": null
+        },
+        "fallback_reason": null,
+        "completed_depth": 1,
+        "attempted_depth": 2,
+        "score": 2,
+        "principal_variation": [
+          [
+            9,
+            9
+          ]
+        ],
+        "pv_status": "complete",
+        "nodes": 47,
+        "cutoffs": 19,
+        "table_probes": 45,
+        "table_hits": 44,
+        "table_value_cutoffs": 44,
+        "table_size": 88,
+        "elapsed_ms": 100.08524499971827,
+        "allocated_ms": 100.0,
+        "remaining_ms": 60000,
+        "cancellation": "deadline"
+      },
+      {
+        "engine": "iterative-negamax-v1",
+        "evaluator": "omok.search.material_evaluation",
+        "config": {
+          "max_depth": 8,
+          "max_nodes": 10000,
+          "time_policy": {
+            "max_time_ms": 100.0,
+            "return_margin_ms": 2.0,
+            "reserve_fraction": 0.5,
+            "turn_fraction": 0.1,
+            "soft_fraction": 0.8
+          },
+          "tactics": {
+            "radius": 2,
+            "cap": 24,
+            "full_width": false,
+            "ordinary_rank": "omok.tactics.static_rank"
+          },
+          "candidates": "omok.search.legal_moves",
+          "ordering": null,
+          "compatibility": "None",
+          "table_capacity": 4096
+        },
+        "move": [
+          9,
+          9
+        ],
+        "root_candidate_count": 24,
+        "tactics": {
+          "complete": true,
+          "wins_complete": true,
+          "threats_complete": true,
+          "defenses_complete": true,
+          "cancellation": null
+        },
+        "fallback_reason": null,
+        "completed_depth": 1,
+        "attempted_depth": 2,
+        "score": 2,
+        "principal_variation": [
+          [
+            9,
+            9
+          ]
+        ],
+        "pv_status": "complete",
+        "nodes": 45,
+        "cutoffs": 17,
+        "table_probes": 43,
+        "table_hits": 43,
+        "table_value_cutoffs": 42,
+        "table_size": 88,
+        "elapsed_ms": 100.09131200058619,
+        "allocated_ms": 100.0,
+        "remaining_ms": 60000,
+        "cancellation": "deadline"
+      },
+      {
+        "engine": "iterative-negamax-v1",
+        "evaluator": "omok.search.material_evaluation",
+        "config": {
+          "max_depth": 8,
+          "max_nodes": 10000,
+          "time_policy": {
+            "max_time_ms": 100.0,
+            "return_margin_ms": 2.0,
+            "reserve_fraction": 0.5,
+            "turn_fraction": 0.1,
+            "soft_fraction": 0.8
+          },
+          "tactics": {
+            "radius": 2,
+            "cap": 24,
+            "full_width": false,
+            "ordinary_rank": "omok.tactics.static_rank"
+          },
+          "candidates": "omok.search.legal_moves",
+          "ordering": null,
+          "compatibility": "None",
+          "table_capacity": 4096
+        },
+        "move": [
+          9,
+          9
+        ],
+        "root_candidate_count": 24,
+        "tactics": {
+          "complete": true,
+          "wins_complete": true,
+          "threats_complete": true,
+          "defenses_complete": true,
+          "cancellation": null
+        },
+        "fallback_reason": null,
+        "completed_depth": 1,
+        "attempted_depth": 2,
+        "score": 2,
+        "principal_variation": [
+          [
+            9,
+            9
+          ]
+        ],
+        "pv_status": "complete",
+        "nodes": 46,
+        "cutoffs": 18,
+        "table_probes": 44,
+        "table_hits": 44,
+        "table_value_cutoffs": 43,
+        "table_size": 88,
+        "elapsed_ms": 100.12111300056858,
+        "allocated_ms": 100.0,
+        "remaining_ms": 60000,
+        "cancellation": "deadline"
+      },
+      {
+        "engine": "iterative-negamax-v1",
+        "evaluator": "omok.search.material_evaluation",
+        "config": {
+          "max_depth": 8,
+          "max_nodes": 10000,
+          "time_policy": {
+            "max_time_ms": 100.0,
+            "return_margin_ms": 2.0,
+            "reserve_fraction": 0.5,
+            "turn_fraction": 0.1,
+            "soft_fraction": 0.8
+          },
+          "tactics": {
+            "radius": 2,
+            "cap": 24,
+            "full_width": false,
+            "ordinary_rank": "omok.tactics.static_rank"
+          },
+          "candidates": "omok.search.legal_moves",
+          "ordering": null,
+          "compatibility": "None",
+          "table_capacity": 4096
+        },
+        "move": [
+          9,
+          9
+        ],
+        "root_candidate_count": 24,
+        "tactics": {
+          "complete": true,
+          "wins_complete": true,
+          "threats_complete": true,
+          "defenses_complete": true,
+          "cancellation": null
+        },
+        "fallback_reason": null,
+        "completed_depth": 1,
+        "attempted_depth": 2,
+        "score": 2,
+        "principal_variation": [
+          [
+            9,
+            9
+          ]
+        ],
+        "pv_status": "complete",
+        "nodes": 45,
+        "cutoffs": 17,
+        "table_probes": 43,
+        "table_hits": 43,
+        "table_value_cutoffs": 42,
+        "table_size": 88,
+        "elapsed_ms": 100.08141699836415,
+        "allocated_ms": 100.0,
+        "remaining_ms": 60000,
+        "cancellation": "deadline"
+      },
+      {
+        "engine": "iterative-negamax-v1",
+        "evaluator": "omok.search.material_evaluation",
+        "config": {
+          "max_depth": 8,
+          "max_nodes": 10000,
+          "time_policy": {
+            "max_time_ms": 100.0,
+            "return_margin_ms": 2.0,
+            "reserve_fraction": 0.5,
+            "turn_fraction": 0.1,
+            "soft_fraction": 0.8
+          },
+          "tactics": {
+            "radius": 2,
+            "cap": 24,
+            "full_width": false,
+            "ordinary_rank": "omok.tactics.static_rank"
+          },
+          "candidates": "omok.search.legal_moves",
+          "ordering": null,
+          "compatibility": "None",
+          "table_capacity": 4096
+        },
+        "move": [
+          9,
+          9
+        ],
+        "root_candidate_count": 24,
+        "tactics": {
+          "complete": true,
+          "wins_complete": true,
+          "threats_complete": true,
+          "defenses_complete": true,
+          "cancellation": null
+        },
+        "fallback_reason": null,
+        "completed_depth": 1,
+        "attempted_depth": 2,
+        "score": 2,
+        "principal_variation": [
+          [
+            9,
+            9
+          ]
+        ],
+        "pv_status": "complete",
+        "nodes": 47,
+        "cutoffs": 19,
+        "table_probes": 45,
+        "table_hits": 44,
+        "table_value_cutoffs": 44,
+        "table_size": 88,
+        "elapsed_ms": 100.08209599982365,
+        "allocated_ms": 100.0,
+        "remaining_ms": 60000,
+        "cancellation": "deadline"
+      },
+      {
+        "engine": "iterative-negamax-v1",
+        "evaluator": "omok.search.material_evaluation",
+        "config": {
+          "max_depth": 8,
+          "max_nodes": 10000,
+          "time_policy": {
+            "max_time_ms": 100.0,
+            "return_margin_ms": 2.0,
+            "reserve_fraction": 0.5,
+            "turn_fraction": 0.1,
+            "soft_fraction": 0.8
+          },
+          "tactics": {
+            "radius": 2,
+            "cap": 24,
+            "full_width": false,
+            "ordinary_rank": "omok.tactics.static_rank"
+          },
+          "candidates": "omok.search.legal_moves",
+          "ordering": null,
+          "compatibility": "None",
+          "table_capacity": 4096
+        },
+        "move": [
+          9,
+          9
+        ],
+        "root_candidate_count": 24,
+        "tactics": {
+          "complete": true,
+          "wins_complete": true,
+          "threats_complete": true,
+          "defenses_complete": true,
+          "cancellation": null
+        },
+        "fallback_reason": null,
+        "completed_depth": 1,
+        "attempted_depth": 2,
+        "score": 2,
+        "principal_variation": [
+          [
+            9,
+            9
+          ]
+        ],
+        "pv_status": "complete",
+        "nodes": 47,
+        "cutoffs": 19,
+        "table_probes": 45,
+        "table_hits": 44,
+        "table_value_cutoffs": 44,
+        "table_size": 88,
+        "elapsed_ms": 100.5328749997716,
+        "allocated_ms": 100.0,
+        "remaining_ms": 60000,
+        "cancellation": "deadline"
+      },
+      {
+        "engine": "iterative-negamax-v1",
+        "evaluator": "omok.search.material_evaluation",
+        "config": {
+          "max_depth": 8,
+          "max_nodes": 10000,
+          "time_policy": {
+            "max_time_ms": 100.0,
+            "return_margin_ms": 2.0,
+            "reserve_fraction": 0.5,
+            "turn_fraction": 0.1,
+            "soft_fraction": 0.8
+          },
+          "tactics": {
+            "radius": 2,
+            "cap": 24,
+            "full_width": false,
+            "ordinary_rank": "omok.tactics.static_rank"
+          },
+          "candidates": "omok.search.legal_moves",
+          "ordering": null,
+          "compatibility": "None",
+          "table_capacity": 4096
+        },
+        "move": [
+          9,
+          9
+        ],
+        "root_candidate_count": 24,
+        "tactics": {
+          "complete": true,
+          "wins_complete": true,
+          "threats_complete": true,
+          "defenses_complete": true,
+          "cancellation": null
+        },
+        "fallback_reason": null,
+        "completed_depth": 1,
+        "attempted_depth": 2,
+        "score": 2,
+        "principal_variation": [
+          [
+            9,
+            9
+          ]
+        ],
+        "pv_status": "complete",
+        "nodes": 47,
+        "cutoffs": 19,
+        "table_probes": 45,
+        "table_hits": 44,
+        "table_value_cutoffs": 44,
+        "table_size": 88,
+        "elapsed_ms": 100.12744100095006,
+        "allocated_ms": 100.0,
+        "remaining_ms": 60000,
+        "cancellation": "deadline"
+      },
+      {
+        "engine": "iterative-negamax-v1",
+        "evaluator": "omok.search.material_evaluation",
+        "config": {
+          "max_depth": 8,
+          "max_nodes": 10000,
+          "time_policy": {
+            "max_time_ms": 100.0,
+            "return_margin_ms": 2.0,
+            "reserve_fraction": 0.5,
+            "turn_fraction": 0.1,
+            "soft_fraction": 0.8
+          },
+          "tactics": {
+            "radius": 2,
+            "cap": 24,
+            "full_width": false,
+            "ordinary_rank": "omok.tactics.static_rank"
+          },
+          "candidates": "omok.search.legal_moves",
+          "ordering": null,
+          "compatibility": "None",
+          "table_capacity": 4096
+        },
+        "move": [
+          9,
+          9
+        ],
+        "root_candidate_count": 24,
+        "tactics": {
+          "complete": true,
+          "wins_complete": true,
+          "threats_complete": true,
+          "defenses_complete": true,
+          "cancellation": null
+        },
+        "fallback_reason": null,
+        "completed_depth": 1,
+        "attempted_depth": 2,
+        "score": 2,
+        "principal_variation": [
+          [
+            9,
+            9
+          ]
+        ],
+        "pv_status": "complete",
+        "nodes": 47,
+        "cutoffs": 19,
+        "table_probes": 45,
+        "table_hits": 44,
+        "table_value_cutoffs": 44,
+        "table_size": 88,
+        "elapsed_ms": 100.09829600130615,
+        "allocated_ms": 100.0,
+        "remaining_ms": 60000,
+        "cancellation": "deadline"
+      }
+    ],
+    "fixture": "sparse capture",
+    "functions": [
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/player.py",
+        "line": 109,
+        "function": "take_turn",
+        "primitive_calls": 10,
+        "calls": 10,
+        "self_seconds": 0.00030660700000000003,
+        "cumulative_seconds": 1.001980833
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/search.py",
+        "line": 368,
+        "function": "iterative",
+        "primitive_calls": 10,
+        "calls": 10,
+        "self_seconds": 0.00038131300000000004,
+        "cumulative_seconds": 0.9947999930000001
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/search.py",
+        "line": 269,
+        "function": "_root",
+        "primitive_calls": 20,
+        "calls": 20,
+        "self_seconds": 0.0021717390000000002,
+        "cumulative_seconds": 0.9927179030000001
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/search.py",
+        "line": 183,
+        "function": "_moves",
+        "primitive_calls": 221,
+        "calls": 221,
+        "self_seconds": 0.017900341,
+        "cumulative_seconds": 0.940616318
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/search.py",
+        "line": 313,
+        "function": "_alpha_beta",
+        "primitive_calls": 441,
+        "calls": 484,
+        "self_seconds": 0.002112613,
+        "cumulative_seconds": 0.8771819040000001
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/tactics.py",
+        "line": 113,
+        "function": "analyze",
+        "primitive_calls": 221,
+        "calls": 221,
+        "self_seconds": 0.019342110000000003,
+        "cumulative_seconds": 0.8160337750000001
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/tactics.py",
+        "line": 62,
+        "function": "_verified_wins",
+        "primitive_calls": 441,
+        "calls": 441,
+        "self_seconds": 0.000686889,
+        "cumulative_seconds": 0.43047281600000004
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/tactics.py",
+        "line": 39,
+        "function": "_five_cells",
+        "primitive_calls": 441,
+        "calls": 441,
+        "self_seconds": 0.270870856,
+        "cumulative_seconds": 0.42944889
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/search.py",
+        "line": 104,
+        "function": "check",
+        "primitive_calls": 311363,
+        "calls": 311363,
+        "self_seconds": 0.10398046500000001,
+        "cumulative_seconds": 0.246824916
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/tactics.py",
+        "line": 25,
+        "function": "checked_sorted",
+        "primitive_calls": 637,
+        "calls": 637,
+        "self_seconds": 0.017450884,
+        "cumulative_seconds": 0.22974603400000002
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/tactics.py",
+        "line": 70,
+        "function": "immediate_wins",
+        "primitive_calls": 220,
+        "calls": 220,
+        "self_seconds": 0.00047089100000000003,
+        "cumulative_seconds": 0.21396145000000003
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/simulator.py",
+        "line": 43,
+        "function": "__init__",
+        "primitive_calls": 230,
+        "calls": 230,
+        "self_seconds": 0.016481462000000002,
+        "cumulative_seconds": 0.144797269
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/search.py",
+        "line": 32,
+        "function": "check",
+        "primitive_calls": 311363,
+        "calls": 311363,
+        "self_seconds": 0.092926988,
+        "cumulative_seconds": 0.142844451
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/tactics.py",
+        "line": 74,
+        "function": "static_rank",
+        "primitive_calls": 13403,
+        "calls": 13403,
+        "self_seconds": 0.05686136000000001,
+        "cumulative_seconds": 0.109434416
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/tactics.py",
+        "line": 31,
+        "function": "compare",
+        "primitive_calls": 68722,
+        "calls": 68722,
+        "self_seconds": 0.034808589,
+        "cumulative_seconds": 0.08849137300000001
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/simulator.py",
+        "line": 47,
+        "function": "<genexpr>",
+        "primitive_calls": 87400,
+        "calls": 87400,
+        "self_seconds": 0.028921169000000004,
+        "cumulative_seconds": 0.08801639
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/tactics.py",
+        "line": 151,
+        "function": "<lambda>",
+        "primitive_calls": 8315,
+        "calls": 8315,
+        "self_seconds": 0.004139876000000001,
+        "cumulative_seconds": 0.07186268800000001
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/simulator.py",
+        "line": 21,
+        "function": "_integer",
+        "primitive_calls": 84248,
+        "calls": 84248,
+        "self_seconds": 0.038074428,
+        "cumulative_seconds": 0.060407454000000006
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/search.py",
+        "line": 46,
+        "function": "legal_moves",
+        "primitive_calls": 234667,
+        "calls": 234667,
+        "self_seconds": 0.046450044,
+        "cumulative_seconds": 0.046450044
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/tactics.py",
+        "line": 168,
+        "function": "local_moves",
+        "primitive_calls": 213,
+        "calls": 213,
+        "self_seconds": 0.016704125,
+        "cumulative_seconds": 0.029236514
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/simulator.py",
+        "line": 75,
+        "function": "play",
+        "primitive_calls": 494,
+        "calls": 494,
+        "self_seconds": 0.009191673000000001,
+        "cumulative_seconds": 0.029231228
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/simulator.py",
+        "line": 117,
+        "function": "_terminal",
+        "primitive_calls": 724,
+        "calls": 724,
+        "self_seconds": 0.019535752,
+        "cumulative_seconds": 0.019775708000000003
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/simulator.py",
+        "line": 61,
+        "function": "_owned",
+        "primitive_calls": 494,
+        "calls": 494,
+        "self_seconds": 0.001295226,
+        "cumulative_seconds": 0.014731021
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/simulator.py",
+        "line": 48,
+        "function": "<genexpr>",
+        "primitive_calls": 83260,
+        "calls": 83260,
+        "self_seconds": 0.012952214,
+        "cumulative_seconds": 0.012952214
+      },
+      {
+        "file": "/Users/best/Downloads/omok-agent/omok/search.py",
+        "line": 263,
+        "function": "_leaf",
+        "primitive_calls": 67,
+        "calls": 67,
+        "self_seconds": 0.00012517,
+        "cumulative_seconds": 0.010547736
+      }
+    ],
+    "notes": "Serial local cProfile, warm table retained; reference legality checks included in total profile but excluded from engine function rows. Instrumentation affects timing; no throughput gate."
+  }
+}

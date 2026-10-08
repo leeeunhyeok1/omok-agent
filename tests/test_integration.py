@@ -16,6 +16,16 @@ from verification.reference import ReferencePosition
 
 
 class IntegrationTests(unittest.TestCase):
+    def test_integrated_player_runs_with_isolated_engine_only_imports(self):
+        result = subprocess.run([sys.executable, '-I', '-S',
+            'verification/offline_engine.py', '--iterative'], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        report = json.loads(result.stdout)
+        self.assertEqual(report['engine'], 'iterative')
+        self.assertEqual([m['color'] for m in report['moves']], [0, 1])
+        self.assertTrue(report['isolated'])
+        self.assertTrue(report['no_site'])
+
     def test_optional_diagnostics_preserve_moves_clocks_and_replay(self):
         def play(record):
             ticks = iter([0, .001, 1, 1.002, 2, 2.003])

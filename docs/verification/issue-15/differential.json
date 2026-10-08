@@ -1,0 +1,296 @@
+{
+  "sequences_per_mode": 16,
+  "max_moves": 240,
+  "checked_transitions": 5561,
+  "elapsed_seconds": 10.27007907100051,
+  "records": [
+    {
+      "mode": "ordinary",
+      "seed": 20261008,
+      "moves": 184,
+      "captured_stones": 8,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261009,
+      "moves": 112,
+      "captured_stones": 0,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261010,
+      "moves": 160,
+      "captured_stones": 2,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261011,
+      "moves": 117,
+      "captured_stones": 2,
+      "outcome": "black_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261012,
+      "moves": 85,
+      "captured_stones": 0,
+      "outcome": "black_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261013,
+      "moves": 170,
+      "captured_stones": 8,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261014,
+      "moves": 227,
+      "captured_stones": 26,
+      "outcome": "black_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261015,
+      "moves": 200,
+      "captured_stones": 6,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261016,
+      "moves": 130,
+      "captured_stones": 2,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261017,
+      "moves": 156,
+      "captured_stones": 4,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261018,
+      "moves": 126,
+      "captured_stones": 2,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261019,
+      "moves": 121,
+      "captured_stones": 2,
+      "outcome": "black_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261020,
+      "moves": 59,
+      "captured_stones": 0,
+      "outcome": "black_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261021,
+      "moves": 172,
+      "captured_stones": 6,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261022,
+      "moves": 176,
+      "captured_stones": 6,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "ordinary",
+      "seed": 20261023,
+      "moves": 141,
+      "captured_stones": 4,
+      "outcome": "black_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361008,
+      "moves": 58,
+      "captured_stones": 20,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361009,
+      "moves": 182,
+      "captured_stones": 106,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361010,
+      "moves": 89,
+      "captured_stones": 40,
+      "outcome": "black_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361011,
+      "moves": 83,
+      "captured_stones": 46,
+      "outcome": "black_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361012,
+      "moves": 38,
+      "captured_stones": 8,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361013,
+      "moves": 240,
+      "captured_stones": 156,
+      "outcome": "ongoing",
+      "reason": null,
+      "stopped": "verification_cap"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361014,
+      "moves": 193,
+      "captured_stones": 114,
+      "outcome": "black_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361015,
+      "moves": 84,
+      "captured_stones": 42,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361016,
+      "moves": 166,
+      "captured_stones": 88,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361017,
+      "moves": 240,
+      "captured_stones": 138,
+      "outcome": "ongoing",
+      "reason": null,
+      "stopped": "verification_cap"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361018,
+      "moves": 38,
+      "captured_stones": 14,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361019,
+      "moves": 63,
+      "captured_stones": 24,
+      "outcome": "black_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361020,
+      "moves": 180,
+      "captured_stones": 92,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361021,
+      "moves": 76,
+      "captured_stones": 36,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361022,
+      "moves": 93,
+      "captured_stones": 36,
+      "outcome": "black_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    },
+    {
+      "mode": "capture_biased",
+      "seed": 20361023,
+      "moves": 60,
+      "captured_stones": 26,
+      "outcome": "white_win",
+      "reason": "exact_five",
+      "stopped": "terminal"
+    }
+  ]
+}

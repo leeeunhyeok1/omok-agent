@@ -1,0 +1,37 @@
+{
+  "targeted_core_tests": {
+    "count": 90,
+    "seconds": 11.456,
+    "status": "passed"
+  },
+  "updated_integration_tests": {
+    "count": 10,
+    "seconds": 4.162,
+    "status": "passed"
+  },
+  "full_suite": {
+    "command": "python3 -m unittest discover -s tests -v",
+    "count": 119,
+    "seconds": 13.096,
+    "status": "passed"
+  },
+  "types": {
+    "command": "mypy omok offline verification/acceptance.py verification/offline_engine.py --ignore-missing-imports --follow-imports=silent",
+    "files": 15,
+    "status": "passed"
+  },
+  "compileall": {
+    "command": "python3 -m compileall -q omok offline verification tests",
+    "status": "passed"
+  },
+  "whitespace": {
+    "command": "git diff --cached --check",
+    "status": "passed"
+  },
+  "review": {
+    "standards_findings": 0,
+    "spec_findings": 0
+  },
+  "timing_acceptance": "partial: 48 overruns at 0.001/0.1 ms incoming clocks",
+  "game_reliability_failures": 0
+}

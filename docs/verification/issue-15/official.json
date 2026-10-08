@@ -1,0 +1,1429 @@
+{
+  "environment": {
+    "python": "3.14.3 (v3.14.3:323c59a5e34, Feb  3 2026, 11:41:37) [Clang 16.0.0 (clang-1600.0.26.6)]",
+    "executable": "/usr/local/bin/python3",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+    "machine": "x86_64",
+    "logical_cpus": 4,
+    "hardware": {
+      "machdep.cpu.brand_string": "Intel(R) Core(TM) i5-7360U CPU @ 2.30GHz",
+      "hw.memsize": "8589934592",
+      "hw.physicalcpu": "2",
+      "hw.logicalcpu": "4"
+    },
+    "workers": 1,
+    "source_commit": "ba9335ac078b02f9a57a234ad867c53c8fcdfb41",
+    "engine_sha256": {
+      "omok/__init__.py": "8fa4256f87cb48053e42cc4b325076ddcec37235cfa8d6ce9580704b8bcfc954",
+      "omok/player.py": "c2073eddb17f782ede4ea9a0b0a07beeb7965e579170cedec4f890e8536867da",
+      "omok/search.py": "e1191850e9182236c3eeb05fa5bd451cbabb681992d9b9953005e19a487cecc1",
+      "omok/simulator.py": "3dde4fd4c62df6123d920579e2b91e529d866ac608513701db38bf563acb1837",
+      "omok/tactics.py": "9cdb4f90a424157a22c7a2505c2ce6618aa16c3702f0b846485ce1020dd56a35",
+      "omok/transposition.py": "daf69437752d5b4cb8814fa1a0f3c94d3144f0f86255e4eed2296216b6b345d8"
+    },
+    "configuration": {
+      "max_depth": 8,
+      "max_nodes": 10000,
+      "time_policy": {
+        "max_time_ms": 100.0,
+        "return_margin_ms": 2.0,
+        "reserve_fraction": 0.5,
+        "turn_fraction": 0.1,
+        "soft_fraction": 0.8
+      },
+      "tactics": {
+        "radius": 2,
+        "cap": 24,
+        "full_width": false,
+        "ordinary_rank": "omok.tactics.static_rank"
+      },
+      "candidates": "omok.search.legal_moves",
+      "ordering": null,
+      "compatibility": "None",
+      "table_capacity": 4096
+    },
+    "evaluator": "omok.search.material_evaluation"
+  },
+  "kind": "official",
+  "budget_ms_per_player": 60000,
+  "move_cap": 1000,
+  "external_deadline_seconds": 180,
+  "opening": "empty; seeded duplicates are not independent evidence",
+  "games": [
+    {
+      "opponent": "baseline",
+      "search_color": "black",
+      "seed": 20261009,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "baseline",
+        "--agent-color",
+        "black",
+        "--seed",
+        "20261009",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-baseline-black-20261009.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        57359.967263008,
+        59502.81371300116
+      ],
+      "moves": 53,
+      "verified_complete_pvs": 27,
+      "completed_depths": {
+        "3": 1,
+        "2": 14,
+        "1": 12
+      },
+      "public_elapsed_ms": {
+        "count": 27,
+        "min": 85.32818999992742,
+        "median": 100.08420799931628,
+        "p95_nearest_rank": 100.14868600046611,
+        "max": 100.25590899931558
+      },
+      "nodes": 3453,
+      "max_table_size": 3245,
+      "provided_sources": {},
+      "trace": "docs/verification/issue-15/official-baseline-black-20261009.json.gz",
+      "trace_sha256": "c33cd96e0196b913dec0768feb6e97fa2d659ebda9419e32d4eb37604439422d",
+      "wall_seconds": 3.462555140000404
+    },
+    {
+      "opponent": "baseline",
+      "search_color": "black",
+      "seed": 20261010,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "baseline",
+        "--agent-color",
+        "black",
+        "--seed",
+        "20261010",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-baseline-black-20261010.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        57355.88710200682,
+        59510.28125999801
+      ],
+      "moves": 53,
+      "verified_complete_pvs": 27,
+      "completed_depths": {
+        "3": 1,
+        "2": 14,
+        "1": 12
+      },
+      "public_elapsed_ms": {
+        "count": 27,
+        "min": 82.85406999857514,
+        "median": 100.07195599973784,
+        "p95_nearest_rank": 100.21245499956422,
+        "max": 100.21455899914145
+      },
+      "nodes": 3410,
+      "max_table_size": 3206,
+      "provided_sources": {},
+      "trace": "docs/verification/issue-15/official-baseline-black-20261010.json.gz",
+      "trace_sha256": "d759b24e0187ae04c848e2909a7085d49450de6abcf74bc1ec892720063a76df",
+      "wall_seconds": 3.465509972998916
+    },
+    {
+      "opponent": "baseline",
+      "search_color": "black",
+      "seed": 20261011,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "baseline",
+        "--agent-color",
+        "black",
+        "--seed",
+        "20261011",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-baseline-black-20261011.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        57353.13644300186,
+        59510.79623999067
+      ],
+      "moves": 53,
+      "verified_complete_pvs": 27,
+      "completed_depths": {
+        "3": 1,
+        "2": 14,
+        "1": 12
+      },
+      "public_elapsed_ms": {
+        "count": 27,
+        "min": 87.08573800140584,
+        "median": 100.06887500094308,
+        "p95_nearest_rank": 100.12233599991305,
+        "max": 100.15486900010728
+      },
+      "nodes": 3424,
+      "max_table_size": 3217,
+      "provided_sources": {},
+      "trace": "docs/verification/issue-15/official-baseline-black-20261011.json.gz",
+      "trace_sha256": "f247d36f756b189776df6e84914211054ca360ff69e30d0e8282ad0dc9603e26",
+      "wall_seconds": 3.4584116869991703
+    },
+    {
+      "opponent": "baseline",
+      "search_color": "black",
+      "seed": 20261012,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "baseline",
+        "--agent-color",
+        "black",
+        "--seed",
+        "20261012",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-baseline-black-20261012.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58534.70341100183,
+        59751.86031600424
+      ],
+      "moves": 29,
+      "verified_complete_pvs": 15,
+      "completed_depths": {
+        "3": 1,
+        "2": 7,
+        "1": 7
+      },
+      "public_elapsed_ms": {
+        "count": 15,
+        "min": 86.46670899906894,
+        "median": 100.0647979999485,
+        "p95_nearest_rank": 100.11241999927734,
+        "max": 100.11241999927734
+      },
+      "nodes": 1683,
+      "max_table_size": 1579,
+      "provided_sources": {},
+      "trace": "docs/verification/issue-15/official-baseline-black-20261012.json.gz",
+      "trace_sha256": "fe3cc629a2fa4e247805d43feaa5293ba28baff295503b7a72aaa04566cb47f0",
+      "wall_seconds": 1.9681077969999023
+    },
+    {
+      "opponent": "baseline",
+      "search_color": "white",
+      "seed": 20261009,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "baseline",
+        "--agent-color",
+        "white",
+        "--seed",
+        "20261009",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-baseline-white-20261009.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59781.06893000222,
+        58710.26580099533
+      ],
+      "moves": 26,
+      "verified_complete_pvs": 13,
+      "completed_depths": {
+        "2": 7,
+        "1": 6
+      },
+      "public_elapsed_ms": {
+        "count": 13,
+        "min": 88.67677499983984,
+        "median": 100.07734300052107,
+        "p95_nearest_rank": 100.14452200084634,
+        "max": 100.14452200084634
+      },
+      "nodes": 1658,
+      "max_table_size": 1499,
+      "provided_sources": {},
+      "trace": "docs/verification/issue-15/official-baseline-white-20261009.json.gz",
+      "trace_sha256": "de01f1e2b6bf4569f7ab6d5062e433829c0d700f405f41ba6cf2e1646ea01899",
+      "wall_seconds": 1.775125719001153
+    },
+    {
+      "opponent": "baseline",
+      "search_color": "white",
+      "seed": 20261010,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "baseline",
+        "--agent-color",
+        "white",
+        "--seed",
+        "20261010",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-baseline-white-20261010.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59781.278317001124,
+        58705.90438599902
+      ],
+      "moves": 26,
+      "verified_complete_pvs": 13,
+      "completed_depths": {
+        "2": 7,
+        "1": 6
+      },
+      "public_elapsed_ms": {
+        "count": 13,
+        "min": 92.66145899891853,
+        "median": 100.09040899967658,
+        "p95_nearest_rank": 100.19536899926607,
+        "max": 100.19536899926607
+      },
+      "nodes": 1657,
+      "max_table_size": 1497,
+      "provided_sources": {},
+      "trace": "docs/verification/issue-15/official-baseline-white-20261010.json.gz",
+      "trace_sha256": "2cb32ee9e32136b96ad03e7a30309504d1d1825ea2a34b5f629fe06561d65ce5",
+      "wall_seconds": 1.7409865040008299
+    },
+    {
+      "opponent": "baseline",
+      "search_color": "white",
+      "seed": 20261011,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "baseline",
+        "--agent-color",
+        "white",
+        "--seed",
+        "20261011",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-baseline-white-20261011.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59784.29377900102,
+        58706.97007799936
+      ],
+      "moves": 26,
+      "verified_complete_pvs": 13,
+      "completed_depths": {
+        "2": 7,
+        "1": 6
+      },
+      "public_elapsed_ms": {
+        "count": 13,
+        "min": 91.77482100130874,
+        "median": 100.08575900064898,
+        "p95_nearest_rank": 100.18033999949694,
+        "max": 100.18033999949694
+      },
+      "nodes": 1659,
+      "max_table_size": 1499,
+      "provided_sources": {},
+      "trace": "docs/verification/issue-15/official-baseline-white-20261011.json.gz",
+      "trace_sha256": "01526366ab579963e2c78396ffe3f8237a977251c750db60e34083d7f95128dc",
+      "wall_seconds": 1.739171287001227
+    },
+    {
+      "opponent": "baseline",
+      "search_color": "white",
+      "seed": 20261012,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "baseline",
+        "--agent-color",
+        "white",
+        "--seed",
+        "20261012",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-baseline-white-20261012.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59785.50723400258,
+        58710.45269999922
+      ],
+      "moves": 26,
+      "verified_complete_pvs": 13,
+      "completed_depths": {
+        "2": 7,
+        "1": 6
+      },
+      "public_elapsed_ms": {
+        "count": 13,
+        "min": 88.5061630015116,
+        "median": 100.0819250002678,
+        "p95_nearest_rank": 100.10928399969998,
+        "max": 100.10928399969998
+      },
+      "nodes": 1647,
+      "max_table_size": 1486,
+      "provided_sources": {},
+      "trace": "docs/verification/issue-15/official-baseline-white-20261012.json.gz",
+      "trace_sha256": "cef83f45bf5e012e11258d7962eab0fa661da098afcc991d179028b56a4d5c88",
+      "wall_seconds": 1.73058717099957
+    },
+    {
+      "opponent": "random",
+      "search_color": "black",
+      "seed": 20261009,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "random",
+        "--agent-color",
+        "black",
+        "--seed",
+        "20261009",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-random-black-20261009.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58798.685224997826,
+        59999.41859299906
+      ],
+      "moves": 23,
+      "verified_complete_pvs": 12,
+      "completed_depths": {
+        "3": 1,
+        "2": 4,
+        "1": 7
+      },
+      "public_elapsed_ms": {
+        "count": 12,
+        "min": 100.05774999990535,
+        "median": 100.09343799993076,
+        "p95_nearest_rank": 100.24841000085871,
+        "max": 100.24841000085871
+      },
+      "nodes": 1213,
+      "max_table_size": 1126,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-random-black-20261009.json.gz",
+      "trace_sha256": "1add38e8c22d981e22912b41f69905e0b8a871710dd1c40dc3a9934f77f432f9",
+      "wall_seconds": 1.4293884059989068
+    },
+    {
+      "opponent": "random",
+      "search_color": "black",
+      "seed": 20261010,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "random",
+        "--agent-color",
+        "black",
+        "--seed",
+        "20261010",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-random-black-20261010.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58999.24423899938,
+        59999.44999300169
+      ],
+      "moves": 19,
+      "verified_complete_pvs": 10,
+      "completed_depths": {
+        "3": 1,
+        "2": 4,
+        "1": 5
+      },
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.04371099967102,
+        "median": 100.05884149904887,
+        "p95_nearest_rank": 100.11489300086396,
+        "max": 100.11489300086396
+      },
+      "nodes": 1128,
+      "max_table_size": 1089,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-random-black-20261010.json.gz",
+      "trace_sha256": "2f07cc5a2cf358e0b1b63202b7a844581f4f04f7d91f8ff7f5b295661cb95c3b",
+      "wall_seconds": 1.2187556039989431
+    },
+    {
+      "opponent": "random",
+      "search_color": "black",
+      "seed": 20261011,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "random",
+        "--agent-color",
+        "black",
+        "--seed",
+        "20261011",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-random-black-20261011.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58111.43314399487,
+        59999.076541998875
+      ],
+      "moves": 37,
+      "verified_complete_pvs": 19,
+      "completed_depths": {
+        "3": 1,
+        "2": 6,
+        "1": 12
+      },
+      "public_elapsed_ms": {
+        "count": 19,
+        "min": 86.92170299946156,
+        "median": 100.07447200041497,
+        "p95_nearest_rank": 100.19226399890613,
+        "max": 100.19226399890613
+      },
+      "nodes": 1938,
+      "max_table_size": 1834,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-random-black-20261011.json.gz",
+      "trace_sha256": "99531fe2c5d041d49c8c901c4fbf8ed6d07eea2e3e03e6d893c90e1adc0de1d9",
+      "wall_seconds": 2.156540298999971
+    },
+    {
+      "opponent": "random",
+      "search_color": "black",
+      "seed": 20261012,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "random",
+        "--agent-color",
+        "black",
+        "--seed",
+        "20261012",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-random-black-20261012.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58907.45477299606,
+        59999.46957700013
+      ],
+      "moves": 21,
+      "verified_complete_pvs": 11,
+      "completed_depths": {
+        "3": 1,
+        "2": 5,
+        "1": 5
+      },
+      "public_elapsed_ms": {
+        "count": 11,
+        "min": 91.47936000044865,
+        "median": 100.09777400046005,
+        "p95_nearest_rank": 100.16844799974933,
+        "max": 100.16844799974933
+      },
+      "nodes": 1369,
+      "max_table_size": 1330,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-random-black-20261012.json.gz",
+      "trace_sha256": "b00820824c52aefca735bed3135b04ece0201c144db9f31c15e28c4c2bd53e51",
+      "wall_seconds": 1.3303126920000068
+    },
+    {
+      "opponent": "random",
+      "search_color": "white",
+      "seed": 20261009,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "random",
+        "--agent-color",
+        "white",
+        "--seed",
+        "20261009",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-random-white-20261009.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59999.18022800193,
+        58632.31367999833
+      ],
+      "moves": 28,
+      "verified_complete_pvs": 14,
+      "completed_depths": {
+        "2": 7,
+        "1": 7
+      },
+      "public_elapsed_ms": {
+        "count": 14,
+        "min": 87.82236599836324,
+        "median": 100.06916299971635,
+        "p95_nearest_rank": 100.31276900008379,
+        "max": 100.31276900008379
+      },
+      "nodes": 1487,
+      "max_table_size": 1456,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-random-white-20261009.json.gz",
+      "trace_sha256": "461f0ecfdceac2c53e579bce20ff8a9568389482e0cc04531d352e8f4441e7f8",
+      "wall_seconds": 1.6060499909999635
+    },
+    {
+      "opponent": "random",
+      "search_color": "white",
+      "seed": 20261010,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "random",
+        "--agent-color",
+        "white",
+        "--seed",
+        "20261010",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-random-white-20261010.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59999.57111900039,
+        59299.40975200043
+      ],
+      "moves": 14,
+      "verified_complete_pvs": 7,
+      "completed_depths": {
+        "2": 5,
+        "1": 2
+      },
+      "public_elapsed_ms": {
+        "count": 7,
+        "min": 100.04235400083417,
+        "median": 100.07468100047845,
+        "p95_nearest_rank": 100.14967500137573,
+        "max": 100.14967500137573
+      },
+      "nodes": 907,
+      "max_table_size": 873,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-random-white-20261010.json.gz",
+      "trace_sha256": "b7e6218031313bed3417b57c11ba44bab0e0c781413251764779344fc664d341",
+      "wall_seconds": 0.8880090590009786
+    },
+    {
+      "opponent": "random",
+      "search_color": "white",
+      "seed": 20261011,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "random",
+        "--agent-color",
+        "white",
+        "--seed",
+        "20261011",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-random-white-20261011.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59999.07444299788,
+        58298.36313300075
+      ],
+      "moves": 34,
+      "verified_complete_pvs": 17,
+      "completed_depths": {
+        "2": 6,
+        "1": 11
+      },
+      "public_elapsed_ms": {
+        "count": 17,
+        "min": 100.05911000007472,
+        "median": 100.08250700047938,
+        "p95_nearest_rank": 100.16318899943144,
+        "max": 100.16318899943144
+      },
+      "nodes": 2060,
+      "max_table_size": 1983,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-random-white-20261011.json.gz",
+      "trace_sha256": "54a6179ba6c9fd58e3471fc412b1d3601ce2784de73ac6883fe7eff10d3b12ca",
+      "wall_seconds": 1.9515727009984403
+    },
+    {
+      "opponent": "random",
+      "search_color": "white",
+      "seed": 20261012,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "random",
+        "--agent-color",
+        "white",
+        "--seed",
+        "20261012",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-random-white-20261012.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59999.326755001675,
+        59399.265533998914
+      ],
+      "moves": 12,
+      "verified_complete_pvs": 6,
+      "completed_depths": {
+        "2": 4,
+        "1": 2
+      },
+      "public_elapsed_ms": {
+        "count": 6,
+        "min": 100.06218799935596,
+        "median": 100.10861799946724,
+        "p95_nearest_rank": 100.19818299952021,
+        "max": 100.19818299952021
+      },
+      "nodes": 699,
+      "max_table_size": 677,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-random-white-20261012.json.gz",
+      "trace_sha256": "7e80bda9836b4fae2ea5ae5d24e45fc2afc14eff83119766af3391b38afbbc4e",
+      "wall_seconds": 0.8101741999998922
+    },
+    {
+      "opponent": "simple",
+      "search_color": "black",
+      "seed": 20261009,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "simple",
+        "--agent-color",
+        "black",
+        "--seed",
+        "20261009",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-simple-black-20261009.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59399.52225900197,
+        59991.56878399663
+      ],
+      "moves": 12,
+      "verified_complete_pvs": 6,
+      "completed_depths": {
+        "3": 1,
+        "2": 4,
+        "1": 1
+      },
+      "public_elapsed_ms": {
+        "count": 6,
+        "min": 100.04790299899469,
+        "median": 100.06793750017096,
+        "p95_nearest_rank": 100.12136600016674,
+        "max": 100.12136600016674
+      },
+      "nodes": 942,
+      "max_table_size": 856,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-simple-black-20261009.json.gz",
+      "trace_sha256": "886b384370c41e36ba603662e16836c4aeaf12992480db89f6adda732c35a674",
+      "wall_seconds": 0.7999755119999463
+    },
+    {
+      "opponent": "simple",
+      "search_color": "black",
+      "seed": 20261010,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "simple",
+        "--agent-color",
+        "black",
+        "--seed",
+        "20261010",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-simple-black-20261010.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59399.44158299841,
+        59990.504187000624
+      ],
+      "moves": 12,
+      "verified_complete_pvs": 6,
+      "completed_depths": {
+        "3": 1,
+        "2": 4,
+        "1": 1
+      },
+      "public_elapsed_ms": {
+        "count": 6,
+        "min": 100.0575910002226,
+        "median": 100.07923349985504,
+        "p95_nearest_rank": 100.1570480002556,
+        "max": 100.1570480002556
+      },
+      "nodes": 936,
+      "max_table_size": 853,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-simple-black-20261010.json.gz",
+      "trace_sha256": "7c8013bf2f0bc29938d2dfa6c6cefb61ae3855fead3c9c89f24a6b60c61dfa53",
+      "wall_seconds": 0.8004406340005517
+    },
+    {
+      "opponent": "simple",
+      "search_color": "black",
+      "seed": 20261011,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "simple",
+        "--agent-color",
+        "black",
+        "--seed",
+        "20261011",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-simple-black-20261011.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59399.531333001505,
+        59991.290604000824
+      ],
+      "moves": 12,
+      "verified_complete_pvs": 6,
+      "completed_depths": {
+        "3": 1,
+        "2": 4,
+        "1": 1
+      },
+      "public_elapsed_ms": {
+        "count": 6,
+        "min": 100.0459700007923,
+        "median": 100.07257300003403,
+        "p95_nearest_rank": 100.11020799902326,
+        "max": 100.11020799902326
+      },
+      "nodes": 942,
+      "max_table_size": 858,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-simple-black-20261011.json.gz",
+      "trace_sha256": "d211e71a44c2889938c764c90728d9341c9e4f612afc980c2d0982a7a370d7e7",
+      "wall_seconds": 0.8042987859989807
+    },
+    {
+      "opponent": "simple",
+      "search_color": "black",
+      "seed": 20261012,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "simple",
+        "--agent-color",
+        "black",
+        "--seed",
+        "20261012",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-simple-black-20261012.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59399.476780999976,
+        59990.205495001646
+      ],
+      "moves": 12,
+      "verified_complete_pvs": 6,
+      "completed_depths": {
+        "3": 1,
+        "2": 4,
+        "1": 1
+      },
+      "public_elapsed_ms": {
+        "count": 6,
+        "min": 100.05970900056127,
+        "median": 100.0749619997805,
+        "p95_nearest_rank": 100.14496400071948,
+        "max": 100.14496400071948
+      },
+      "nodes": 933,
+      "max_table_size": 852,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-simple-black-20261012.json.gz",
+      "trace_sha256": "ffbe62ffbf3d46f1f46bc8084dbd96705c52eae50d30c0e91809d29880658463",
+      "wall_seconds": 0.8033999030012637
+    },
+    {
+      "opponent": "simple",
+      "search_color": "white",
+      "seed": 20261009,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "simple",
+        "--agent-color",
+        "white",
+        "--seed",
+        "20261009",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-simple-white-20261009.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59987.968470999476,
+        59205.1270350039
+      ],
+      "moves": 17,
+      "verified_complete_pvs": 8,
+      "completed_depths": {
+        "2": 7,
+        "1": 1
+      },
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 94.34884199981752,
+        "median": 100.05928250029683,
+        "p95_nearest_rank": 100.10807499929797,
+        "max": 100.10807499929797
+      },
+      "nodes": 1457,
+      "max_table_size": 1376,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-simple-white-20261009.json.gz",
+      "trace_sha256": "a535be7add2fb3eae884ac4b40622747140ee5bc94e3e362842fc71c0ea57736",
+      "wall_seconds": 1.0094918129998405
+    },
+    {
+      "opponent": "simple",
+      "search_color": "white",
+      "seed": 20261010,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "simple",
+        "--agent-color",
+        "white",
+        "--seed",
+        "20261010",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-simple-white-20261010.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59987.86910100171,
+        59204.71612000256
+      ],
+      "moves": 17,
+      "verified_complete_pvs": 8,
+      "completed_depths": {
+        "2": 7,
+        "1": 1
+      },
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 94.79610200105526,
+        "median": 100.05913150052947,
+        "p95_nearest_rank": 100.0915080003324,
+        "max": 100.0915080003324
+      },
+      "nodes": 1447,
+      "max_table_size": 1365,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-simple-white-20261010.json.gz",
+      "trace_sha256": "bca43a785483917e98defc50333dbe6b3be9bf1a75b086b4892b07d1ef4d610e",
+      "wall_seconds": 1.0197788919995219
+    },
+    {
+      "opponent": "simple",
+      "search_color": "white",
+      "seed": 20261011,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "simple",
+        "--agent-color",
+        "white",
+        "--seed",
+        "20261011",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-simple-white-20261011.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59986.89089199797,
+        59205.389930997626
+      ],
+      "moves": 17,
+      "verified_complete_pvs": 8,
+      "completed_depths": {
+        "2": 7,
+        "1": 1
+      },
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 94.079012000293,
+        "median": 100.06040549978934,
+        "p95_nearest_rank": 100.12758999982907,
+        "max": 100.12758999982907
+      },
+      "nodes": 1451,
+      "max_table_size": 1370,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-simple-white-20261011.json.gz",
+      "trace_sha256": "5c520b947ec177e7e258f9482b696cb085c092a73204655efcc4287737002d27",
+      "wall_seconds": 1.012608488999831
+    },
+    {
+      "opponent": "simple",
+      "search_color": "white",
+      "seed": 20261012,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--engine",
+        "search",
+        "--diagnostics",
+        "--opponent",
+        "simple",
+        "--agent-color",
+        "white",
+        "--seed",
+        "20261012",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        "docs/verification/issue-15/official-simple-white-20261012.json"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59987.335849000374,
+        59202.470557002016
+      ],
+      "moves": 17,
+      "verified_complete_pvs": 8,
+      "completed_depths": {
+        "2": 7,
+        "1": 1
+      },
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 96.64668600089499,
+        "median": 100.0684740001816,
+        "p95_nearest_rank": 100.41995500068879,
+        "max": 100.41995500068879
+      },
+      "nodes": 1447,
+      "max_table_size": 1367,
+      "provided_sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "trace": "docs/verification/issue-15/official-simple-white-20261012.json.gz",
+      "trace_sha256": "391701cd227525636aa4114d5ae29eadea7caa7e27bfeed8a335baea0c99623b",
+      "wall_seconds": 1.0113938560007227
+    }
+  ],
+  "status_counts": {
+    "completed": 24
+  }
+}

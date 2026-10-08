@@ -75,3 +75,17 @@ python3 -m offline --engine search --agent-color black --opponent baseline --dia
 python3 -m verification.integration
 python3 -m unittest tests.test_integration -v
 ```
+
+Phase 2 correctness and local game checks are recorded in
+[issue #15 acceptance](docs/verification/issue-15.md), with preserved replay traces
+and [Phase 3 handoff/checkpoint instructions](docs/phase-02-handoff.md).
+Submillisecond timing acceptance remains partial; SimplePlayer beat the temporary
+material evaluator in all reported games. Reproduce bounded measurements/games:
+
+```sh
+python3 -m verification.acceptance measure
+python3 -m verification.acceptance screening
+python3 -m verification.acceptance official
+python3 -m verification.acceptance replay
+python3 -I -S verification/offline_engine.py --iterative
+```

@@ -27,19 +27,22 @@ def deny_network(event: str, args: tuple[object, ...]) -> None:
 def main() -> None:
     # Issue #10: exercise the search player through the same dependency guard.
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--search', action='store_true')
+    engines = parser.add_mutually_exclusive_group()
+    engines.add_argument('--search', action='store_true')
+    engines.add_argument('--iterative', action='store_true', help='Verify the integrated Phase 2 player')
     args = parser.parse_args()
     sys.addaudithook(deny_network)
     sys.meta_path.insert(0, EngineImportsOnly())
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-    from omok.player import FixedDepthPlayer, LegalBaseline
+    from omok.player import FixedDepthPlayer, IterativePlayer, LegalBaseline
     from omok.simulator import Position
 
     moves = []
     for color in (0, 1):
         position = Position([[-1] * 19 for _ in range(19)], color)
         board = [list(row) for row in position.board]
-        player = FixedDepthPlayer(color) if args.search else LegalBaseline(color)
+        player = (IterativePlayer(color) if args.iterative else
+                  FixedDepthPlayer(color) if args.search else LegalBaseline(color))
         move = player.take_turn(board, 60000)
         transition = position.play(move)
         if board != [list(row) for row in position.board]:
@@ -47,7 +50,8 @@ def main() -> None:
         if transition.position.board[move[0]][move[1]] != color:
             raise AssertionError('Placement failed.')
         moves.append({'color': color, 'move': move, 'outcome': transition.position.outcome})
-    print(json.dumps({'isolated': sys.flags.isolated, 'no_site': sys.flags.no_site,
+    print(json.dumps({'engine': 'iterative' if args.iterative else 'fixed' if args.search else 'baseline',
+                      'isolated': sys.flags.isolated, 'no_site': sys.flags.no_site,
                       'network': 'Python socket operations denied',
                       'imports': 'engine and standard library only', 'moves': moves}))
 
