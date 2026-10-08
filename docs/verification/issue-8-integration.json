@@ -1,0 +1,689 @@
+{
+  "python": "3.14.3",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+  "machine": "x86_64",
+  "workers": 1,
+  "budget_ms_per_player": 60000,
+  "budget_kind": "60000-ms total-budget integration",
+  "external_deadline_seconds": 180,
+  "move_cap": 1000,
+  "opening": "empty; deterministic repeats are duplicate evidence",
+  "counts": {
+    "completed": 16
+  },
+  "failure_reasons": {},
+  "games": [
+    {
+      "opponent": "random",
+      "baseline_color": "black",
+      "seed": 20261008,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "random",
+        "--baseline-color",
+        "black",
+        "--seed",
+        "20261008",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/random-black-20261008.json"
+      ],
+      "trace": ".scratch/issue-8-integration/random-black-20261008.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.3027982230005364,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 0,
+        "failure": null,
+        "remaining_ms": [
+          59849.95631700076,
+          59999.59277400012
+        ],
+        "moves": 19
+      }
+    },
+    {
+      "opponent": "random",
+      "baseline_color": "black",
+      "seed": 20261009,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "random",
+        "--baseline-color",
+        "black",
+        "--seed",
+        "20261009",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/random-black-20261009.json"
+      ],
+      "trace": ".scratch/issue-8-integration/random-black-20261009.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.33861857400006556,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 1,
+        "failure": null,
+        "remaining_ms": [
+          59801.61417199906,
+          59999.41739700262
+        ],
+        "moves": 24
+      }
+    },
+    {
+      "opponent": "random",
+      "baseline_color": "black",
+      "seed": 20261010,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "random",
+        "--baseline-color",
+        "black",
+        "--seed",
+        "20261010",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/random-black-20261010.json"
+      ],
+      "trace": ".scratch/issue-8-integration/random-black-20261010.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.5640285839999706,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 0,
+        "failure": null,
+        "remaining_ms": [
+          59585.92961799786,
+          59999.0247099995
+        ],
+        "moves": 43
+      }
+    },
+    {
+      "opponent": "random",
+      "baseline_color": "black",
+      "seed": 20261011,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "random",
+        "--baseline-color",
+        "black",
+        "--seed",
+        "20261011",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/random-black-20261011.json"
+      ],
+      "trace": ".scratch/issue-8-integration/random-black-20261011.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.3210212889998729,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 0,
+        "failure": null,
+        "remaining_ms": [
+          59818.3804670025,
+          59999.44554200101
+        ],
+        "moves": 23
+      }
+    },
+    {
+      "opponent": "random",
+      "baseline_color": "white",
+      "seed": 20261008,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "random",
+        "--baseline-color",
+        "white",
+        "--seed",
+        "20261008",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/random-white-20261008.json"
+      ],
+      "trace": ".scratch/issue-8-integration/random-white-20261008.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.3128907619993697,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 1,
+        "failure": null,
+        "remaining_ms": [
+          59999.401516000034,
+          59828.38068699948
+        ],
+        "moves": 22
+      }
+    },
+    {
+      "opponent": "random",
+      "baseline_color": "white",
+      "seed": 20261009,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "random",
+        "--baseline-color",
+        "white",
+        "--seed",
+        "20261009",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/random-white-20261009.json"
+      ],
+      "trace": ".scratch/issue-8-integration/random-white-20261009.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.40768136200040317,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 1,
+        "failure": null,
+        "remaining_ms": [
+          59999.14417100081,
+          59736.99838399807
+        ],
+        "moves": 32
+      }
+    },
+    {
+      "opponent": "random",
+      "baseline_color": "white",
+      "seed": 20261010,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "random",
+        "--baseline-color",
+        "white",
+        "--seed",
+        "20261010",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/random-white-20261010.json"
+      ],
+      "trace": ".scratch/issue-8-integration/random-white-20261010.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.21109773199987103,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 1,
+        "failure": null,
+        "remaining_ms": [
+          59999.61978700048,
+          59923.59522300012
+        ],
+        "moves": 12
+      }
+    },
+    {
+      "opponent": "random",
+      "baseline_color": "white",
+      "seed": 20261011,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "random",
+        "--baseline-color",
+        "white",
+        "--seed",
+        "20261011",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/random-white-20261011.json"
+      ],
+      "trace": ".scratch/issue-8-integration/random-white-20261011.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.4802705989995957,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 1,
+        "failure": null,
+        "remaining_ms": [
+          59999.03683499906,
+          59667.13309599709
+        ],
+        "moves": 38
+      }
+    },
+    {
+      "opponent": "simple",
+      "baseline_color": "black",
+      "seed": 20261008,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "simple",
+        "--baseline-color",
+        "black",
+        "--seed",
+        "20261008",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/simple-black-20261008.json"
+      ],
+      "trace": ".scratch/issue-8-integration/simple-black-20261008.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.2489798749993497,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 1,
+        "failure": null,
+        "remaining_ms": [
+          59896.53380499931,
+          59990.76762599907
+        ],
+        "moves": 14
+      }
+    },
+    {
+      "opponent": "simple",
+      "baseline_color": "black",
+      "seed": 20261009,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "simple",
+        "--baseline-color",
+        "black",
+        "--seed",
+        "20261009",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/simple-black-20261009.json"
+      ],
+      "trace": ".scratch/issue-8-integration/simple-black-20261009.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.24982104600076127,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 1,
+        "failure": null,
+        "remaining_ms": [
+          59892.83663800052,
+          59991.11983799958
+        ],
+        "moves": 14
+      }
+    },
+    {
+      "opponent": "simple",
+      "baseline_color": "black",
+      "seed": 20261010,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "simple",
+        "--baseline-color",
+        "black",
+        "--seed",
+        "20261010",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/simple-black-20261010.json"
+      ],
+      "trace": ".scratch/issue-8-integration/simple-black-20261010.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.24834843699954945,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 1,
+        "failure": null,
+        "remaining_ms": [
+          59892.551452999214,
+          59991.1987229998
+        ],
+        "moves": 14
+      }
+    },
+    {
+      "opponent": "simple",
+      "baseline_color": "black",
+      "seed": 20261011,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "simple",
+        "--baseline-color",
+        "black",
+        "--seed",
+        "20261011",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/simple-black-20261011.json"
+      ],
+      "trace": ".scratch/issue-8-integration/simple-black-20261011.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.25041849100034597,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 1,
+        "failure": null,
+        "remaining_ms": [
+          59894.23750199967,
+          59990.86919799993
+        ],
+        "moves": 14
+      }
+    },
+    {
+      "opponent": "simple",
+      "baseline_color": "white",
+      "seed": 20261008,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "simple",
+        "--baseline-color",
+        "white",
+        "--seed",
+        "20261008",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/simple-white-20261008.json"
+      ],
+      "trace": ".scratch/issue-8-integration/simple-white-20261008.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.19575454700043338,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 0,
+        "failure": null,
+        "remaining_ms": [
+          59996.490435999476,
+          59939.37875100073
+        ],
+        "moves": 9
+      }
+    },
+    {
+      "opponent": "simple",
+      "baseline_color": "white",
+      "seed": 20261009,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "simple",
+        "--baseline-color",
+        "white",
+        "--seed",
+        "20261009",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/simple-white-20261009.json"
+      ],
+      "trace": ".scratch/issue-8-integration/simple-white-20261009.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.19702469700041547,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 0,
+        "failure": null,
+        "remaining_ms": [
+          59996.30507599977,
+          59940.360965000764
+        ],
+        "moves": 9
+      }
+    },
+    {
+      "opponent": "simple",
+      "baseline_color": "white",
+      "seed": 20261010,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "simple",
+        "--baseline-color",
+        "white",
+        "--seed",
+        "20261010",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/simple-white-20261010.json"
+      ],
+      "trace": ".scratch/issue-8-integration/simple-white-20261010.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.1948684789995241,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 0,
+        "failure": null,
+        "remaining_ms": [
+          59996.139237000534,
+          59940.7350069996
+        ],
+        "moves": 9
+      }
+    },
+    {
+      "opponent": "simple",
+      "baseline_color": "white",
+      "seed": 20261011,
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "offline",
+        "--opponent",
+        "simple",
+        "--baseline-color",
+        "white",
+        "--seed",
+        "20261011",
+        "--black-ms",
+        "60000",
+        "--white-ms",
+        "60000",
+        "--move-cap",
+        "1000",
+        "--output",
+        ".scratch/issue-8-integration/simple-white-20261011.json"
+      ],
+      "trace": ".scratch/issue-8-integration/simple-white-20261011.json",
+      "sources": {
+        "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "wall_seconds": 0.19592762100000982,
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 0,
+        "failure": null,
+        "remaining_ms": [
+          59996.26718400032,
+          59940.47307499932
+        ],
+        "moves": 9
+      }
+    }
+  ]
+}

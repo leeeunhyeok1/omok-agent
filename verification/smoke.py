@@ -14,7 +14,7 @@ from offline.replay import replay
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--issue', type=int, choices=(4, 5, 6), default=4)
+    parser.add_argument('--issue', type=int, choices=(4, 5, 6, 8), default=4)
     issue = parser.parse_args().issue
     directory = Path(f'.scratch/issue-{issue}-smoke')
     directory.mkdir(parents=True, exist_ok=True)

@@ -27,8 +27,9 @@ Cells, color, and coordinates accept Python integers and objects supporting the
 integer `__index__` protocol; booleans, floats (even 0.0), and strings are rejected.
 Both provided players return tuples of built-in integer coordinates and index
 board rows directly. No concrete NumPy array requirement appears in their source.
-This establishes compatibility with their visible indexing/coordinate behavior,
-not with the absent official Player class or an unknown grader environment.
+The recovered release Player base and explicit-color inheritance are verified
+through the offline adapter; see [issue #7](verification/issue-7.md). Concrete
+grader board/coordinate requirements and the grader environment remain unknown.
 
 `play((row, column))` requires a live position and empty in-bounds target, otherwise
 raises `ValueError` without state change. Its result exposes:

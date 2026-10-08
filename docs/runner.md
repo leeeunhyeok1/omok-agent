@@ -1,7 +1,8 @@
 # Local baseline and game runner
 
 AI-written by OpenAI Codex (GPT-6.1-sol), for issue #4. Verified on Python 3.14.3;
-the grader version and final submission inheritance remain unresolved.
+the grader version and final submission arrangement remain unresolved. Local
+inheritance through the recovered release Player is verified by issue #7.
 
 ```sh
 python3 -m offline --seed 20261008 --output .scratch/game.json

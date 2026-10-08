@@ -1,0 +1,26 @@
+{
+  "python": "3.14.3",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+  "processor": "i386",
+  "workers": 1,
+  "timings": [
+    {
+      "fixture": "empty",
+      "transitions": 1000,
+      "best_seconds": 0.02765325699965615,
+      "transitions_per_second": 36162.10560703335
+    },
+    {
+      "fixture": "capture",
+      "transitions": 1000,
+      "best_seconds": 0.0313511300000755,
+      "transitions_per_second": 31896.776926305105
+    },
+    {
+      "fixture": "dense_capture",
+      "transitions": 1000,
+      "best_seconds": 0.47325869700034673,
+      "transitions_per_second": 2113.0092406928707
+    }
+  ]
+}

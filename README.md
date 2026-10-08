@@ -1,7 +1,7 @@
 # omok-agent
 
 Omok++ simulator, verified one-ply baseline, bounded local runner, and versioned
-record/replay and supplied-player integration implemented for GitHub issues #3–#7. Python **3.14.3** is the
+record/replay and supplied-player integration implemented for GitHub issues #3–#8. Python **3.14.3** is the
 verified local runtime; the grader runtime is not yet known. Engine and rule
 verification use only Python's standard library.
 
@@ -16,6 +16,7 @@ python3 -m verification.smoke --issue 5
 python3 -m verification.smoke --issue 6
 python3 -m offline --opponent simple --baseline-color white --output .scratch/provided.json
 python3 -m verification.provided
+python3 -m verification.smoke --issue 8
 ```
 
 The differential command defaults to 16 ordinary and 16 capture-biased sequences,
@@ -33,6 +34,13 @@ Thin offline adapters verify inheritance without adding opponent imports to the
 agent. See [issue #7 compatibility evidence](docs/verification/issue-7.md).
 The local player and runner contracts and commands are documented in
 [docs/runner.md](docs/runner.md). Search and final submission packaging are deferred.
+
+Phase 01 core acceptance passed. Fresh commands, measured timing, network-denied
+execution, and remaining external checks are in the
+[issue #8 acceptance report](docs/verification/issue-8.md). The
+[Phase 02 handoff](docs/phase-01-handoff.md) records the verified APIs and checkpoint
+restore instructions. Issue #8 changes are AI-written by OpenAI Codex; no new LLM
+usage records were created at user request.
 
 Earlier AI attribution and interaction records are in [llm-usage](llm-usage/README.md).
 Issue #5 decisions, AI attribution, and acceptance evidence are in
