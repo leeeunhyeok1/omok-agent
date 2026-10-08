@@ -21,3 +21,11 @@ Keep the original session log until that refresh. Prior planning/specification
 conversations are not reconstructed here; retain their originals for the eventual
 submission's complete interaction archive. Do not treat this snapshot as a final
 packaged LLM disclosure or invent missing team/plan metadata.
+
+Issue #4's development player, offline runner/opponent/replay/CLI, public-boundary
+checks, smoke command, and documentation were AI-written by OpenAI Codex
+(GPT-6.1-sol). `issue-4-interaction.jsonl` records visible messages and tool calls
+through the implementation/review checkpoint from session
+`01a11a5b-c314-7461-bc9d-89356cea99b1`, including issue #1/#2/#4 reads. It can be
+refreshed with the same exporter after this turn to include the final commit and
+response. Subscription/plan and final submission metadata remain unresolved.
