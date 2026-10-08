@@ -1,0 +1,212 @@
+{
+  "python": "3.14.3",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+  "machine": "x86_64",
+  "workers": 1,
+  "external_deadline_seconds": 30,
+  "budget_ms_per_player": 60000,
+  "move_cap": 1000,
+  "smoke_counts": {
+    "completed": 8
+  },
+  "probe_counts": {
+    "capped": 2,
+    "failed": 1
+  },
+  "games": [
+    {
+      "color": "black",
+      "seed": 20261008,
+      "wall_seconds": 0.3394785199998296,
+      "trace": ".scratch/issue-5-smoke/black-20261008.json",
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 0,
+        "remaining_ms": [
+          59842.67033600099,
+          59999.58458800211
+        ],
+        "failure": null,
+        "moves": 17
+      }
+    },
+    {
+      "color": "black",
+      "seed": 20261009,
+      "wall_seconds": 0.31860889099971246,
+      "trace": ".scratch/issue-5-smoke/black-20261009.json",
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 0,
+        "remaining_ms": [
+          59843.03215899854,
+          59999.59947500065
+        ],
+        "failure": null,
+        "moves": 17
+      }
+    },
+    {
+      "color": "black",
+      "seed": 20261010,
+      "wall_seconds": 0.3582638490006502,
+      "trace": ".scratch/issue-5-smoke/black-20261010.json",
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 0,
+        "remaining_ms": [
+          59792.54028199921,
+          59999.03459300003
+        ],
+        "failure": null,
+        "moves": 19
+      }
+    },
+    {
+      "color": "black",
+      "seed": 20261011,
+      "wall_seconds": 0.3585381499997311,
+      "trace": ".scratch/issue-5-smoke/black-20261011.json",
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 0,
+        "remaining_ms": [
+          59792.21761400186,
+          59999.57252800141
+        ],
+        "failure": null,
+        "moves": 21
+      }
+    },
+    {
+      "color": "white",
+      "seed": 20261008,
+      "wall_seconds": 0.35952949700003956,
+      "trace": ".scratch/issue-5-smoke/white-20261008.json",
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 1,
+        "remaining_ms": [
+          59999.50729900138,
+          59821.710964000886
+        ],
+        "failure": null,
+        "moves": 18
+      }
+    },
+    {
+      "color": "white",
+      "seed": 20261009,
+      "wall_seconds": 0.33970950200000516,
+      "trace": ".scratch/issue-5-smoke/white-20261009.json",
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 1,
+        "remaining_ms": [
+          59999.57649899807,
+          59826.7431639988
+        ],
+        "failure": null,
+        "moves": 18
+      }
+    },
+    {
+      "color": "white",
+      "seed": 20261010,
+      "wall_seconds": 0.3629634310000256,
+      "trace": ".scratch/issue-5-smoke/white-20261010.json",
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 1,
+        "remaining_ms": [
+          59999.53492300028,
+          59806.78781000097
+        ],
+        "failure": null,
+        "moves": 20
+      }
+    },
+    {
+      "color": "white",
+      "seed": 20261011,
+      "wall_seconds": 0.34455096400051843,
+      "trace": ".scratch/issue-5-smoke/white-20261011.json",
+      "summary": {
+        "status": "completed",
+        "reason": "exact_five",
+        "winner": 1,
+        "remaining_ms": [
+          59999.44931600021,
+          59812.02535000011
+        ],
+        "failure": null,
+        "moves": 20
+      }
+    }
+  ],
+  "contract_probes": [
+    {
+      "name": "cap",
+      "trace": ".scratch/issue-5-smoke/cap.json",
+      "summary": {
+        "status": "capped",
+        "reason": "move_cap",
+        "winner": null,
+        "remaining_ms": [
+          59984.7376459993,
+          59999.92727800054
+        ],
+        "failure": null,
+        "moves": 2
+      }
+    },
+    {
+      "name": "exhausted",
+      "trace": ".scratch/issue-5-smoke/exhausted.json",
+      "summary": {
+        "status": "failed",
+        "reason": "timeout",
+        "winner": null,
+        "remaining_ms": [
+          0.0,
+          60000
+        ],
+        "failure": {
+          "color": 0,
+          "player": "LegalBaseline",
+          "reason": "timeout",
+          "violations": [
+            "timeout"
+          ],
+          "called": false,
+          "elapsed_ms": 0,
+          "returned": null,
+          "exception": null
+        },
+        "moves": 0
+      }
+    },
+    {
+      "name": "unlimited",
+      "trace": ".scratch/issue-5-smoke/unlimited.json",
+      "summary": {
+        "status": "capped",
+        "reason": "move_cap",
+        "winner": null,
+        "remaining_ms": [
+          null,
+          null
+        ],
+        "failure": null,
+        "moves": 2
+      }
+    }
+  ]
+}

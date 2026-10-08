@@ -11,6 +11,7 @@ python3 -m offline --start opening.json --move-cap 200
 python3 -m offline --black-ms -1 --white-ms -1 --move-cap 100
 python3 -m offline --replay .scratch/game.json
 python3 -m verification.smoke
+python3 -m verification.smoke --issue 5
 python3 -m unittest discover -s tests -v
 ```
 
@@ -24,13 +25,23 @@ results. Default start is empty, black to move. Coordinates are `(row, column)`.
 `omok.player.DevelopmentPlayer` defines explicit `color` and
 `take_turn(board, time)`. `LegalBaseline(color)` owns and validates its input,
 establishes a legal fallback, and immediately returns it at incoming time <=2 ms.
-With more time it examines one-ply child positions in deterministic order based on
-own adjacent stones, center distance, row, and column. It prefers a verified strict
-win and skips directly detected capture-induced losses once it knows a safe move.
-Simultaneous wins remain draws. Optional work uses at most 10% of remaining time
+With more time it examines all legal one-ply candidates (no candidate pruning),
+ordered by own adjacent stones, Manhattan distance to center `(9, 9)`, row, and
+column. Each child resolves captures and both colors' exact-five results before
+classification. It immediately returns a verified strict win, rejects directly
+detected opponent wins, and scores the other explored children by **4 per captured
+stone + 1 per adjacent own stone**. Equal scores retain the first candidate in that
+order. Simultaneous wins remain draws, with no strict-win bonus. These numerical
+weights are temporary, untuned baseline parameters; no forced-defense enumeration
+or multi-ply search is performed. Optional work uses at most 10% of remaining time
 after a 2 ms reserve, capped at 100 ms; unlimited mode still caps that work at 100 ms.
 These are temporary development choices, without tuned weights or strength claims.
-A transition can run beyond its check deadline; the runner measures the whole call.
+The monotonic deadline starts before public input conversion, is checked before
+candidate preparation and each simulation, and again before optional scoring. A
+transition or scoring call already in progress can run beyond its check deadline;
+the runner measures the whole call. An evaluation exception skips that score while
+preserving a known safe legal choice. Immutable child copies leave the owned parent,
+sibling candidates, and caller input unchanged during failures or early stopping.
 Tiny positive time cannot guarantee a return within a submillisecond budget.
 Terminal input is rejected. Replace move selection here for Phase 02 without
 changing the runner. Agent imports are Python standard library plus `omok.simulator`;
@@ -105,3 +116,9 @@ summary in `docs/verification/issue-4-smoke.json`. It distinguishes eight regula
 and unlimited probes. Seeds are 20261008–20261011 in both colors. Local timing may
 change selected moves when the baseline's optional scan reaches its wall deadline;
 a seed alone does not guarantee identical games across hardware.
+
+Issue #5 updates to the player, tests, smoke reporting option, and documentation
+were AI-written by OpenAI Codex. `--issue 5` saves separate smoke summaries in
+`docs/verification/issue-5-smoke.json` and traces in `.scratch/issue-5-smoke/`.
+See [issue #5 acceptance evidence](verification/issue-5.md) for the decisions and
+checks. Interaction transcripts were not recorded for this issue at user request.

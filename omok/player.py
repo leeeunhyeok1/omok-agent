@@ -1,10 +1,10 @@
-# AI-written by OpenAI Codex (GPT-6.1-sol), for issue #4.
+# AI-written by OpenAI Codex, for issues #4 and #5.
 """Development move-selection boundary; official Player inheritance is pending."""
 from collections.abc import Sequence
 from time import monotonic
 from typing import Protocol, SupportsIndex
 
-from omok.simulator import Coordinate, EMPTY, Position, SIZE
+from omok.simulator import Coordinate, EMPTY, Position, SIZE, Transition
 
 
 class DevelopmentPlayer(Protocol):
@@ -37,27 +37,54 @@ class LegalBaseline:
                      start: float, time: float) -> Coordinate:
         allowance_ms = 100.0 if time == -1 else min(100.0, max(0.0, (time - 2) * 0.1))
         deadline = start + allowance_ms / 1000
+        if monotonic() >= deadline:
+            return fallback
         candidates = [(r, c) for r in range(SIZE) for c in range(SIZE)
                       if position.board[r][c] == EMPTY]
 
         def priority(move: Coordinate) -> tuple[int, int, int, int]:
             r, c = move
-            neighbors = sum(position.board[nr][nc] == self.color
-                            for nr in range(max(0, r - 1), min(SIZE, r + 2))
-                            for nc in range(max(0, c - 1), min(SIZE, c + 2)))
+            neighbors = self._own_neighbors(position, move)
             return (-neighbors, abs(r - 9) + abs(c - 9), r, c)
 
         candidates.sort(key=priority)
         best = fallback
         found_safe = False
+        best_score: int | None = None
         win = 'black_win' if self.color == 0 else 'white_win'
         loss = 'white_win' if self.color == 0 else 'black_win'
         for move in candidates:
             if monotonic() >= deadline:
                 break
-            child = position.play(move).position
+            transition = position.play(move)
+            child = transition.position
             if child.outcome == win:
                 return move
-            if child.outcome != loss and not found_safe:
+            if child.outcome == loss:
+                continue
+            if not found_safe:
                 best, found_safe = move, True
+            if monotonic() >= deadline:
+                break
+            try:
+                score = self._score(transition)
+            except Exception:
+                # Optional evaluation cannot invalidate the known legal choice.
+                # Immutable child copies keep the parent and siblings untouched.
+                continue
+            if best_score is None or score > best_score:
+                best, best_score = move, score
         return best
+
+    def _score(self, transition: Transition) -> int:
+        # Temporary, untuned baseline weights: 4 per captured stone, 1 per
+        # adjacent own stone. Candidate order breaks equal scores deterministically.
+        return (4 * len(transition.captured)
+                + self._own_neighbors(transition.position, transition.move))
+
+    def _own_neighbors(self, position: Position, move: Coordinate) -> int:
+        r, c = move
+        return sum(position.board[nr][nc] == self.color
+                   for nr in range(max(0, r - 1), min(SIZE, r + 2))
+                   for nc in range(max(0, c - 1), min(SIZE, c + 2))
+                   if (nr, nc) != (r, c))

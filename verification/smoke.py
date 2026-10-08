@@ -1,5 +1,6 @@
-# AI-written by OpenAI Codex (GPT-6.1-sol), for issue #4.
+# AI-written by OpenAI Codex, for issues #4 and #5.
 """Externally bounded CLI games, serial to avoid concurrent timing distortion."""
+import argparse
 import json
 import platform
 import subprocess
@@ -12,7 +13,10 @@ from offline.replay import replay
 
 
 def main() -> None:
-    directory = Path('.scratch/issue-4-smoke')
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--issue', type=int, choices=(4, 5), default=4)
+    issue = parser.parse_args().issue
+    directory = Path(f'.scratch/issue-{issue}-smoke')
     directory.mkdir(parents=True, exist_ok=True)
     results = []
     for color in ('black', 'white'):
@@ -41,7 +45,7 @@ def main() -> None:
               'smoke_counts': dict(Counter(r['summary']['status'] for r in results)),
               'probe_counts': dict(Counter(p['summary']['status'] for p in probes)),
               'games': results, 'contract_probes': probes}
-    destination = Path('docs/verification/issue-4-smoke.json')
+    destination = Path(f'docs/verification/issue-{issue}-smoke.json')
     destination.write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps({k: report[k] for k in ('smoke_counts', 'probe_counts')}))
 

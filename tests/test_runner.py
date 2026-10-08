@@ -1,6 +1,8 @@
 # AI-written by OpenAI Codex (GPT-6.1-sol), for issue #4.
 import unittest
 from offline.runner import run_game
+from offline.replay import replay
+from omok.player import LegalBaseline
 from omok.simulator import Position
 
 
@@ -18,6 +20,18 @@ class ReturningPlayer:
 
 
 class RunnerTests(unittest.TestCase):
+    def test_improved_baseline_completes_unique_win_and_trace_replays(self):
+        for color in (0, 1):
+            board = [[-1] * 19 for _ in range(19)]
+            board[9][4] = 1 - color
+            board[9][5:9] = [color] * 4
+            players = [LegalBaseline(0), LegalBaseline(1)]
+            result = run_game(*players, initial=Position(board, color), move_cap=1)
+            self.assertEqual(result['status'], 'completed')
+            self.assertEqual(result['winner'], color)
+            self.assertEqual(result['moves'][0]['move'], [9, 9])
+            replay(result)
+
     def test_alternation_owns_snapshots_and_debits_only_own_cumulative_clock(self):
         black = ReturningPlayer(0, [(0, 0), (0, 2)])
         white = ReturningPlayer(1, [(0, 1)])
