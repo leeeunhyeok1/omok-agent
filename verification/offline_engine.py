@@ -5,6 +5,7 @@ For OS-level network denial on macOS, run under sandbox-exec as documented in
 the Phase 01 acceptance report. This script also denies Python socket operations.
 """
 import importlib.abc
+import argparse
 import json
 from pathlib import Path
 import sys
@@ -24,17 +25,22 @@ def deny_network(event: str, args: tuple[object, ...]) -> None:
 
 
 def main() -> None:
+    # Issue #10: exercise the search player through the same dependency guard.
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--search', action='store_true')
+    args = parser.parse_args()
     sys.addaudithook(deny_network)
     sys.meta_path.insert(0, EngineImportsOnly())
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-    from omok.player import LegalBaseline
+    from omok.player import FixedDepthPlayer, LegalBaseline
     from omok.simulator import Position
 
     moves = []
     for color in (0, 1):
         position = Position([[-1] * 19 for _ in range(19)], color)
         board = [list(row) for row in position.board]
-        move = LegalBaseline(color).take_turn(board, 60000)
+        player = FixedDepthPlayer(color) if args.search else LegalBaseline(color)
+        move = player.take_turn(board, 60000)
         transition = position.play(move)
         if board != [list(row) for row in position.board]:
             raise AssertionError('Caller board mutated.')

@@ -1,0 +1,1032 @@
+{
+  "python": "3.14.3",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+  "max_nodes": 10000,
+  "max_time_ms": 100,
+  "probes": [
+    {
+      "fixture": "empty",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": -1,
+      "elapsed_ms": 19.423433999691042,
+      "move": [
+        0,
+        0
+      ],
+      "score": 1,
+      "completed": true,
+      "nodes": 362,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "empty",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 20.57942700048443,
+      "move": [
+        0,
+        0
+      ],
+      "score": 1,
+      "completed": true,
+      "nodes": 362,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "empty",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.14637800086347852,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "empty",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.17920199934451375,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "empty",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": -1,
+      "elapsed_ms": 100.04338800172263,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 979,
+      "cutoffs": 308,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "empty",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.02517800057831,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 979,
+      "cutoffs": 308,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "empty",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.11254700075369328,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "empty",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.09990400030801538,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "empty",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": -1,
+      "elapsed_ms": 18.80163799978618,
+      "move": [
+        0,
+        0
+      ],
+      "score": 1,
+      "completed": true,
+      "nodes": 362,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "empty",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 18.845344000510522,
+      "move": [
+        0,
+        0
+      ],
+      "score": 1,
+      "completed": true,
+      "nodes": 362,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "empty",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.11712900050042663,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "empty",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.1113500002247747,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "empty",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": -1,
+      "elapsed_ms": 100.03145600057906,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 986,
+      "cutoffs": 312,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "empty",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.04261699941708,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 973,
+      "cutoffs": 305,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "empty",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.113224001324852,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "empty",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.09786299960978795,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "capture",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": -1,
+      "elapsed_ms": 20.62502199987648,
+      "move": [
+        9,
+        9
+      ],
+      "score": 2,
+      "completed": true,
+      "nodes": 359,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "capture",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 20.38102699953015,
+      "move": [
+        9,
+        9
+      ],
+      "score": 2,
+      "completed": true,
+      "nodes": 359,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "capture",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.1229959998454433,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "capture",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.10243799988529645,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "capture",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": -1,
+      "elapsed_ms": 100.0275389997114,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 1154,
+      "cutoffs": 217,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "capture",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.02856999926735,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 1160,
+      "cutoffs": 220,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "capture",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.11687999904097524,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "capture",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.10235300032945815,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "capture",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": -1,
+      "elapsed_ms": 20.17326999884972,
+      "move": [
+        0,
+        0
+      ],
+      "score": 2,
+      "completed": true,
+      "nodes": 359,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "capture",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 21.51052599947434,
+      "move": [
+        0,
+        0
+      ],
+      "score": 2,
+      "completed": true,
+      "nodes": 359,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "capture",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.12813899957109243,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "capture",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.1028990009217523,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "capture",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": -1,
+      "elapsed_ms": 100.06368799986376,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 1712,
+      "cutoffs": 7,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "capture",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.07074999884935,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 1632,
+      "cutoffs": 7,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "capture",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.18441700012772344,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "capture",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.10977899910358246,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "win",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": -1,
+      "elapsed_ms": 21.440905999043025,
+      "move": [
+        9,
+        4
+      ],
+      "score": 10000,
+      "completed": true,
+      "nodes": 358,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "win",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 28.64890499949979,
+      "move": [
+        9,
+        4
+      ],
+      "score": 10000,
+      "completed": true,
+      "nodes": 358,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "win",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.2419499996904051,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "win",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.17275100071856286,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "win",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": -1,
+      "elapsed_ms": 100.02473500026099,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 645,
+      "cutoffs": 143,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "win",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.02368500136072,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 949,
+      "cutoffs": 294,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "win",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.11718800124072004,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "win",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.10263199874316342,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "win",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": -1,
+      "elapsed_ms": 20.664579000367667,
+      "move": [
+        0,
+        0
+      ],
+      "score": -3,
+      "completed": true,
+      "nodes": 358,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "win",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 20.73711800039746,
+      "move": [
+        0,
+        0
+      ],
+      "score": -3,
+      "completed": true,
+      "nodes": 358,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "win",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.12061999950674362,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "win",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.10325299990654457,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "win",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": -1,
+      "elapsed_ms": 100.0765249991673,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 1664,
+      "cutoffs": 7,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "win",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.0332060011715,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 1652,
+      "cutoffs": 7,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "win",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.11679999988700729,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "win",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.10409700007585343,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "dense",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": -1,
+      "elapsed_ms": 1.1090079988207435,
+      "move": [
+        0,
+        0
+      ],
+      "score": 3,
+      "completed": true,
+      "nodes": 2,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "dense",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 1.0541760002524825,
+      "move": [
+        0,
+        0
+      ],
+      "score": 3,
+      "completed": true,
+      "nodes": 2,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "dense",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.5479640003613895,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "dense",
+      "color": 0,
+      "depth": 1,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.5424240007414483,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "dense",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": -1,
+      "elapsed_ms": 2.00850999863178,
+      "move": [
+        0,
+        0
+      ],
+      "score": 0,
+      "completed": true,
+      "nodes": 4,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "dense",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": 60000,
+      "elapsed_ms": 2.006213000640855,
+      "move": [
+        0,
+        0
+      ],
+      "score": 0,
+      "completed": true,
+      "nodes": 4,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "dense",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.5489619998115813,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "dense",
+      "color": 0,
+      "depth": 2,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.5396280012064381,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "dense",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": -1,
+      "elapsed_ms": 1.0187880016019335,
+      "move": [
+        0,
+        0
+      ],
+      "score": 0,
+      "completed": true,
+      "nodes": 2,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "dense",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 1.0212230008619372,
+      "move": [
+        0,
+        0
+      ],
+      "score": 0,
+      "completed": true,
+      "nodes": 2,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "dense",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.5418959990493022,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "dense",
+      "color": 1,
+      "depth": 1,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.5387010005506454,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    },
+    {
+      "fixture": "dense",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": -1,
+      "elapsed_ms": 1.0149650006496813,
+      "move": [
+        0,
+        0
+      ],
+      "score": 0,
+      "completed": true,
+      "nodes": 2,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "dense",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": 60000,
+      "elapsed_ms": 1.4627649998146808,
+      "move": [
+        0,
+        0
+      ],
+      "score": 0,
+      "completed": true,
+      "nodes": 2,
+      "cutoffs": 0,
+      "cancellation": null
+    },
+    {
+      "fixture": "dense",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.556218999918201,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "deadline"
+    },
+    {
+      "fixture": "dense",
+      "color": 1,
+      "depth": 2,
+      "remaining_ms": 0.5,
+      "elapsed_ms": 0.5330790008883923,
+      "move": [
+        0,
+        0
+      ],
+      "score": null,
+      "completed": false,
+      "nodes": 0,
+      "cutoffs": 0,
+      "cancellation": "low_time"
+    }
+  ]
+}

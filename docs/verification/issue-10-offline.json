@@ -1,0 +1,1 @@
+{"isolated": 1, "no_site": 1, "network": "Python socket operations denied", "imports": "engine and standard library only", "moves": [{"color": 0, "move": [0, 0], "outcome": "ongoing"}, {"color": 1, "move": [0, 0], "outcome": "ongoing"}]}

@@ -1,16 +1,61 @@
 # AI-written by OpenAI Codex, for issues #4 and #5.
 """Development move-selection boundary; official Player inheritance is pending."""
 from collections.abc import Sequence
+from math import isfinite
 from time import monotonic
 from typing import Protocol, SupportsIndex
 
 from omok.simulator import Coordinate, EMPTY, Position, SIZE, Transition
+from omok.search import FixedDepthSearch, SearchLimits, SearchResult, legal_moves
 
 
 class DevelopmentPlayer(Protocol):
     color: int
 
     def take_turn(self, board: list[list[int]], time: float) -> Coordinate: ...
+
+
+# AI-written by OpenAI Codex, for issue #10. LegalBaseline below stays available.
+class FixedDepthPlayer:
+    """Bounded fixed-depth development player; iteration/tactics are later work."""
+
+    def __init__(self, color: int, *, depth: int = 1, max_nodes: int = 10000,
+                 max_time_ms: float = 100.0, search: FixedDepthSearch | None = None) -> None:
+        if type(color) is not int or color not in (0, 1):
+            raise ValueError('Color must be 0 or 1.')
+        if type(depth) is not int or depth < 1:
+            raise ValueError('Player depth must be a positive integer.')
+        if type(max_nodes) is not int or max_nodes < 0:
+            raise ValueError('Node limit must be a nonnegative integer.')
+        if isinstance(max_time_ms, bool) or not isfinite(max_time_ms) or max_time_ms < 0:
+            raise ValueError('Time bound must be finite and nonnegative.')
+        self.color = color
+        self.depth = depth
+        self.max_nodes = max_nodes
+        self.max_time_ms = max_time_ms
+        self.search = FixedDepthSearch() if search is None else search
+        self.last_result: SearchResult | None = None
+
+    def take_turn(self, board: Sequence[Sequence[SupportsIndex]], time: float) -> Coordinate:
+        self.last_result = None
+        start = self.search.clock()
+        if isinstance(time, bool) or not isfinite(time):
+            raise ValueError('Remaining time must be finite milliseconds.')
+        position = Position(board, self.color)
+        if position.outcome != 'ongoing':
+            raise ValueError('take_turn requires a live position.')
+        fallback = next(legal_moves(position))
+        if time != -1 and time <= 2:
+            self.last_result = SearchResult(fallback, None, False, cancellation='low_time')
+            return fallback
+        allowance = self.max_time_ms if time == -1 else min(
+            self.max_time_ms, max(0.0, (time - 2) * 0.1))
+        self.last_result = self.search.search(
+            position, self.depth,
+            limits=SearchLimits(max_nodes=self.max_nodes, deadline=start + allowance / 1000))
+        if self.last_result.move is None:
+            raise RuntimeError('Positive-depth live search returned no move.')
+        return self.last_result.move
 
 
 class LegalBaseline:
