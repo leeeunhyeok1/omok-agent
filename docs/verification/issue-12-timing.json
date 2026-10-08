@@ -1,0 +1,1110 @@
+{
+  "python": "3.14.3",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+  "workers": 1,
+  "radius": 2,
+  "cap": 24,
+  "max_depth": 8,
+  "max_nodes": 10000,
+  "max_time_ms": 100,
+  "reference_enumeration": [
+    {
+      "color": 0,
+      "reference": {
+        "wins": [],
+        "draws": [],
+        "losses": [],
+        "threats": [
+          [
+            0,
+            4
+          ]
+        ],
+        "defenses": [
+          [
+            0,
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "color": 1,
+      "reference": {
+        "wins": [],
+        "draws": [],
+        "losses": [],
+        "threats": [
+          [
+            0,
+            4
+          ]
+        ],
+        "defenses": [
+          [
+            0,
+            4
+          ]
+        ]
+      }
+    }
+  ],
+  "probes": [
+    {
+      "fixture": "empty",
+      "color": 0,
+      "remaining_ms": 1,
+      "elapsed_ms": 0.12093499935872387,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "low_time",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "empty",
+      "color": 0,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.14531899978464935,
+      "allocation_ms": 0.05,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "soft_stop",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "empty",
+      "color": 0,
+      "remaining_ms": 20,
+      "elapsed_ms": 0.9411430000909604,
+      "allocation_ms": 0.9,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 1,
+      "score": null,
+      "candidate_count": 361,
+      "cancellation": "deadline",
+      "tactics_complete": false,
+      "defenses_complete": false,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "empty",
+      "color": 0,
+      "remaining_ms": 200,
+      "elapsed_ms": 9.939028999724542,
+      "allocation_ms": 9.9,
+      "move": [
+        9,
+        9
+      ],
+      "depth": 2,
+      "attempted_depth": 3,
+      "score": 0,
+      "candidate_count": 1,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "empty",
+      "color": 0,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.05780799838249,
+      "allocation_ms": 100.0,
+      "move": [
+        9,
+        9
+      ],
+      "depth": 3,
+      "attempted_depth": 4,
+      "score": 1,
+      "candidate_count": 1,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "empty",
+      "color": 0,
+      "remaining_ms": -1,
+      "elapsed_ms": 100.11002099963662,
+      "allocation_ms": 100.0,
+      "move": [
+        9,
+        9
+      ],
+      "depth": 3,
+      "attempted_depth": 4,
+      "score": 1,
+      "candidate_count": 1,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "win",
+      "color": 0,
+      "remaining_ms": 1,
+      "elapsed_ms": 0.113914999019471,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "low_time",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "win",
+      "color": 0,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.12835600136895664,
+      "allocation_ms": 0.05,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "soft_stop",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "win",
+      "color": 0,
+      "remaining_ms": 20,
+      "elapsed_ms": 0.9330289994977647,
+      "allocation_ms": 0.9,
+      "move": [
+        9,
+        4
+      ],
+      "depth": 0,
+      "attempted_depth": 1,
+      "score": null,
+      "candidate_count": 357,
+      "cancellation": "deadline",
+      "tactics_complete": false,
+      "defenses_complete": false,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "win",
+      "color": 0,
+      "remaining_ms": 200,
+      "elapsed_ms": 10.013635001087096,
+      "allocation_ms": 9.9,
+      "move": [
+        9,
+        9
+      ],
+      "depth": 1,
+      "attempted_depth": 2,
+      "score": 10000,
+      "candidate_count": 24,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "win",
+      "color": 0,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.06071200041333,
+      "allocation_ms": 100.0,
+      "move": [
+        9,
+        9
+      ],
+      "depth": 1,
+      "attempted_depth": 2,
+      "score": 10000,
+      "candidate_count": 24,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "win",
+      "color": 0,
+      "remaining_ms": -1,
+      "elapsed_ms": 100.05131700017955,
+      "allocation_ms": 100.0,
+      "move": [
+        9,
+        9
+      ],
+      "depth": 1,
+      "attempted_depth": 2,
+      "score": 10000,
+      "candidate_count": 24,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "capture-defense",
+      "color": 0,
+      "remaining_ms": 1,
+      "elapsed_ms": 0.12549700113595463,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "low_time",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "capture-defense",
+      "color": 0,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.12989199967705645,
+      "allocation_ms": 0.05,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "soft_stop",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "capture-defense",
+      "color": 0,
+      "remaining_ms": 20,
+      "elapsed_ms": 0.9324170005129417,
+      "allocation_ms": 0.9,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 1,
+      "score": null,
+      "candidate_count": 355,
+      "cancellation": "deadline",
+      "tactics_complete": false,
+      "defenses_complete": false,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "capture-defense",
+      "color": 0,
+      "remaining_ms": 200,
+      "elapsed_ms": 9.975592000046163,
+      "allocation_ms": 9.9,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 1,
+      "score": null,
+      "candidate_count": 355,
+      "cancellation": "deadline",
+      "tactics_complete": false,
+      "defenses_complete": false,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "capture-defense",
+      "color": 0,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.06329899988486,
+      "allocation_ms": 100.0,
+      "move": [
+        7,
+        7
+      ],
+      "depth": 2,
+      "attempted_depth": 3,
+      "score": -2,
+      "candidate_count": 1,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "capture-defense",
+      "color": 0,
+      "remaining_ms": -1,
+      "elapsed_ms": 100.08884800117812,
+      "allocation_ms": 100.0,
+      "move": [
+        7,
+        7
+      ],
+      "depth": 2,
+      "attempted_depth": 3,
+      "score": -2,
+      "candidate_count": 1,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "dense",
+      "color": 0,
+      "remaining_ms": 1,
+      "elapsed_ms": 0.5507589994522277,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        4
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "low_time",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "dense",
+      "color": 0,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.5619460007437738,
+      "allocation_ms": 0.05,
+      "move": [
+        0,
+        4
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "soft_stop",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "dense",
+      "color": 0,
+      "remaining_ms": 20,
+      "elapsed_ms": 1.2484809994930401,
+      "allocation_ms": 0.9,
+      "move": [
+        0,
+        4
+      ],
+      "depth": 0,
+      "attempted_depth": 1,
+      "score": null,
+      "candidate_count": 3,
+      "cancellation": "deadline",
+      "tactics_complete": false,
+      "defenses_complete": false,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "dense",
+      "color": 0,
+      "remaining_ms": 200,
+      "elapsed_ms": 10.057162999146385,
+      "allocation_ms": 9.9,
+      "move": [
+        0,
+        4
+      ],
+      "depth": 1,
+      "attempted_depth": 2,
+      "score": 1,
+      "candidate_count": 3,
+      "cancellation": "deadline",
+      "tactics_complete": false,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "dense",
+      "color": 0,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.04503999880399,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        4
+      ],
+      "depth": 3,
+      "attempted_depth": 4,
+      "score": 3,
+      "candidate_count": 1,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "dense",
+      "color": 0,
+      "remaining_ms": -1,
+      "elapsed_ms": 100.51622399987536,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        4
+      ],
+      "depth": 3,
+      "attempted_depth": 4,
+      "score": 3,
+      "candidate_count": 1,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "cumulative",
+      "color": 0,
+      "turn": 0,
+      "remaining_ms": 40.0,
+      "elapsed_ms": 1.5758270001242636,
+      "move": [
+        9,
+        9
+      ],
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "cumulative",
+      "color": 0,
+      "turn": 1,
+      "remaining_ms": 38.424172999875736,
+      "elapsed_ms": 1.8724100009421818,
+      "move": [
+        0,
+        1
+      ],
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "cumulative",
+      "color": 0,
+      "turn": 2,
+      "remaining_ms": 36.551762998933555,
+      "elapsed_ms": 1.76238300082332,
+      "move": [
+        0,
+        3
+      ],
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "cumulative",
+      "color": 0,
+      "turn": 3,
+      "remaining_ms": 34.789379998110235,
+      "elapsed_ms": 1.6635969986964483,
+      "move": [
+        0,
+        5
+      ],
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "cumulative",
+      "color": 0,
+      "turn": 4,
+      "remaining_ms": 33.12578299941379,
+      "elapsed_ms": 1.5911800001049414,
+      "move": [
+        0,
+        7
+      ],
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "cumulative",
+      "color": 0,
+      "turn": 5,
+      "remaining_ms": 31.534602999308845,
+      "elapsed_ms": 1.5238910000334727,
+      "move": [
+        0,
+        9
+      ],
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "empty",
+      "color": 1,
+      "remaining_ms": 1,
+      "elapsed_ms": 0.197113999092835,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "low_time",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "empty",
+      "color": 1,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.1275850008823909,
+      "allocation_ms": 0.05,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "soft_stop",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "empty",
+      "color": 1,
+      "remaining_ms": 20,
+      "elapsed_ms": 0.9368119990540436,
+      "allocation_ms": 0.9,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 1,
+      "score": null,
+      "candidate_count": 361,
+      "cancellation": "deadline",
+      "tactics_complete": false,
+      "defenses_complete": false,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "empty",
+      "color": 1,
+      "remaining_ms": 200,
+      "elapsed_ms": 9.972949999792036,
+      "allocation_ms": 9.9,
+      "move": [
+        9,
+        9
+      ],
+      "depth": 2,
+      "attempted_depth": 3,
+      "score": 0,
+      "candidate_count": 1,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "empty",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.049869999566,
+      "allocation_ms": 100.0,
+      "move": [
+        9,
+        9
+      ],
+      "depth": 3,
+      "attempted_depth": 4,
+      "score": 1,
+      "candidate_count": 1,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "empty",
+      "color": 1,
+      "remaining_ms": -1,
+      "elapsed_ms": 100.04952099916409,
+      "allocation_ms": 100.0,
+      "move": [
+        9,
+        9
+      ],
+      "depth": 3,
+      "attempted_depth": 4,
+      "score": 1,
+      "candidate_count": 1,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "win",
+      "color": 1,
+      "remaining_ms": 1,
+      "elapsed_ms": 0.2157260005333228,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "low_time",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "win",
+      "color": 1,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.15485999938391615,
+      "allocation_ms": 0.05,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "soft_stop",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "win",
+      "color": 1,
+      "remaining_ms": 20,
+      "elapsed_ms": 0.9418419995199656,
+      "allocation_ms": 0.9,
+      "move": [
+        9,
+        4
+      ],
+      "depth": 0,
+      "attempted_depth": 1,
+      "score": null,
+      "candidate_count": 357,
+      "cancellation": "deadline",
+      "tactics_complete": false,
+      "defenses_complete": false,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "win",
+      "color": 1,
+      "remaining_ms": 200,
+      "elapsed_ms": 9.95259299997997,
+      "allocation_ms": 9.9,
+      "move": [
+        9,
+        9
+      ],
+      "depth": 1,
+      "attempted_depth": 2,
+      "score": 10000,
+      "candidate_count": 24,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "win",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.07765400041535,
+      "allocation_ms": 100.0,
+      "move": [
+        9,
+        9
+      ],
+      "depth": 1,
+      "attempted_depth": 2,
+      "score": 10000,
+      "candidate_count": 24,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "win",
+      "color": 1,
+      "remaining_ms": -1,
+      "elapsed_ms": 100.06724999948347,
+      "allocation_ms": 100.0,
+      "move": [
+        9,
+        9
+      ],
+      "depth": 1,
+      "attempted_depth": 2,
+      "score": 10000,
+      "candidate_count": 24,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "capture-defense",
+      "color": 1,
+      "remaining_ms": 1,
+      "elapsed_ms": 0.11937000090256333,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "low_time",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "capture-defense",
+      "color": 1,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.12983099986740854,
+      "allocation_ms": 0.05,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "soft_stop",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "capture-defense",
+      "color": 1,
+      "remaining_ms": 20,
+      "elapsed_ms": 0.9315150000475114,
+      "allocation_ms": 0.9,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 1,
+      "score": null,
+      "candidate_count": 355,
+      "cancellation": "deadline",
+      "tactics_complete": false,
+      "defenses_complete": false,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "capture-defense",
+      "color": 1,
+      "remaining_ms": 200,
+      "elapsed_ms": 9.954970999388024,
+      "allocation_ms": 9.9,
+      "move": [
+        0,
+        0
+      ],
+      "depth": 0,
+      "attempted_depth": 1,
+      "score": null,
+      "candidate_count": 355,
+      "cancellation": "deadline",
+      "tactics_complete": false,
+      "defenses_complete": false,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "capture-defense",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.08500199910486,
+      "allocation_ms": 100.0,
+      "move": [
+        7,
+        7
+      ],
+      "depth": 2,
+      "attempted_depth": 3,
+      "score": -2,
+      "candidate_count": 1,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "capture-defense",
+      "color": 1,
+      "remaining_ms": -1,
+      "elapsed_ms": 100.03847799998766,
+      "allocation_ms": 100.0,
+      "move": [
+        7,
+        7
+      ],
+      "depth": 2,
+      "attempted_depth": 3,
+      "score": -2,
+      "candidate_count": 1,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "dense",
+      "color": 1,
+      "remaining_ms": 1,
+      "elapsed_ms": 0.5478060011228081,
+      "allocation_ms": 0.0,
+      "move": [
+        0,
+        4
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "low_time",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "dense",
+      "color": 1,
+      "remaining_ms": 3,
+      "elapsed_ms": 0.5593540008703712,
+      "allocation_ms": 0.05,
+      "move": [
+        0,
+        4
+      ],
+      "depth": 0,
+      "attempted_depth": 0,
+      "score": null,
+      "candidate_count": 0,
+      "cancellation": "soft_stop",
+      "tactics_complete": null,
+      "defenses_complete": null,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "dense",
+      "color": 1,
+      "remaining_ms": 20,
+      "elapsed_ms": 1.1463600003480678,
+      "allocation_ms": 0.9,
+      "move": [
+        0,
+        4
+      ],
+      "depth": 0,
+      "attempted_depth": 1,
+      "score": null,
+      "candidate_count": 3,
+      "cancellation": "deadline",
+      "tactics_complete": false,
+      "defenses_complete": false,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "dense",
+      "color": 1,
+      "remaining_ms": 200,
+      "elapsed_ms": 10.34378700023808,
+      "allocation_ms": 9.9,
+      "move": [
+        0,
+        4
+      ],
+      "depth": 1,
+      "attempted_depth": 2,
+      "score": 1,
+      "candidate_count": 3,
+      "cancellation": "deadline",
+      "tactics_complete": false,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "dense",
+      "color": 1,
+      "remaining_ms": 60000,
+      "elapsed_ms": 100.09159299988823,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        4
+      ],
+      "depth": 3,
+      "attempted_depth": 4,
+      "score": 3,
+      "candidate_count": 1,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "dense",
+      "color": 1,
+      "remaining_ms": -1,
+      "elapsed_ms": 100.40267700060213,
+      "allocation_ms": 100.0,
+      "move": [
+        0,
+        4
+      ],
+      "depth": 3,
+      "attempted_depth": 4,
+      "score": 3,
+      "candidate_count": 1,
+      "cancellation": "deadline",
+      "tactics_complete": true,
+      "defenses_complete": true,
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "cumulative",
+      "color": 1,
+      "turn": 0,
+      "remaining_ms": 40.0,
+      "elapsed_ms": 1.9232719987485325,
+      "move": [
+        9,
+        9
+      ],
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "cumulative",
+      "color": 1,
+      "turn": 1,
+      "remaining_ms": 38.07672800125147,
+      "elapsed_ms": 1.845271001002402,
+      "move": [
+        0,
+        1
+      ],
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "cumulative",
+      "color": 1,
+      "turn": 2,
+      "remaining_ms": 36.231457000249065,
+      "elapsed_ms": 1.7495190004410688,
+      "move": [
+        0,
+        3
+      ],
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "cumulative",
+      "color": 1,
+      "turn": 3,
+      "remaining_ms": 34.481937999808,
+      "elapsed_ms": 1.675431998592103,
+      "move": [
+        0,
+        5
+      ],
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "cumulative",
+      "color": 1,
+      "turn": 4,
+      "remaining_ms": 32.806506001215894,
+      "elapsed_ms": 1.5935259998514084,
+      "move": [
+        0,
+        7
+      ],
+      "exceeds_incoming": false
+    },
+    {
+      "fixture": "cumulative",
+      "color": 1,
+      "turn": 5,
+      "remaining_ms": 31.212980001364485,
+      "elapsed_ms": 1.5035859996714862,
+      "move": [
+        0,
+        9
+      ],
+      "exceeds_incoming": false
+    }
+  ]
+}

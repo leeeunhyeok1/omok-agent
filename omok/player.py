@@ -59,7 +59,7 @@ class FixedDepthPlayer:
         return self.last_result.move
 
 
-# AI-written by OpenAI Codex, for issue #11.
+# AI-written by OpenAI Codex, for issues #11 and #12.
 @dataclass(frozen=True, slots=True)
 class TimePolicy:
     max_time_ms: float = 100.0
@@ -98,7 +98,8 @@ class IterativePlayer:
             raise ValueError('Node limit must be a nonnegative integer.')
         self.color, self.max_depth, self.max_nodes = color, max_depth, max_nodes
         self.policy = TimePolicy() if policy is None else policy
-        self.search = FixedDepthSearch() if search is None else search
+        from omok.tactics import TacticalPolicy
+        self.search = FixedDepthSearch(tactics=TacticalPolicy()) if search is None else search
         self.last_result: SearchResult | None = None
         self.last_elapsed_ms: float | None = None
         self.last_allocation_ms: float | None = None

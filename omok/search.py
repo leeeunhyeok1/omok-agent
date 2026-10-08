@@ -1,9 +1,13 @@
-# AI-written by OpenAI Codex, for issues #10 and #11.
+# AI-written by OpenAI Codex, for issues #10, #11 and #12.
 """Fixed-depth and committed iterative search over immutable positions."""
-from dataclasses import dataclass, replace
+from dataclasses import dataclass, replace, field
 from collections.abc import Callable, Iterable, Iterator
 from math import isfinite
 from time import monotonic
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from omok.tactics import TacticalPolicy, TacticalResult
 
 from omok.simulator import Coordinate, EMPTY, Position, SIZE
 
@@ -68,6 +72,8 @@ class SearchResult:
     attempted_depth: int = 0
     principal_variation: tuple[Coordinate, ...] = ()
     pv_status: str = 'unavailable'
+    tactics: 'TacticalResult | None' = None
+    root_candidate_count: int = 0
 
 
 @dataclass(slots=True)
@@ -76,6 +82,10 @@ class _Traversal:
     clock: Callable[[], float]
     nodes: int = 0
     cutoffs: int = 0
+    root: Position | None = None
+    root_tactics: 'TacticalResult | None' = None
+    root_candidate_count: int = 0
+    pv_moves: dict[Position, Coordinate] = field(default_factory=dict)
 
     def check(self) -> None:
         self.limits.check(self.clock)
@@ -93,6 +103,7 @@ class FixedDepthSearch:
                  clock: Callable[[], float] = monotonic,
                  cooperative_candidates: Callable[[Position, Callable[[], None]], Iterable[Coordinate]] | None = None,
                  cooperative_evaluator: Callable[[Position, Callable[[], None]], int] | None = None,
+                 tactics: 'TacticalPolicy | None' = None,
                  ordering: Callable[[Position, Coordinate, Callable[[], None]], int] | None = None) -> None:
         self.candidates = candidates
         self.evaluator = evaluator
@@ -100,6 +111,7 @@ class FixedDepthSearch:
         self.cooperative_candidates = cooperative_candidates
         self.cooperative_evaluator = cooperative_evaluator
         self.ordering = ordering
+        self.tactics = tactics
 
     def score(self, position: Position, perspective: int, *,
               check: Callable[[], None] = lambda: None) -> int:
@@ -123,8 +135,17 @@ class FixedDepthSearch:
     def _moves(self, position: Position, traversal: _Traversal) -> tuple[Coordinate, ...]:
         moves: dict[Coordinate, None] = {}
         traversal.check()
-        source = (self.candidates(position) if self.cooperative_candidates is None else
-                  self.cooperative_candidates(position, traversal.check))
+        report = None
+        source: Iterable[Coordinate]
+        if self.tactics is not None:
+            report = self.tactics.analyze(position, traversal.check)
+            if position == traversal.root:
+                traversal.root_tactics = report
+                traversal.root_candidate_count = len(report.candidates)
+            source = report.candidates
+        else:
+            source = (self.candidates(position) if self.cooperative_candidates is None else
+                      self.cooperative_candidates(position, traversal.check))
         for move in source:
             traversal.check()
             row, col = move
@@ -138,14 +159,25 @@ class FixedDepthSearch:
                 traversal.check()
                 moves[move] = None
         traversal.check()
-        if self.ordering is None:
+        if position == traversal.root:
+            traversal.root_candidate_count = len(moves)
+        if self.ordering is None and self.tactics is None and not traversal.pv_moves:
             return tuple(moves)
         ranked = []
         for move in moves:
             traversal.check()
-            ranked.append((self.ordering(position, move, traversal.check), move))
+            if self.ordering is not None:
+                value = self.ordering(position, move, traversal.check)
+            elif self.tactics is not None:
+                value = self.tactics.ordinary_rank(position, move, traversal.check)
+            else:
+                value = 0
+            priority = 2 if report is not None and move in report.wins else (
+                1 if report is not None and move in report.defenses else 0)
+            ranked.append(((priority, move == traversal.pv_moves.get(position), value), move))
         traversal.check()
-        ranked.sort(key=lambda item: -item[0])
+        from omok.tactics import checked_sorted
+        ranked = checked_sorted(ranked, lambda item: tuple(-v for v in item[0]), traversal.check)
         traversal.check()
         return tuple(move for _, move in ranked)
 
@@ -156,12 +188,16 @@ class FixedDepthSearch:
         if position.outcome != 'ongoing':
             return SearchResult(None, self.score(position, position.side_to_move), True)
         fallback = next(legal_moves(position))
-        traversal = _Traversal(SearchLimits() if limits is None else limits, self.clock)
+        traversal = _Traversal(SearchLimits() if limits is None else limits, self.clock, root=position)
         try:
             return replace(self._root(position, depth, reference, traversal),
-                           completed_depth=depth, attempted_depth=depth, pv_status='complete')
+                           completed_depth=depth, attempted_depth=depth, pv_status='complete',
+                           tactics=traversal.root_tactics, root_candidate_count=traversal.root_candidate_count)
         except SearchCancelled as error:
-            return SearchResult(fallback, None, False, nodes=traversal.nodes,
+            if traversal.root_tactics is not None and traversal.root_tactics.wins:
+                fallback = traversal.root_tactics.wins[0]
+            return SearchResult(fallback, None, False, tactics=traversal.root_tactics,
+                                root_candidate_count=traversal.root_candidate_count, nodes=traversal.nodes,
                                 cutoffs=traversal.cutoffs, cancellation=str(error), attempted_depth=depth)
 
     def _leaf(self, position: Position, perspective: int, traversal: _Traversal) -> int:
@@ -246,7 +282,7 @@ class FixedDepthSearch:
             return SearchResult(None, self.score(position, position.side_to_move), True,
                                 pv_status='complete')
         committed = SearchResult(next(legal_moves(position)), None, False)
-        traversal = _Traversal(SearchLimits() if limits is None else limits, self.clock)
+        traversal = _Traversal(SearchLimits() if limits is None else limits, self.clock, root=position)
         attempted = 0
         try:
             for depth in range(1, max_depth + 1):
@@ -257,8 +293,21 @@ class FixedDepthSearch:
                 traversal.check()
                 result = self._root(position, depth, False, traversal)
                 committed = replace(result, completed_depth=depth, attempted_depth=depth,
-                                    pv_status='complete')
+                                    pv_status='complete', tactics=traversal.root_tactics,
+                                    root_candidate_count=traversal.root_candidate_count)
+                leaf = position
+                traversal.pv_moves.clear()
+                for move in committed.principal_variation:
+                    traversal.check()
+                    traversal.pv_moves[leaf] = move
+                    leaf = leaf.play(move).position
         except SearchCancelled as error:
+            if committed.completed_depth == 0 and traversal.root_tactics is not None:
+                fallback = (traversal.root_tactics.wins[0] if traversal.root_tactics.wins
+                            else committed.move)
+                committed = replace(committed, move=fallback, tactics=traversal.root_tactics,
+                                    root_candidate_count=traversal.root_candidate_count)
             return replace(committed, nodes=traversal.nodes, cutoffs=traversal.cutoffs,
+                           tactics=traversal.root_tactics, root_candidate_count=traversal.root_candidate_count,
                            attempted_depth=attempted, cancellation=str(error))
         return committed

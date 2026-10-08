@@ -193,3 +193,82 @@ python3 -m verification.iterative
 ```
 
 See [issue #11 evidence](verification/issue-11.md).
+
+
+## Issue #12: verified tactics and local candidates
+
+`IterativePlayer` now defaults to `FixedDepthSearch(tactics=TacticalPolicy())`.
+Explicitly supplied engines remain configurable. `FixedDepthSearch()` still defines
+the full legal tree used by the original reference checks. To use tactical membership
+with either recursion, pass `tactics=TacticalPolicy(radius=2, cap=24)`; this policy
+replaces custom candidate callbacks. No optional tactical extensions are added.
+
+`TacticalPolicy.analyze(position, check)` returns immutable `TacticalResult`:
+unique legal `candidates`, separately verified `wins`, initial opponent `threats`,
+and verified `defenses`. `complete`, `wins_complete`, `threats_complete`, and
+`defenses_complete` distinguish completed enumeration from individual verified
+moves. `defenses` is enumerated only when the opponent has a strict immediate
+win; otherwise its completed set is empty. `cancellation` is the shared control
+signal reason. Terminal boards return an empty completed report. `classify`
+distinguishes strict mover win, draw, capture-induced opponent win and continuation
+from the simulator's complete resulting outcome, using explicit mover color.
+
+Immediate wins scan the entire legal board for maximal own runs of exactly five
+through a hypothetical placement, then verify every qualifying move through
+`Position.play`, including captures and both colors' terminal lines. This geometric
+filter is complete on live boards: a mover cannot capture its own stones and any
+new own five must include the placement. It uses no locality or ranking restriction.
+It does not treat overlines or simultaneous wins as strict wins. Captures can
+expose the other color's five, so the filter alone never establishes a win.
+
+When the opponent has immediate wins, every legal response is simulated. An
+already verified threat may refute a response quickly, but a surviving continuation
+must pass a complete immediate-win scan on its resulting board. This includes
+reopened cells and newly created threats. A terminal strict win or draw is a safe
+response; a capture-induced opponent win is rejected. No uniqueness assumption
+is made for the specified `(7, 7)` capture defense. A completed empty defense set
+is not encoded as a forced-loss score: the ordinary tree and normal search score
+remain available.
+
+Ordinary locality uses Chebyshev distance at most `radius` from any occupied cell.
+Defaults are provisional radius 2 and cap 24; radius accepts 0–18, cap any positive
+integer. An empty board opens at `(9, 9)`. If locality yields no cells, ordinary
+selection starts from all legal cells. Default static rank is `19 * adjacent_stones
+- Manhattan_distance_to_center`; it is an untuned ordering aid, never tactical truth.
+`ordinary_rank(position, move, check)` is configurable. It selects ordinary capped
+membership independently of PV or search-ordering hints, with coordinate ties.
+
+Verified wins bypass the ordinary cap. If complete threat enumeration finds safe
+responses, membership contains **every** verified response and win, bypassing the
+cap; other moves are excluded on the basis of complete immediate-loss checks.
+This establishes one-ply safety only. Otherwise membership combines capped
+ordinary choices and all verified wins. `full_width=True` retains all legal moves
+while performing the same tactical validation, for tractable full-width comparisons.
+
+If any tactical or membership work is interrupted, the report retains **all legal
+cells**, ignoring locality and cap. Partially verified defenses remain individual
+proofs only; unexamined responses stay unknown. Search unwinds at the expired
+checkpoint and returns its last complete iteration or legal fallback. Before any
+iteration completes, an independently verified strict win may replace fallback,
+with absent score and depth zero. Later incomplete work never replaces committed
+move, score, depth or PV. `SearchResult.tactics` records the latest root analysis
+and may therefore be incomplete alongside a previously committed result.
+`root_candidate_count` counts that root's selected membership; zero means generation
+was not reached. Skipped low-time tactics have `tactics=None`, not completed safety.
+
+Membership and ordering are separate. Selected moves are ordered by verified win,
+verified defense, previous completed PV hint for the same immutable position, then
+static/user ordering, with stable membership ties. Each iteration's PV hints are
+local and discarded after the call. Deterministic fixed-depth reference calls have
+no prior PV hints, and use the same membership and ordering as fixed-depth alpha-beta.
+Iterative hints change ordering only. `SearchLimits.check` runs inside tactical
+loops, locality, rank generation, sort comparisons, PV hint construction and the
+existing recursion. `max_nodes` still counts recursive visits, not tactical simulator
+probes. Conversion, each simulator transition and blocking custom callbacks remain
+atomic cooperative work. No table or persistent tactical cache is introduced.
+
+Run `python3 -m unittest tests.test_tactics -v` and
+`python3 -m verification.tactics`. The latter exhaustively compares independently
+resolved reference replies on small live fixtures, then records actual public turn
+clocks including a decreasing cumulative clock. See
+[issue-12.md](verification/issue-12.md) for acceptance evidence and timing limits.
