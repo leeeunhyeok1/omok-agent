@@ -51,11 +51,21 @@ no offline runner, supplied bot, network, or third-party dependency is imported.
 `offline.opponents.SeededSmokePlayer` uniformly chooses an empty cell using its
 own seeded random generator. It is independently AI-authored and is **not** the
 professor's `RandomPlayer`. Each CLI invocation instantiates fresh independent
-players with their assigned colors. Supplied `players/randomplayer.py` and
-`players/simpleplayer.py` show `Player(color)`, `self.color`, list-style board access,
-and `take_turn(board, time)`. Both import the absent `player` module. They are
-unchanged; no guessed base class or official-compatible adapter is supplied.
-Their unlimited-time interpretation and full inheritance integration remain pending.
+players with their assigned colors. `--opponent random` and `--opponent simple`
+select the unchanged supplied bots. `offline.provided.load_players()` loads their
+recovered release `players/player.py` base under a unique module name and temporarily
+aliases it as `player` for the original imports, restoring the previous alias.
+Use this trusted loader before threaded work; its import alias is process-global.
+Each `create(name, color)` constructs fresh state. Its `baseline` class inherits
+both `LegalBaseline` and the real abstract `Player`, explicitly initializing both;
+move selection and board ownership remain in `LegalBaseline`. This development
+adapter lives outside the submitted agent and adds no strategy or move repair.
+The base stores only `self.color` and requires `take_turn(board, time)`. Supplied
+bots use nested indexing and ignore `time`; no concrete board or coordinate type,
+or official unlimited-time translation, is specified by these sources.
+The CLI seeds the original RandomPlayer's module-global RNG once per subprocess;
+it does not replace its strategy. Full integration uses finite clocks. Local `-1`
+remains a development convention. See [issue #7 evidence](verification/issue-7.md).
 
 `offline.runner.run_game` accepts players in black/white order, an optional owned
 `Position`, per-color budgets, a move cap, and a monotonic clock. The Python API
@@ -152,6 +162,19 @@ summary in `docs/verification/issue-4-smoke.json`. It distinguishes eight regula
 and unlimited probes. Seeds are 20261008–20261011 in both colors. Local timing may
 change selected moves when the baseline's optional scan reaches its wall deadline;
 a seed alone does not guarantee identical games across hardware.
+
+`python3 -m verification.provided` runs four games per baseline color against
+each supplied bot, serially, with 60,000 ms total per player, a 1,000-move cap,
+and a 180-second external deadline per process. Each returned trace is replayed.
+It saves traces under `.scratch/issue-7-integration/` and a report under
+`docs/verification/issue-7-integration.json`. Failed process exits and external
+timeouts are reported separately from runner failures; a terminated process does
+not identify the offending player or provide a complete replay. The report is
+updated after each game. `--budget-ms 1000 --move-cap 2 --output .scratch/screen.json
+--traces .scratch/screen` is labeled cheaper screening; it is not official-budget
+evidence. Source hashes include the base and both unchanged bots in trace config,
+plus the underlying baseline implementation and the adapter's defining source.
+This is integration evidence, without tournament scoring or strength claims.
 
 Issue #5 updates to the player, tests, smoke reporting option, and documentation
 were AI-written by OpenAI Codex. `--issue 5` saves separate smoke summaries in

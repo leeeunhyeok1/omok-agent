@@ -1,7 +1,7 @@
 # omok-agent
 
 Omok++ simulator, verified one-ply baseline, bounded local runner, and versioned
-record/replay implemented for GitHub issues #3–#6. Python **3.14.3** is the
+record/replay and supplied-player integration implemented for GitHub issues #3–#7. Python **3.14.3** is the
 verified local runtime; the grader runtime is not yet known. Engine and rule
 verification use only Python's standard library.
 
@@ -14,6 +14,8 @@ python3 -m offline --seed 20261008 --output .scratch/game.json
 python3 -m offline --replay .scratch/game.json
 python3 -m verification.smoke --issue 5
 python3 -m verification.smoke --issue 6
+python3 -m offline --opponent simple --baseline-color white --output .scratch/provided.json
+python3 -m verification.provided
 ```
 
 The differential command defaults to 16 ordinary and 16 capture-biased sequences,
@@ -26,8 +28,10 @@ See [the simulator contract](docs/simulator.md) and
 
 `omok/` is the engine and development player; `offline/` contains the runner and local smoke opponent. `verification/` contains the independent offline reference
 and checks; `tests/` contains deterministic public-boundary fixtures.
-`players/` holds the unchanged professor-provided bots. Their `player` base module
-is absent, so official player integration remains pending. The local player and runner contracts and commands are documented in
+`players/` holds the unchanged professor-provided bots and recovered release base.
+Thin offline adapters verify inheritance without adding opponent imports to the
+agent. See [issue #7 compatibility evidence](docs/verification/issue-7.md).
+The local player and runner contracts and commands are documented in
 [docs/runner.md](docs/runner.md). Search and final submission packaging are deferred.
 
 Earlier AI attribution and interaction records are in [llm-usage](llm-usage/README.md).
