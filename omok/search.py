@@ -1,15 +1,16 @@
-# AI-written by OpenAI Codex, for issues #10, #11 and #12.
+# AI-written by OpenAI Codex, for issues #10–#13.
 """Fixed-depth and committed iterative search over immutable positions."""
 from dataclasses import dataclass, replace, field
 from collections.abc import Callable, Iterable, Iterator
 from math import isfinite
 from time import monotonic
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Hashable
 
 if TYPE_CHECKING:
     from omok.tactics import TacticalPolicy, TacticalResult
 
 from omok.simulator import Coordinate, EMPTY, Position, SIZE
+from omok.transposition import Bound, TableEntry, TranspositionTable
 
 WIN_SCORE = 10000
 EVALUATION_LIMIT = 4000
@@ -82,6 +83,8 @@ class _Traversal:
     clock: Callable[[], float]
     nodes: int = 0
     cutoffs: int = 0
+    compatibility: Hashable = None
+    use_table: bool = True
     root: Position | None = None
     root_tactics: 'TacticalResult | None' = None
     root_candidate_count: int = 0
@@ -97,6 +100,17 @@ class _Traversal:
         self.nodes += 1
 
 
+@dataclass(frozen=True, slots=True, eq=False)
+class _Identity:
+    value: object
+
+    def __hash__(self) -> int:
+        return id(self.value)
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, _Identity) and self.value is other.value
+
+
 class FixedDepthSearch:
     def __init__(self, *, candidates: CandidateSource = legal_moves,
                  evaluator: Evaluator = material_evaluation,
@@ -104,7 +118,9 @@ class FixedDepthSearch:
                  cooperative_candidates: Callable[[Position, Callable[[], None]], Iterable[Coordinate]] | None = None,
                  cooperative_evaluator: Callable[[Position, Callable[[], None]], int] | None = None,
                  tactics: 'TacticalPolicy | None' = None,
-                 ordering: Callable[[Position, Coordinate, Callable[[], None]], int] | None = None) -> None:
+                 ordering: Callable[[Position, Coordinate, Callable[[], None]], int] | None = None,
+                 table: TranspositionTable | None = None,
+                 compatibility: Hashable = None) -> None:
         self.candidates = candidates
         self.evaluator = evaluator
         self.clock = clock
@@ -112,6 +128,27 @@ class FixedDepthSearch:
         self.cooperative_evaluator = cooperative_evaluator
         self.ordering = ordering
         self.tactics = tactics
+        self.table = table
+        self.compatibility = compatibility
+        self._cache_namespace = object()
+
+    def cache_compatibility(self) -> Hashable:
+        """Snapshot policy identity; bump compatibility for in-place callback changes."""
+        signature = (self._cache_namespace, self.compatibility,
+                     *(_Identity(value) for value in (
+                         self.candidates, self.evaluator, self.cooperative_candidates,
+                         self.cooperative_evaluator, self.tactics, self.ordering)),
+                     WIN_SCORE, EVALUATION_LIMIT, 'no-extensions-v1')
+        hash(signature)
+        return signature
+
+    def _store(self, position: Position, depth: int, value: int,
+               bound: Bound, line: tuple[Coordinate, ...], traversal: _Traversal) -> None:
+        traversal.check()
+        if self.table is not None:
+            self.table.store(position, traversal.compatibility,
+                             TableEntry(depth, value, bound,
+                                        line[0] if line else None, line))
 
     def score(self, position: Position, perspective: int, *,
               check: Callable[[], None] = lambda: None) -> int:
@@ -132,7 +169,8 @@ class FixedDepthSearch:
             raise ValueError('Evaluator must return a bounded black-centric integer.')
         return value if perspective == 0 else -value
 
-    def _moves(self, position: Position, traversal: _Traversal) -> tuple[Coordinate, ...]:
+    def _moves(self, position: Position, traversal: _Traversal,
+               hint: Coordinate | None = None) -> tuple[Coordinate, ...]:
         moves: dict[Coordinate, None] = {}
         traversal.check()
         report = None
@@ -161,7 +199,11 @@ class FixedDepthSearch:
         traversal.check()
         if position == traversal.root:
             traversal.root_candidate_count = len(moves)
-        if self.ordering is None and self.tactics is None and not traversal.pv_moves:
+        if hint is None and self.table is not None and traversal.use_table:
+            hint = self.table.hint(position, traversal.compatibility)
+        if not self._valid_hint(hint, moves):
+            hint = None
+        if self.ordering is None and self.tactics is None and not traversal.pv_moves and hint not in moves:
             return tuple(moves)
         ranked = []
         for move in moves:
@@ -174,12 +216,17 @@ class FixedDepthSearch:
                 value = 0
             priority = 2 if report is not None and move in report.wins else (
                 1 if report is not None and move in report.defenses else 0)
-            ranked.append(((priority, move == traversal.pv_moves.get(position), value), move))
+            ranked.append(((priority, move == traversal.pv_moves.get(position) or move == hint, value), move))
         traversal.check()
         from omok.tactics import checked_sorted
         ranked = checked_sorted(ranked, lambda item: tuple(-v for v in item[0]), traversal.check)
         traversal.check()
         return tuple(move for _, move in ranked)
+
+    @staticmethod
+    def _valid_hint(hint: Coordinate | None, moves: Iterable[Coordinate]) -> bool:
+        return (type(hint) is tuple and len(hint) == 2
+                and all(type(cell) is int for cell in hint) and hint in moves)
 
     def search(self, position: Position, depth: int, *,
                reference: bool = False, limits: SearchLimits | None = None) -> SearchResult:
@@ -188,7 +235,9 @@ class FixedDepthSearch:
         if position.outcome != 'ongoing':
             return SearchResult(None, self.score(position, position.side_to_move), True)
         fallback = next(legal_moves(position))
-        traversal = _Traversal(SearchLimits() if limits is None else limits, self.clock, root=position)
+        traversal = _Traversal(SearchLimits() if limits is None else limits, self.clock,
+                               compatibility=self.cache_compatibility(), use_table=not reference,
+                               root=position)
         try:
             return replace(self._root(position, depth, reference, traversal),
                            completed_depth=depth, attempted_depth=depth, pv_status='complete',
@@ -230,6 +279,8 @@ class FixedDepthSearch:
             elif value == best:
                 optimal.append(move)
         traversal.check()
+        if not reference:
+            self._store(position, depth, best, 'exact', best_line, traversal)
         return SearchResult(optimal[0], best, True, tuple(optimal) if reference else None,
                             traversal.nodes, traversal.cutoffs, principal_variation=best_line)
 
@@ -253,11 +304,35 @@ class FixedDepthSearch:
                     ) -> tuple[int, tuple[Coordinate, ...]]:
         """Fail-soft: return the best observed value even beyond the window."""
         traversal.visit()
-        if position.outcome != 'ongoing' or depth == 0:
+        # Terminal side_to_move retains the mover: score by explicit perspective.
+        if position.outcome != 'ongoing':
             return self._leaf(position, perspective, traversal), ()
+        entry = (None if self.table is None else
+                 self.table.probe(position, traversal.compatibility, depth))
+        if depth == 0:
+            if entry is not None and entry.bound == 'exact':
+                return entry.score, ()
+            value = self._leaf(position, perspective, traversal)
+            self._store(position, depth, value, 'exact', (), traversal)
+            return value, ()
+        moves = self._moves(position, traversal, None if entry is None else entry.best_move)
+        # A malformed or no-longer-selected move cannot provide a usable value/PV.
+        if (entry is not None and self._valid_hint(entry.best_move, moves)
+                and entry.principal_variation and entry.principal_variation[0] == entry.best_move):
+            if entry.bound == 'exact':
+                return entry.score, entry.principal_variation
+            if entry.bound == 'lower':
+                alpha = max(alpha, entry.score)
+            else:
+                beta = min(beta, entry.score)
+            if alpha >= beta:
+                traversal.cutoffs += 1
+                return entry.score, entry.principal_variation
+        # Classify against the effective window, AFTER any cached tightening.
+        start_alpha, start_beta = alpha, beta
         best = -FULL_WINDOW
         best_line: tuple[Coordinate, ...] = ()
-        for move in self._moves(position, traversal):
+        for move in moves:
             traversal.check()
             child = position.play(move).position
             value, line = self._alpha_beta(child, depth - 1, 1 - perspective,
@@ -268,6 +343,8 @@ class FixedDepthSearch:
             if alpha >= beta:
                 traversal.cutoffs += 1
                 break
+        bound: Bound = 'upper' if best <= start_alpha else 'lower' if best >= start_beta else 'exact'
+        self._store(position, depth, best, bound, best_line, traversal)
         return best, best_line
 
     def iterative(self, position: Position, max_depth: int, *,
@@ -282,7 +359,8 @@ class FixedDepthSearch:
             return SearchResult(None, self.score(position, position.side_to_move), True,
                                 pv_status='complete')
         committed = SearchResult(next(legal_moves(position)), None, False)
-        traversal = _Traversal(SearchLimits() if limits is None else limits, self.clock, root=position)
+        traversal = _Traversal(SearchLimits() if limits is None else limits, self.clock,
+                               compatibility=self.cache_compatibility(), root=position)
         attempted = 0
         try:
             for depth in range(1, max_depth + 1):

@@ -99,7 +99,8 @@ class IterativePlayer:
         self.color, self.max_depth, self.max_nodes = color, max_depth, max_nodes
         self.policy = TimePolicy() if policy is None else policy
         from omok.tactics import TacticalPolicy
-        self.search = FixedDepthSearch(tactics=TacticalPolicy()) if search is None else search
+        from omok.transposition import TranspositionTable
+        self.search = FixedDepthSearch(tactics=TacticalPolicy(), table=TranspositionTable()) if search is None else search
         self.last_result: SearchResult | None = None
         self.last_elapsed_ms: float | None = None
         self.last_allocation_ms: float | None = None

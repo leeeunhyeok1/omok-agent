@@ -272,3 +272,95 @@ Run `python3 -m unittest tests.test_tactics -v` and
 resolved reference replies on small live fixtures, then records actual public turn
 clocks including a decreasing cumulative clock. See
 [issue-12.md](verification/issue-12.md) for acceptance evidence and timing limits.
+
+
+## Issue #13: bounded compatible transpositions
+
+`FixedDepthSearch(table=TranspositionTable(capacity=4096), compatibility=...)`
+enables caching. The default fixed-depth engine remains uncached; the default
+`IterativePlayer` owns a 4096-entry table. Reference recursion neither probes nor
+stores table entries or uses table hints. Root searches still regenerate membership
+and traverse root children, preserving root tactical diagnostics and committing
+only completed roots. Completed roots are stored for later ordering hints.
+
+### Identity and compatibility
+
+Keys contain the full immutable `Position` (361 cells, explicit side to move and
+rule-derived outcome/reason), compatibility snapshot and **exact** remaining depth.
+Python's dictionary hash locates entries; full equality checks resolve collisions.
+No side is inferred from stone counts, and no capture totals enter identity. There
+is no incremental/reversible hash to restore after captures or cancellation.
+Terminal nodes are resolved before probing, using the explicit score perspective
+because terminal simulator positions retain the mover as `side_to_move`.
+
+`engine.cache_compatibility()` exposes the current namespace for diagnostics and
+controlled fixtures. Each engine has its own namespace, even if engines share a
+table. Snapshots retain callback identities for evaluator, cooperative evaluator,
+candidates, cooperative candidates, tactics and ordering; replacing any of them
+segregates values and hints. Score bounds and the no-extensions policy version also
+belong to the snapshot. Identity wrappers retain strong references, preventing
+callback-ID reuse. Frozen `TacticalPolicy` replacement automatically segregates
+its radius, cap, full-width and ordinary-rank changes.
+
+`engine.compatibility` is an explicit hashable version token. Bump it whenever
+mutable callback state changes evaluation, membership, extensions or score meaning.
+For example, set `engine.compatibility = ('evaluation-v2', 'tactics-v3')` after
+changing weights captured by an evaluator closure. Callbacks must be deterministic
+for their position/configuration, and configuration must remain stable throughout
+one search call. Future tactical extensions must version their complete tree policy
+through this mechanism. Mutating a closure without updating the token violates the
+cache contract. Arbitrary callback dependencies cannot be inferred automatically.
+
+Both verification and production reuse values only at **equal** remaining depth
+and matching policy. There is no production minimum-depth substitution: a deeper
+heuristic score is not represented as the shallower fixed-depth value. The newest
+retained compatible move can order another depth, after validating built-in integer
+coordinates, legality and current candidate membership. Hints never add candidates,
+alter ordinary capped membership or outrank verified wins/defenses.
+
+### Bounds, lines and interruption
+
+`TableEntry` records depth, fail-soft score, `exact`/`lower`/`upper`, best move and
+a replayable principal variation. Exact compatible values return directly. A lower
+bound raises alpha; an upper bound lowers beta. A closed window returns that bound.
+Otherwise save the **tightened** alpha/beta window before exploring children. A
+completed value at or below that alpha is upper; at or above that beta is lower;
+strictly between is exact. This conservative rule avoids classifying a fail against
+a cached tightening as exact. Opposite bounds are not merged into exact entries.
+Existing exact entries are protected against replacement by a weaker bound.
+
+Nonleaf value probes also require their best move to be legal and selected in the
+current candidates, and their saved line to start with that move. Leaf evaluations
+are stored only after the evaluator and final cancellation check complete. Other
+nodes and roots store only after all required children or a valid alpha-beta cutoff
+finish and the final checkpoint succeeds. A cutoff establishes a completed bound,
+not an exact full-window result. Cancellation and unexpected exceptions retain
+fully completed children but create no entry for the incomplete ancestor. Iterative
+move, score, depth and PV remain those of the last completed root iteration; partial
+work does not overwrite the commitment. Unexpected errors continue to propagate.
+
+Scores retain the fixed `+/-10000` win convention without mate-distance encoding,
+so no ply normalization is needed. Saved PVs preserve the existing complete-line
+contract on exact hits, through the depth horizon or an earlier terminal.
+
+### Memory, replacement and lifecycle
+
+`TranspositionTable` has an immutable nonnegative entry capacity (zero disables
+storage), `probe`, `store`, `hint`, `clear`, `len(table)`, `hits` and `evictions`.
+Replacement evicts the oldest stored entry; replacing a key makes it newest.
+Probes do not refresh age. The secondary hint index has at most one pointer per
+retained position/configuration and releases pointers on replacement/eviction.
+PV payloads are capped at 64 plies; longer completed lines are simply not stored.
+Thus count and engine-generated board/line payloads remain bounded. Version tokens
+and custom callbacks are caller-owned configuration objects; their own allocation
+is outside the table's control. Eviction changes available acceleration only.
+
+Tables persist across turns. Use `player.search.table.clear()` at a new-game
+boundary, or construct a new player; no game boundary is guessed from board counts.
+A version change segregates rather than immediately deletes old entries, which
+remain within the same capacity and age out. `clear()` immediately releases all
+entries/hints and resets counters. Clearing is also available after a configuration
+change when retaining old namespaces is undesirable.
+
+Run `python3 -m unittest tests.test_transposition -v`. See
+[issue #13 acceptance](verification/issue-13.md) for checks and review evidence.

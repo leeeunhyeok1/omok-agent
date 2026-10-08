@@ -38,7 +38,8 @@ and deterministic unpruned reference; [docs/search.md](docs/search.md) describes
 the APIs, score bounds and cancellation behavior. `LegalBaseline` remains available.
 Issue #11 adds committed iterative deepening and remaining-total-clock allocation
 through `IterativePlayer`. Issue #12 adds verified immediate tactics and configurable
-local candidates to its default engine; caching and final packaging are deferred.
+local candidates to its default engine. Issue #13 adds a bounded transposition
+table with strict depth/policy compatibility; final packaging remains deferred.
 
 ```sh
 python3 -m unittest tests.test_search -v
@@ -47,6 +48,7 @@ python3 -m unittest tests.test_iterative -v
 python3 -m verification.iterative
 python3 -m unittest tests.test_tactics -v
 python3 -m verification.tactics
+python3 -m unittest tests.test_transposition -v
 python3 -I -S verification/offline_engine.py --search
 ```
 
