@@ -113,3 +113,14 @@ opportunity/risk weights and rule-correct prospective outcomes. See
 python3 -m verification.captures --repetitions 5
 python3 -m unittest tests.test_captures -q
 ```
+
+Issue #20 adds experimental capture-effect and endpoint-multiplicity inspection,
+shared capture defenders, and context-consistent opportunity/urgency weights.
+The Phase 2 default remains active because profiling shows a substantial runtime
+cost. See [definitions](docs/evaluation.md) and [acceptance evidence](docs/verification/issue-20.md).
+
+```sh
+python3 -m verification.threat_effects --repetitions 5
+python3 -m verification.threat_effects --games
+python3 -m unittest tests.test_threat_effects -q
+```

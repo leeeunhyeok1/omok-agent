@@ -307,3 +307,97 @@ on empty, single/multiple, edge, capture-defense, opponent-win, draw, strict-win
 and seeded dense boards. It records raw inspection, enabled/disabled totals and
 static evaluation timings. This is correctness/cost evidence, not a playing
 strength comparison or full Phase 3 acceptance.
+
+## Capture effects and multiplicity (`effects-v1`, issue #20)
+
+`configs/effects-v1.json` is an **experimental** opt-in configuration. The public
+Phase 2 material default and its checkpoint remain available. This is a separate
+implementation decision record; it does not modify the supplied phase specification.
+All earlier configuration JSON schemas and identities are preserved. A shared
+version/family schema now handles validation, serialization and coefficient enablement.
+
+Capture effects recompute all implemented line families on the actual after-move
+board, including lines through removed cells away from the placement. Removed
+stones remain empty. Fours are identified by canonical occupied-cell tuples;
+open/closed categories share a unit when they have the same stones. Potential
+units retain the existing open-three, broken-three and two-stone definitions.
+Before/after set differences expose removed/created units, per-family counts,
+deduplicated geometric/verified endpoints, maximal exact fives and overlines.
+Each effect's outcome/classification comes from the simulator and Phase 2 tactics.
+
+The six effect coefficients count **unique legal capture moves**, once per named
+condition, rather than counting removed stones or claiming independent attacks:
+
+| Feature | Condition | Provisional weight |
+| --- | --- | ---: |
+| `capture_break_four` | At least one opponent four unit disappears | 120 |
+| `capture_break_potential` | At least one opponent potential unit disappears | 20 |
+| `capture_create_four` | At least one mover four unit appears | 80 |
+| `capture_create_potential` | At least one mover potential unit appears | 15 |
+| `capture_remove_blocker` | Removing captured stones enables a mover four/potential unit | 25 |
+| `capture_expose_five` | At least one new opponent maximal exact five appears | -300 |
+
+The first five count only continuation/mover-win captures; draws and opponent-win
+captures remain inspectable but do not earn these attack/defense bonuses.
+`capture_expose_five` also describes simultaneous-win draws. Creation/destruction
+compares the whole move (placement plus removal). Blocker removal additionally
+compares the resolved board with a **geometric counterfactual** retaining the
+captured opponent stones while retaining the new placement. Its new-unit set
+isolates removal from placement. This counterfactual is never a legal outcome
+or a tactical proof. Several bonuses can deliberately overlap for the same move;
+existing capture opportunity/risk and line weights also overlap with these effects.
+A disappearing unit can become another potential unit; raw changes expose both.
+
+Multiplicity uses canonical coordinate sets, not window or axis counts:
+
+| Feature | Per-color counted value | Provisional weight |
+| --- | --- | ---: |
+| `geometric_multiple` | 1 when at least two distinct geometric endpoints coexist | 0 |
+| `verified_multiple` | 1 when at least two strict-win endpoints coexist | 50 |
+| `offensive_opportunity` | Number of strict-win endpoints if that color moves next | 60 |
+| `defensive_urgency` | Number of strict-win endpoints if the other color moves next | 100 |
+
+Neither multiplicity coefficient proves a forced win. Ordinary leaves reuse the
+line scanner's Phase 2 verified endpoints and perform **no defender enumeration**.
+Full inspection enumerates all legal defender moves using `TacticalPolicy` and
+exposes `shared_defenders` and `shared_capture_defenders`. `independence` means
+`verified` only if there are at least two distinct verified endpoints and complete
+verification finds no safe response; `refuted` means a shared safe response exists;
+`unknown` means unverified evidence, and `not_applicable` means fewer than two.
+This is the immediate-reply horizon with the defender moving first, independent
+of the actual board's turn; it does not solve longer play. A defender's own win
+or draw also refutes independence. Captures that introduce new opponent winning
+replies are rejected by the established tactical detector. Cancellation hides
+all partial inspection families and records `incomplete`/`cancellation`.
+
+With context fixed, every family contributes black's value minus white's value.
+The context-dependent opportunity/urgency counts follow that same construction.
+Search negates this single scalar for White, and swapping board colors plus side
+to move negates the black-centric scalar. Thus swapping perspective as well
+preserves the corresponding value. No independent own-minus-scaled-opponent
+formula is used. All coefficients retain the integer [-4000, 4000] bounds;
+booleans remain separate `effects_enabled` and `multiplicity_enabled` switches.
+The final static scalar saturates at +/-4000, below terminal +/-10000. Configuration
+identity includes enablement and every coefficient; changing it clears the table.
+
+Use the existing CLI for full position inspection:
+
+```sh
+python3 -m verification.evaluation --config configs/effects-v1.json --position board.json
+python3 -m verification.threat_effects --repetitions 5
+python3 -m verification.threat_effects --games
+python3 -m unittest tests.test_threat_effects -q
+```
+
+For any legal move, `ConfiguredEvaluator.inspect_move(position, move)` reports
+before/after inspections and per-color `created_verified_endpoints`. These endpoint
+sets include noncapture placements, remain deduplicated across intersecting lines,
+and inherit the after-position shared-defender evidence. Terminal outcomes remain
+separate from continuation sets. Inspection recomputes even disabled families;
+production ablations skip their work and contribute zero.
+
+Effect recomputation is intentionally a full-board feature reference, not an
+incremental optimization. Sparse measured calls were about 18–38 ms; the dense
+capture-heavy sample was about 1.16 seconds without a deadline. All work checks
+cooperative cancellation. This configuration is unsuitable for default promotion
+on these measurements. See [issue #20 evidence](verification/issue-20.md).

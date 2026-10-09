@@ -1,4 +1,4 @@
-# AI-written by OpenAI Codex, for issues #17 and #18.
+# AI-written by OpenAI Codex, for issues #17, #18 and #20.
 """Full recomputation of canonical fours and unique completion coordinates."""
 from collections.abc import Callable
 from typing import Any
@@ -20,6 +20,10 @@ def line_features(position: Position, check: Callable[[], None], *,
         report: dict[str, Any] = dict.fromkeys(LINE_FEATURES, 0)
         units: dict[str, set[tuple[tuple[int, int], ...]]] = {
             name: set() for name in POTENTIAL_FEATURES}
+        four_units: dict[str, set[tuple[tuple[int, int], ...]]] = {
+            name: set() for name in ('open_four', 'closed_four', 'broken_four')}
+        exact_fives = set()
+        overlines = set()
         completions = set()
         traps = set()
         # Each axis traverses each maximal board line once, in its canonical direction.
@@ -71,7 +75,13 @@ def line_features(position: Position, check: Callable[[], None], *,
                             openings = sum(0 <= i < len(values) and values[i] == EMPTY
                                            for i in (start - 1, end))
                             if openings:
-                                report['open_four' if openings == 2 else 'closed_four'] += 1
+                                name = 'open_four' if openings == 2 else 'closed_four'
+                                report[name] += 1
+                                four_units[name].add(tuple(cells[start:end]))
+                        if end - start == 5:
+                            exact_fives.add(tuple(cells[start:end]))
+                        elif end - start >= 6:
+                            overlines.add(tuple(cells[start:end]))
                         start = max(start + 1, end)
                     for i, value in enumerate(values):
                         check()
@@ -89,6 +99,7 @@ def line_features(position: Position, check: Callable[[], None], *,
                             completions.add(cells[i])
                             if left < i - 1 and right > i + 1:
                                 report['broken_four'] += 1
+                                four_units['broken_four'].add(tuple(cells[j] for j in range(left + 1, right) if j != i))
         check()
         # The established tactical detector resolves captures and both-color outcomes.
         # Terminal input has no legal continuations; static geometry remains inspectable.
@@ -97,7 +108,9 @@ def line_features(position: Position, check: Callable[[], None], *,
         check()
         report.update(geometric_completion=len(completions), verified_win=len(wins),
                       overline_trap=len(traps), geometric_completions=sorted(completions),
-                      verified_wins=list(wins), overline_traps=sorted(traps))
+                      verified_wins=list(wins), overline_traps=sorted(traps),
+                      units={name: sorted(items) for name, items in four_units.items()},
+                      exact_fives=sorted(exact_fives), overlines=sorted(overlines))
         reports.append(report)
         potentials.append({**{name: len(units[name]) for name in POTENTIAL_FEATURES},
                            'units': {name: sorted(units[name]) for name in POTENTIAL_FEATURES}})

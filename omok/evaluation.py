@@ -1,4 +1,4 @@
-# AI-written by OpenAI Codex, for issues #16–#19.
+# AI-written by OpenAI Codex, for issues #16–#20.
 """Immutable material/line semantics and independently persisted coefficients."""
 from collections.abc import Callable
 from dataclasses import dataclass, fields
@@ -8,14 +8,26 @@ from pathlib import Path
 from typing import Any
 
 from omok.search import EVALUATION_LIMIT, SearchCancelled, material_evaluation
-from omok.simulator import Position
+from omok.simulator import Coordinate, Position
 from omok.captures import CAPTURE_FEATURES, capture_features
 from omok.lines import LINE_FEATURES, POTENTIAL_FEATURES, line_features
+from omok.threat_effects import EFFECT_FEATURES, MULTIPLICITY_FEATURES, capture_effects, multiplicity_features
 
 FEATURE_VERSION = 'material-v1'
 LINE_VERSION = 'lines-v1'
 POTENTIAL_VERSION = 'potential-v1'
 CAPTURE_VERSION = 'capture-v1'
+EFFECT_VERSION = 'effects-v1'
+VERSION_FAMILIES = {
+    FEATURE_VERSION: ('material',),
+    LINE_VERSION: ('material', 'lines'),
+    POTENTIAL_VERSION: ('material', 'lines', 'potential'),
+    CAPTURE_VERSION: ('material', 'lines', 'potential', 'captures'),
+    EFFECT_VERSION: ('material', 'lines', 'potential', 'captures', 'effects', 'multiplicity'),
+}
+FAMILY_FEATURES = {'material': ('material',), 'lines': LINE_FEATURES,
+                   'potential': POTENTIAL_FEATURES, 'captures': CAPTURE_FEATURES,
+                   'effects': EFFECT_FEATURES, 'multiplicity': MULTIPLICITY_FEATURES}
 
 
 @dataclass(frozen=True, slots=True)
@@ -43,51 +55,46 @@ class EvaluationConfig:
     multi_pair_move: int = 20
     vulnerable_pair: int = -40
 
+    effects_enabled: bool = True
+    capture_break_four: int = 120
+    capture_break_potential: int = 20
+    capture_create_four: int = 80
+    capture_create_potential: int = 15
+    capture_remove_blocker: int = 25
+    capture_expose_five: int = -300
+
+    multiplicity_enabled: bool = True
+    geometric_multiple: int = 0
+    verified_multiple: int = 50
+    offensive_opportunity: int = 60
+    defensive_urgency: int = 100
+
     def __post_init__(self) -> None:
-        if type(self.feature_version) is not str or self.feature_version not in (FEATURE_VERSION, LINE_VERSION, POTENTIAL_VERSION, CAPTURE_VERSION):
+        if type(self.feature_version) is not str or self.feature_version not in VERSION_FAMILIES:
             raise ValueError('Unsupported feature version.')
-        if type(self.material) is not int or not -4000 <= self.material <= 4000:
-            raise ValueError('Material coefficient must be an integer in [-4000, 4000].')
-        for field in fields(self):
-            if field.name not in (*LINE_FEATURES, *POTENTIAL_FEATURES, *CAPTURE_FEATURES):
-                continue
-            value = getattr(self, field.name)
-            if type(value) is not int or not -4000 <= value <= 4000:
-                raise ValueError('Line coefficient must be an integer in [-4000, 4000].')
-            supported = (self.feature_version != FEATURE_VERSION if field.name in LINE_FEATURES
-                         else self.feature_version == CAPTURE_VERSION if field.name in CAPTURE_FEATURES
-                         else self.feature_version in (POTENTIAL_VERSION, CAPTURE_VERSION))
-            if not supported and value != field.default:
-                raise ValueError('Coefficient requires its feature version.')
-        if self.feature_version == FEATURE_VERSION and self.lines_enabled is not True:
-            raise ValueError('Line enablement requires lines-v1.')
-        if self.feature_version not in (POTENTIAL_VERSION, CAPTURE_VERSION) and self.potential_enabled is not True:
-            raise ValueError('Potential enablement requires potential-v1.')
-        if self.feature_version != CAPTURE_VERSION and self.captures_enabled is not True:
-            raise ValueError('Capture enablement requires capture-v1.')
-        if any(type(value) is not bool for value in
-               (self.lines_enabled, self.material_enabled, self.potential_enabled, self.captures_enabled)):
-            raise ValueError('Family enablement must be boolean.')
+        supported = VERSION_FAMILIES[self.feature_version]
+        defaults = {field.name: field.default for field in fields(self)}
+        for family, names in FAMILY_FEATURES.items():
+            enabled = getattr(self, family + '_enabled')
+            if type(enabled) is not bool:
+                raise ValueError('Family enablement must be boolean.')
+            if family not in supported and not enabled:
+                raise ValueError('Family enablement requires its feature version.')
+            for name in names:
+                value = getattr(self, name)
+                if type(value) is not int or not -4000 <= value <= 4000:
+                    raise ValueError('Coefficient must be an integer in [-4000, 4000].')
+                if family not in supported and value != defaults[name]:
+                    raise ValueError('Coefficient requires its feature version.')
 
     def coefficients(self) -> dict[str, int]:
-        names: tuple[str, ...] = ('material',)
-        if self.feature_version != FEATURE_VERSION:
-            names += LINE_FEATURES
-        if self.feature_version in (POTENTIAL_VERSION, CAPTURE_VERSION):
-            names += POTENTIAL_FEATURES
-        if self.feature_version == CAPTURE_VERSION:
-            names += CAPTURE_FEATURES
-        return {name: getattr(self, name) for name in names}
+        return {name: getattr(self, name)
+                for family in VERSION_FAMILIES[self.feature_version]
+                for name in FAMILY_FEATURES[family]}
 
     def enabled_families(self) -> list[str]:
-        families = ['material'] if self.material_enabled else []
-        if self.feature_version != FEATURE_VERSION and self.lines_enabled:
-            families.append('lines')
-        if self.feature_version in (POTENTIAL_VERSION, CAPTURE_VERSION) and self.potential_enabled:
-            families.append('potential')
-        if self.feature_version == CAPTURE_VERSION and self.captures_enabled:
-            families.append('captures')
-        return families
+        return [family for family in VERSION_FAMILIES[self.feature_version]
+                if getattr(self, family + '_enabled')]
 
     def canonical_json(self) -> str:
         return json.dumps({
@@ -119,7 +126,7 @@ class EvaluationConfig:
         coefficients = data['coefficients']
         families = data['enabled_families']
         version = data['feature_version']
-        if type(version) is not str or version not in (FEATURE_VERSION, LINE_VERSION, POTENTIAL_VERSION, CAPTURE_VERSION):
+        if type(version) is not str or version not in VERSION_FAMILIES:
             raise ValueError('Unsupported feature version.')
         schema = cls(feature_version=version)
         names = set(schema.coefficients())
@@ -129,11 +136,9 @@ class EvaluationConfig:
         if (type(families) is not list or any(type(f) is not str or f not in allowed for f in families)
                 or len(set(families)) != len(families)):
             raise ValueError('Unsupported or duplicate enabled family.')
-        return cls(**coefficients, material_enabled='material' in families,
-                   lines_enabled='lines' in families if version != FEATURE_VERSION else True,
-                   potential_enabled='potential' in families if version in (POTENTIAL_VERSION, CAPTURE_VERSION) else True,
-                   captures_enabled='captures' in families if version == CAPTURE_VERSION else True,
-                   feature_version=version)
+        return cls(**coefficients, feature_version=version,
+                   **{family + '_enabled': family in families
+                      for family in VERSION_FAMILIES[version]})
 
     @classmethod
     def load(cls, path: str | Path) -> 'EvaluationConfig':
@@ -149,14 +154,17 @@ class ConfiguredEvaluator:
             raise ValueError('Expected validated EvaluationConfig.')
 
     def _features(self, position: Position, check: Callable[[], None], *,
-                  inspection: bool = False) -> tuple[dict[str, int], dict[str, Any] | None, dict[str, Any] | None]:
+                  inspection: bool = False) -> tuple[dict[str, int], dict[str, Any] | None, dict[str, Any] | None, dict[str, Any]]:
         check()
         features = {'material': material_evaluation(position, check=check)
                     if inspection or self.config.material_enabled else 0}
         lines = None
-        has_potential = self.config.feature_version in (POTENTIAL_VERSION, CAPTURE_VERSION)
+        supported = VERSION_FAMILIES[self.config.feature_version]
+        has_potential = 'potential' in supported
+        has_multiplicity = 'multiplicity' in supported
+        scan_multiplicity = has_multiplicity and (inspection or self.config.multiplicity_enabled)
         if self.config.feature_version != FEATURE_VERSION:
-            scan_lines = inspection or self.config.lines_enabled
+            scan_lines = inspection or self.config.lines_enabled or scan_multiplicity
             scan_potential = has_potential and (inspection or self.config.potential_enabled)
             if scan_lines or scan_potential:
                 lines = line_features(position, check, fours=scan_lines, potential=scan_potential)
@@ -168,24 +176,37 @@ class ConfiguredEvaluator:
                                  for name in POTENTIAL_FEATURES})
         check()
         captures = None
-        if self.config.feature_version == CAPTURE_VERSION:
+        if 'captures' in supported:
             if inspection or self.config.captures_enabled:
                 captures = capture_features(position, check, inspection=inspection)
             features.update({name: captures['black'][name] - captures['white'][name] if captures else 0
                              for name in CAPTURE_FEATURES})
         check()
-        return features, lines, captures
+        extra: dict[str, Any] = {}
+        if 'effects' in supported:
+            for family, names in (('effects', EFFECT_FEATURES), ('multiplicity', MULTIPLICITY_FEATURES)):
+                values = None
+                if inspection or getattr(self.config, family + '_enabled'):
+                    if family == 'effects':
+                        values = capture_effects(position, check, inspection=inspection)
+                    else:
+                        assert lines is not None
+                        values = multiplicity_features(position, lines, check, inspection=inspection)
+                    extra[family] = values
+                features.update({name: values['black'][name] - values['white'][name] if values else 0
+                                 for name in names})
+        check()
+        return features, lines, captures, extra
 
     def _contributions(self, features: dict[str, int]) -> dict[str, int]:
-        return {name: features[name] * weight
-                if (self.config.material_enabled if name == 'material' else
-                    self.config.potential_enabled if name in POTENTIAL_FEATURES else
-                    self.config.captures_enabled if name in CAPTURE_FEATURES else self.config.lines_enabled)
-                else 0 for name, weight in self.config.coefficients().items()}
+        enabled = self.config.enabled_families()
+        return {name: features[name] * getattr(self.config, name) if family in enabled else 0
+                for family in VERSION_FAMILIES[self.config.feature_version]
+                for name in FAMILY_FEATURES[family]}
 
     def __call__(self, position: Position,
                  check: Callable[[], None] = lambda: None) -> int:
-        features, _, _ = self._features(position, check)
+        features, _, _, _ = self._features(position, check)
         raw = sum(self._contributions(features).values())
         check()
         return max(-EVALUATION_LIMIT, min(EVALUATION_LIMIT, raw))
@@ -204,12 +225,14 @@ class ConfiguredEvaluator:
         }
         if self.config.feature_version != FEATURE_VERSION:
             report['lines'] = None
-        if self.config.feature_version in (POTENTIAL_VERSION, CAPTURE_VERSION):
+        if 'potential' in VERSION_FAMILIES[self.config.feature_version]:
             report['potential'] = None
-        if self.config.feature_version == CAPTURE_VERSION:
+        if 'captures' in VERSION_FAMILIES[self.config.feature_version]:
             report['captures'] = None
+        if self.config.feature_version == EFFECT_VERSION:
+            report.update(effects=None, multiplicity=None)
         try:
-            features, lines, captures = self._features(position, check, inspection=True)
+            features, lines, captures, extra = self._features(position, check, inspection=True)
             contributions = self._contributions(features)
             raw = sum(contributions.values())
             check()
@@ -219,10 +242,40 @@ class ConfiguredEvaluator:
         report.update(features=features, contributions=contributions,
                       raw_total=raw, total=max(-EVALUATION_LIMIT, min(EVALUATION_LIMIT, raw)),
                       saturated=abs(raw) > EVALUATION_LIMIT, incomplete=False)
+        report.update(extra)
         if captures is not None:
             report['captures'] = captures
         if lines is not None:
             report['lines'] = {name: lines[name] for name in ('black', 'white')}
             if 'potential' in lines:
                 report['potential'] = lines['potential']
+        return report
+
+    def inspect_move(self, position: Position, move: Coordinate, *,
+                     check: Callable[[], None] = lambda: None) -> dict[str, Any]:
+        """Explain a legal placement's newly created endpoints on its actual board."""
+        if self.config.feature_version != EFFECT_VERSION:
+            raise ValueError('Move-effect inspection requires effects-v1.')
+        report: dict[str, Any] = {'move': move, 'before': None, 'after': None,
+                                  'created_verified_endpoints': None,
+                                  'incomplete': True, 'cancellation': None}
+        try:
+            check()
+            transition = position.play(move)
+            check()
+            before = self.inspect(position, check=check)
+            after = self.inspect(transition.position, check=check)
+            if before['incomplete'] or after['incomplete']:
+                report['cancellation'] = before['cancellation'] or after['cancellation']
+                return report
+            created = {color: sorted(set(after['multiplicity'][color]['verified_endpoints'])
+                                     - set(before['multiplicity'][color]['verified_endpoints']))
+                       for color in ('black', 'white')}
+            check()
+        except SearchCancelled as error:
+            report['cancellation'] = str(error)
+            return report
+        report.update(before=before, after=after, created_verified_endpoints=created,
+                      removed=[item.cell for item in transition.captured],
+                      outcome=transition.position.outcome, incomplete=False)
         return report
