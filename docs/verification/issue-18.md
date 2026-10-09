@@ -50,3 +50,7 @@ four/win verification and is not isolated potential cost or official-clock
 acceptance. No leagues, optimization, search extensions or packaging are added.
 No LLM usage is recorded. Pre-existing deletions and the supplied specification
 are excluded from the implementation commit.
+
+The required independent two-axis review is recorded in `issue-18-review.md`.
+Standards and Spec reviewers both reported zero findings. The final follow-up
+only records those review results.
