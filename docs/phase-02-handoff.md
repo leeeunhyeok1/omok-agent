@@ -16,7 +16,10 @@ wins and simultaneous draws must retain their existing semantics.
 The next scoped work is `03_EVALUATION_SPEC.md`. Improve position judgment through
 `FixedDepthSearch(evaluator=...)`, or its cooperative evaluator callback receiving
 `check`, rather than replacing rules/search. The evaluator returns a black-centric
-built-in integer in [-4000, 4000], independent of stored side. Search converts to the
+built-in integer in [-4000, 4000]. The retained Phase 2 material evaluator is
+independent of stored side. Phase 3 evaluators may use side-to-move context while
+preserving fixed-context perspective inversion and color/context symmetry; see
+[the evaluation contract](evaluation.md). Search converts to the
 logical perspective; terminals are +/-10000, draws zero, without mate-distance
 encoding. Floats/bools/out-of-range outputs raise errors. Current feature is only
 black stone count minus white stone count on the resulting board (range +/-361).

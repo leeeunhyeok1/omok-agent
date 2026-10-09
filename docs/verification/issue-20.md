@@ -46,7 +46,9 @@ python3 -I -S verification/offline_engine.py --iterative
 
 Prerequisite checks: 47 passed. New focused tests: 8 passed. Full suite: **154
 passed**, 30.307 seconds. Typecheck: 19 source files passed. Syntax/whitespace
-checks and isolated engine/standard-library-only verification passed.
+checks and isolated engine/standard-library-only verification passed. The same
+import/network guard also passed `effects-v1` loading and empty-board inspection
+under `python3 -I -S` after running the guard via `runpy.run_path`.
 
 [Independent suite and timings](issue-20-suite.json): 7,376 legal reference
 transitions checked. Endpoints use an independently implemented five-window
@@ -55,7 +57,8 @@ for fixture, control and intersecting threats are independently enumerated over
 all legal defender moves and checked for new winning replies. The oracle does
 not use engine capture, line, tactical or terminal helpers to derive labels.
 
-Five repetitions per timing sample, local Python 3.14.3, serial execution. Enabled
+Five repetitions per timing sample, local Python 3.14.3 on macOS 13.7.8,
+x86_64, serial execution. Enabled
 static evaluation medians: fixture 29.690 ms, control 18.164 ms, intersecting
 29.368 ms, multiple capture 28.042 ms, dense 1,160.972 ms. Both new families
 disabled: about 7.6–9.9 ms on sparse fixtures, dense 30.477 ms. Retained material:
