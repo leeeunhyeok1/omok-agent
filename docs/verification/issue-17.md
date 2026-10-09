@@ -43,3 +43,8 @@ These are static development timings, not wall-clock game or strength evidence.
 No leagues, tuning, promotion, extensions or packaging were implemented. Required
 line features remain checked and selectable; subsequent tickets own other Phase 3
 families and broader evaluator comparisons.
+
+The required two-axis review is recorded in `issue-17-review.md`. Its one
+nonblocking duplication finding was fixed and confirmed by both reviewers.
+Afterward the focused suite and typecheck passed again; the final full suite
+passed all 132 tests in 15.599 seconds.
