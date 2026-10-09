@@ -133,6 +133,31 @@ class MeasurementTests(unittest.TestCase):
                     self.assertEqual([run['plain']['cancellation'] for run in report['runs']],
                                      ['node_limit', 'node_limit'])
 
+    def test_game_batch_rejects_changed_configuration_or_opponent_identity_on_resume(self):
+        evidence = Path('docs/verification/issue-22')
+        with TemporaryDirectory() as directory:
+            output = Path(directory)
+            (output / 'gate.json').write_text((evidence / 'gate.json').read_text())
+            report = json.loads((evidence / 'integration.json').read_text())
+            report['batch_identity'] = {'configurations': 'changed', 'opponents': 'changed'}
+            (output / 'integration.json').write_text(json.dumps(report))
+            result = subprocess.run([sys.executable, '-m', 'verification.evaluation_acceptance',
+                                    'integration', '--output-dir', str(output)],
+                                    capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn('Batch identity changed', result.stderr)
+
+    def test_complete_evaluator_agrees_on_cached_uncached_and_reference_trees(self):
+        from offline.compare import compare
+        report = compare([EvaluationConfig.load('configs/effects-v1.json')],
+                         Position.empty(), route='fixed-depth', depth=2, cap=2)
+        run = report['runs'][0]
+        for name in ('alpha_beta', 'cached_cold', 'cached_warm'):
+            self.assertTrue(run[name]['completed'])
+            self.assertEqual(run[name]['score'], run['plain']['score'])
+            self.assertEqual(run[name]['move'], run['plain']['move'])
+        self.assertGreater(run['cached_warm']['table_hits'], 0)
+
     def test_cancellation_during_sampled_material_scan_keeps_partial_cost_explicit(self):
         checks = [0]
         def cancel():

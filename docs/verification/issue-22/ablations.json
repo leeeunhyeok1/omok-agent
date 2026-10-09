@@ -1,0 +1,1811 @@
+{
+  "batch": "ablations",
+  "conditions": {
+    "python": "3.14.3",
+    "implementation": "CPython",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+    "machine": "x86_64",
+    "cpu": "Intel(R) Core(TM) i5-7360U CPU @ 2.30GHz",
+    "cpu_count": 4,
+    "affinity": null,
+    "load_average": [
+      2.177734375,
+      1.61767578125,
+      1.37548828125
+    ],
+    "workers": 1,
+    "execution": "sequential in-process; external contention uncontrolled",
+    "clock": {
+      "implementation": "mach_absolute_time()",
+      "monotonic": true,
+      "adjustable": false,
+      "resolution": 1e-09
+    }
+  },
+  "engine_source_sha256": {
+    "__init__.py": "8fa4256f87cb48053e42cc4b325076ddcec37235cfa8d6ce9580704b8bcfc954",
+    "captures.py": "12d42ecfeffbb9ff5671230c205307f5be8a2ef69468c6e18e1172398d271062",
+    "evaluation.py": "8668fb03b09d98d8353cf0b34eaa7ff86e3bccfa770cc99d385a622491780962",
+    "lines.py": "c7149021f01c3845f1dccbba2a18920c44dbb17ea3667fb7ceb15fdc78c0f3fc",
+    "measurement.py": "dcdd28ad43ab792bb83a8efdaf7250747744370f93a5c15a8349bb3c963c2748",
+    "player.py": "987d25a074cf4fd19329a7252886e6cc718f72cd397380df560743a592c3165a",
+    "search.py": "f0b5a1a93e1d4b9559ed00b0cc428eb2e13f7a78e1a67d5caddad641b0ccd572",
+    "simulator.py": "3dde4fd4c62df6123d920579e2b91e529d866ac608513701db38bf563acb1837",
+    "tactics.py": "9cdb4f90a424157a22c7a2505c2ce6618aa16c3702f0b846485ce1020dd56a35",
+    "threat_effects.py": "2c2efa7bd0d6ee9a5d5b841ce500380da7e280adc0fa987b248b3a3573c9891a",
+    "transposition.py": "daf69437752d5b4cb8814fa1a0f3c94d3144f0f86255e4eed2296216b6b345d8"
+  },
+  "planned_games": 28,
+  "external_timeout_seconds": 150,
+  "games": [
+    {
+      "key": [
+        "old",
+        "phase2",
+        0,
+        20261009,
+        24,
+        60000,
+        "capture-defense"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "capture-defense",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-old-phase2-0-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59513.19093299753,
+        59497.67522100228
+      ],
+      "moves": 10,
+      "replay": "valid",
+      "move_sequence_id": "f1f5f8a49807fbd57e1ef6dd41664212f1785e080713447236e9a866bc244312",
+      "completed_depths": {
+        "2": 3,
+        "1": 2
+      },
+      "fallback_turns": 0,
+      "agent_turns": 5,
+      "evaluation_calls": 295,
+      "public_elapsed_ms": {
+        "count": 5,
+        "min": 86.38675600013812,
+        "median": 100.08094200020423,
+        "p95_nearest_rank": 100.1517690019682,
+        "max": 100.1517690019682
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-old-phase2-0-20261009.json.gz",
+      "trace_sha256": "b67105e6a0effcf40919c7c20db620714c697a0f04d7cb8c4dcf15c8b614c1b8",
+      "wall_seconds": 1.2616114080010448
+    },
+    {
+      "key": [
+        "old",
+        "phase2",
+        1,
+        20261009,
+        24,
+        60000,
+        "capture-defense"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "capture-defense",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-old-phase2-1-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        60000,
+        59899.881745997845
+      ],
+      "moves": 1,
+      "replay": "valid",
+      "move_sequence_id": "1914696f4cd41b40bcc22f952c440f62b765d8ee67d5ed4fd543e39adf82a887",
+      "completed_depths": {
+        "1": 1
+      },
+      "fallback_turns": 0,
+      "agent_turns": 1,
+      "evaluation_calls": 24,
+      "public_elapsed_ms": {
+        "count": 1,
+        "min": 100.1018329989165,
+        "median": 100.1018329989165,
+        "p95_nearest_rank": 100.1018329989165,
+        "max": 100.1018329989165
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-old-phase2-1-20261009.json.gz",
+      "trace_sha256": "e90a6771497cb248ababeb53427c89db9104f4d2033c9209c88d1249ccd262bc",
+      "wall_seconds": 0.33553078600016306
+    },
+    {
+      "key": [
+        "new",
+        "phase2",
+        0,
+        20261009,
+        24,
+        60000,
+        "capture-defense"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "capture-defense",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-new-phase2-0-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59199.30163200479,
+        59216.39247600615
+      ],
+      "moves": 16,
+      "replay": "valid",
+      "move_sequence_id": "9108d8b815eda4a80b2f8cfd47dac860ccbf35db11e4145e8c038ba70fa9f4ef",
+      "completed_depths": {
+        "1": 2,
+        "0": 6
+      },
+      "fallback_turns": 6,
+      "agent_turns": 8,
+      "evaluation_calls": 22,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 100.05919099785388,
+        "median": 100.07593350019306,
+        "p95_nearest_rank": 100.10997200151905,
+        "max": 100.10997200151905
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-new-phase2-0-20261009.json.gz",
+      "trace_sha256": "0a85bbf7e480b8e2000697916af2e0c3f640f5748bca40632134d71f4f2f6a96",
+      "wall_seconds": 1.8649258730001748
+    },
+    {
+      "key": [
+        "new",
+        "phase2",
+        1,
+        20261009,
+        24,
+        60000,
+        "capture-defense"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "capture-defense",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-new-phase2-1-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        60000,
+        59899.87830600148
+      ],
+      "moves": 1,
+      "replay": "valid",
+      "move_sequence_id": "206aaef357c30ed51da4dde072861f97f2d30761dc8b0d2ca1bad6449d661b32",
+      "completed_depths": {
+        "0": 1
+      },
+      "fallback_turns": 1,
+      "agent_turns": 1,
+      "evaluation_calls": 3,
+      "public_elapsed_ms": {
+        "count": 1,
+        "min": 100.10633400088409,
+        "median": 100.10633400088409,
+        "p95_nearest_rank": 100.10633400088409,
+        "max": 100.10633400088409
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-new-phase2-1-20261009.json.gz",
+      "trace_sha256": "1a50b8506ce2e7719e9f84d4b2d735dabe6dbf2e7a1e293651a04fcdfffa5f4e",
+      "wall_seconds": 0.34681099700173945
+    },
+    {
+      "key": [
+        "without-lines",
+        "phase2",
+        0,
+        20261009,
+        24,
+        60000,
+        "capture-defense"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-lines",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "capture-defense",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-lines-phase2-0-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59199.29011399654,
+        59196.66310100001
+      ],
+      "moves": 16,
+      "replay": "valid",
+      "move_sequence_id": "9108d8b815eda4a80b2f8cfd47dac860ccbf35db11e4145e8c038ba70fa9f4ef",
+      "completed_depths": {
+        "1": 2,
+        "0": 6
+      },
+      "fallback_turns": 6,
+      "agent_turns": 8,
+      "evaluation_calls": 22,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 100.0596060002863,
+        "median": 100.07852250055294,
+        "p95_nearest_rank": 100.15924999970593,
+        "max": 100.15924999970593
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-lines-phase2-0-20261009.json.gz",
+      "trace_sha256": "4a9b9751f96e2808953db5625c8650ccb4b48ae6877b4de7d6a00af3dcf6f214",
+      "wall_seconds": 1.8962200900023163
+    },
+    {
+      "key": [
+        "without-lines",
+        "phase2",
+        1,
+        20261009,
+        24,
+        60000,
+        "capture-defense"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-lines",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "capture-defense",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-lines-phase2-1-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        60000,
+        59899.878448999516
+      ],
+      "moves": 1,
+      "replay": "valid",
+      "move_sequence_id": "206aaef357c30ed51da4dde072861f97f2d30761dc8b0d2ca1bad6449d661b32",
+      "completed_depths": {
+        "0": 1
+      },
+      "fallback_turns": 1,
+      "agent_turns": 1,
+      "evaluation_calls": 3,
+      "public_elapsed_ms": {
+        "count": 1,
+        "min": 100.11041299731005,
+        "median": 100.11041299731005,
+        "p95_nearest_rank": 100.11041299731005,
+        "max": 100.11041299731005
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-lines-phase2-1-20261009.json.gz",
+      "trace_sha256": "0740b6beb51c429e2a973a081a74daad5e2f06fa6968e4be2ea9871f36fee542",
+      "wall_seconds": 0.3331770629993116
+    },
+    {
+      "key": [
+        "without-potential",
+        "phase2",
+        0,
+        20261009,
+        24,
+        60000,
+        "capture-defense"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-potential",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "capture-defense",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-potential-phase2-0-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59199.2935140006,
+        59196.46634999663
+      ],
+      "moves": 16,
+      "replay": "valid",
+      "move_sequence_id": "9108d8b815eda4a80b2f8cfd47dac860ccbf35db11e4145e8c038ba70fa9f4ef",
+      "completed_depths": {
+        "1": 2,
+        "0": 6
+      },
+      "fallback_turns": 6,
+      "agent_turns": 8,
+      "evaluation_calls": 25,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 100.06261399757932,
+        "median": 100.07686000062677,
+        "p95_nearest_rank": 100.14418799983105,
+        "max": 100.14418799983105
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-potential-phase2-0-20261009.json.gz",
+      "trace_sha256": "2da04a36407b345c18ce30b4d96811d23f949644fbb7e8f6401e0900e44a7d93",
+      "wall_seconds": 1.850140657999873
+    },
+    {
+      "key": [
+        "without-potential",
+        "phase2",
+        1,
+        20261009,
+        24,
+        60000,
+        "capture-defense"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-potential",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "capture-defense",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-potential-phase2-1-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        60000,
+        59899.7338070003
+      ],
+      "moves": 1,
+      "replay": "valid",
+      "move_sequence_id": "206aaef357c30ed51da4dde072861f97f2d30761dc8b0d2ca1bad6449d661b32",
+      "completed_depths": {
+        "0": 1
+      },
+      "fallback_turns": 1,
+      "agent_turns": 1,
+      "evaluation_calls": 3,
+      "public_elapsed_ms": {
+        "count": 1,
+        "min": 100.24799999882816,
+        "median": 100.24799999882816,
+        "p95_nearest_rank": 100.24799999882816,
+        "max": 100.24799999882816
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-potential-phase2-1-20261009.json.gz",
+      "trace_sha256": "3313043cbe289a67fd0dd155071ab9590677ae4a5c73e42b735d17806b78b49d",
+      "wall_seconds": 0.34352066700012074
+    },
+    {
+      "key": [
+        "without-captures",
+        "phase2",
+        0,
+        20261009,
+        24,
+        60000,
+        "capture-defense"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-captures",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "capture-defense",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-captures-phase2-0-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59199.352517996886,
+        59196.757433997846
+      ],
+      "moves": 16,
+      "replay": "valid",
+      "move_sequence_id": "9108d8b815eda4a80b2f8cfd47dac860ccbf35db11e4145e8c038ba70fa9f4ef",
+      "completed_depths": {
+        "1": 2,
+        "0": 6
+      },
+      "fallback_turns": 6,
+      "agent_turns": 8,
+      "evaluation_calls": 25,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 100.06099799647927,
+        "median": 100.07108450008673,
+        "p95_nearest_rank": 100.10550600054557,
+        "max": 100.10550600054557
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-captures-phase2-0-20261009.json.gz",
+      "trace_sha256": "0f9a1272a49576e851b3bf7e3f6be4928fef6c5407435560d93675bfc3b5657d",
+      "wall_seconds": 1.8722500470030354
+    },
+    {
+      "key": [
+        "without-captures",
+        "phase2",
+        1,
+        20261009,
+        24,
+        60000,
+        "capture-defense"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-captures",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "capture-defense",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-captures-phase2-1-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        60000,
+        59899.641660998896
+      ],
+      "moves": 1,
+      "replay": "valid",
+      "move_sequence_id": "206aaef357c30ed51da4dde072861f97f2d30761dc8b0d2ca1bad6449d661b32",
+      "completed_depths": {
+        "0": 1
+      },
+      "fallback_turns": 1,
+      "agent_turns": 1,
+      "evaluation_calls": 3,
+      "public_elapsed_ms": {
+        "count": 1,
+        "min": 100.34243900008732,
+        "median": 100.34243900008732,
+        "p95_nearest_rank": 100.34243900008732,
+        "max": 100.34243900008732
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-captures-phase2-1-20261009.json.gz",
+      "trace_sha256": "9e473a82d77af07d816d2568446757b90fee8f99a3c0ffea5fa913b42ebe3c76",
+      "wall_seconds": 0.3264182049970259
+    },
+    {
+      "key": [
+        "without-effects",
+        "phase2",
+        0,
+        20261009,
+        24,
+        60000,
+        "capture-defense"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-effects",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "capture-defense",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-effects-phase2-0-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59199.360057999,
+        59196.14649099822
+      ],
+      "moves": 16,
+      "replay": "valid",
+      "move_sequence_id": "9108d8b815eda4a80b2f8cfd47dac860ccbf35db11e4145e8c038ba70fa9f4ef",
+      "completed_depths": {
+        "1": 2,
+        "0": 6
+      },
+      "fallback_turns": 6,
+      "agent_turns": 8,
+      "evaluation_calls": 64,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 100.06052400058252,
+        "median": 100.0653869996313,
+        "p95_nearest_rank": 100.14134000084596,
+        "max": 100.14134000084596
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-effects-phase2-0-20261009.json.gz",
+      "trace_sha256": "a3bfb549742d085e3a29a60922aea013c4cfd5a2fe59ef80f0ac03838420d52a",
+      "wall_seconds": 1.853737238998292
+    },
+    {
+      "key": [
+        "without-effects",
+        "phase2",
+        1,
+        20261009,
+        24,
+        60000,
+        "capture-defense"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-effects",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "capture-defense",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-effects-phase2-1-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        60000,
+        59899.88768999683
+      ],
+      "moves": 1,
+      "replay": "valid",
+      "move_sequence_id": "206aaef357c30ed51da4dde072861f97f2d30761dc8b0d2ca1bad6449d661b32",
+      "completed_depths": {
+        "0": 1
+      },
+      "fallback_turns": 1,
+      "agent_turns": 1,
+      "evaluation_calls": 10,
+      "public_elapsed_ms": {
+        "count": 1,
+        "min": 100.10224500001641,
+        "median": 100.10224500001641,
+        "p95_nearest_rank": 100.10224500001641,
+        "max": 100.10224500001641
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-effects-phase2-1-20261009.json.gz",
+      "trace_sha256": "1f054ef0e1fce02f232070471bc0049c99d331a02eb2302169563739c3bd62a9",
+      "wall_seconds": 0.32820145200093975
+    },
+    {
+      "key": [
+        "without-multiplicity",
+        "phase2",
+        0,
+        20261009,
+        24,
+        60000,
+        "capture-defense"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-multiplicity",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "capture-defense",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-multiplicity-phase2-0-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59199.23875299719,
+        59196.51437900029
+      ],
+      "moves": 16,
+      "replay": "valid",
+      "move_sequence_id": "9108d8b815eda4a80b2f8cfd47dac860ccbf35db11e4145e8c038ba70fa9f4ef",
+      "completed_depths": {
+        "1": 2,
+        "0": 6
+      },
+      "fallback_turns": 6,
+      "agent_turns": 8,
+      "evaluation_calls": 23,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 100.05817500132252,
+        "median": 100.08263749841717,
+        "p95_nearest_rank": 100.16367299976991,
+        "max": 100.16367299976991
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-multiplicity-phase2-0-20261009.json.gz",
+      "trace_sha256": "d95580ac9360a8c36deab359cd8da8fbbcb8da6f2b20f7ac024542b32e8b0ca0",
+      "wall_seconds": 1.8735156590009865
+    },
+    {
+      "key": [
+        "without-multiplicity",
+        "phase2",
+        1,
+        20261009,
+        24,
+        60000,
+        "capture-defense"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-multiplicity",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "capture-defense",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-multiplicity-phase2-1-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        60000,
+        59899.809832000756
+      ],
+      "moves": 1,
+      "replay": "valid",
+      "move_sequence_id": "206aaef357c30ed51da4dde072861f97f2d30761dc8b0d2ca1bad6449d661b32",
+      "completed_depths": {
+        "0": 1
+      },
+      "fallback_turns": 1,
+      "agent_turns": 1,
+      "evaluation_calls": 3,
+      "public_elapsed_ms": {
+        "count": 1,
+        "min": 100.17932900154847,
+        "median": 100.17932900154847,
+        "p95_nearest_rank": 100.17932900154847,
+        "max": 100.17932900154847
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-multiplicity-phase2-1-20261009.json.gz",
+      "trace_sha256": "eda8bb8d88369a8689f5ec1ee9804d032dcd69a0969412703c659fee41f2ab21",
+      "wall_seconds": 0.3233486040007847
+    },
+    {
+      "key": [
+        "old",
+        "phase2",
+        0,
+        20261009,
+        24,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-old-phase2-0-20261009-empty.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59199.20151300539,
+        59307.87375899308
+      ],
+      "moves": 15,
+      "replay": "valid",
+      "move_sequence_id": "69d9d91f3f8dad89f544130ed1d956a3347ece980bb5a194eb6316194692acfb",
+      "completed_depths": {
+        "3": 1,
+        "2": 2,
+        "1": 5
+      },
+      "fallback_turns": 0,
+      "agent_turns": 8,
+      "evaluation_calls": 530,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 100.0474899992696,
+        "median": 100.09868400084088,
+        "p95_nearest_rank": 100.14193000097293,
+        "max": 100.14193000097293
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-old-phase2-0-20261009-empty.json.gz",
+      "trace_sha256": "0c300939718ba93d77722e26e309f3b663bba88ba8dea488f103ad9a086925b7",
+      "wall_seconds": 1.8575784959975863
+    },
+    {
+      "key": [
+        "old",
+        "phase2",
+        1,
+        20261009,
+        24,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-old-phase2-1-20261009-empty.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59151.37328599667,
+        59301.769506997516
+      ],
+      "moves": 15,
+      "replay": "valid",
+      "move_sequence_id": "69d9d91f3f8dad89f544130ed1d956a3347ece980bb5a194eb6316194692acfb",
+      "completed_depths": {
+        "2": 6,
+        "1": 1
+      },
+      "fallback_turns": 0,
+      "agent_turns": 7,
+      "evaluation_calls": 541,
+      "public_elapsed_ms": {
+        "count": 7,
+        "min": 97.37550800127792,
+        "median": 100.09906399864121,
+        "p95_nearest_rank": 100.32684500038158,
+        "max": 100.32684500038158
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-old-phase2-1-20261009-empty.json.gz",
+      "trace_sha256": "0cd4987ff3c61f3cb9707033c29974383dec27ec04182bca04a1cc7426c80da8",
+      "wall_seconds": 1.818244236001192
+    },
+    {
+      "key": [
+        "new",
+        "phase2",
+        0,
+        20261009,
+        24,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-new-phase2-0-20261009-empty.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        58999.05545599904,
+        58995.69877899921
+      ],
+      "moves": 20,
+      "replay": "valid",
+      "move_sequence_id": "b5949a8df8516f32401f946d383816d67cb559e9a4ba5e78fb886b23f79c06a4",
+      "completed_depths": {
+        "1": 1,
+        "0": 9
+      },
+      "fallback_turns": 9,
+      "agent_turns": 10,
+      "evaluation_calls": 39,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.06027599956724,
+        "median": 100.08673299853399,
+        "p95_nearest_rank": 100.15410399864777,
+        "max": 100.15410399864777
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-new-phase2-0-20261009-empty.json.gz",
+      "trace_sha256": "5030e8aba7ecc2aa2b79a592f02e64ac2edf8461d63fe258e83082daf5782200",
+      "wall_seconds": 2.2642308169997705
+    },
+    {
+      "key": [
+        "new",
+        "phase2",
+        1,
+        20261009,
+        24,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-new-phase2-1-20261009-empty.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58849.23155900469,
+        58999.010327996075
+      ],
+      "moves": 21,
+      "replay": "valid",
+      "move_sequence_id": "a00dfc6e33c5dd902e95c28859190321149aa9b89a450b1ed1b6fc6829734a7f",
+      "completed_depths": {
+        "0": 10
+      },
+      "fallback_turns": 10,
+      "agent_turns": 10,
+      "evaluation_calls": 44,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.06045399859431,
+        "median": 100.07825350112398,
+        "p95_nearest_rank": 100.20972799975425,
+        "max": 100.20972799975425
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-new-phase2-1-20261009-empty.json.gz",
+      "trace_sha256": "9497564ae3b12f363904d2a4703152d9d1193df4bd1eb92af7b0af5e18305b8c",
+      "wall_seconds": 2.425689480998699
+    },
+    {
+      "key": [
+        "without-lines",
+        "phase2",
+        0,
+        20261009,
+        24,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-lines",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-lines-phase2-0-20261009-empty.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        58999.07917699966,
+        58995.40517900823
+      ],
+      "moves": 20,
+      "replay": "valid",
+      "move_sequence_id": "b5949a8df8516f32401f946d383816d67cb559e9a4ba5e78fb886b23f79c06a4",
+      "completed_depths": {
+        "1": 1,
+        "0": 9
+      },
+      "fallback_turns": 9,
+      "agent_turns": 10,
+      "evaluation_calls": 42,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.0582820015552,
+        "median": 100.07548799876531,
+        "p95_nearest_rank": 100.14372699879459,
+        "max": 100.14372699879459
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-lines-phase2-0-20261009-empty.json.gz",
+      "trace_sha256": "acb2381dd771e2d3e90d671a4c1d125e5a73ecc65a2e50260a89dd9315343ef9",
+      "wall_seconds": 2.2683754839999892
+    },
+    {
+      "key": [
+        "without-lines",
+        "phase2",
+        1,
+        20261009,
+        24,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-lines",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-lines-phase2-1-20261009-empty.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58848.967140998866,
+        58999.02208399726
+      ],
+      "moves": 21,
+      "replay": "valid",
+      "move_sequence_id": "a00dfc6e33c5dd902e95c28859190321149aa9b89a450b1ed1b6fc6829734a7f",
+      "completed_depths": {
+        "0": 10
+      },
+      "fallback_turns": 10,
+      "agent_turns": 10,
+      "evaluation_calls": 43,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.06152100322652,
+        "median": 100.08348349947482,
+        "p95_nearest_rank": 100.1687989992206,
+        "max": 100.1687989992206
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-lines-phase2-1-20261009-empty.json.gz",
+      "trace_sha256": "c3e33f4c1b211adc7a2025c38a51ee69b1396d453fd74bf49f0ba04dfe003fd7",
+      "wall_seconds": 2.4142264500005695
+    },
+    {
+      "key": [
+        "without-potential",
+        "phase2",
+        0,
+        20261009,
+        24,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-potential",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-potential-phase2-0-20261009-empty.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        58999.10869100131,
+        58995.73749600313
+      ],
+      "moves": 20,
+      "replay": "valid",
+      "move_sequence_id": "b5949a8df8516f32401f946d383816d67cb559e9a4ba5e78fb886b23f79c06a4",
+      "completed_depths": {
+        "1": 1,
+        "0": 9
+      },
+      "fallback_turns": 9,
+      "agent_turns": 10,
+      "evaluation_calls": 44,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.06125899963081,
+        "median": 100.07566750027763,
+        "p95_nearest_rank": 100.1622049989237,
+        "max": 100.1622049989237
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-potential-phase2-0-20261009-empty.json.gz",
+      "trace_sha256": "06c13d87733c1c26e22464e48d3bd4957a275c801dd00767c76023fc35d8783a",
+      "wall_seconds": 2.2578549059981015
+    },
+    {
+      "key": [
+        "without-potential",
+        "phase2",
+        1,
+        20261009,
+        24,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-potential",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-potential-phase2-1-20261009-empty.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58856.42639600337,
+        58999.153982997086
+      ],
+      "moves": 21,
+      "replay": "valid",
+      "move_sequence_id": "a00dfc6e33c5dd902e95c28859190321149aa9b89a450b1ed1b6fc6829734a7f",
+      "completed_depths": {
+        "0": 10
+      },
+      "fallback_turns": 10,
+      "agent_turns": 10,
+      "evaluation_calls": 47,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.06284800329013,
+        "median": 100.07097649940988,
+        "p95_nearest_rank": 100.12157300297986,
+        "max": 100.12157300297986
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-potential-phase2-1-20261009-empty.json.gz",
+      "trace_sha256": "0940bdf9bf590662655d44ed5a248eeb3402bc13335af3196e6da37287583710",
+      "wall_seconds": 2.416515086999425
+    },
+    {
+      "key": [
+        "without-captures",
+        "phase2",
+        0,
+        20261009,
+        24,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-captures",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-captures-phase2-0-20261009-empty.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        58999.00160899779,
+        58995.41408499135
+      ],
+      "moves": 20,
+      "replay": "valid",
+      "move_sequence_id": "b5949a8df8516f32401f946d383816d67cb559e9a4ba5e78fb886b23f79c06a4",
+      "completed_depths": {
+        "1": 1,
+        "0": 9
+      },
+      "fallback_turns": 9,
+      "agent_turns": 10,
+      "evaluation_calls": 44,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.06362000058289,
+        "median": 100.07446599956893,
+        "p95_nearest_rank": 100.23950700269779,
+        "max": 100.23950700269779
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-captures-phase2-0-20261009-empty.json.gz",
+      "trace_sha256": "df5594cabff4be7fbdb16de11bbc39fe19f9f7823035003859c97fb761d34809",
+      "wall_seconds": 2.2675743569998303
+    },
+    {
+      "key": [
+        "without-captures",
+        "phase2",
+        1,
+        20261009,
+        24,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-captures",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-captures-phase2-1-20261009-empty.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58852.63769100129,
+        58998.833885008935
+      ],
+      "moves": 21,
+      "replay": "valid",
+      "move_sequence_id": "a00dfc6e33c5dd902e95c28859190321149aa9b89a450b1ed1b6fc6829734a7f",
+      "completed_depths": {
+        "0": 10
+      },
+      "fallback_turns": 10,
+      "agent_turns": 10,
+      "evaluation_calls": 47,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.06412199800252,
+        "median": 100.077628998406,
+        "p95_nearest_rank": 100.41428200202063,
+        "max": 100.41428200202063
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-captures-phase2-1-20261009-empty.json.gz",
+      "trace_sha256": "0132e1a7f28916ed14ab2167f285e887b66a56681aa827e08f1df72ed62be69c",
+      "wall_seconds": 2.414634508997551
+    },
+    {
+      "key": [
+        "without-effects",
+        "phase2",
+        0,
+        20261009,
+        24,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-effects",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-effects-phase2-0-20261009-empty.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        58999.217738008156,
+        58996.0654139868
+      ],
+      "moves": 20,
+      "replay": "valid",
+      "move_sequence_id": "b5949a8df8516f32401f946d383816d67cb559e9a4ba5e78fb886b23f79c06a4",
+      "completed_depths": {
+        "1": 1,
+        "0": 9
+      },
+      "fallback_turns": 9,
+      "agent_turns": 10,
+      "evaluation_calls": 95,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.05920499679632,
+        "median": 100.07341950040427,
+        "p95_nearest_rank": 100.09786500086193,
+        "max": 100.09786500086193
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-effects-phase2-0-20261009-empty.json.gz",
+      "trace_sha256": "d39ad23f4456a0010601b5cfd8b7dcb474d56bab6d2eeda07a7115ccba9685d7",
+      "wall_seconds": 2.2664240210033313
+    },
+    {
+      "key": [
+        "without-effects",
+        "phase2",
+        1,
+        20261009,
+        24,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-effects",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-effects-phase2-1-20261009-empty.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58848.72751200601,
+        58999.10672799888
+      ],
+      "moves": 21,
+      "replay": "valid",
+      "move_sequence_id": "a00dfc6e33c5dd902e95c28859190321149aa9b89a450b1ed1b6fc6829734a7f",
+      "completed_depths": {
+        "0": 10
+      },
+      "fallback_turns": 10,
+      "agent_turns": 10,
+      "evaluation_calls": 95,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.05967399774818,
+        "median": 100.07130799931474,
+        "p95_nearest_rank": 100.19283899964648,
+        "max": 100.19283899964648
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-effects-phase2-1-20261009-empty.json.gz",
+      "trace_sha256": "9b88f4dae4dba81e674229f9b129914150fcff94f76472f9089d0621a7ae4c96",
+      "wall_seconds": 2.4283813780020864
+    },
+    {
+      "key": [
+        "without-multiplicity",
+        "phase2",
+        0,
+        20261009,
+        24,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-multiplicity",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-multiplicity-phase2-0-20261009-empty.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        58999.144194996916,
+        58995.74041199958
+      ],
+      "moves": 20,
+      "replay": "valid",
+      "move_sequence_id": "b5949a8df8516f32401f946d383816d67cb559e9a4ba5e78fb886b23f79c06a4",
+      "completed_depths": {
+        "1": 1,
+        "0": 9
+      },
+      "fallback_turns": 9,
+      "agent_turns": 10,
+      "evaluation_calls": 41,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.06152400092105,
+        "median": 100.08073800054262,
+        "p95_nearest_rank": 100.10063099980471,
+        "max": 100.10063099980471
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-multiplicity-phase2-0-20261009-empty.json.gz",
+      "trace_sha256": "3064d45e89692a0404a160acbb257b209f5636e90c15bd8b0c736346615df58e",
+      "wall_seconds": 2.288988085998426
+    },
+    {
+      "key": [
+        "without-multiplicity",
+        "phase2",
+        1,
+        20261009,
+        24,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "without-multiplicity",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "24",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-multiplicity-phase2-1-20261009-empty.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58853.02400300134,
+        58998.87821700395
+      ],
+      "moves": 21,
+      "replay": "valid",
+      "move_sequence_id": "a00dfc6e33c5dd902e95c28859190321149aa9b89a450b1ed1b6fc6829734a7f",
+      "completed_depths": {
+        "0": 10
+      },
+      "fallback_turns": 10,
+      "agent_turns": 10,
+      "evaluation_calls": 45,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.0604660002864,
+        "median": 100.09543300111545,
+        "p95_nearest_rank": 100.18802900231094,
+        "max": 100.18802900231094
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/ablations-without-multiplicity-phase2-1-20261009-empty.json.gz",
+      "trace_sha256": "c4f47f484034f59d0ab07aa7299ac5f7ccc75b954fe5ac811b788beb9ed4085b",
+      "wall_seconds": 2.4161812610000197
+    }
+  ],
+  "batch_identity": {
+    "evaluators": {
+      "old": {
+        "feature_version": "material-v1",
+        "configuration_id": "0f197f30a680dfe3909a2f04f4af164285df72c8826e9e164c6f6d4c7f4d7c48",
+        "configuration": "{\"coefficients\":{\"material\":1},\"enabled_families\":[\"material\"],\"feature_version\":\"material-v1\"}"
+      },
+      "new": {
+        "feature_version": "effects-v1",
+        "configuration_id": "6b9b8d39d5d5a883e043c93789e07f734dac25644c88df9a79e9cd42e704a34c",
+        "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"capture_break_four\":120,\"capture_break_potential\":20,\"capture_create_four\":80,\"capture_create_potential\":15,\"capture_expose_five\":-300,\"capture_move\":30,\"capture_pair\":10,\"capture_remove_blocker\":25,\"closed_four\":100,\"defensive_urgency\":100,\"geometric_completion\":0,\"geometric_multiple\":0,\"material\":1,\"multi_pair_move\":20,\"offensive_opportunity\":60,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_multiple\":50,\"verified_win\":300,\"vulnerable_pair\":-40},\"enabled_families\":[\"material\",\"lines\",\"potential\",\"captures\",\"effects\",\"multiplicity\"],\"feature_version\":\"effects-v1\"}"
+      },
+      "without-lines": {
+        "feature_version": "effects-v1",
+        "configuration_id": "1de30626e2945bb12db2cf6712e40d78b1c93c49050a7e0d0689e7fc8ed0464a",
+        "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"capture_break_four\":120,\"capture_break_potential\":20,\"capture_create_four\":80,\"capture_create_potential\":15,\"capture_expose_five\":-300,\"capture_move\":30,\"capture_pair\":10,\"capture_remove_blocker\":25,\"closed_four\":100,\"defensive_urgency\":100,\"geometric_completion\":0,\"geometric_multiple\":0,\"material\":1,\"multi_pair_move\":20,\"offensive_opportunity\":60,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_multiple\":50,\"verified_win\":300,\"vulnerable_pair\":-40},\"enabled_families\":[\"material\",\"potential\",\"captures\",\"effects\",\"multiplicity\"],\"feature_version\":\"effects-v1\"}"
+      },
+      "without-potential": {
+        "feature_version": "effects-v1",
+        "configuration_id": "6462641ddc730f3614940d03f0f15d7956d7e8e0e37205f1b813ee46e08c5132",
+        "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"capture_break_four\":120,\"capture_break_potential\":20,\"capture_create_four\":80,\"capture_create_potential\":15,\"capture_expose_five\":-300,\"capture_move\":30,\"capture_pair\":10,\"capture_remove_blocker\":25,\"closed_four\":100,\"defensive_urgency\":100,\"geometric_completion\":0,\"geometric_multiple\":0,\"material\":1,\"multi_pair_move\":20,\"offensive_opportunity\":60,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_multiple\":50,\"verified_win\":300,\"vulnerable_pair\":-40},\"enabled_families\":[\"material\",\"lines\",\"captures\",\"effects\",\"multiplicity\"],\"feature_version\":\"effects-v1\"}"
+      },
+      "without-captures": {
+        "feature_version": "effects-v1",
+        "configuration_id": "796ec2c0983c5580cc81bc06628085ead7e47d62dba4e1dadb5e1d2b391a6651",
+        "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"capture_break_four\":120,\"capture_break_potential\":20,\"capture_create_four\":80,\"capture_create_potential\":15,\"capture_expose_five\":-300,\"capture_move\":30,\"capture_pair\":10,\"capture_remove_blocker\":25,\"closed_four\":100,\"defensive_urgency\":100,\"geometric_completion\":0,\"geometric_multiple\":0,\"material\":1,\"multi_pair_move\":20,\"offensive_opportunity\":60,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_multiple\":50,\"verified_win\":300,\"vulnerable_pair\":-40},\"enabled_families\":[\"material\",\"lines\",\"potential\",\"effects\",\"multiplicity\"],\"feature_version\":\"effects-v1\"}"
+      },
+      "without-effects": {
+        "feature_version": "effects-v1",
+        "configuration_id": "5870246e9c4f28e196381966b3540ba4de025a2f5ae40d90be224eecf5344784",
+        "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"capture_break_four\":120,\"capture_break_potential\":20,\"capture_create_four\":80,\"capture_create_potential\":15,\"capture_expose_five\":-300,\"capture_move\":30,\"capture_pair\":10,\"capture_remove_blocker\":25,\"closed_four\":100,\"defensive_urgency\":100,\"geometric_completion\":0,\"geometric_multiple\":0,\"material\":1,\"multi_pair_move\":20,\"offensive_opportunity\":60,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_multiple\":50,\"verified_win\":300,\"vulnerable_pair\":-40},\"enabled_families\":[\"material\",\"lines\",\"potential\",\"captures\",\"multiplicity\"],\"feature_version\":\"effects-v1\"}"
+      },
+      "without-multiplicity": {
+        "feature_version": "effects-v1",
+        "configuration_id": "db0ab02056e87a2e2aff0e4364c3f5f7c95d34fa8084750c40b0f30bad1ade98",
+        "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"capture_break_four\":120,\"capture_break_potential\":20,\"capture_create_four\":80,\"capture_create_potential\":15,\"capture_expose_five\":-300,\"capture_move\":30,\"capture_pair\":10,\"capture_remove_blocker\":25,\"closed_four\":100,\"defensive_urgency\":100,\"geometric_completion\":0,\"geometric_multiple\":0,\"material\":1,\"multi_pair_move\":20,\"offensive_opportunity\":60,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_multiple\":50,\"verified_win\":300,\"vulnerable_pair\":-40},\"enabled_families\":[\"material\",\"lines\",\"potential\",\"captures\",\"effects\"],\"feature_version\":\"effects-v1\"}"
+      }
+    },
+    "provided_sources": {
+      "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+      "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+      "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+    },
+    "phase2_checkpoint": "798963cae696eead8353232d1cc8c289cce473a9",
+    "search_settings": {
+      "max_depth": 8,
+      "max_nodes": 10000,
+      "candidate_radius": 2,
+      "candidate_cap": 24,
+      "full_width": false,
+      "ordering": "omok.tactics.static_rank",
+      "time_policy": {
+        "max_time_ms": 100.0,
+        "return_margin_ms": 2.0,
+        "reserve_fraction": 0.5,
+        "turn_fraction": 0.1,
+        "soft_fraction": 0.8
+      },
+      "table_capacity": 4096,
+      "extensions": "none"
+    },
+    "offline_sources": {
+      "__init__.py": "08bc38bc5932935a9a90b698931ee7fd4105a12655a54a66050c43a7a368465b",
+      "__main__.py": "9544769d14064c480bc5f31e420bbe07184a49e837bc51a5d6afacc6f0dc5dff",
+      "compare.py": "66381686175fab4dfc76dd77ac183c3b96fb67a351c877a0a30a609e5658e5a9",
+      "fixtures.py": "5dcfe210da28ab98df244df883cb78f2c4da3e638d8e3aeec1e27397055a597b",
+      "measurement.py": "a46671828ebe044bb7cc29c1a6294cad8e4a1224f5c434810439ae87f9e92cca",
+      "opponents.py": "a8578ee6f122c349f83152f31fb263678ce9560ef939aa70cd22ae42635cd2d2",
+      "provided.py": "2034f304e2cc67e3f927448b3447ad46aa8392130679a660b39df1481d48a906",
+      "replay.py": "e8714127256a67bda8afc199c964f66f3824c015a868e63f158dd3ae824e0a8b",
+      "runner.py": "d304aab4be11d72a1407633f0404c4f3de9bc619156d5f0eea94fb1c64c25693"
+    }
+  }
+}

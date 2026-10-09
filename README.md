@@ -134,3 +134,15 @@ comparisons. See [measurement commands and definitions](docs/measurement.md) and
 python3 -m verification.measurement --output .scratch/measurement.json
 python3 -m unittest tests.test_measurement -q
 ```
+
+Issue #22 retains Phase 2 material as the default after full-evaluator comparisons,
+76 replayed games, and family ablations. See [the evidence](docs/verification/issue-22.md)
+and [Phase 3 handoff](docs/phase-03-handoff.md). Reproduce bounded evidence with:
+
+```sh
+python3 -m verification.evaluation_acceptance gate
+python3 -m verification.evaluation_acceptance development
+python3 -m verification.evaluation_acceptance integration
+python3 -m verification.evaluation_acceptance ablations
+python3 -m verification.evaluation_acceptance summary
+```

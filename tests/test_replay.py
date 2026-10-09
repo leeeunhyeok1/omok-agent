@@ -14,6 +14,19 @@ from tests.test_runner import ReturningPlayer
 
 
 class ReplayTests(unittest.TestCase):
+    def test_retained_simple_player_loss_has_independent_exact_five_label(self):
+        import gzip
+        from verification.reference import ReferencePosition
+        source = Path('docs/verification/issue-15/official-simple-black-20261009.json.gz')
+        with gzip.open(source, 'rt') as stream:
+            trace = json.load(stream)
+        reference = ReferencePosition(trace['initial']['board'], trace['initial']['side_to_move'])
+        for event in trace['moves']:
+            reference = reference.play(event['move']).position
+        self.assertEqual(reference.outcome, 'white_win')
+        self.assertEqual(reference.reason, 'exact_five')
+        self.assertEqual(replay(trace).board, reference.board)
+
     def test_trace_reader_rejects_overflowing_json_numbers(self):
         with TemporaryDirectory() as directory:
             path = Path(directory) / 'trace.json'

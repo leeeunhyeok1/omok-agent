@@ -1,0 +1,3048 @@
+{
+  "batch": "integration",
+  "conditions": {
+    "python": "3.14.3",
+    "implementation": "CPython",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+    "machine": "x86_64",
+    "cpu": "Intel(R) Core(TM) i5-7360U CPU @ 2.30GHz",
+    "cpu_count": 4,
+    "affinity": null,
+    "load_average": [
+      1.61962890625,
+      1.3974609375,
+      1.2822265625
+    ],
+    "workers": 1,
+    "execution": "sequential in-process; external contention uncontrolled",
+    "clock": {
+      "implementation": "mach_absolute_time()",
+      "monotonic": true,
+      "adjustable": false,
+      "resolution": 1e-09
+    }
+  },
+  "engine_source_sha256": {
+    "__init__.py": "8fa4256f87cb48053e42cc4b325076ddcec37235cfa8d6ce9580704b8bcfc954",
+    "captures.py": "12d42ecfeffbb9ff5671230c205307f5be8a2ef69468c6e18e1172398d271062",
+    "evaluation.py": "8668fb03b09d98d8353cf0b34eaa7ff86e3bccfa770cc99d385a622491780962",
+    "lines.py": "c7149021f01c3845f1dccbba2a18920c44dbb17ea3667fb7ceb15fdc78c0f3fc",
+    "measurement.py": "dcdd28ad43ab792bb83a8efdaf7250747744370f93a5c15a8349bb3c963c2748",
+    "player.py": "987d25a074cf4fd19329a7252886e6cc718f72cd397380df560743a592c3165a",
+    "search.py": "f0b5a1a93e1d4b9559ed00b0cc428eb2e13f7a78e1a67d5caddad641b0ccd572",
+    "simulator.py": "3dde4fd4c62df6123d920579e2b91e529d866ac608513701db38bf563acb1837",
+    "tactics.py": "9cdb4f90a424157a22c7a2505c2ce6618aa16c3702f0b846485ce1020dd56a35",
+    "threat_effects.py": "2c2efa7bd0d6ee9a5d5b841ce500380da7e280adc0fa987b248b3a3573c9891a",
+    "transposition.py": "daf69437752d5b4cb8814fa1a0f3c94d3144f0f86255e4eed2296216b6b345d8"
+  },
+  "planned_games": 48,
+  "external_timeout_seconds": 150,
+  "games": [
+    {
+      "key": [
+        "old",
+        "phase2",
+        0,
+        20261009,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-0-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59199.259985001845,
+        59306.04855299316
+      ],
+      "moves": 15,
+      "replay": "valid",
+      "move_sequence_id": "69d9d91f3f8dad89f544130ed1d956a3347ece980bb5a194eb6316194692acfb",
+      "completed_depths": {
+        "3": 1,
+        "2": 2,
+        "1": 5
+      },
+      "fallback_turns": 0,
+      "agent_turns": 8,
+      "evaluation_calls": 544,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 100.05190999800107,
+        "median": 100.07840099933674,
+        "p95_nearest_rank": 100.16223399725277,
+        "max": 100.16223399725277
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-0-20261009.json.gz",
+      "trace_sha256": "d181859e1548e8adb811817e1f72942555ad90f3ec54d7ebc9ef5ba2f7aa808b",
+      "wall_seconds": 1.8613472709985217
+    },
+    {
+      "key": [
+        "old",
+        "phase2",
+        0,
+        20261010,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261010",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-0-20261010.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59198.617734004074,
+        59306.41367900171
+      ],
+      "moves": 15,
+      "replay": "valid",
+      "move_sequence_id": "69d9d91f3f8dad89f544130ed1d956a3347ece980bb5a194eb6316194692acfb",
+      "completed_depths": {
+        "3": 1,
+        "2": 2,
+        "1": 5
+      },
+      "fallback_turns": 0,
+      "agent_turns": 8,
+      "evaluation_calls": 533,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 100.05102500144858,
+        "median": 100.08352099976037,
+        "p95_nearest_rank": 100.814019999234,
+        "max": 100.814019999234
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-0-20261010.json.gz",
+      "trace_sha256": "1121a68fa99767d8ce2ff3ae0c4953e27bbc860b86874fdb050b57e6400c85f5",
+      "wall_seconds": 1.7643244059981953
+    },
+    {
+      "key": [
+        "old",
+        "phase2",
+        0,
+        20261011,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261011",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-0-20261011.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59199.03704000535,
+        59304.79455499881
+      ],
+      "moves": 15,
+      "replay": "valid",
+      "move_sequence_id": "69d9d91f3f8dad89f544130ed1d956a3347ece980bb5a194eb6316194692acfb",
+      "completed_depths": {
+        "3": 1,
+        "2": 2,
+        "1": 5
+      },
+      "fallback_turns": 0,
+      "agent_turns": 8,
+      "evaluation_calls": 545,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 100.06126000007498,
+        "median": 100.09228750095645,
+        "p95_nearest_rank": 100.26616599861882,
+        "max": 100.26616599861882
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-0-20261011.json.gz",
+      "trace_sha256": "96d0cd15f266d9d8753b709eb30d2ad9a547c97901bb2566157ea5cb6c2497ca",
+      "wall_seconds": 1.7518402860005153
+    },
+    {
+      "key": [
+        "old",
+        "phase2",
+        0,
+        20261012,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261012",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-0-20261012.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59198.23179499508,
+        59299.99561399745
+      ],
+      "moves": 15,
+      "replay": "valid",
+      "move_sequence_id": "69d9d91f3f8dad89f544130ed1d956a3347ece980bb5a194eb6316194692acfb",
+      "completed_depths": {
+        "3": 1,
+        "2": 2,
+        "1": 5
+      },
+      "fallback_turns": 0,
+      "agent_turns": 8,
+      "evaluation_calls": 541,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 100.0601040032052,
+        "median": 100.08684300009918,
+        "p95_nearest_rank": 100.98766000010073,
+        "max": 100.98766000010073
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-0-20261012.json.gz",
+      "trace_sha256": "1a7e86ff6aabb766e14bf0102d08fe1315072b7c3c05584b856198a72455609a",
+      "wall_seconds": 1.7830101019972062
+    },
+    {
+      "key": [
+        "old",
+        "phase2",
+        1,
+        20261009,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-1-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59149.29743099492,
+        59303.96820200258
+      ],
+      "moves": 15,
+      "replay": "valid",
+      "move_sequence_id": "69d9d91f3f8dad89f544130ed1d956a3347ece980bb5a194eb6316194692acfb",
+      "completed_depths": {
+        "2": 6,
+        "1": 1
+      },
+      "fallback_turns": 0,
+      "agent_turns": 7,
+      "evaluation_calls": 550,
+      "public_elapsed_ms": {
+        "count": 7,
+        "min": 95.10206900085905,
+        "median": 100.10414499993203,
+        "p95_nearest_rank": 100.34110400010832,
+        "max": 100.34110400010832
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-1-20261009.json.gz",
+      "trace_sha256": "064e7e297e4d0ebbbaaa328f94255601bfae549b248b8adefe9130012935a5e7",
+      "wall_seconds": 1.8115885679981147
+    },
+    {
+      "key": [
+        "old",
+        "phase2",
+        1,
+        20261010,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261010",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-1-20261010.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59149.68134200535,
+        59303.98787500235
+      ],
+      "moves": 15,
+      "replay": "valid",
+      "move_sequence_id": "69d9d91f3f8dad89f544130ed1d956a3347ece980bb5a194eb6316194692acfb",
+      "completed_depths": {
+        "2": 6,
+        "1": 1
+      },
+      "fallback_turns": 0,
+      "agent_turns": 7,
+      "evaluation_calls": 548,
+      "public_elapsed_ms": {
+        "count": 7,
+        "min": 95.18722600114415,
+        "median": 100.08768599800533,
+        "p95_nearest_rank": 100.35320499810041,
+        "max": 100.35320499810041
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-1-20261010.json.gz",
+      "trace_sha256": "8ebe83185c34b2400cde14d19d451325fd25b9d29dfcc86e2e653d187362e92d",
+      "wall_seconds": 1.8078027139999904
+    },
+    {
+      "key": [
+        "old",
+        "phase2",
+        1,
+        20261011,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261011",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-1-20261011.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59150.80059899992,
+        59309.54082599783
+      ],
+      "moves": 15,
+      "replay": "valid",
+      "move_sequence_id": "69d9d91f3f8dad89f544130ed1d956a3347ece980bb5a194eb6316194692acfb",
+      "completed_depths": {
+        "2": 6,
+        "1": 1
+      },
+      "fallback_turns": 0,
+      "agent_turns": 7,
+      "evaluation_calls": 551,
+      "public_elapsed_ms": {
+        "count": 7,
+        "min": 89.9050879997958,
+        "median": 100.07918900009827,
+        "p95_nearest_rank": 100.11885299900314,
+        "max": 100.11885299900314
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-1-20261011.json.gz",
+      "trace_sha256": "8b9efd174e11212d23e0e8f151b6e81ca6e41d97346cad0ce60acb84d0659d17",
+      "wall_seconds": 1.7900450470006035
+    },
+    {
+      "key": [
+        "old",
+        "phase2",
+        1,
+        20261012,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261012",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-1-20261012.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59152.40296599586,
+        59310.054762008804
+      ],
+      "moves": 15,
+      "replay": "valid",
+      "move_sequence_id": "69d9d91f3f8dad89f544130ed1d956a3347ece980bb5a194eb6316194692acfb",
+      "completed_depths": {
+        "2": 6,
+        "1": 1
+      },
+      "fallback_turns": 0,
+      "agent_turns": 7,
+      "evaluation_calls": 553,
+      "public_elapsed_ms": {
+        "count": 7,
+        "min": 89.3921050010249,
+        "median": 100.0722369972209,
+        "p95_nearest_rank": 100.11896399737452,
+        "max": 100.11896399737452
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-phase2-1-20261012.json.gz",
+      "trace_sha256": "d1a350a197b98d0ad221979d1b997c71a54e3797eb1aba4291dd6cccd33873af",
+      "wall_seconds": 1.791374080999958
+    },
+    {
+      "key": [
+        "old",
+        "random",
+        0,
+        20261009,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "random",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-0-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58796.659702005854,
+        59999.384860002465
+      ],
+      "moves": 23,
+      "replay": "valid",
+      "move_sequence_id": "a26c007e25c264fb137e418241c5f044a8c9ae5241e4713ab8bd7fc338d28f5d",
+      "completed_depths": {
+        "3": 1,
+        "2": 4,
+        "1": 7
+      },
+      "fallback_turns": 0,
+      "agent_turns": 12,
+      "evaluation_calls": 875,
+      "public_elapsed_ms": {
+        "count": 12,
+        "min": 100.06093999982113,
+        "median": 100.12378250030451,
+        "p95_nearest_rank": 101.17885300132912,
+        "max": 101.17885300132912
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-0-20261009.json.gz",
+      "trace_sha256": "11e053726ca2a563530bea081e5ad8f0ba4c62982b2a6919e3867b4ade55aa36",
+      "wall_seconds": 1.407655948001775
+    },
+    {
+      "key": [
+        "old",
+        "random",
+        0,
+        20261010,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "random",
+        "--color",
+        "0",
+        "--seed",
+        "20261010",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-0-20261010.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58998.962949997804,
+        59999.52318800206
+      ],
+      "moves": 19,
+      "replay": "valid",
+      "move_sequence_id": "d3af1d2baa243066e410746a052eb78c04e5060e510bdae687329b9b584d8e7c",
+      "completed_depths": {
+        "3": 1,
+        "2": 4,
+        "1": 5
+      },
+      "fallback_turns": 0,
+      "agent_turns": 10,
+      "evaluation_calls": 837,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.06463099853136,
+        "median": 100.09662000084063,
+        "p95_nearest_rank": 100.13728200283367,
+        "max": 100.13728200283367
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-0-20261010.json.gz",
+      "trace_sha256": "7546950e7229898b99dde6fe8c4c22264b614194de6b76d7943131f85a703de3",
+      "wall_seconds": 1.1969757420010865
+    },
+    {
+      "key": [
+        "old",
+        "random",
+        0,
+        20261011,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "random",
+        "--color",
+        "0",
+        "--seed",
+        "20261011",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-0-20261011.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58114.25674900238,
+        59999.13370799186
+      ],
+      "moves": 37,
+      "replay": "valid",
+      "move_sequence_id": "278dfd4abbfc5a3ee6aee7e2722d7819ddc0314f5f8c09fe411fdcb2841a451e",
+      "completed_depths": {
+        "3": 1,
+        "2": 6,
+        "1": 12
+      },
+      "fallback_turns": 0,
+      "agent_turns": 19,
+      "evaluation_calls": 1518,
+      "public_elapsed_ms": {
+        "count": 19,
+        "min": 83.58172899897909,
+        "median": 100.09991300103138,
+        "p95_nearest_rank": 100.26153000217164,
+        "max": 100.26153000217164
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-0-20261011.json.gz",
+      "trace_sha256": "4ea7d135f402983ec901e5c77befefb73fdef624662f99b24e64b3fe758e3e99",
+      "wall_seconds": 2.1087169230013387
+    },
+    {
+      "key": [
+        "old",
+        "random",
+        0,
+        20261012,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "random",
+        "--color",
+        "0",
+        "--seed",
+        "20261012",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-0-20261012.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58908.135678997496,
+        59999.51007000709
+      ],
+      "moves": 21,
+      "replay": "valid",
+      "move_sequence_id": "4a75bad0e6deeab79b2c829ff6efe1eef7b5e21d82d4927dc37cae2c5e24f7e7",
+      "completed_depths": {
+        "3": 1,
+        "2": 5,
+        "1": 5
+      },
+      "fallback_turns": 0,
+      "agent_turns": 11,
+      "evaluation_calls": 1058,
+      "public_elapsed_ms": {
+        "count": 11,
+        "min": 88.61605899801361,
+        "median": 100.09941899988917,
+        "p95_nearest_rank": 101.64378399713314,
+        "max": 101.64378399713314
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-0-20261012.json.gz",
+      "trace_sha256": "ffd6df8ceec5212ba523d422dda0617a598f0aa2240c9f427932a5b1a6d52b82",
+      "wall_seconds": 1.2942794990012771
+    },
+    {
+      "key": [
+        "old",
+        "random",
+        1,
+        20261009,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "random",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-1-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59999.24289599585,
+        58654.36054400561
+      ],
+      "moves": 28,
+      "replay": "valid",
+      "move_sequence_id": "ee280a4546f0197dabda6a407d3505cfce0c69e800bebc3ec9455525159b7c46",
+      "completed_depths": {
+        "2": 8,
+        "1": 6
+      },
+      "fallback_turns": 0,
+      "agent_turns": 14,
+      "evaluation_calls": 1158,
+      "public_elapsed_ms": {
+        "count": 14,
+        "min": 86.16394400087302,
+        "median": 100.07539200159954,
+        "p95_nearest_rank": 100.13017700111959,
+        "max": 100.13017700111959
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-1-20261009.json.gz",
+      "trace_sha256": "3930e382ee8f65b9195d4c1faa3ce1927393ae9cbec1dc15a1b8f62b63e0a209",
+      "wall_seconds": 1.5585874450007395
+    },
+    {
+      "key": [
+        "old",
+        "random",
+        1,
+        20261010,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "random",
+        "--color",
+        "1",
+        "--seed",
+        "20261010",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-1-20261010.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59999.59288200262,
+        59299.44721900392
+      ],
+      "moves": 14,
+      "replay": "valid",
+      "move_sequence_id": "be20b03902d68492edf6db60f7787cf23fdec0e83a59946474cebdf70569887c",
+      "completed_depths": {
+        "2": 5,
+        "1": 2
+      },
+      "fallback_turns": 0,
+      "agent_turns": 7,
+      "evaluation_calls": 647,
+      "public_elapsed_ms": {
+        "count": 7,
+        "min": 100.05882200130145,
+        "median": 100.07111699815141,
+        "p95_nearest_rank": 100.10308900018572,
+        "max": 100.10308900018572
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-1-20261010.json.gz",
+      "trace_sha256": "2e6ba177824aaab2095ad5b32e6304e11ff7d7a334db6eac50a18e656be93e72",
+      "wall_seconds": 0.897739077998267
+    },
+    {
+      "key": [
+        "old",
+        "random",
+        1,
+        20261011,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "random",
+        "--color",
+        "1",
+        "--seed",
+        "20261011",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-1-20261011.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59999.05747700177,
+        58297.882062997815
+      ],
+      "moves": 34,
+      "replay": "valid",
+      "move_sequence_id": "b3db10b5af6faceb3024cf2b2641c38d21ecab956b07f0151d09c81c0647c67d",
+      "completed_depths": {
+        "2": 6,
+        "1": 11
+      },
+      "fallback_turns": 0,
+      "agent_turns": 17,
+      "evaluation_calls": 1604,
+      "public_elapsed_ms": {
+        "count": 17,
+        "min": 100.06091600007494,
+        "median": 100.10818899900187,
+        "p95_nearest_rank": 100.25382700041519,
+        "max": 100.25382700041519
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-1-20261011.json.gz",
+      "trace_sha256": "2134b330bfe1db81ae9a11782f7b31c99706b53b0290a10135a98b58ab1ec255",
+      "wall_seconds": 1.9215834520000499
+    },
+    {
+      "key": [
+        "old",
+        "random",
+        1,
+        20261012,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "random",
+        "--color",
+        "1",
+        "--seed",
+        "20261012",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-1-20261012.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59999.58892799623,
+        59399.34520099996
+      ],
+      "moves": 12,
+      "replay": "valid",
+      "move_sequence_id": "b93fd502289b1fea78ced2bbcce29468b6df83de3417c5ec0f47c674ddd80e27",
+      "completed_depths": {
+        "2": 4,
+        "1": 2
+      },
+      "fallback_turns": 0,
+      "agent_turns": 6,
+      "evaluation_calls": 511,
+      "public_elapsed_ms": {
+        "count": 6,
+        "min": 100.05398299836088,
+        "median": 100.10874799991143,
+        "p95_nearest_rank": 100.16130899748532,
+        "max": 100.16130899748532
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-random-1-20261012.json.gz",
+      "trace_sha256": "ae155e8b80d58e5f2ee2cc7e29b00fbc9c5b591a4acc86a1ebf3930a13be5534",
+      "wall_seconds": 0.789474743000028
+    },
+    {
+      "key": [
+        "old",
+        "simple",
+        0,
+        20261009,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "simple",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-0-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59398.935876000905,
+        59989.462516994536
+      ],
+      "moves": 12,
+      "replay": "valid",
+      "move_sequence_id": "a3a9855c9623de19e495c7fa667c7aee7a4fdd411659fc18ea61c4cb5b1cf7b0",
+      "completed_depths": {
+        "3": 1,
+        "2": 4,
+        "1": 1
+      },
+      "fallback_turns": 0,
+      "agent_turns": 6,
+      "evaluation_calls": 626,
+      "public_elapsed_ms": {
+        "count": 6,
+        "min": 100.06886199698783,
+        "median": 100.14469700035988,
+        "p95_nearest_rank": 100.39944200252648,
+        "max": 100.39944200252648
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-0-20261009.json.gz",
+      "trace_sha256": "fa2d653af68d68b4b0d50d7c2871b37cb2f0e13731d0798bca12371ff401f1d4",
+      "wall_seconds": 0.7977453200001037
+    },
+    {
+      "key": [
+        "old",
+        "simple",
+        0,
+        20261010,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "simple",
+        "--color",
+        "0",
+        "--seed",
+        "20261010",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-0-20261010.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59399.527343000955,
+        59991.16731100003
+      ],
+      "moves": 12,
+      "replay": "valid",
+      "move_sequence_id": "a3a9855c9623de19e495c7fa667c7aee7a4fdd411659fc18ea61c4cb5b1cf7b0",
+      "completed_depths": {
+        "3": 1,
+        "2": 4,
+        "1": 1
+      },
+      "fallback_turns": 0,
+      "agent_turns": 6,
+      "evaluation_calls": 625,
+      "public_elapsed_ms": {
+        "count": 6,
+        "min": 100.06105100183049,
+        "median": 100.06716099996993,
+        "p95_nearest_rank": 100.10453699942445,
+        "max": 100.10453699942445
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-0-20261010.json.gz",
+      "trace_sha256": "7fd92428486583e2ea5dcebabb83fa1706453163ba33ec339b2970ce20693201",
+      "wall_seconds": 0.7999769199996081
+    },
+    {
+      "key": [
+        "old",
+        "simple",
+        0,
+        20261011,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "simple",
+        "--color",
+        "0",
+        "--seed",
+        "20261011",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-0-20261011.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59399.528267003916,
+        59990.527833007945
+      ],
+      "moves": 12,
+      "replay": "valid",
+      "move_sequence_id": "a3a9855c9623de19e495c7fa667c7aee7a4fdd411659fc18ea61c4cb5b1cf7b0",
+      "completed_depths": {
+        "3": 1,
+        "2": 4,
+        "1": 1
+      },
+      "fallback_turns": 0,
+      "agent_turns": 6,
+      "evaluation_calls": 625,
+      "public_elapsed_ms": {
+        "count": 6,
+        "min": 100.05887899751542,
+        "median": 100.06978799719946,
+        "p95_nearest_rank": 100.09664400058682,
+        "max": 100.09664400058682
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-0-20261011.json.gz",
+      "trace_sha256": "e2b21b8d701bc7ff0aa5183ee18b44ade82599c7eff4c41d3f93b66b3f73702d",
+      "wall_seconds": 0.7961397129984107
+    },
+    {
+      "key": [
+        "old",
+        "simple",
+        0,
+        20261012,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "simple",
+        "--color",
+        "0",
+        "--seed",
+        "20261012",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-0-20261012.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59399.535656997614,
+        59989.009193999664
+      ],
+      "moves": 12,
+      "replay": "valid",
+      "move_sequence_id": "a3a9855c9623de19e495c7fa667c7aee7a4fdd411659fc18ea61c4cb5b1cf7b0",
+      "completed_depths": {
+        "3": 1,
+        "2": 4,
+        "1": 1
+      },
+      "fallback_turns": 0,
+      "agent_turns": 6,
+      "evaluation_calls": 642,
+      "public_elapsed_ms": {
+        "count": 6,
+        "min": 100.05820900187246,
+        "median": 100.07185050017142,
+        "p95_nearest_rank": 100.0879730017914,
+        "max": 100.0879730017914
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-0-20261012.json.gz",
+      "trace_sha256": "472fa861dec4a7a0c1c3ccbcb8571b1f65e34d15129470dec82582cbdd6742bb",
+      "wall_seconds": 0.8091181339987088
+    },
+    {
+      "key": [
+        "old",
+        "simple",
+        1,
+        20261009,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "simple",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-1-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59981.9894729917,
+        59027.7550640094
+      ],
+      "moves": 21,
+      "replay": "valid",
+      "move_sequence_id": "21a8fb7cb964413381ac6ed726b2d68070d792d7b6295925c50b9d4c0b6bb183",
+      "completed_depths": {
+        "2": 8,
+        "1": 2
+      },
+      "fallback_turns": 0,
+      "agent_turns": 10,
+      "evaluation_calls": 1148,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 83.46663100019214,
+        "median": 100.08700350044819,
+        "p95_nearest_rank": 100.19976399780717,
+        "max": 100.19976399780717
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-1-20261009.json.gz",
+      "trace_sha256": "46829600755cf1e164e3d97f31d8deee8d07045b6fe3ac17aa7206e28c1d47e5",
+      "wall_seconds": 1.1957690170020214
+    },
+    {
+      "key": [
+        "old",
+        "simple",
+        1,
+        20261010,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "simple",
+        "--color",
+        "1",
+        "--seed",
+        "20261010",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-1-20261010.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59986.89442600153,
+        59205.80615700237
+      ],
+      "moves": 17,
+      "replay": "valid",
+      "move_sequence_id": "edc487da4fdd1055cc24a65f0238bae0348efad613588543eeb04516eff935bc",
+      "completed_depths": {
+        "2": 7,
+        "1": 1
+      },
+      "fallback_turns": 0,
+      "agent_turns": 8,
+      "evaluation_calls": 1118,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 93.54047999659088,
+        "median": 100.07237150057335,
+        "p95_nearest_rank": 100.17202600283781,
+        "max": 100.17202600283781
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-1-20261010.json.gz",
+      "trace_sha256": "411066f17fd10a086bd90c5a51f52e87a7044cf8bbc0094446c30ade8fd2fa66",
+      "wall_seconds": 0.9978604749994702
+    },
+    {
+      "key": [
+        "old",
+        "simple",
+        1,
+        20261011,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "simple",
+        "--color",
+        "1",
+        "--seed",
+        "20261011",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-1-20261011.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59987.26235900176,
+        59201.55698200324
+      ],
+      "moves": 17,
+      "replay": "valid",
+      "move_sequence_id": "edc487da4fdd1055cc24a65f0238bae0348efad613588543eeb04516eff935bc",
+      "completed_depths": {
+        "2": 7,
+        "1": 1
+      },
+      "fallback_turns": 0,
+      "agent_turns": 8,
+      "evaluation_calls": 1118,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 97.77718700206606,
+        "median": 100.06975900068937,
+        "p95_nearest_rank": 100.15494899926125,
+        "max": 100.15494899926125
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-1-20261011.json.gz",
+      "trace_sha256": "a5b0358985a1ee1ab8e00a5e81318e6826dc3bd8ee3fbcc29d1d419fe1ef8cb2",
+      "wall_seconds": 1.0071676490006212
+    },
+    {
+      "key": [
+        "old",
+        "simple",
+        1,
+        20261012,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "old",
+        "--opponent",
+        "simple",
+        "--color",
+        "1",
+        "--seed",
+        "20261012",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-1-20261012.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59985.577580995596,
+        59206.13610899818
+      ],
+      "moves": 17,
+      "replay": "valid",
+      "move_sequence_id": "edc487da4fdd1055cc24a65f0238bae0348efad613588543eeb04516eff935bc",
+      "completed_depths": {
+        "2": 7,
+        "1": 1
+      },
+      "fallback_turns": 0,
+      "agent_turns": 8,
+      "evaluation_calls": 1118,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 93.16325499821687,
+        "median": 100.07779849911458,
+        "p95_nearest_rank": 100.14569900158676,
+        "max": 100.14569900158676
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-old-simple-1-20261012.json.gz",
+      "trace_sha256": "6980525875e6d19959a967ab4603337b663d9bfd0b9135be6531f3764c90b0f6",
+      "wall_seconds": 1.0040329709991056
+    },
+    {
+      "key": [
+        "new",
+        "phase2",
+        0,
+        20261009,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-0-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        58999.18579098812,
+        58995.756193999114
+      ],
+      "moves": 20,
+      "replay": "valid",
+      "move_sequence_id": "b5949a8df8516f32401f946d383816d67cb559e9a4ba5e78fb886b23f79c06a4",
+      "completed_depths": {
+        "1": 1,
+        "0": 9
+      },
+      "fallback_turns": 9,
+      "agent_turns": 10,
+      "evaluation_calls": 42,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.05802900195704,
+        "median": 100.07641000083822,
+        "p95_nearest_rank": 100.10966199843097,
+        "max": 100.10966199843097
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-0-20261009.json.gz",
+      "trace_sha256": "9e26c1f1dc9c37fc5838eccdfc2df5738eed95710a9ea2260bfb68054df10643",
+      "wall_seconds": 2.267759147001925
+    },
+    {
+      "key": [
+        "new",
+        "phase2",
+        0,
+        20261010,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261010",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-0-20261010.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        58999.18478100153,
+        58995.892479997565
+      ],
+      "moves": 20,
+      "replay": "valid",
+      "move_sequence_id": "b5949a8df8516f32401f946d383816d67cb559e9a4ba5e78fb886b23f79c06a4",
+      "completed_depths": {
+        "1": 1,
+        "0": 9
+      },
+      "fallback_turns": 9,
+      "agent_turns": 10,
+      "evaluation_calls": 41,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.05686099975719,
+        "median": 100.0730649993784,
+        "p95_nearest_rank": 100.11398099959479,
+        "max": 100.11398099959479
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-0-20261010.json.gz",
+      "trace_sha256": "3971cea5b3b286c605360a49773b9c9ac0e06fbcb3c4b4a4cbfbcd97aa2f865a",
+      "wall_seconds": 2.2918319780001184
+    },
+    {
+      "key": [
+        "new",
+        "phase2",
+        0,
+        20261011,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261011",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-0-20261011.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        58998.93471500036,
+        58994.74924699825
+      ],
+      "moves": 20,
+      "replay": "valid",
+      "move_sequence_id": "b5949a8df8516f32401f946d383816d67cb559e9a4ba5e78fb886b23f79c06a4",
+      "completed_depths": {
+        "1": 1,
+        "0": 9
+      },
+      "fallback_turns": 9,
+      "agent_turns": 10,
+      "evaluation_calls": 41,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.06441400037147,
+        "median": 100.09135849941231,
+        "p95_nearest_rank": 100.14958999818191,
+        "max": 100.14958999818191
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-0-20261011.json.gz",
+      "trace_sha256": "b4cc5385dc4760ad5142322e7ce9e1ea5fe024010d5bcb3d84f25d742e3ef513",
+      "wall_seconds": 2.2597615610029607
+    },
+    {
+      "key": [
+        "new",
+        "phase2",
+        0,
+        20261012,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "phase2",
+        "--color",
+        "0",
+        "--seed",
+        "20261012",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-0-20261012.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        58999.208133005595,
+        58995.55483199583
+      ],
+      "moves": 20,
+      "replay": "valid",
+      "move_sequence_id": "b5949a8df8516f32401f946d383816d67cb559e9a4ba5e78fb886b23f79c06a4",
+      "completed_depths": {
+        "1": 1,
+        "0": 9
+      },
+      "fallback_turns": 9,
+      "agent_turns": 10,
+      "evaluation_calls": 43,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.05900500254938,
+        "median": 100.07245049746416,
+        "p95_nearest_rank": 100.08802700031083,
+        "max": 100.08802700031083
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-0-20261012.json.gz",
+      "trace_sha256": "4ad793d233cfcfd87ef3eae655bfed770e30dd9d5bc5bdd6820bdba33f7b6d31",
+      "wall_seconds": 2.279550649000157
+    },
+    {
+      "key": [
+        "new",
+        "phase2",
+        1,
+        20261009,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-1-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58850.379201998294,
+        58998.9380679981
+      ],
+      "moves": 21,
+      "replay": "valid",
+      "move_sequence_id": "a00dfc6e33c5dd902e95c28859190321149aa9b89a450b1ed1b6fc6829734a7f",
+      "completed_depths": {
+        "0": 10
+      },
+      "fallback_turns": 10,
+      "agent_turns": 10,
+      "evaluation_calls": 42,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.07196299920906,
+        "median": 100.08975549862953,
+        "p95_nearest_rank": 100.16911600177991,
+        "max": 100.16911600177991
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-1-20261009.json.gz",
+      "trace_sha256": "367a559c72e66d6b49dd16ff6e26bd87d0e8206307601d577e37683434fa15f0",
+      "wall_seconds": 2.4269485190015985
+    },
+    {
+      "key": [
+        "new",
+        "phase2",
+        1,
+        20261010,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261010",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-1-20261010.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58849.73689999606,
+        58998.97295899791
+      ],
+      "moves": 21,
+      "replay": "valid",
+      "move_sequence_id": "a00dfc6e33c5dd902e95c28859190321149aa9b89a450b1ed1b6fc6829734a7f",
+      "completed_depths": {
+        "0": 10
+      },
+      "fallback_turns": 10,
+      "agent_turns": 10,
+      "evaluation_calls": 40,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.06185800011735,
+        "median": 100.08920700056478,
+        "p95_nearest_rank": 100.21399399920483,
+        "max": 100.21399399920483
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-1-20261010.json.gz",
+      "trace_sha256": "51aee5f0f579cb3a5dd66928a773168f5797d749a091adae73b9fb609b764137",
+      "wall_seconds": 2.4250600730010774
+    },
+    {
+      "key": [
+        "new",
+        "phase2",
+        1,
+        20261011,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261011",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-1-20261011.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58847.72954499931,
+        58999.02452600509
+      ],
+      "moves": 21,
+      "replay": "valid",
+      "move_sequence_id": "a00dfc6e33c5dd902e95c28859190321149aa9b89a450b1ed1b6fc6829734a7f",
+      "completed_depths": {
+        "0": 10
+      },
+      "fallback_turns": 10,
+      "agent_turns": 10,
+      "evaluation_calls": 43,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.06227600024431,
+        "median": 100.08346600079676,
+        "p95_nearest_rank": 100.213571000495,
+        "max": 100.213571000495
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-1-20261011.json.gz",
+      "trace_sha256": "d3fdecf9f96be132ae061f8fcfcd85cd726a47b9b96acd44c8ba456cb2cb35b7",
+      "wall_seconds": 2.441305125001236
+    },
+    {
+      "key": [
+        "new",
+        "phase2",
+        1,
+        20261012,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "phase2",
+        "--color",
+        "1",
+        "--seed",
+        "20261012",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-1-20261012.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58849.38089899879,
+        58998.8891550056
+      ],
+      "moves": 21,
+      "replay": "valid",
+      "move_sequence_id": "a00dfc6e33c5dd902e95c28859190321149aa9b89a450b1ed1b6fc6829734a7f",
+      "completed_depths": {
+        "0": 10
+      },
+      "fallback_turns": 10,
+      "agent_turns": 10,
+      "evaluation_calls": 43,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.06434699971578,
+        "median": 100.08244900018326,
+        "p95_nearest_rank": 100.19164600089425,
+        "max": 100.19164600089425
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-phase2-1-20261012.json.gz",
+      "trace_sha256": "e3fd0de11bf519752479df7f61b04100abd749df00ddf47d2800dbf1b1646d33",
+      "wall_seconds": 2.426072058999125
+    },
+    {
+      "key": [
+        "new",
+        "random",
+        0,
+        20261009,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "random",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-0-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58999.0804989975,
+        59999.553425994236
+      ],
+      "moves": 19,
+      "replay": "valid",
+      "move_sequence_id": "1a4a6d434978d8f80b99eb922f067d6091d3a56567b9e393bbf8e2b7cdd01dcb",
+      "completed_depths": {
+        "1": 2,
+        "0": 8
+      },
+      "fallback_turns": 8,
+      "agent_turns": 10,
+      "evaluation_calls": 42,
+      "public_elapsed_ms": {
+        "count": 10,
+        "min": 100.06529900056194,
+        "median": 100.07373749976978,
+        "p95_nearest_rank": 100.21427899846458,
+        "max": 100.21427899846458
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-0-20261009.json.gz",
+      "trace_sha256": "d3d94d15dc0418b5fdfb987dc964294b6984f29b6656b9606771d780c1976477",
+      "wall_seconds": 1.201179386000149
+    },
+    {
+      "key": [
+        "new",
+        "random",
+        0,
+        20261010,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "random",
+        "--color",
+        "0",
+        "--seed",
+        "20261010",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-0-20261010.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59199.277011997765,
+        59999.58886400054
+      ],
+      "moves": 15,
+      "replay": "valid",
+      "move_sequence_id": "5bc100f7b7694c9fdce70df16f3b0c43158b7b1eafe77433b41d82ba4b16698a",
+      "completed_depths": {
+        "1": 1,
+        "0": 6,
+        "2": 1
+      },
+      "fallback_turns": 6,
+      "agent_turns": 8,
+      "evaluation_calls": 33,
+      "public_elapsed_ms": {
+        "count": 8,
+        "min": 100.06952800176805,
+        "median": 100.07924500132503,
+        "p95_nearest_rank": 100.13460100162774,
+        "max": 100.13460100162774
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-0-20261010.json.gz",
+      "trace_sha256": "ec49cd84f06658557d9768346be721905b4f80f89ddc0f2bd9c7a07ea3bcba85",
+      "wall_seconds": 0.9993254170003638
+    },
+    {
+      "key": [
+        "new",
+        "random",
+        0,
+        20261011,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "random",
+        "--color",
+        "0",
+        "--seed",
+        "20261011",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-0-20261011.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59399.09605400317,
+        59999.679552998714
+      ],
+      "moves": 11,
+      "replay": "valid",
+      "move_sequence_id": "7afd9ce325b0d66dd591def427adf92ea39d95660ea7a39fa0c2ca7477e65b47",
+      "completed_depths": {
+        "1": 2,
+        "0": 4
+      },
+      "fallback_turns": 4,
+      "agent_turns": 6,
+      "evaluation_calls": 26,
+      "public_elapsed_ms": {
+        "count": 6,
+        "min": 100.07373899861705,
+        "median": 100.09350350082968,
+        "p95_nearest_rank": 100.28987400073675,
+        "max": 100.28987400073675
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-0-20261011.json.gz",
+      "trace_sha256": "1a88906f7844878af66caf3a531c707cecd71a67c997faa8e125a51d911ff9ac",
+      "wall_seconds": 0.7934942030005914
+    },
+    {
+      "key": [
+        "new",
+        "random",
+        0,
+        20261012,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "random",
+        "--color",
+        "0",
+        "--seed",
+        "20261012",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-0-20261012.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        58198.31892700677,
+        59999.218258995825
+      ],
+      "moves": 35,
+      "replay": "valid",
+      "move_sequence_id": "263b4390654ef3b691a98d963b1d9fab2e503387fd06364520b7e17baeea186b",
+      "completed_depths": {
+        "1": 2,
+        "0": 16
+      },
+      "fallback_turns": 16,
+      "agent_turns": 18,
+      "evaluation_calls": 70,
+      "public_elapsed_ms": {
+        "count": 18,
+        "min": 100.0676840012602,
+        "median": 100.0771809995058,
+        "p95_nearest_rank": 100.18744200351648,
+        "max": 100.18744200351648
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-0-20261012.json.gz",
+      "trace_sha256": "dfc0235be4d68aff44b02576db6d08a847f5aa8921411b0bef0c07693f6bc9de",
+      "wall_seconds": 2.042658720001782
+    },
+    {
+      "key": [
+        "new",
+        "random",
+        1,
+        20261009,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "random",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-1-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59999.4604139938,
+        59098.99706300712
+      ],
+      "moves": 18,
+      "replay": "valid",
+      "move_sequence_id": "200448f44ec13d8bcc5da121e2d2391641a4de15aaa22b605f6f4f6869b01577",
+      "completed_depths": {
+        "0": 8,
+        "1": 1
+      },
+      "fallback_turns": 8,
+      "agent_turns": 9,
+      "evaluation_calls": 36,
+      "public_elapsed_ms": {
+        "count": 9,
+        "min": 100.06622400032938,
+        "median": 100.08932699929574,
+        "p95_nearest_rank": 100.18780500104185,
+        "max": 100.18780500104185
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-1-20261009.json.gz",
+      "trace_sha256": "4d1eabbffb09c078e5442b719b651153d16d3a1fcaf75809b488127f8ff3cff4",
+      "wall_seconds": 1.1160803740021947
+    },
+    {
+      "key": [
+        "new",
+        "random",
+        1,
+        20261010,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "random",
+        "--color",
+        "1",
+        "--seed",
+        "20261010",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-1-20261010.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59999.58397800219,
+        59299.21349299548
+      ],
+      "moves": 14,
+      "replay": "valid",
+      "move_sequence_id": "a7eca4cedb46db3528effbc86b576f01a6ecb6327b99275ee44f2f4775a586d9",
+      "completed_depths": {
+        "0": 6,
+        "2": 1
+      },
+      "fallback_turns": 6,
+      "agent_turns": 7,
+      "evaluation_calls": 28,
+      "public_elapsed_ms": {
+        "count": 7,
+        "min": 100.06246900229598,
+        "median": 100.08670300157974,
+        "p95_nearest_rank": 100.2631779992953,
+        "max": 100.2631779992953
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-1-20261010.json.gz",
+      "trace_sha256": "8f8bebf0a0579ae44095d388a5ff7984e51dbe536e36b330be2267eb1dc60456",
+      "wall_seconds": 0.8997641950008983
+    },
+    {
+      "key": [
+        "new",
+        "random",
+        1,
+        20261011,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "random",
+        "--color",
+        "1",
+        "--seed",
+        "20261011",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-1-20261011.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59999.619199003064,
+        59499.33878500451
+      ],
+      "moves": 10,
+      "replay": "valid",
+      "move_sequence_id": "de6cefa02565c111616d6392d796470ad9497fc599a95a0bd87f94d11c9e2c90",
+      "completed_depths": {
+        "0": 4,
+        "1": 1
+      },
+      "fallback_turns": 4,
+      "agent_turns": 5,
+      "evaluation_calls": 21,
+      "public_elapsed_ms": {
+        "count": 5,
+        "min": 100.07366699937847,
+        "median": 100.10754600079963,
+        "p95_nearest_rank": 100.24143600094249,
+        "max": 100.24143600094249
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-1-20261011.json.gz",
+      "trace_sha256": "282d4e2eec50f92caffce6d8843b48c1eb02c80aba8601db6fa44d162e43691c",
+      "wall_seconds": 0.690773825001088
+    },
+    {
+      "key": [
+        "new",
+        "random",
+        1,
+        20261012,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "random",
+        "--color",
+        "1",
+        "--seed",
+        "20261012",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-1-20261012.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59999.0377209906,
+        58299.63711299206
+      ],
+      "moves": 34,
+      "replay": "valid",
+      "move_sequence_id": "3388fcdd7877869803ea3594cbf2d1afade7409750ebc6e3567570f1df0fb889",
+      "completed_depths": {
+        "0": 16,
+        "2": 1
+      },
+      "fallback_turns": 16,
+      "agent_turns": 17,
+      "evaluation_calls": 66,
+      "public_elapsed_ms": {
+        "count": 17,
+        "min": 98.85773499991046,
+        "median": 100.07167900039349,
+        "p95_nearest_rank": 100.16969299977063,
+        "max": 100.16969299977063
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-random-1-20261012.json.gz",
+      "trace_sha256": "550da45a01a7939e1eb00a74e0904cfdea5906162b9dc5c43d1c8b29f0fe4450",
+      "wall_seconds": 1.9258381110012124
+    },
+    {
+      "key": [
+        "new",
+        "simple",
+        0,
+        20261009,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "simple",
+        "--color",
+        "0",
+        "--seed",
+        "20261009",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-0-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59499.59950199627,
+        59992.71055000281
+      ],
+      "moves": 10,
+      "replay": "valid",
+      "move_sequence_id": "794509113e47d218d39067e0023978845086e4a6fb483ebe0862e735514ebbaa",
+      "completed_depths": {
+        "1": 1,
+        "0": 4
+      },
+      "fallback_turns": 4,
+      "agent_turns": 5,
+      "evaluation_calls": 22,
+      "public_elapsed_ms": {
+        "count": 5,
+        "min": 100.06065700144973,
+        "median": 100.07694000159972,
+        "p95_nearest_rank": 100.09215299942298,
+        "max": 100.09215299942298
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-0-20261009.json.gz",
+      "trace_sha256": "7643754e46fbcd1b8ceeac30a39467869918d3987e38f5a9e5552b63fc2eed2f",
+      "wall_seconds": 0.6948757860009209
+    },
+    {
+      "key": [
+        "new",
+        "simple",
+        0,
+        20261010,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "simple",
+        "--color",
+        "0",
+        "--seed",
+        "20261010",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-0-20261010.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59499.40317500295,
+        59992.6076030024
+      ],
+      "moves": 10,
+      "replay": "valid",
+      "move_sequence_id": "794509113e47d218d39067e0023978845086e4a6fb483ebe0862e735514ebbaa",
+      "completed_depths": {
+        "1": 1,
+        "0": 4
+      },
+      "fallback_turns": 4,
+      "agent_turns": 5,
+      "evaluation_calls": 22,
+      "public_elapsed_ms": {
+        "count": 5,
+        "min": 100.05862500111107,
+        "median": 100.07102500094334,
+        "p95_nearest_rank": 100.30150400052662,
+        "max": 100.30150400052662
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-0-20261010.json.gz",
+      "trace_sha256": "562b5b788be710e9e8d22a2e5eacaca8fd111b66c3b973154bef2f29a40cb487",
+      "wall_seconds": 0.7009964959979698
+    },
+    {
+      "key": [
+        "new",
+        "simple",
+        0,
+        20261011,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "simple",
+        "--color",
+        "0",
+        "--seed",
+        "20261011",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-0-20261011.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59499.43807700038,
+        59989.2789459991
+      ],
+      "moves": 10,
+      "replay": "valid",
+      "move_sequence_id": "794509113e47d218d39067e0023978845086e4a6fb483ebe0862e735514ebbaa",
+      "completed_depths": {
+        "1": 1,
+        "0": 4
+      },
+      "fallback_turns": 4,
+      "agent_turns": 5,
+      "evaluation_calls": 22,
+      "public_elapsed_ms": {
+        "count": 5,
+        "min": 100.06541100301547,
+        "median": 100.07947700069053,
+        "p95_nearest_rank": 100.1840560020355,
+        "max": 100.1840560020355
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-0-20261011.json.gz",
+      "trace_sha256": "e678a48d706602aa5071f38dded07c7ea5ca9d01989729068657cc119c2b1814",
+      "wall_seconds": 0.700963495997712
+    },
+    {
+      "key": [
+        "new",
+        "simple",
+        0,
+        20261012,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "simple",
+        "--color",
+        "0",
+        "--seed",
+        "20261012",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-0-20261012.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 1,
+      "failure": null,
+      "remaining_ms": [
+        59499.00774500202,
+        59991.02636600219
+      ],
+      "moves": 10,
+      "replay": "valid",
+      "move_sequence_id": "794509113e47d218d39067e0023978845086e4a6fb483ebe0862e735514ebbaa",
+      "completed_depths": {
+        "1": 1,
+        "0": 4
+      },
+      "fallback_turns": 4,
+      "agent_turns": 5,
+      "evaluation_calls": 22,
+      "public_elapsed_ms": {
+        "count": 5,
+        "min": 100.05913100030739,
+        "median": 100.16564399847994,
+        "p95_nearest_rank": 100.32965900245472,
+        "max": 100.32965900245472
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-0-20261012.json.gz",
+      "trace_sha256": "ba7c23f2712ec8f4554ad3bc4b4b53f904589316fe57dadb51d65e6b8dac9dd8",
+      "wall_seconds": 0.6972350620017096
+    },
+    {
+      "key": [
+        "new",
+        "simple",
+        1,
+        20261009,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "simple",
+        "--color",
+        "1",
+        "--seed",
+        "20261009",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-1-20261009.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59996.05122200228,
+        59599.50443299749
+      ],
+      "moves": 9,
+      "replay": "valid",
+      "move_sequence_id": "99b98089a8946094e897d71a5cfa97331904167e1f6eacaa9e4a536e10d42c29",
+      "completed_depths": {
+        "0": 4
+      },
+      "fallback_turns": 4,
+      "agent_turns": 4,
+      "evaluation_calls": 19,
+      "public_elapsed_ms": {
+        "count": 4,
+        "min": 100.07897499963292,
+        "median": 100.10892400168814,
+        "p95_nearest_rank": 100.17668000000413,
+        "max": 100.17668000000413
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-1-20261009.json.gz",
+      "trace_sha256": "a601dcec7b2f035b5075ecd30221ec818933a88d78f8f72f3581b898b7324438",
+      "wall_seconds": 0.5919243780008401
+    },
+    {
+      "key": [
+        "new",
+        "simple",
+        1,
+        20261010,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "simple",
+        "--color",
+        "1",
+        "--seed",
+        "20261010",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-1-20261010.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59995.965122005146,
+        59599.3973730001
+      ],
+      "moves": 9,
+      "replay": "valid",
+      "move_sequence_id": "99b98089a8946094e897d71a5cfa97331904167e1f6eacaa9e4a536e10d42c29",
+      "completed_depths": {
+        "0": 4
+      },
+      "fallback_turns": 4,
+      "agent_turns": 4,
+      "evaluation_calls": 19,
+      "public_elapsed_ms": {
+        "count": 4,
+        "min": 100.0655600000755,
+        "median": 100.14757950011699,
+        "p95_nearest_rank": 100.21677200347767,
+        "max": 100.21677200347767
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-1-20261010.json.gz",
+      "trace_sha256": "e6c781a2204efaa67a3c4a5109d9e55031149d03e738211648d7f94a3795fb2d",
+      "wall_seconds": 0.5892307069989329
+    },
+    {
+      "key": [
+        "new",
+        "simple",
+        1,
+        20261011,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "simple",
+        "--color",
+        "1",
+        "--seed",
+        "20261011",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-1-20261011.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59995.97443700259,
+        59599.431468996045
+      ],
+      "moves": 9,
+      "replay": "valid",
+      "move_sequence_id": "99b98089a8946094e897d71a5cfa97331904167e1f6eacaa9e4a536e10d42c29",
+      "completed_depths": {
+        "0": 4
+      },
+      "fallback_turns": 4,
+      "agent_turns": 4,
+      "evaluation_calls": 19,
+      "public_elapsed_ms": {
+        "count": 4,
+        "min": 100.10565099946689,
+        "median": 100.12704849941656,
+        "p95_nearest_rank": 100.17725299985614,
+        "max": 100.17725299985614
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-1-20261011.json.gz",
+      "trace_sha256": "9d71ed518a0e9cc91fef0980441617b3c2881470eb704c4c143aa0127a2e911e",
+      "wall_seconds": 0.5947076120028214
+    },
+    {
+      "key": [
+        "new",
+        "simple",
+        1,
+        20261012,
+        400,
+        60000,
+        "empty"
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "verification.evaluation_acceptance",
+        "game",
+        "--version",
+        "new",
+        "--opponent",
+        "simple",
+        "--color",
+        "1",
+        "--seed",
+        "20261012",
+        "--cap",
+        "400",
+        "--budget",
+        "60000",
+        "--start",
+        "empty",
+        "--trace",
+        "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-1-20261012.json.gz"
+      ],
+      "status": "completed",
+      "reason": "exact_five",
+      "winner": 0,
+      "failure": null,
+      "remaining_ms": [
+        59995.96698500318,
+        59599.604904000444
+      ],
+      "moves": 9,
+      "replay": "valid",
+      "move_sequence_id": "99b98089a8946094e897d71a5cfa97331904167e1f6eacaa9e4a536e10d42c29",
+      "completed_depths": {
+        "0": 4
+      },
+      "fallback_turns": 4,
+      "agent_turns": 4,
+      "evaluation_calls": 19,
+      "public_elapsed_ms": {
+        "count": 4,
+        "min": 100.07505300018238,
+        "median": 100.09377750066051,
+        "p95_nearest_rank": 100.11413900065236,
+        "max": 100.11413900065236
+      },
+      "trace": "/Users/best/Downloads/omok-agent/docs/verification/issue-22/integration-new-simple-1-20261012.json.gz",
+      "trace_sha256": "aebb13d8ab4648202889ce2b7dd45f4d150ffa2db2be6d2bbe329d2cb6e991f8",
+      "wall_seconds": 0.5873615470009099
+    }
+  ],
+  "batch_identity": {
+    "evaluators": {
+      "old": {
+        "feature_version": "material-v1",
+        "configuration_id": "0f197f30a680dfe3909a2f04f4af164285df72c8826e9e164c6f6d4c7f4d7c48",
+        "configuration": "{\"coefficients\":{\"material\":1},\"enabled_families\":[\"material\"],\"feature_version\":\"material-v1\"}"
+      },
+      "new": {
+        "feature_version": "effects-v1",
+        "configuration_id": "6b9b8d39d5d5a883e043c93789e07f734dac25644c88df9a79e9cd42e704a34c",
+        "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"capture_break_four\":120,\"capture_break_potential\":20,\"capture_create_four\":80,\"capture_create_potential\":15,\"capture_expose_five\":-300,\"capture_move\":30,\"capture_pair\":10,\"capture_remove_blocker\":25,\"closed_four\":100,\"defensive_urgency\":100,\"geometric_completion\":0,\"geometric_multiple\":0,\"material\":1,\"multi_pair_move\":20,\"offensive_opportunity\":60,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_multiple\":50,\"verified_win\":300,\"vulnerable_pair\":-40},\"enabled_families\":[\"material\",\"lines\",\"potential\",\"captures\",\"effects\",\"multiplicity\"],\"feature_version\":\"effects-v1\"}"
+      },
+      "without-lines": {
+        "feature_version": "effects-v1",
+        "configuration_id": "1de30626e2945bb12db2cf6712e40d78b1c93c49050a7e0d0689e7fc8ed0464a",
+        "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"capture_break_four\":120,\"capture_break_potential\":20,\"capture_create_four\":80,\"capture_create_potential\":15,\"capture_expose_five\":-300,\"capture_move\":30,\"capture_pair\":10,\"capture_remove_blocker\":25,\"closed_four\":100,\"defensive_urgency\":100,\"geometric_completion\":0,\"geometric_multiple\":0,\"material\":1,\"multi_pair_move\":20,\"offensive_opportunity\":60,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_multiple\":50,\"verified_win\":300,\"vulnerable_pair\":-40},\"enabled_families\":[\"material\",\"potential\",\"captures\",\"effects\",\"multiplicity\"],\"feature_version\":\"effects-v1\"}"
+      },
+      "without-potential": {
+        "feature_version": "effects-v1",
+        "configuration_id": "6462641ddc730f3614940d03f0f15d7956d7e8e0e37205f1b813ee46e08c5132",
+        "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"capture_break_four\":120,\"capture_break_potential\":20,\"capture_create_four\":80,\"capture_create_potential\":15,\"capture_expose_five\":-300,\"capture_move\":30,\"capture_pair\":10,\"capture_remove_blocker\":25,\"closed_four\":100,\"defensive_urgency\":100,\"geometric_completion\":0,\"geometric_multiple\":0,\"material\":1,\"multi_pair_move\":20,\"offensive_opportunity\":60,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_multiple\":50,\"verified_win\":300,\"vulnerable_pair\":-40},\"enabled_families\":[\"material\",\"lines\",\"captures\",\"effects\",\"multiplicity\"],\"feature_version\":\"effects-v1\"}"
+      },
+      "without-captures": {
+        "feature_version": "effects-v1",
+        "configuration_id": "796ec2c0983c5580cc81bc06628085ead7e47d62dba4e1dadb5e1d2b391a6651",
+        "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"capture_break_four\":120,\"capture_break_potential\":20,\"capture_create_four\":80,\"capture_create_potential\":15,\"capture_expose_five\":-300,\"capture_move\":30,\"capture_pair\":10,\"capture_remove_blocker\":25,\"closed_four\":100,\"defensive_urgency\":100,\"geometric_completion\":0,\"geometric_multiple\":0,\"material\":1,\"multi_pair_move\":20,\"offensive_opportunity\":60,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_multiple\":50,\"verified_win\":300,\"vulnerable_pair\":-40},\"enabled_families\":[\"material\",\"lines\",\"potential\",\"effects\",\"multiplicity\"],\"feature_version\":\"effects-v1\"}"
+      },
+      "without-effects": {
+        "feature_version": "effects-v1",
+        "configuration_id": "5870246e9c4f28e196381966b3540ba4de025a2f5ae40d90be224eecf5344784",
+        "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"capture_break_four\":120,\"capture_break_potential\":20,\"capture_create_four\":80,\"capture_create_potential\":15,\"capture_expose_five\":-300,\"capture_move\":30,\"capture_pair\":10,\"capture_remove_blocker\":25,\"closed_four\":100,\"defensive_urgency\":100,\"geometric_completion\":0,\"geometric_multiple\":0,\"material\":1,\"multi_pair_move\":20,\"offensive_opportunity\":60,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_multiple\":50,\"verified_win\":300,\"vulnerable_pair\":-40},\"enabled_families\":[\"material\",\"lines\",\"potential\",\"captures\",\"multiplicity\"],\"feature_version\":\"effects-v1\"}"
+      },
+      "without-multiplicity": {
+        "feature_version": "effects-v1",
+        "configuration_id": "db0ab02056e87a2e2aff0e4364c3f5f7c95d34fa8084750c40b0f30bad1ade98",
+        "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"capture_break_four\":120,\"capture_break_potential\":20,\"capture_create_four\":80,\"capture_create_potential\":15,\"capture_expose_five\":-300,\"capture_move\":30,\"capture_pair\":10,\"capture_remove_blocker\":25,\"closed_four\":100,\"defensive_urgency\":100,\"geometric_completion\":0,\"geometric_multiple\":0,\"material\":1,\"multi_pair_move\":20,\"offensive_opportunity\":60,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_multiple\":50,\"verified_win\":300,\"vulnerable_pair\":-40},\"enabled_families\":[\"material\",\"lines\",\"potential\",\"captures\",\"effects\"],\"feature_version\":\"effects-v1\"}"
+      }
+    },
+    "provided_sources": {
+      "player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+      "randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+      "simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+    },
+    "phase2_checkpoint": "798963cae696eead8353232d1cc8c289cce473a9",
+    "search_settings": {
+      "max_depth": 8,
+      "max_nodes": 10000,
+      "candidate_radius": 2,
+      "candidate_cap": 24,
+      "full_width": false,
+      "ordering": "omok.tactics.static_rank",
+      "time_policy": {
+        "max_time_ms": 100.0,
+        "return_margin_ms": 2.0,
+        "reserve_fraction": 0.5,
+        "turn_fraction": 0.1,
+        "soft_fraction": 0.8
+      },
+      "table_capacity": 4096,
+      "extensions": "none"
+    },
+    "offline_sources": {
+      "__init__.py": "08bc38bc5932935a9a90b698931ee7fd4105a12655a54a66050c43a7a368465b",
+      "__main__.py": "9544769d14064c480bc5f31e420bbe07184a49e837bc51a5d6afacc6f0dc5dff",
+      "compare.py": "66381686175fab4dfc76dd77ac183c3b96fb67a351c877a0a30a609e5658e5a9",
+      "fixtures.py": "5dcfe210da28ab98df244df883cb78f2c4da3e638d8e3aeec1e27397055a597b",
+      "measurement.py": "a46671828ebe044bb7cc29c1a6294cad8e4a1224f5c434810439ae87f9e92cca",
+      "opponents.py": "a8578ee6f122c349f83152f31fb263678ce9560ef939aa70cd22ae42635cd2d2",
+      "provided.py": "2034f304e2cc67e3f927448b3447ad46aa8392130679a660b39df1481d48a906",
+      "replay.py": "e8714127256a67bda8afc199c964f66f3824c015a868e63f158dd3ae824e0a8b",
+      "runner.py": "d304aab4be11d72a1407633f0404c4f3de9bc619156d5f0eea94fb1c64c25693"
+    }
+  }
+}

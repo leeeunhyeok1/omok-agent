@@ -1,0 +1,476 @@
+{
+  "groups": [
+    {
+      "batch": "integration",
+      "version": "old",
+      "opponent": "phase2",
+      "start": "empty",
+      "outcomes": {
+        "win": 4,
+        "loss": 4
+      },
+      "by_color": {
+        "0": {
+          "win": 4
+        },
+        "1": {
+          "loss": 4
+        }
+      },
+      "unique_move_sequences": 1,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 0,
+      "agent_turns": 60
+    },
+    {
+      "batch": "integration",
+      "version": "old",
+      "opponent": "random",
+      "start": "empty",
+      "outcomes": {
+        "win": 8
+      },
+      "by_color": {
+        "0": {
+          "win": 4
+        },
+        "1": {
+          "win": 4
+        }
+      },
+      "unique_move_sequences": 8,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 0,
+      "agent_turns": 96
+    },
+    {
+      "batch": "integration",
+      "version": "old",
+      "opponent": "simple",
+      "start": "empty",
+      "outcomes": {
+        "loss": 8
+      },
+      "by_color": {
+        "0": {
+          "loss": 4
+        },
+        "1": {
+          "loss": 4
+        }
+      },
+      "unique_move_sequences": 3,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 0,
+      "agent_turns": 58
+    },
+    {
+      "batch": "integration",
+      "version": "new",
+      "opponent": "phase2",
+      "start": "empty",
+      "outcomes": {
+        "loss": 8
+      },
+      "by_color": {
+        "0": {
+          "loss": 4
+        },
+        "1": {
+          "loss": 4
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 76,
+      "agent_turns": 80
+    },
+    {
+      "batch": "integration",
+      "version": "new",
+      "opponent": "random",
+      "start": "empty",
+      "outcomes": {
+        "win": 8
+      },
+      "by_color": {
+        "0": {
+          "win": 4
+        },
+        "1": {
+          "win": 4
+        }
+      },
+      "unique_move_sequences": 8,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 68,
+      "agent_turns": 80
+    },
+    {
+      "batch": "integration",
+      "version": "new",
+      "opponent": "simple",
+      "start": "empty",
+      "outcomes": {
+        "loss": 8
+      },
+      "by_color": {
+        "0": {
+          "loss": 4
+        },
+        "1": {
+          "loss": 4
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 32,
+      "agent_turns": 36
+    },
+    {
+      "batch": "ablations",
+      "version": "old",
+      "opponent": "phase2",
+      "start": "capture-defense",
+      "outcomes": {
+        "loss": 1,
+        "win": 1
+      },
+      "by_color": {
+        "0": {
+          "loss": 1
+        },
+        "1": {
+          "win": 1
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 0,
+      "agent_turns": 6
+    },
+    {
+      "batch": "ablations",
+      "version": "new",
+      "opponent": "phase2",
+      "start": "capture-defense",
+      "outcomes": {
+        "loss": 1,
+        "win": 1
+      },
+      "by_color": {
+        "0": {
+          "loss": 1
+        },
+        "1": {
+          "win": 1
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 7,
+      "agent_turns": 9
+    },
+    {
+      "batch": "ablations",
+      "version": "without-lines",
+      "opponent": "phase2",
+      "start": "capture-defense",
+      "outcomes": {
+        "loss": 1,
+        "win": 1
+      },
+      "by_color": {
+        "0": {
+          "loss": 1
+        },
+        "1": {
+          "win": 1
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 7,
+      "agent_turns": 9
+    },
+    {
+      "batch": "ablations",
+      "version": "without-potential",
+      "opponent": "phase2",
+      "start": "capture-defense",
+      "outcomes": {
+        "loss": 1,
+        "win": 1
+      },
+      "by_color": {
+        "0": {
+          "loss": 1
+        },
+        "1": {
+          "win": 1
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 7,
+      "agent_turns": 9
+    },
+    {
+      "batch": "ablations",
+      "version": "without-captures",
+      "opponent": "phase2",
+      "start": "capture-defense",
+      "outcomes": {
+        "loss": 1,
+        "win": 1
+      },
+      "by_color": {
+        "0": {
+          "loss": 1
+        },
+        "1": {
+          "win": 1
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 7,
+      "agent_turns": 9
+    },
+    {
+      "batch": "ablations",
+      "version": "without-effects",
+      "opponent": "phase2",
+      "start": "capture-defense",
+      "outcomes": {
+        "loss": 1,
+        "win": 1
+      },
+      "by_color": {
+        "0": {
+          "loss": 1
+        },
+        "1": {
+          "win": 1
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 7,
+      "agent_turns": 9
+    },
+    {
+      "batch": "ablations",
+      "version": "without-multiplicity",
+      "opponent": "phase2",
+      "start": "capture-defense",
+      "outcomes": {
+        "loss": 1,
+        "win": 1
+      },
+      "by_color": {
+        "0": {
+          "loss": 1
+        },
+        "1": {
+          "win": 1
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 7,
+      "agent_turns": 9
+    },
+    {
+      "batch": "ablations",
+      "version": "old",
+      "opponent": "phase2",
+      "start": "empty",
+      "outcomes": {
+        "win": 1,
+        "loss": 1
+      },
+      "by_color": {
+        "0": {
+          "win": 1
+        },
+        "1": {
+          "loss": 1
+        }
+      },
+      "unique_move_sequences": 1,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 0,
+      "agent_turns": 15
+    },
+    {
+      "batch": "ablations",
+      "version": "new",
+      "opponent": "phase2",
+      "start": "empty",
+      "outcomes": {
+        "loss": 2
+      },
+      "by_color": {
+        "0": {
+          "loss": 1
+        },
+        "1": {
+          "loss": 1
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 19,
+      "agent_turns": 20
+    },
+    {
+      "batch": "ablations",
+      "version": "without-lines",
+      "opponent": "phase2",
+      "start": "empty",
+      "outcomes": {
+        "loss": 2
+      },
+      "by_color": {
+        "0": {
+          "loss": 1
+        },
+        "1": {
+          "loss": 1
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 19,
+      "agent_turns": 20
+    },
+    {
+      "batch": "ablations",
+      "version": "without-potential",
+      "opponent": "phase2",
+      "start": "empty",
+      "outcomes": {
+        "loss": 2
+      },
+      "by_color": {
+        "0": {
+          "loss": 1
+        },
+        "1": {
+          "loss": 1
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 19,
+      "agent_turns": 20
+    },
+    {
+      "batch": "ablations",
+      "version": "without-captures",
+      "opponent": "phase2",
+      "start": "empty",
+      "outcomes": {
+        "loss": 2
+      },
+      "by_color": {
+        "0": {
+          "loss": 1
+        },
+        "1": {
+          "loss": 1
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 19,
+      "agent_turns": 20
+    },
+    {
+      "batch": "ablations",
+      "version": "without-effects",
+      "opponent": "phase2",
+      "start": "empty",
+      "outcomes": {
+        "loss": 2
+      },
+      "by_color": {
+        "0": {
+          "loss": 1
+        },
+        "1": {
+          "loss": 1
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 19,
+      "agent_turns": 20
+    },
+    {
+      "batch": "ablations",
+      "version": "without-multiplicity",
+      "opponent": "phase2",
+      "start": "empty",
+      "outcomes": {
+        "loss": 2
+      },
+      "by_color": {
+        "0": {
+          "loss": 1
+        },
+        "1": {
+          "loss": 1
+        }
+      },
+      "unique_move_sequences": 2,
+      "reliability_failures": [],
+      "match_reliability_passed": true,
+      "failure_consequence": "a crash in any provided-opponent game fails that opponent match",
+      "fallback_turns": 19,
+      "agent_turns": 20
+    }
+  ],
+  "replayed_traces": 76,
+  "duplicates": "identical moves under deterministic settings are repeated evidence; clock stopping can vary even with the same seed",
+  "default": "retained Phase 2 material; effects-v1 remains experimental"
+}

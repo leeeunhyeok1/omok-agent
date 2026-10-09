@@ -1,0 +1,63 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "unittest",
+    "tests.test_evaluation",
+    "tests.test_lines",
+    "tests.test_potential",
+    "tests.test_captures",
+    "tests.test_threat_effects",
+    "tests.test_measurement",
+    "tests.test_search",
+    "tests.test_transposition",
+    "tests.test_iterative",
+    "tests.test_tactics",
+    "tests.test_player",
+    "tests.test_provided",
+    "tests.test_integration",
+    "tests.test_replay",
+    "tests.test_runner",
+    "tests.test_simulator",
+    "tests.test_reference",
+    "-q"
+  ],
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "----------------------------------------------------------------------\nRan 160 tests in 29.386s\n\nOK\n",
+  "conditions": {
+    "python": "3.14.3",
+    "implementation": "CPython",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+    "machine": "x86_64",
+    "cpu": "Intel(R) Core(TM) i5-7360U CPU @ 2.30GHz",
+    "cpu_count": 4,
+    "affinity": null,
+    "load_average": [
+      1.6591796875,
+      1.3779296875,
+      1.2724609375
+    ],
+    "workers": 1,
+    "execution": "sequential in-process; external contention uncontrolled",
+    "clock": {
+      "implementation": "mach_absolute_time()",
+      "monotonic": true,
+      "adjustable": false,
+      "resolution": 1e-09
+    }
+  },
+  "engine_source_sha256": {
+    "__init__.py": "8fa4256f87cb48053e42cc4b325076ddcec37235cfa8d6ce9580704b8bcfc954",
+    "captures.py": "12d42ecfeffbb9ff5671230c205307f5be8a2ef69468c6e18e1172398d271062",
+    "evaluation.py": "8668fb03b09d98d8353cf0b34eaa7ff86e3bccfa770cc99d385a622491780962",
+    "lines.py": "c7149021f01c3845f1dccbba2a18920c44dbb17ea3667fb7ceb15fdc78c0f3fc",
+    "measurement.py": "dcdd28ad43ab792bb83a8efdaf7250747744370f93a5c15a8349bb3c963c2748",
+    "player.py": "987d25a074cf4fd19329a7252886e6cc718f72cd397380df560743a592c3165a",
+    "search.py": "f0b5a1a93e1d4b9559ed00b0cc428eb2e13f7a78e1a67d5caddad641b0ccd572",
+    "simulator.py": "3dde4fd4c62df6123d920579e2b91e529d866ac608513701db38bf563acb1837",
+    "tactics.py": "9cdb4f90a424157a22c7a2505c2ce6618aa16c3702f0b846485ce1020dd56a35",
+    "threat_effects.py": "2c2efa7bd0d6ee9a5d5b841ce500380da7e280adc0fa987b248b3a3573c9891a",
+    "transposition.py": "daf69437752d5b4cb8814fa1a0f3c94d3144f0f86255e4eed2296216b6b345d8"
+  }
+}

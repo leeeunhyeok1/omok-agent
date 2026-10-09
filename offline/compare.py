@@ -66,7 +66,7 @@ def compare(configs: list[EvaluationConfig], initial: Position, *, route: str,
         'initial': state(initial), 'search_settings': settings,
         'effective_search': {'reference': route == 'fixed-depth',
                              'clock': 'disabled', 'candidate_order': 'frozen',
-                             'table': 'disabled' if route == 'fixed-depth' else 'fresh per run',
+                             'table': 'plain/sample disabled; separate cold/warm comparisons' if route == 'fixed-depth' else 'fresh per run',
                              'node_limit': nodes if route == 'node-budget' else None},
         'candidate_tree_id': sha256(tree_json.encode()).hexdigest(),
         'candidate_tree': records, 'runs': [],
@@ -92,6 +92,18 @@ def compare(configs: list[EvaluationConfig], initial: Position, *, route: str,
             'elapsed_ratio': sampled['elapsed_ns'] / plain['elapsed_ns'] if plain['elapsed_ns'] else None,
             'meaning': 'one sequential plain/sample pair; includes noise/order effects; not a calibrated estimate',
         }
+        if route == 'fixed-depth':
+            for name in ('alpha_beta', 'cached_cold', 'cached_warm'):
+                if name != 'cached_warm':
+                    engine = FixedDepthSearch(candidates=lambda position: tree[position],
+                        evaluation_config=config,
+                        table=None if name == 'alpha_beta' else TranspositionTable(
+                            settings['table_capacity']))
+                start = perf_counter_ns()
+                result = engine.search(initial, depth)
+                pair[name] = asdict(result) | {'elapsed_ns': perf_counter_ns() - start}
+                if not result.completed or result.score != plain['score']:
+                    raise AssertionError('Alpha-beta/reference disagreement: ' + name)
         report['runs'].append(pair)
     return report
 
