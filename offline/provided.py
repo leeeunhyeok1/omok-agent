@@ -34,10 +34,10 @@ class ProvidedPlayers:
     base: Any
     classes: dict[str, Any]
 
-    def create(self, name: str, color: int) -> DevelopmentPlayer:
+    def create(self, name: str, color: int, **options: Any) -> DevelopmentPlayer:
         if type(color) is not int or color not in (0, 1):
             raise ValueError('Color must be 0 or 1.')
-        return self.classes[name](color)
+        return self.classes[name](color, **options)
 
 
 @lru_cache(maxsize=1)
@@ -64,9 +64,9 @@ def load_players() -> ProvidedPlayers:
         baseline = type('ProvidedBaseline', (LegalBaseline, base),
                         {'__init__': initialize, '__module__': __name__})
         # AI-written by OpenAI Codex, for issue #14.
-        def initialize_search(self: Any, color: int) -> None:
+        def initialize_search(self: Any, color: int, **options: Any) -> None:
             base.__init__(self, color)
-            IterativePlayer.__init__(self, color)
+            IterativePlayer.__init__(self, color, **options)
 
         search = type('ProvidedSearch', (IterativePlayer, base),
                       {'__init__': initialize_search, '__module__': __name__})

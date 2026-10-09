@@ -401,3 +401,12 @@ incremental optimization. Sparse measured calls were about 18–38 ms; the dense
 capture-heavy sample was about 1.16 seconds without a deadline. All work checks
 cooperative cancellation. This configuration is unsuitable for default promotion
 on these measurements. See [issue #20 evidence](verification/issue-20.md).
+
+## Search cost and replayable comparisons (issue #21)
+
+Saved presets now run through the existing offline CLI with optional sampled
+production costs. Counter meanings, shared-family attribution, frozen candidate
+comparisons, separately labeled node-budget/real-clock routes, source/runtime
+identity and instrumentation overhead are documented in
+[the measurement contract](measurement.md). Inspection remains an explicit
+operation; profiling does not request feature explanations at search leaves.

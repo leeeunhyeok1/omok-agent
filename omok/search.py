@@ -1,10 +1,12 @@
-# AI-written by OpenAI Codex, for issues #10–#13.
+# AI-written by OpenAI Codex, for issues #10–#13; issue #21 measurement additions.
 """Fixed-depth and committed iterative search over immutable positions."""
 from dataclasses import dataclass, replace, field
 from collections.abc import Callable, Iterable, Iterator
 from math import isfinite
 from time import monotonic
-from typing import TYPE_CHECKING, Hashable
+from typing import TYPE_CHECKING, Hashable, Any
+
+from omok.measurement import EvaluationProfile
 
 if TYPE_CHECKING:
     from omok.evaluation import EvaluationConfig
@@ -79,6 +81,11 @@ class SearchResult:
     table_probes: int = 0
     table_hits: int = 0
     table_value_cutoffs: int = 0
+    evaluation_calls: int = 0
+    evaluation_completed: int = 0
+    evaluation_cancelled: int = 0
+    evaluation_cache_hits: int = 0
+    evaluation_profile: dict[str, Any] | None = None
 
 
 @dataclass(slots=True)
@@ -90,6 +97,11 @@ class _Traversal:
     table_probes: int = 0
     table_hits: int = 0
     table_value_cutoffs: int = 0
+    evaluation_calls: int = 0
+    evaluation_completed: int = 0
+    evaluation_cancelled: int = 0
+    evaluation_cache_hits: int = 0
+    profile: EvaluationProfile | None = None
     compatibility: Hashable = None
     use_table: bool = True
     root: Position | None = None
@@ -100,7 +112,12 @@ class _Traversal:
     def report(self, result: SearchResult) -> SearchResult:
         return replace(result, nodes=self.nodes, cutoffs=self.cutoffs,
                        table_probes=self.table_probes, table_hits=self.table_hits,
-                       table_value_cutoffs=self.table_value_cutoffs)
+                       table_value_cutoffs=self.table_value_cutoffs,
+                       evaluation_calls=self.evaluation_calls,
+                       evaluation_completed=self.evaluation_completed,
+                       evaluation_cancelled=self.evaluation_cancelled,
+                       evaluation_cache_hits=self.evaluation_cache_hits,
+                       evaluation_profile=None if self.profile is None else self.profile.snapshot())
 
     def check(self) -> None:
         self.limits.check(self.clock)
@@ -133,7 +150,11 @@ class FixedDepthSearch:
                  ordering: Callable[[Position, Coordinate, Callable[[], None]], int] | None = None,
                  table: TranspositionTable | None = None,
                  compatibility: Hashable = None,
-                 evaluation_config: 'EvaluationConfig | None' = None) -> None:
+                 evaluation_config: 'EvaluationConfig | None' = None,
+                 profile_every: int = 0) -> None:
+        if type(profile_every) is not int or profile_every < 0:
+            raise ValueError('Profile interval must be a nonnegative integer.')
+        self.profile_every = profile_every
         self.candidates = candidates
         self.evaluator = evaluator
         self.clock = clock
@@ -175,7 +196,8 @@ class FixedDepthSearch:
                                         line[0] if line else None, line))
 
     def score(self, position: Position, perspective: int, *,
-              check: Callable[[], None] = lambda: None) -> int:
+              check: Callable[[], None] = lambda: None,
+              profile: EvaluationProfile | None = None) -> int:
         if type(perspective) is not int or perspective not in (0, 1):
             raise ValueError('Perspective must be 0 or 1.')
         if position.outcome == 'draw':
@@ -183,7 +205,11 @@ class FixedDepthSearch:
         if position.outcome != 'ongoing':
             winner = 0 if position.outcome == 'black_win' else 1
             return WIN_SCORE if perspective == winner else -WIN_SCORE
-        if self.cooperative_evaluator is not None:
+        if profile is not None:
+            from omok.evaluation import ConfiguredEvaluator
+        if profile is not None and isinstance(self.cooperative_evaluator, ConfiguredEvaluator):
+            value = self.cooperative_evaluator(position, check, profile=profile)
+        elif self.cooperative_evaluator is not None:
             value = self.cooperative_evaluator(position, check)
         elif self.evaluator is material_evaluation:
             value = material_evaluation(position, check=check)
@@ -261,7 +287,8 @@ class FixedDepthSearch:
         fallback = next(legal_moves(position))
         traversal = _Traversal(SearchLimits() if limits is None else limits, self.clock,
                                compatibility=self.cache_compatibility(), use_table=not reference,
-                               root=position)
+                               root=position,
+                               profile=EvaluationProfile(self.profile_every) if self.profile_every else None)
         try:
             return traversal.report(replace(self._root(position, depth, reference, traversal),
                            completed_depth=depth, attempted_depth=depth, pv_status='complete',
@@ -275,7 +302,23 @@ class FixedDepthSearch:
 
     def _leaf(self, position: Position, perspective: int, traversal: _Traversal) -> int:
         traversal.check()
-        value = self.score(position, perspective, check=traversal.check)
+        if position.outcome != 'ongoing':
+            value = self.score(position, perspective, check=traversal.check)
+            traversal.check()
+            return value
+        traversal.evaluation_calls += 1
+        try:
+            profile = traversal.profile
+            if profile is not None and (traversal.evaluation_calls - 1) % profile.every == 0:
+                profile.sampled_calls += 1
+                value = profile.measure('evaluator_total', lambda: self.score(
+                    position, perspective, check=traversal.check, profile=profile))
+            else:
+                value = self.score(position, perspective, check=traversal.check)
+        except SearchCancelled:
+            traversal.evaluation_cancelled += 1
+            raise
+        traversal.evaluation_completed += 1
         traversal.check()
         return value
 
@@ -339,6 +382,7 @@ class FixedDepthSearch:
                 traversal.table_hits += 1
         if depth == 0:
             if entry is not None and entry.bound == 'exact':
+                traversal.evaluation_cache_hits += 1
                 traversal.table_value_cutoffs += 1
                 return entry.score, ()
             value = self._leaf(position, perspective, traversal)
@@ -391,7 +435,8 @@ class FixedDepthSearch:
                                 pv_status='complete')
         committed = SearchResult(next(legal_moves(position)), None, False)
         traversal = _Traversal(SearchLimits() if limits is None else limits, self.clock,
-                               compatibility=self.cache_compatibility(), root=position)
+                               compatibility=self.cache_compatibility(), root=position,
+                               profile=EvaluationProfile(self.profile_every) if self.profile_every else None)
         attempted = 0
         try:
             for depth in range(1, max_depth + 1):

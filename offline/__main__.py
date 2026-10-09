@@ -1,4 +1,4 @@
-# AI-written by OpenAI Codex, for issues #4 and #6.
+# AI-written by OpenAI Codex, for issues #4 and #6; issue #21 measurement additions.
 """Run one local game or replay its trace; see docs/runner.md."""
 import argparse
 import json
@@ -12,7 +12,9 @@ from offline.fixtures import NAMES, fixture
 from offline.opponents import SeededSmokePlayer
 from offline.replay import load_trace, replay
 from offline.runner import player_source, run_game
-from omok.player import DevelopmentPlayer, IterativePlayer, LegalBaseline
+from omok.player import DevelopmentPlayer, IterativePlayer, LegalBaseline, TimePolicy
+from omok.evaluation import EvaluationConfig
+from offline.measurement import conditions, engine_sources, evaluation_identity, search_settings, configured_search
 from omok.simulator import Position
 
 
@@ -31,6 +33,13 @@ def main() -> None:
     parser.add_argument('--agent-color', '--baseline-color', dest='agent_color', choices=('black', 'white'), default='black')
     parser.add_argument('--engine', choices=('baseline', 'search'), default='baseline')
     parser.add_argument('--diagnostics', action='store_true', help='Record bounded search snapshots')
+    parser.add_argument('--evaluation-config', type=Path, help='Saved evaluator JSON (search only)')
+    parser.add_argument('--profile-every', type=int, default=0, help='Sample every Nth evaluator call; 0 disables')
+    parser.add_argument('--max-depth', type=int, default=8)
+    parser.add_argument('--max-nodes', type=int, default=10000)
+    parser.add_argument('--candidate-radius', type=int, default=2)
+    parser.add_argument('--candidate-cap', type=int, default=24)
+    parser.add_argument('--max-time-ms', type=float, default=100)
     parser.add_argument('--seed', type=int, default=20261008)
     parser.add_argument('--opponent', choices=('smoke', 'baseline', 'random', 'simple'), default='smoke')
     parser.add_argument('--black-ms', type=budget, default=60000)
@@ -51,10 +60,24 @@ def main() -> None:
         if args.start:
             data = json.loads(args.start.read_text())
             initial = Position(data['board'], data['side_to_move'])
+        if args.engine != 'search' and (args.evaluation_config or args.profile_every):
+            raise ValueError('Evaluator configuration and profiling require --engine search.')
+        if args.profile_every and not args.diagnostics:
+            raise ValueError('Profiling requires --diagnostics to retain measurements.')
+        evaluation = EvaluationConfig.load(args.evaluation_config) if args.evaluation_config else None
+        policy = TimePolicy(max_time_ms=args.max_time_ms)
+        settings = search_settings(depth=args.max_depth, nodes=args.max_nodes,
+                                   radius=args.candidate_radius, cap=args.candidate_cap, policy=policy)
         color = 0 if args.agent_color == 'black' else 1
         sources = {}
-        agent: DevelopmentPlayer = IterativePlayer(color) if args.engine == 'search' else LegalBaseline(color)
+        search_options: dict[str, Any] = {}
+        if args.engine == 'search':
+            search_options = {'max_depth': args.max_depth, 'max_nodes': args.max_nodes,
+                              'policy': policy, 'search': configured_search(
+                                  evaluation, settings, profile_every=args.profile_every)}
         if args.opponent in ('smoke', 'baseline'):
+            agent: DevelopmentPlayer = (IterativePlayer(color, **search_options)
+                                         if args.engine == 'search' else LegalBaseline(color))
             opponent: DevelopmentPlayer = (SeededSmokePlayer(1 - color, args.seed)
                                            if args.opponent == 'smoke' else LegalBaseline(1 - color))
             players: list[DevelopmentPlayer] = [agent, opponent]
@@ -62,7 +85,7 @@ def main() -> None:
             from offline.provided import SOURCES, load_players
             supplied = load_players()
             random.seed(args.seed)
-            players = [supplied.create(args.engine, color),
+            players = [supplied.create(args.engine, color, **search_options),
                        supplied.create(args.opponent, 1 - color)]
             sources = {name: sha256((SOURCES / name).read_bytes()).hexdigest()
                        for name in ('player.py', 'randomplayer.py', 'simpleplayer.py')}
@@ -70,6 +93,12 @@ def main() -> None:
             players.reverse()
         config: dict[str, Any] = {
             'engine': args.engine, 'agent_color': color,
+            'evaluator_mode': 'configured' if evaluation else 'retained-phase-2-material',
+            'evaluation': evaluation_identity(evaluation or EvaluationConfig()) if args.engine == 'search' else None,
+            'search_settings': settings if args.engine == 'search' else None,
+            'profile_every': args.profile_every, 'conditions': conditions(),
+            'engine_source_sha256': engine_sources(),
+            'route': 'real-clock-game',
             'diagnostics': args.diagnostics,
             'engine_version': 'iterative-negamax-v1' if args.engine == 'search' else 'legal-baseline-v1',
             'baseline_version': 'legal-baseline-v1',

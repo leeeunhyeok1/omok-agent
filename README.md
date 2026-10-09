@@ -124,3 +124,13 @@ python3 -m verification.threat_effects --repetitions 5
 python3 -m verification.threat_effects --games
 python3 -m unittest tests.test_threat_effects -q
 ```
+
+Issue #21 adds evaluator-call/cache/cancellation counters, optional sampled
+production feature costs, saved-config runner flags, and bounded frozen-candidate
+comparisons. See [measurement commands and definitions](docs/measurement.md) and
+[recorded acceptance evidence](docs/verification/issue-21.md).
+
+```sh
+python3 -m verification.measurement --output .scratch/measurement.json
+python3 -m unittest tests.test_measurement -q
+```

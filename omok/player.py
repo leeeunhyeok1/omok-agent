@@ -1,4 +1,4 @@
-# AI-written by OpenAI Codex, for issues #4 and #5.
+# AI-written by OpenAI Codex, for issues #4 and #5; issue #21 measurement additions.
 """Development move-selection boundary; official Player inheritance is pending."""
 from dataclasses import dataclass, asdict
 from collections.abc import Sequence
@@ -169,6 +169,7 @@ class IterativePlayer:
                            if isinstance(evaluator, ConfiguredEvaluator) else None),
             'config': {
                 'max_depth': self.max_depth, 'max_nodes': self.max_nodes,
+                'profile_every': self.search.profile_every,
                 'time_policy': asdict(self.policy),
                 'tactics': None if tactics is None else {
                     'radius': tactics.radius, 'cap': tactics.cap,
@@ -188,6 +189,11 @@ class IterativePlayer:
             'score': result.score, 'principal_variation': [list(move) for move in line],
             'pv_status': 'truncated' if len(line) < len(result.principal_variation) else result.pv_status,
             'nodes': result.nodes, 'cutoffs': result.cutoffs,
+            'evaluation_calls': result.evaluation_calls,
+            'evaluation_completed': result.evaluation_completed,
+            'evaluation_cancelled': result.evaluation_cancelled,
+            'evaluation_cache_hits': result.evaluation_cache_hits,
+            'evaluation_profile': result.evaluation_profile,
             'table_probes': result.table_probes, 'table_hits': result.table_hits,
             'table_value_cutoffs': result.table_value_cutoffs,
             'table_size': 0 if table is None else len(table),

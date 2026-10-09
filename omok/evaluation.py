@@ -1,11 +1,15 @@
-# AI-written by OpenAI Codex, for issues #16–#20.
+# AI-written by OpenAI Codex, for issues #16–#20; issue #21 measurement additions.
 """Immutable material/line semantics and independently persisted coefficients."""
 from collections.abc import Callable
 from dataclasses import dataclass, fields
 from hashlib import sha256
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, TypeVar
+
+from omok.measurement import EvaluationProfile
+
+T = TypeVar('T')
 
 from omok.search import EVALUATION_LIMIT, SearchCancelled, material_evaluation
 from omok.simulator import Coordinate, Position
@@ -154,9 +158,11 @@ class ConfiguredEvaluator:
             raise ValueError('Expected validated EvaluationConfig.')
 
     def _features(self, position: Position, check: Callable[[], None], *,
-                  inspection: bool = False) -> tuple[dict[str, int], dict[str, Any] | None, dict[str, Any] | None, dict[str, Any]]:
+                  inspection: bool = False, profile: EvaluationProfile | None = None) -> tuple[dict[str, int], dict[str, Any] | None, dict[str, Any] | None, dict[str, Any]]:
+        def scan(name: str, operation: Callable[[], T]) -> T:
+            return operation() if profile is None else profile.measure(name, operation)
         check()
-        features = {'material': material_evaluation(position, check=check)
+        features = {'material': scan('material', lambda: material_evaluation(position, check=check))
                     if inspection or self.config.material_enabled else 0}
         lines = None
         supported = VERSION_FAMILIES[self.config.feature_version]
@@ -167,7 +173,9 @@ class ConfiguredEvaluator:
             scan_lines = inspection or self.config.lines_enabled or scan_multiplicity
             scan_potential = has_potential and (inspection or self.config.potential_enabled)
             if scan_lines or scan_potential:
-                lines = line_features(position, check, fours=scan_lines, potential=scan_potential)
+                lines = scan('lines+potential' if scan_lines and scan_potential else
+                             'lines' if scan_lines else 'potential',
+                             lambda: line_features(position, check, fours=scan_lines, potential=scan_potential))
             features.update({name: lines['black'][name] - lines['white'][name] if lines else 0
                              for name in LINE_FEATURES})
             if has_potential:
@@ -178,7 +186,7 @@ class ConfiguredEvaluator:
         captures = None
         if 'captures' in supported:
             if inspection or self.config.captures_enabled:
-                captures = capture_features(position, check, inspection=inspection)
+                captures = scan('captures', lambda: capture_features(position, check, inspection=inspection))
             features.update({name: captures['black'][name] - captures['white'][name] if captures else 0
                              for name in CAPTURE_FEATURES})
         check()
@@ -188,10 +196,10 @@ class ConfiguredEvaluator:
                 values = None
                 if inspection or getattr(self.config, family + '_enabled'):
                     if family == 'effects':
-                        values = capture_effects(position, check, inspection=inspection)
+                        values = scan('effects', lambda: capture_effects(position, check, inspection=inspection))
                     else:
                         assert lines is not None
-                        values = multiplicity_features(position, lines, check, inspection=inspection)
+                        values = scan('multiplicity', lambda: multiplicity_features(position, lines, check, inspection=inspection))
                     extra[family] = values
                 features.update({name: values['black'][name] - values['white'][name] if values else 0
                                  for name in names})
@@ -205,8 +213,9 @@ class ConfiguredEvaluator:
                 for name in FAMILY_FEATURES[family]}
 
     def __call__(self, position: Position,
-                 check: Callable[[], None] = lambda: None) -> int:
-        features, _, _, _ = self._features(position, check)
+                 check: Callable[[], None] = lambda: None, *,
+                 profile: EvaluationProfile | None = None) -> int:
+        features, _, _, _ = self._features(position, check, profile=profile)
         raw = sum(self._contributions(features).values())
         check()
         return max(-EVALUATION_LIMIT, min(EVALUATION_LIMIT, raw))
