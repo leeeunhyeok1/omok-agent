@@ -92,3 +92,69 @@ python3 -m verification.evaluation --config configs/material-v1.json --position 
 Report generation is development-only and does not run at production leaves.
 Submission imports remain standard-library-only. No league, evolution, clock
 policy change, feature-cost profiling or packaging is included in this ticket.
+
+## Line configuration (`lines-v1`, issue #17)
+
+AI-written by OpenAI Codex. These definitions and provisional coefficients are
+implementation choices, separate from `03_EVALUATION_SPEC.md`. Load
+`configs/lines-v1.json` through the same search/player APIs and inspection command
+above. The default remains Phase 2 material; this ticket makes no strength claim.
+The material-v1 file, schema, identity, and checkpoint remain available unchanged.
+Threes, twos, multiple-threat independence and capture feature families remain
+pending their separate tickets.
+
+Full recomputation uses maximal board lines in the four simulator axes: horizontal
+right, vertical down, diagonal down-right and diagonal down-left. The board line
+starts where its predecessor is outside the board; it is visited once, never also
+in reverse. An opponent or board edge blocks an endpoint. Empty cells are open.
+Definitions are independent of side to move; signed features are black minus white.
+
+| Feature | Counted unit | Provisional weight |
+| --- | --- | ---: |
+| `open_four` | Maximal contiguous run of four with two adjacent empty endpoints | 300 |
+| `closed_four` | Maximal contiguous run of four with exactly one adjacent empty endpoint, including an edge four | 100 |
+| `broken_four` | Four own stones in a five-cell span with one internal empty gap, whose filling makes a maximal run of exactly five on this axis | 150 |
+| `geometric_completion` | Unique empty coordinate that makes a maximal own run of exactly five on at least one axis before capture/outcome verification | 0 |
+| `verified_win` | Unique legal coordinate whose resolved outcome is a strict mover win, using the existing tactical detector | 300 |
+| `overline_trap` | Unique empty coordinate whose filling makes a maximal own run of at least six on at least one axis | -20 |
+
+A contiguous four is counted once, rather than once for each endpoint/five-cell
+window. A four with no open endpoints is omitted. Broken fours are counted per
+line/gap; different axes may share their completion cell. Completion, strict-win,
+and trap counts deduplicate coordinates across all axes. A gap joining five stones
+into six is a trap, not a broken four or exact-five completion. A six-stone run
+contains neither several fours nor several wins in this representation.
+
+An open endpoint beyond which another own stone lies can be an overline trap:
+`XXXX_X` is still a geometric open four if the other endpoint is empty, but its
+right endpoint is not an exact-five completion. These fours describe geometry,
+not verified tactics. Different families deliberately overlap: a single open
+four can contribute one run and two verified coordinates. A move can be both a
+trap on one axis and a strict win on another. The trap term is therefore a
+provisional geometric warning, not a forbidden move or a verified losing outcome.
+No approximate multi-move exactly-five potential is represented here.
+
+Strict wins resolve captures and check both colors through `immediate_wins`.
+Simultaneous-win draws and capture-induced opponent wins are excluded. Two strict
+winning endpoints do not establish independent threats or a forced win: a shared
+capture defense can break the line. Terminal input has zero verified legal
+continuations while inspection can still describe its static geometry.
+
+The lines-v1 JSON coefficient object requires `material` and all six names above.
+Each coefficient is a built-in integer in [-4000, 4000]. Families may contain
+`material`, `lines`, both or neither; order is canonicalized and unknown/duplicate
+names are rejected. `EvaluationConfig(feature_version='lines-v1',
+lines_enabled=False)` disables all line scans in production but inspection still
+exposes their features with zero contributions. Individual weights can also be
+zeroed. Material-v1 rejects non-default line settings so an ignored coefficient
+cannot silently share its persisted identity. Configuration replacement retains
+the existing table clearing/identity contract.
+
+Inspection adds `lines.black` and `lines.white`, including per-color counts and
+sorted `geometric_completions`, `verified_wins`, and `overline_traps`. `features`
+contains signed counts; `contributions` contains the enabled weighted terms.
+The exact sum is clamped to [-4000, 4000], below terminal magnitude 10000.
+Cooperative checkpoints cover line traversal, candidate scans, and both sides of
+hypothetical move verification. Each simulator move is a bounded immutable board
+copy; interruption discards local work and inspection reports null features and
+score with `incomplete=true`. There is no feature cache or recursion/ordering change.

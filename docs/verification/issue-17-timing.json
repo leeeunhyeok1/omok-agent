@@ -1,0 +1,56 @@
+{
+  "python": "3.14.3",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+  "samples_per_fixture": 30,
+  "mode": "single-process static full recomputation; not official-clock or strength evidence",
+  "results": {
+    "empty": {
+      "material-v1": {
+        "median_ms": 0.02623499858600553,
+        "max_ms": 0.041772000258788466,
+        "score": 0
+      },
+      "lines-v1": {
+        "median_ms": 3.16032000046107,
+        "max_ms": 3.9438309977413155,
+        "score": 0
+      }
+    },
+    "open_four": {
+      "material-v1": {
+        "median_ms": 0.02622050124045927,
+        "max_ms": 0.030941999284550548,
+        "score": 4
+      },
+      "lines-v1": {
+        "median_ms": 3.274504999353667,
+        "max_ms": 4.466151000087848,
+        "score": 904
+      }
+    },
+    "capture_defense": {
+      "material-v1": {
+        "median_ms": 0.02626850073284004,
+        "max_ms": 0.030526000045938417,
+        "score": -4
+      },
+      "lines-v1": {
+        "median_ms": 3.2848909995664144,
+        "max_ms": 4.162192999501713,
+        "score": -904
+      }
+    },
+    "dense": {
+      "material-v1": {
+        "median_ms": 0.02498299909348134,
+        "max_ms": 0.029498998628696427,
+        "score": 1
+      },
+      "lines-v1": {
+        "median_ms": 1.5205875006358838,
+        "max_ms": 1.861233999079559,
+        "score": 1
+      }
+    }
+  }
+}
