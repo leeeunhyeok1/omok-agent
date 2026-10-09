@@ -89,3 +89,8 @@ python3 -m verification.acceptance official
 python3 -m verification.acceptance replay
 python3 -I -S verification/offline_engine.py --iterative
 ```
+
+Issue #16 adds an isolated, validated saved material evaluator and development
+inspection route. See [configuration/loading/inspection](docs/evaluation.md) and
+[acceptance evidence](docs/verification/issue-16.md). The Phase 2 default and
+checkpoint remain available; richer feature families are separate follow-up work.

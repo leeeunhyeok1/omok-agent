@@ -7,6 +7,7 @@ from time import monotonic
 from typing import TYPE_CHECKING, Hashable
 
 if TYPE_CHECKING:
+    from omok.evaluation import EvaluationConfig
     from omok.tactics import TacticalPolicy, TacticalResult
 
 from omok.simulator import Coordinate, EMPTY, Position, SIZE
@@ -131,7 +132,8 @@ class FixedDepthSearch:
                  tactics: 'TacticalPolicy | None' = None,
                  ordering: Callable[[Position, Coordinate, Callable[[], None]], int] | None = None,
                  table: TranspositionTable | None = None,
-                 compatibility: Hashable = None) -> None:
+                 compatibility: Hashable = None,
+                 evaluation_config: 'EvaluationConfig | None' = None) -> None:
         self.candidates = candidates
         self.evaluator = evaluator
         self.clock = clock
@@ -142,6 +144,17 @@ class FixedDepthSearch:
         self.table = table
         self.compatibility = compatibility
         self._cache_namespace = object()
+        if evaluation_config is not None:
+            self.set_evaluation_config(evaluation_config)
+
+    def set_evaluation_config(self, config: 'EvaluationConfig') -> None:
+        """Validate before mutation, then release all old scores and hints."""
+        from omok.evaluation import ConfiguredEvaluator
+        evaluator = ConfiguredEvaluator(config)
+        self.evaluator = evaluator
+        self.cooperative_evaluator = evaluator
+        if self.table is not None:
+            self.table.clear()
 
     def cache_compatibility(self) -> Hashable:
         """Snapshot policy identity; bump compatibility for in-place callback changes."""

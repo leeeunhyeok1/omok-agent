@@ -4,7 +4,10 @@ from dataclasses import dataclass, asdict
 from collections.abc import Sequence
 from math import isfinite
 from time import monotonic
-from typing import Any, Protocol, SupportsIndex
+from typing import Any, Protocol, SupportsIndex, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from omok.evaluation import EvaluationConfig
 
 from omok.simulator import Coordinate, EMPTY, Position, SIZE, Transition
 from omok.search import FixedDepthSearch, SearchLimits, SearchResult, legal_moves
@@ -89,7 +92,8 @@ class IterativePlayer:
     """Development public boundary with a remaining-total-clock allocation."""
 
     def __init__(self, color: int, *, max_depth: int = 8, max_nodes: int = 10000,
-                 policy: TimePolicy | None = None, search: FixedDepthSearch | None = None) -> None:
+                 policy: TimePolicy | None = None, search: FixedDepthSearch | None = None,
+                 evaluation_config: 'EvaluationConfig | None' = None) -> None:
         if type(color) is not int or color not in (0, 1):
             raise ValueError('Color must be 0 or 1.')
         if type(max_depth) is not int or max_depth < 1:
@@ -105,6 +109,13 @@ class IterativePlayer:
         self.last_elapsed_ms: float | None = None
         self.last_allocation_ms: float | None = None
         self.last_remaining_ms: float | None = None
+        if evaluation_config is not None:
+            self.set_evaluation_config(evaluation_config)
+
+    def set_evaluation_config(self, config: 'EvaluationConfig') -> None:
+        self.search.set_evaluation_config(config)
+        self.last_result = None
+        self.last_elapsed_ms = self.last_allocation_ms = self.last_remaining_ms = None
 
     def take_turn(self, board: Sequence[Sequence[SupportsIndex]], time: float) -> Coordinate:
         start = self.search.clock()
@@ -146,10 +157,16 @@ class IterativePlayer:
                     getattr(value, '__qualname__', type(value).__qualname__))[:256]
         tactics = self.search.tactics
         table = self.search.table
+        from omok.evaluation import ConfiguredEvaluator
+        evaluator = self.search.cooperative_evaluator or self.search.evaluator
         line = result.principal_variation[:64]
         return {
             'engine': 'iterative-negamax-v1',
             'evaluator': identity(self.search.cooperative_evaluator or self.search.evaluator),
+            'evaluation': ({'feature_version': evaluator.config.feature_version,
+                            'configuration_id': evaluator.config.identity,
+                            'configuration': evaluator.config.canonical_json()}
+                           if isinstance(evaluator, ConfiguredEvaluator) else None),
             'config': {
                 'max_depth': self.max_depth, 'max_nodes': self.max_nodes,
                 'time_policy': asdict(self.policy),
