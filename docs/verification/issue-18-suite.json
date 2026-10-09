@@ -1,0 +1,5238 @@
+{
+  "runtime": "3.14.3",
+  "machine": "x86_64",
+  "workers": 1,
+  "repetitions": 10,
+  "dense_seed": 20261015,
+  "configuration": {
+    "coefficients": {
+      "broken_four": 150,
+      "broken_three": 25,
+      "closed_four": 100,
+      "geometric_completion": 0,
+      "material": 1,
+      "open_four": 300,
+      "open_three": 40,
+      "overline_trap": -20,
+      "two_stone": 5,
+      "verified_win": 300
+    },
+    "enabled_families": [
+      "material",
+      "lines",
+      "potential"
+    ],
+    "feature_version": "potential-v1"
+  },
+  "interpretation": "Static geometry and provisional weighted scores; no forced-win or strength claim.",
+  "score_order_hypothesis": "At equal material, this configuration prefers open to broken threes. This is a provisional preference, not an exact game rule.",
+  "positions": {
+    "quiet_open_three": {
+      "board": [
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "potential-v1",
+        "configuration_id": "bdde92471e805d386f96605ad65e6cc48745705d38064d14910bd4ed3de9e960",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential"
+        ],
+        "features": {
+          "material": 3,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 1,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "contributions": {
+          "material": 3,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 40,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "raw_total": 43,
+        "total": 43,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 1,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [
+                [
+                  [
+                    9,
+                    7
+                  ],
+                  [
+                    9,
+                    8
+                  ],
+                  [
+                    9,
+                    9
+                  ]
+                ]
+              ],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        }
+      },
+      "potential_disabled": {
+        "feature_version": "potential-v1",
+        "configuration_id": "8054a5f575da2734bfe2d15920e3299ccbcee10d2cfcb76d4b64e2d3c632e489",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5
+        },
+        "enabled_families": [
+          "material",
+          "lines"
+        ],
+        "features": {
+          "material": 3,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 1,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "contributions": {
+          "material": 3,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "raw_total": 3,
+        "total": 3,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 1,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [
+                [
+                  [
+                    9,
+                    7
+                  ],
+                  [
+                    9,
+                    8
+                  ],
+                  [
+                    9,
+                    9
+                  ]
+                ]
+              ],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        }
+      },
+      "evaluation_ms": {
+        "median": 5.81900249926548,
+        "max": 6.448165000620065
+      }
+    },
+    "quiet_broken_three": {
+      "board": [
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          0,
+          -1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "potential-v1",
+        "configuration_id": "bdde92471e805d386f96605ad65e6cc48745705d38064d14910bd4ed3de9e960",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential"
+        ],
+        "features": {
+          "material": 3,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 1,
+          "two_stone": 0
+        },
+        "contributions": {
+          "material": 3,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 25,
+          "two_stone": 0
+        },
+        "raw_total": 28,
+        "total": 28,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 1,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [
+                [
+                  [
+                    9,
+                    7
+                  ],
+                  [
+                    9,
+                    8
+                  ],
+                  [
+                    9,
+                    10
+                  ]
+                ]
+              ],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        }
+      },
+      "potential_disabled": {
+        "feature_version": "potential-v1",
+        "configuration_id": "8054a5f575da2734bfe2d15920e3299ccbcee10d2cfcb76d4b64e2d3c632e489",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5
+        },
+        "enabled_families": [
+          "material",
+          "lines"
+        ],
+        "features": {
+          "material": 3,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 1,
+          "two_stone": 0
+        },
+        "contributions": {
+          "material": 3,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "raw_total": 3,
+        "total": 3,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 1,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [
+                [
+                  [
+                    9,
+                    7
+                  ],
+                  [
+                    9,
+                    8
+                  ],
+                  [
+                    9,
+                    10
+                  ]
+                ]
+              ],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        }
+      },
+      "evaluation_ms": {
+        "median": 5.923415497818496,
+        "max": 6.899242998770205
+      }
+    },
+    "quiet_two": {
+      "board": [
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "potential-v1",
+        "configuration_id": "bdde92471e805d386f96605ad65e6cc48745705d38064d14910bd4ed3de9e960",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential"
+        ],
+        "features": {
+          "material": 2,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 1
+        },
+        "contributions": {
+          "material": 2,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 5
+        },
+        "raw_total": 7,
+        "total": 7,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 1,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": [
+                [
+                  [
+                    9,
+                    7
+                  ],
+                  [
+                    9,
+                    9
+                  ]
+                ]
+              ]
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        }
+      },
+      "potential_disabled": {
+        "feature_version": "potential-v1",
+        "configuration_id": "8054a5f575da2734bfe2d15920e3299ccbcee10d2cfcb76d4b64e2d3c632e489",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5
+        },
+        "enabled_families": [
+          "material",
+          "lines"
+        ],
+        "features": {
+          "material": 2,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 1
+        },
+        "contributions": {
+          "material": 2,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "raw_total": 2,
+        "total": 2,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 1,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": [
+                [
+                  [
+                    9,
+                    7
+                  ],
+                  [
+                    9,
+                    9
+                  ]
+                ]
+              ]
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        }
+      },
+      "evaluation_ms": {
+        "median": 6.067230498956633,
+        "max": 7.245270000566961
+      }
+    },
+    "blocked_three": {
+      "board": [
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "potential-v1",
+        "configuration_id": "bdde92471e805d386f96605ad65e6cc48745705d38064d14910bd4ed3de9e960",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential"
+        ],
+        "features": {
+          "material": 2,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "contributions": {
+          "material": 2,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "raw_total": 2,
+        "total": 2,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        }
+      },
+      "potential_disabled": {
+        "feature_version": "potential-v1",
+        "configuration_id": "8054a5f575da2734bfe2d15920e3299ccbcee10d2cfcb76d4b64e2d3c632e489",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5
+        },
+        "enabled_families": [
+          "material",
+          "lines"
+        ],
+        "features": {
+          "material": 2,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "contributions": {
+          "material": 2,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "raw_total": 2,
+        "total": 2,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        }
+      },
+      "evaluation_ms": {
+        "median": 5.786167501355521,
+        "max": 6.782550997741055
+      }
+    },
+    "edge_three": {
+      "board": [
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "potential-v1",
+        "configuration_id": "bdde92471e805d386f96605ad65e6cc48745705d38064d14910bd4ed3de9e960",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential"
+        ],
+        "features": {
+          "material": 3,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "contributions": {
+          "material": 3,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "raw_total": 3,
+        "total": 3,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        }
+      },
+      "potential_disabled": {
+        "feature_version": "potential-v1",
+        "configuration_id": "8054a5f575da2734bfe2d15920e3299ccbcee10d2cfcb76d4b64e2d3c632e489",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5
+        },
+        "enabled_families": [
+          "material",
+          "lines"
+        ],
+        "features": {
+          "material": 3,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "contributions": {
+          "material": 3,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "raw_total": 3,
+        "total": 3,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        }
+      },
+      "evaluation_ms": {
+        "median": 6.191782500536647,
+        "max": 6.899494001118001
+      }
+    },
+    "overline_adjacent": {
+      "board": [
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "potential-v1",
+        "configuration_id": "bdde92471e805d386f96605ad65e6cc48745705d38064d14910bd4ed3de9e960",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential"
+        ],
+        "features": {
+          "material": 4,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 1,
+          "geometric_completion": 1,
+          "verified_win": 1,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "contributions": {
+          "material": 4,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "raw_total": 454,
+        "total": 454,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 1,
+            "geometric_completion": 1,
+            "verified_win": 1,
+            "overline_trap": 0,
+            "geometric_completions": [
+              [
+                9,
+                6
+              ]
+            ],
+            "verified_wins": [
+              [
+                9,
+                6
+              ]
+            ],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        }
+      },
+      "potential_disabled": {
+        "feature_version": "potential-v1",
+        "configuration_id": "8054a5f575da2734bfe2d15920e3299ccbcee10d2cfcb76d4b64e2d3c632e489",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5
+        },
+        "enabled_families": [
+          "material",
+          "lines"
+        ],
+        "features": {
+          "material": 4,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 1,
+          "geometric_completion": 1,
+          "verified_win": 1,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "contributions": {
+          "material": 4,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "raw_total": 454,
+        "total": 454,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 1,
+            "geometric_completion": 1,
+            "verified_win": 1,
+            "overline_trap": 0,
+            "geometric_completions": [
+              [
+                9,
+                6
+              ]
+            ],
+            "verified_wins": [
+              [
+                9,
+                6
+              ]
+            ],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        }
+      },
+      "evaluation_ms": {
+        "median": 5.938753998634638,
+        "max": 6.7181500016886275
+      }
+    },
+    "dense": {
+      "board": [
+        [
+          -1,
+          -1,
+          0,
+          0,
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          1,
+          0,
+          -1,
+          0,
+          1,
+          -1,
+          0,
+          1,
+          0,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          -1,
+          1,
+          0,
+          0,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          0,
+          1,
+          -1,
+          0,
+          -1,
+          0,
+          1,
+          -1,
+          1,
+          0,
+          1,
+          -1,
+          0,
+          -1,
+          1,
+          -1,
+          -1,
+          0
+        ],
+        [
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          -1,
+          0,
+          -1,
+          -1,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          0,
+          1,
+          -1,
+          1,
+          0
+        ],
+        [
+          1,
+          -1,
+          0,
+          0,
+          1,
+          -1,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          1,
+          -1,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          -1,
+          1,
+          0,
+          1,
+          1,
+          -1,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          -1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          -1,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          -1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          -1,
+          1,
+          -1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          -1,
+          -1,
+          1,
+          1,
+          1
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1,
+          -1,
+          -1,
+          1,
+          0,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          -1
+        ],
+        [
+          1,
+          0,
+          0,
+          -1,
+          -1,
+          0,
+          -1,
+          0,
+          1,
+          -1,
+          0,
+          -1,
+          0,
+          -1,
+          -1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          -1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          -1
+        ],
+        [
+          1,
+          0,
+          1,
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          1,
+          -1,
+          0,
+          -1,
+          1,
+          -1,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          0,
+          0,
+          -1,
+          1,
+          1,
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          -1,
+          1,
+          1,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          -1,
+          0,
+          -1,
+          -1
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          -1,
+          1,
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          -1,
+          0,
+          1,
+          -1,
+          1,
+          1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "potential-v1",
+        "configuration_id": "bdde92471e805d386f96605ad65e6cc48745705d38064d14910bd4ed3de9e960",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential"
+        ],
+        "features": {
+          "material": -6,
+          "open_four": -2,
+          "closed_four": 4,
+          "broken_four": 4,
+          "geometric_completion": 3,
+          "verified_win": 3,
+          "overline_trap": 1,
+          "open_three": 2,
+          "broken_three": -1,
+          "two_stone": 0
+        },
+        "contributions": {
+          "material": -6,
+          "open_four": -600,
+          "closed_four": 400,
+          "broken_four": 600,
+          "geometric_completion": 0,
+          "verified_win": 900,
+          "overline_trap": -20,
+          "open_three": 80,
+          "broken_three": -25,
+          "two_stone": 0
+        },
+        "raw_total": 1329,
+        "total": 1329,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 5,
+            "broken_four": 7,
+            "geometric_completion": 10,
+            "verified_win": 10,
+            "overline_trap": 4,
+            "geometric_completions": [
+              [
+                3,
+                5
+              ],
+              [
+                4,
+                14
+              ],
+              [
+                6,
+                18
+              ],
+              [
+                7,
+                8
+              ],
+              [
+                9,
+                1
+              ],
+              [
+                10,
+                2
+              ],
+              [
+                10,
+                11
+              ],
+              [
+                11,
+                8
+              ],
+              [
+                12,
+                5
+              ],
+              [
+                17,
+                11
+              ]
+            ],
+            "verified_wins": [
+              [
+                3,
+                5
+              ],
+              [
+                4,
+                14
+              ],
+              [
+                6,
+                18
+              ],
+              [
+                7,
+                8
+              ],
+              [
+                9,
+                1
+              ],
+              [
+                10,
+                2
+              ],
+              [
+                10,
+                11
+              ],
+              [
+                11,
+                8
+              ],
+              [
+                12,
+                5
+              ],
+              [
+                17,
+                11
+              ]
+            ],
+            "overline_traps": [
+              [
+                6,
+                7
+              ],
+              [
+                13,
+                3
+              ],
+              [
+                14,
+                7
+              ],
+              [
+                15,
+                3
+              ]
+            ]
+          },
+          "white": {
+            "open_four": 2,
+            "closed_four": 1,
+            "broken_four": 3,
+            "geometric_completion": 7,
+            "verified_win": 7,
+            "overline_trap": 3,
+            "geometric_completions": [
+              [
+                1,
+                0
+              ],
+              [
+                6,
+                5
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                11,
+                7
+              ],
+              [
+                12,
+                10
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                13,
+                13
+              ]
+            ],
+            "verified_wins": [
+              [
+                1,
+                0
+              ],
+              [
+                6,
+                5
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                11,
+                7
+              ],
+              [
+                12,
+                10
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                13,
+                13
+              ]
+            ],
+            "overline_traps": [
+              [
+                3,
+                17
+              ],
+              [
+                4,
+                15
+              ],
+              [
+                10,
+                17
+              ]
+            ]
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 3,
+            "broken_three": 1,
+            "two_stone": 7,
+            "units": {
+              "open_three": [
+                [
+                  [
+                    5,
+                    2
+                  ],
+                  [
+                    6,
+                    3
+                  ],
+                  [
+                    7,
+                    4
+                  ]
+                ],
+                [
+                  [
+                    7,
+                    4
+                  ],
+                  [
+                    7,
+                    5
+                  ],
+                  [
+                    7,
+                    6
+                  ]
+                ],
+                [
+                  [
+                    8,
+                    0
+                  ],
+                  [
+                    9,
+                    0
+                  ],
+                  [
+                    10,
+                    0
+                  ]
+                ]
+              ],
+              "broken_three": [
+                [
+                  [
+                    14,
+                    10
+                  ],
+                  [
+                    15,
+                    9
+                  ],
+                  [
+                    17,
+                    7
+                  ]
+                ]
+              ],
+              "two_stone": [
+                [
+                  [
+                    0,
+                    2
+                  ],
+                  [
+                    0,
+                    3
+                  ]
+                ],
+                [
+                  [
+                    3,
+                    13
+                  ],
+                  [
+                    4,
+                    13
+                  ]
+                ],
+                [
+                  [
+                    5,
+                    5
+                  ],
+                  [
+                    7,
+                    5
+                  ]
+                ],
+                [
+                  [
+                    6,
+                    2
+                  ],
+                  [
+                    8,
+                    4
+                  ]
+                ],
+                [
+                  [
+                    12,
+                    1
+                  ],
+                  [
+                    12,
+                    2
+                  ]
+                ],
+                [
+                  [
+                    13,
+                    10
+                  ],
+                  [
+                    13,
+                    12
+                  ]
+                ],
+                [
+                  [
+                    13,
+                    18
+                  ],
+                  [
+                    16,
+                    18
+                  ]
+                ]
+              ]
+            }
+          },
+          "white": {
+            "open_three": 1,
+            "broken_three": 2,
+            "two_stone": 7,
+            "units": {
+              "open_three": [
+                [
+                  [
+                    7,
+                    2
+                  ],
+                  [
+                    8,
+                    3
+                  ],
+                  [
+                    9,
+                    4
+                  ]
+                ]
+              ],
+              "broken_three": [
+                [
+                  [
+                    1,
+                    5
+                  ],
+                  [
+                    3,
+                    7
+                  ],
+                  [
+                    4,
+                    8
+                  ]
+                ],
+                [
+                  [
+                    2,
+                    9
+                  ],
+                  [
+                    4,
+                    7
+                  ],
+                  [
+                    5,
+                    6
+                  ]
+                ]
+              ],
+              "two_stone": [
+                [
+                  [
+                    2,
+                    3
+                  ],
+                  [
+                    3,
+                    2
+                  ]
+                ],
+                [
+                  [
+                    5,
+                    12
+                  ],
+                  [
+                    7,
+                    12
+                  ]
+                ],
+                [
+                  [
+                    6,
+                    15
+                  ],
+                  [
+                    6,
+                    17
+                  ]
+                ],
+                [
+                  [
+                    7,
+                    1
+                  ],
+                  [
+                    8,
+                    1
+                  ]
+                ],
+                [
+                  [
+                    7,
+                    13
+                  ],
+                  [
+                    8,
+                    13
+                  ]
+                ],
+                [
+                  [
+                    10,
+                    6
+                  ],
+                  [
+                    12,
+                    6
+                  ]
+                ],
+                [
+                  [
+                    16,
+                    5
+                  ],
+                  [
+                    16,
+                    6
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      },
+      "potential_disabled": {
+        "feature_version": "potential-v1",
+        "configuration_id": "8054a5f575da2734bfe2d15920e3299ccbcee10d2cfcb76d4b64e2d3c632e489",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5
+        },
+        "enabled_families": [
+          "material",
+          "lines"
+        ],
+        "features": {
+          "material": -6,
+          "open_four": -2,
+          "closed_four": 4,
+          "broken_four": 4,
+          "geometric_completion": 3,
+          "verified_win": 3,
+          "overline_trap": 1,
+          "open_three": 2,
+          "broken_three": -1,
+          "two_stone": 0
+        },
+        "contributions": {
+          "material": -6,
+          "open_four": -600,
+          "closed_four": 400,
+          "broken_four": 600,
+          "geometric_completion": 0,
+          "verified_win": 900,
+          "overline_trap": -20,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0
+        },
+        "raw_total": 1274,
+        "total": 1274,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 5,
+            "broken_four": 7,
+            "geometric_completion": 10,
+            "verified_win": 10,
+            "overline_trap": 4,
+            "geometric_completions": [
+              [
+                3,
+                5
+              ],
+              [
+                4,
+                14
+              ],
+              [
+                6,
+                18
+              ],
+              [
+                7,
+                8
+              ],
+              [
+                9,
+                1
+              ],
+              [
+                10,
+                2
+              ],
+              [
+                10,
+                11
+              ],
+              [
+                11,
+                8
+              ],
+              [
+                12,
+                5
+              ],
+              [
+                17,
+                11
+              ]
+            ],
+            "verified_wins": [
+              [
+                3,
+                5
+              ],
+              [
+                4,
+                14
+              ],
+              [
+                6,
+                18
+              ],
+              [
+                7,
+                8
+              ],
+              [
+                9,
+                1
+              ],
+              [
+                10,
+                2
+              ],
+              [
+                10,
+                11
+              ],
+              [
+                11,
+                8
+              ],
+              [
+                12,
+                5
+              ],
+              [
+                17,
+                11
+              ]
+            ],
+            "overline_traps": [
+              [
+                6,
+                7
+              ],
+              [
+                13,
+                3
+              ],
+              [
+                14,
+                7
+              ],
+              [
+                15,
+                3
+              ]
+            ]
+          },
+          "white": {
+            "open_four": 2,
+            "closed_four": 1,
+            "broken_four": 3,
+            "geometric_completion": 7,
+            "verified_win": 7,
+            "overline_trap": 3,
+            "geometric_completions": [
+              [
+                1,
+                0
+              ],
+              [
+                6,
+                5
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                11,
+                7
+              ],
+              [
+                12,
+                10
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                13,
+                13
+              ]
+            ],
+            "verified_wins": [
+              [
+                1,
+                0
+              ],
+              [
+                6,
+                5
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                11,
+                7
+              ],
+              [
+                12,
+                10
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                13,
+                13
+              ]
+            ],
+            "overline_traps": [
+              [
+                3,
+                17
+              ],
+              [
+                4,
+                15
+              ],
+              [
+                10,
+                17
+              ]
+            ]
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 3,
+            "broken_three": 1,
+            "two_stone": 7,
+            "units": {
+              "open_three": [
+                [
+                  [
+                    5,
+                    2
+                  ],
+                  [
+                    6,
+                    3
+                  ],
+                  [
+                    7,
+                    4
+                  ]
+                ],
+                [
+                  [
+                    7,
+                    4
+                  ],
+                  [
+                    7,
+                    5
+                  ],
+                  [
+                    7,
+                    6
+                  ]
+                ],
+                [
+                  [
+                    8,
+                    0
+                  ],
+                  [
+                    9,
+                    0
+                  ],
+                  [
+                    10,
+                    0
+                  ]
+                ]
+              ],
+              "broken_three": [
+                [
+                  [
+                    14,
+                    10
+                  ],
+                  [
+                    15,
+                    9
+                  ],
+                  [
+                    17,
+                    7
+                  ]
+                ]
+              ],
+              "two_stone": [
+                [
+                  [
+                    0,
+                    2
+                  ],
+                  [
+                    0,
+                    3
+                  ]
+                ],
+                [
+                  [
+                    3,
+                    13
+                  ],
+                  [
+                    4,
+                    13
+                  ]
+                ],
+                [
+                  [
+                    5,
+                    5
+                  ],
+                  [
+                    7,
+                    5
+                  ]
+                ],
+                [
+                  [
+                    6,
+                    2
+                  ],
+                  [
+                    8,
+                    4
+                  ]
+                ],
+                [
+                  [
+                    12,
+                    1
+                  ],
+                  [
+                    12,
+                    2
+                  ]
+                ],
+                [
+                  [
+                    13,
+                    10
+                  ],
+                  [
+                    13,
+                    12
+                  ]
+                ],
+                [
+                  [
+                    13,
+                    18
+                  ],
+                  [
+                    16,
+                    18
+                  ]
+                ]
+              ]
+            }
+          },
+          "white": {
+            "open_three": 1,
+            "broken_three": 2,
+            "two_stone": 7,
+            "units": {
+              "open_three": [
+                [
+                  [
+                    7,
+                    2
+                  ],
+                  [
+                    8,
+                    3
+                  ],
+                  [
+                    9,
+                    4
+                  ]
+                ]
+              ],
+              "broken_three": [
+                [
+                  [
+                    1,
+                    5
+                  ],
+                  [
+                    3,
+                    7
+                  ],
+                  [
+                    4,
+                    8
+                  ]
+                ],
+                [
+                  [
+                    2,
+                    9
+                  ],
+                  [
+                    4,
+                    7
+                  ],
+                  [
+                    5,
+                    6
+                  ]
+                ]
+              ],
+              "two_stone": [
+                [
+                  [
+                    2,
+                    3
+                  ],
+                  [
+                    3,
+                    2
+                  ]
+                ],
+                [
+                  [
+                    5,
+                    12
+                  ],
+                  [
+                    7,
+                    12
+                  ]
+                ],
+                [
+                  [
+                    6,
+                    15
+                  ],
+                  [
+                    6,
+                    17
+                  ]
+                ],
+                [
+                  [
+                    7,
+                    1
+                  ],
+                  [
+                    8,
+                    1
+                  ]
+                ],
+                [
+                  [
+                    7,
+                    13
+                  ],
+                  [
+                    8,
+                    13
+                  ]
+                ],
+                [
+                  [
+                    10,
+                    6
+                  ],
+                  [
+                    12,
+                    6
+                  ]
+                ],
+                [
+                  [
+                    16,
+                    5
+                  ],
+                  [
+                    16,
+                    6
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      },
+      "evaluation_ms": {
+        "median": 9.077307500774623,
+        "max": 10.04316700345953
+      }
+    }
+  }
+}

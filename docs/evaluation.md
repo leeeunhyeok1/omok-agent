@@ -158,3 +158,83 @@ Cooperative checkpoints cover line traversal, candidate scans, and both sides of
 hypothetical move verification. Each simulator move is a bounded immutable board
 copy; interruption discards local work and inspection reports null features and
 score with `incomplete=true`. There is no feature cache or recursion/ordering change.
+
+## Smaller line potential (`potential-v1`, issue #18)
+
+AI-written by OpenAI Codex. These are selected definitions and provisional
+parameters, separate from the supplied specification. `configs/potential-v1.json`
+extends the frozen `lines-v1` semantics and coefficients with the independent
+`potential` family. The default engine stays on Phase 2 material. Both older JSON
+schemas and identities are preserved; they reject non-default potential settings.
+
+A development window has four interior cells and an existing empty cell on each
+end: `.abcd.`. Its interior contains only own stones and empties. Filling all
+interior empties must produce a contiguous four whose **both** endpoint placements
+would make a maximal run of exactly five on this axis. Thus an own stone directly
+beyond either empty endpoint rejects that window; an opponent or board edge beyond
+an endpoint does not. An edge in place of an endpoint, an occupied endpoint, or an
+opponent inside the window blocks development. No off-board space is open.
+
+| Feature | Counted unit | Provisional weight |
+| --- | --- | ---: |
+| `open_three` | Three contiguous own stones with at least one qualifying one-placement development window | 40 |
+| `broken_three` | Three own stones spanning four cells with one internal empty gap in a qualifying window | 25 |
+| `two_stone` | Two own stones spanning two, three or four cells in a qualifying two-placement development window | 5 |
+
+Count each **stone-coordinate set on one axis** once, regardless of how many
+windows or development moves support it. Inspection exposes sorted coordinate
+sets under `potential.black.units` and `potential.white.units`, alongside counts.
+Three stones occupying a window exclude counting its two-stone subsets. Four
+stones exclude its three/two subsets. Distinct axes are distinct units even when
+sharing stones; pairs on other axes may coexist with a three or four. Material
+also overlaps intentionally. Four/completion and potential families can overlap
+across axes, but no potential unit is a subset of a qualifying four on the same
+axis: a fourth existing own stone either occupies an interior cell or blocks an
+endpoint/development. These counts do not assert independent threats.
+
+Examples (with surrounding empty space): `XXX` counts one open three, `XX_X` and
+`X_XX` one broken three, `XX`, `X_X` and `X__X` one two-stone unit. `X_X_X` is outside
+this chosen development definition. `OXXX`, a three beginning at the board edge,
+and `X_XXX` have no qualifying three development. A three one cell in from an
+edge can qualify. Requiring two exact-five endpoints deliberately excludes some
+weaker one-ended or broken-four-only development; their geometry is not silently
+called an open/broken three by this version.
+
+Feasibility here is **static, pre-capture, same-axis geometry**: imagine filling
+interior cells with own stones, with no intervening opponent turn. Captures,
+defender moves, cross-axis overlines and simultaneous/opponent wins are not
+verified by these counts. A capturable three may still qualify geometrically.
+The existing verified-win family and mandatory tactical machinery continue to
+resolve actual rules. Potential labels are heuristics, not forced-win facts.
+
+Each signed feature is black count minus white count; contributions multiply
+these by their coefficients, with no side-to-move asymmetry. Material remains a
+small separately switchable black-minus-white count at weight 1; no center or
+influence term is added. Clamp the combined sum to [-4000, 4000], below terminal
+10000. The provisional open-three > broken-three > pair preference is a scoring
+hypothesis, not a theorem about position strength.
+
+`potential-v1` requires material, all six line coefficients and all three potential
+coefficients, each integer in [-4000, 4000]. Its enabled families are any subset of
+`material`, `lines`, `potential`. `potential_enabled=False` skips potential windows
+in production; inspection still shows raw geometry, zero potential contributions,
+and an enabled-family list excluding potential. Disabling `lines` preserves
+potential while skipping four/completion verification in production. Config
+switching retains automatic table invalidation. Checks in each development window
+cooperate with search cancellation; inspection publishes no partial counts/score.
+The traversal reuses canonical maximal lines, without new recursive search, clock,
+ranking, tactical, rules, or mutable-position behavior.
+
+Reproduce the quiet/blocked/edge/overline-adjacent/dense suite:
+
+```sh
+python3 -m verification.potential --config configs/potential-v1.json --repetitions 10
+python3 -m unittest tests.test_potential -q
+```
+
+The suite embeds every board and explicit side, canonical configuration, raw
+per-color units/counts, signed counts, weighted contributions, disabled-family
+inspection and local timing. Its positions are nonterminal. It distinguishes
+chosen score-order hypotheses from exact-five development facts. The persisted
+report is `docs/verification/issue-18-suite.json`; timing is local static-evaluator
+evidence, not a league result, promotion claim, or official-clock guarantee.

@@ -94,3 +94,12 @@ Issue #16 adds an isolated, validated saved material evaluator and development
 inspection route. See [configuration/loading/inspection](docs/evaluation.md) and
 [acceptance evidence](docs/verification/issue-16.md). The Phase 2 default and
 checkpoint remain available; richer feature families are separate follow-up work.
+
+Issue #18 adds selectable, inspectable open/broken threes and two-stone line
+potential. Definitions and provisional weights are in [docs/evaluation.md](docs/evaluation.md);
+[acceptance evidence](docs/verification/issue-18.md) includes the reproducible suite.
+
+```sh
+python3 -m verification.potential --config configs/potential-v1.json
+python3 -m unittest tests.test_potential -q
+```
