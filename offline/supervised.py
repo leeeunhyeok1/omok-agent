@@ -3,6 +3,7 @@
 from collections.abc import Callable
 from dataclasses import asdict, dataclass, field
 import json
+import os
 from math import floor, isfinite
 from pathlib import Path
 import secrets
@@ -10,6 +11,7 @@ import socket
 import subprocess
 import sys
 from threading import Lock, Thread
+from tempfile import TemporaryDirectory
 from time import monotonic
 from typing import Any, IO
 
@@ -77,6 +79,7 @@ class _Worker:
         self.process: subprocess.Popen[bytes] | None = None
         self.connection: socket.socket | None = None
         self.captures: list[_Capture] = []
+        self.workspace: TemporaryDirectory[str] | None = None
         self.report: dict[str, Any] = {'color': color, 'pid': None, 'startup_ms': None,
                                       'cleanup_ms': None, 'reaped': False}
 
@@ -88,8 +91,10 @@ class _Worker:
             listener.bind(('127.0.0.1', 0))
             listener.listen(1)
             listener.settimeout(self.policy.startup_ms / 1000)
+            self.workspace = TemporaryDirectory(prefix='omok-worker-')
             self.process = subprocess.Popen([sys.executable, '-u', '-m', 'offline.worker',
-                str(listener.getsockname()[1]), token], cwd=ROOT, stdin=subprocess.DEVNULL,
+                str(listener.getsockname()[1]), token], cwd=ROOT,
+                env={**os.environ, 'OMOK_WORKER_SNAPSHOTS': self.workspace.name}, stdin=subprocess.DEVNULL,
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             self.report['pid'] = self.process.pid
             assert self.process.stdout is not None and self.process.stderr is not None
@@ -170,6 +175,11 @@ class _Worker:
         if self.captures:
             self.report.update(stdout=self.captures[0].report(), stderr=self.captures[1].report(),
                 output_drained=all(not c.thread.is_alive() for c in self.captures))
+        if self.workspace is not None and self.report['reaped']:
+            try:
+                self.workspace.cleanup()
+            except OSError as error:
+                self.report['cleanup_error'] = str(error)[:2048]
         self.report['cleanup_ms'] = (monotonic() - start) * 1000
 
 
@@ -297,3 +307,23 @@ def run_supervised_game(black: PlayerSpec, white: PlayerSpec, *, initial: Positi
     trace.update(status=status, reason=reason, final=state(position),
                  remaining_ms=remaining, winner=rules_winner(position))
     return trace
+
+
+# AI-written by OpenAI Codex, for issue #26.
+def preflight_player(spec: PlayerSpec, color: int, policy: Supervision) -> dict[str, Any]:
+    """Bound imports/construction and check explicit color without competitive calls."""
+    worker = _Worker(spec, color, policy)
+    result: dict[str, Any] = {'ready': False, 'detail': None}
+    try:
+        ready = worker.start()
+        result['ready'] = ready.get('kind') == 'ready'
+        if not result['ready']:
+            result['detail'] = ready.get('exception', ready)
+    except (OSError, EOFError, ProtocolError) as error:
+        result['detail'] = {'type': type(error).__name__, 'message': str(error)}
+    finally:
+        worker.close()
+    result['worker'] = worker.report
+    if not worker.report['reaped'] or worker.report.get('cleanup_error'):
+        result.update(ready=False, detail='Preflight cleanup failed.')
+    return result

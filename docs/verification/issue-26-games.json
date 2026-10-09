@@ -1,0 +1,58 @@
+{
+  "format": "omok-registry-acceptance-v1",
+  "pool_snapshot": "1d204ef2d28d8cc3c3dcc819745a4c9865b3fa36e7039bd91fa600937b3f943c",
+  "games": [
+    {
+      "trace": "issue-26-random-0.json.gz",
+      "opponent": "random",
+      "candidate_color": 0,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 12,
+      "replayed": true,
+      "failure": null,
+      "workers_reaped": true,
+      "candidate_identity": "265a1e5b1809926ab01732788a023b98bcd228964d3912ac8886f50d6fcefcf4",
+      "opponent_identity": "3213a3a6a9b8062e529fb165e1caddac0580b19c6591672a6983445de485840a"
+    },
+    {
+      "trace": "issue-26-random-1.json.gz",
+      "opponent": "random",
+      "candidate_color": 1,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 12,
+      "replayed": true,
+      "failure": null,
+      "workers_reaped": true,
+      "candidate_identity": "265a1e5b1809926ab01732788a023b98bcd228964d3912ac8886f50d6fcefcf4",
+      "opponent_identity": "3213a3a6a9b8062e529fb165e1caddac0580b19c6591672a6983445de485840a"
+    },
+    {
+      "trace": "issue-26-simple-0.json.gz",
+      "opponent": "simple",
+      "candidate_color": 0,
+      "status": "completed",
+      "reason": "exact_five",
+      "moves": 12,
+      "replayed": true,
+      "failure": null,
+      "workers_reaped": true,
+      "candidate_identity": "265a1e5b1809926ab01732788a023b98bcd228964d3912ac8886f50d6fcefcf4",
+      "opponent_identity": "79e4b4cad6dcdfc906e2808295aa9d3c02f9a4f25a44f1132d37010dd511e448"
+    },
+    {
+      "trace": "issue-26-simple-1.json.gz",
+      "opponent": "simple",
+      "candidate_color": 1,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 12,
+      "replayed": true,
+      "failure": null,
+      "workers_reaped": true,
+      "candidate_identity": "265a1e5b1809926ab01732788a023b98bcd228964d3912ac8886f50d6fcefcf4",
+      "opponent_identity": "79e4b4cad6dcdfc906e2808295aa9d3c02f9a4f25a44f1132d37010dd511e448"
+    }
+  ]
+}

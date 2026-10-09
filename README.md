@@ -155,3 +155,13 @@ tiny-clock timing acceptance remains partial.
 ```sh
 python3 -m verification.checkpoint --output .scratch/restoration.json
 ```
+
+Issue #26 adds immutable registered-player selection, bounded adapter preflight,
+actual retained engine loading, protected pool snapshots and explicit exposure
+records. See [the registry contract and commands](docs/registry.md).
+
+```sh
+python3 -m offline.registry_cli freeze --output .scratch/registry-v1.json
+python3 -m offline.registry_cli play --registry .scratch/registry-v1.json --candidate phase3-material --opponent random --move-cap 20 --output .scratch/registered-game.json
+python3 -m unittest tests.test_registry -q
+```
