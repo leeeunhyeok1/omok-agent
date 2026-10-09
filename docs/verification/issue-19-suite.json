@@ -1,0 +1,9843 @@
+{
+  "configuration": {
+    "coefficients": {
+      "broken_four": 150,
+      "broken_three": 25,
+      "capture_move": 30,
+      "capture_pair": 10,
+      "closed_four": 100,
+      "geometric_completion": 0,
+      "material": 1,
+      "multi_pair_move": 20,
+      "open_four": 300,
+      "open_three": 40,
+      "overline_trap": -20,
+      "two_stone": 5,
+      "verified_win": 300,
+      "vulnerable_pair": -40
+    },
+    "enabled_families": [
+      "material",
+      "lines",
+      "potential",
+      "captures"
+    ],
+    "feature_version": "capture-v1"
+  },
+  "dense_seed": 20261030,
+  "repetitions": 5,
+  "interpretation": "Static features and provisional weights; no strength promotion.",
+  "positions": {
+    "empty": {
+      "board": [
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "capture-v1",
+        "configuration_id": "4012b34f68891fbb07edafd2be53153b6ed888a227fc2a0aec144d503467dff4",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 20,
+          "vulnerable_pair": -40
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential",
+          "captures"
+        ],
+        "features": {
+          "material": 0,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0,
+          "capture_move": 0,
+          "capture_pair": 0,
+          "multi_pair_move": 0,
+          "vulnerable_pair": 0
+        },
+        "contributions": {
+          "material": 0,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0,
+          "capture_move": 0,
+          "capture_pair": 0,
+          "multi_pair_move": 0,
+          "vulnerable_pair": 0
+        },
+        "raw_total": 0,
+        "total": 0,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        },
+        "captures": {
+          "black": {
+            "capture_move": 0,
+            "capture_pair": 0,
+            "multi_pair_move": 0,
+            "moves": [],
+            "captured_pairs": [],
+            "captured_cells": [],
+            "vulnerable_pair": 0,
+            "vulnerable_pairs": [],
+            "vulnerable_cells": []
+          },
+          "white": {
+            "capture_move": 0,
+            "capture_pair": 0,
+            "multi_pair_move": 0,
+            "moves": [],
+            "captured_pairs": [],
+            "captured_cells": [],
+            "vulnerable_pair": 0,
+            "vulnerable_pairs": [],
+            "vulnerable_cells": []
+          }
+        }
+      },
+      "disabled_total": 0,
+      "oracle_legal_moves_checked": 722,
+      "evaluation_time": {
+        "enabled": {
+          "median_ms": 8.455128001514822,
+          "max_ms": 9.091199000977213
+        },
+        "disabled": {
+          "median_ms": 6.029168998793466,
+          "max_ms": 6.390604001353495
+        }
+      }
+    },
+    "single": {
+      "board": [
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "capture-v1",
+        "configuration_id": "4012b34f68891fbb07edafd2be53153b6ed888a227fc2a0aec144d503467dff4",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 20,
+          "vulnerable_pair": -40
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential",
+          "captures"
+        ],
+        "features": {
+          "material": -1,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0,
+          "capture_move": 1,
+          "capture_pair": 1,
+          "multi_pair_move": 0,
+          "vulnerable_pair": -1
+        },
+        "contributions": {
+          "material": -1,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 0,
+          "vulnerable_pair": 40
+        },
+        "raw_total": 79,
+        "total": 79,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        },
+        "captures": {
+          "black": {
+            "capture_move": 1,
+            "capture_pair": 1,
+            "multi_pair_move": 0,
+            "moves": [
+              {
+                "move": [
+                  9,
+                  9
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      9,
+                      10
+                    ],
+                    [
+                      9,
+                      11
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    9,
+                    10
+                  ],
+                  [
+                    9,
+                    11
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              }
+            ],
+            "captured_pairs": [
+              [
+                [
+                  9,
+                  10
+                ],
+                [
+                  9,
+                  11
+                ]
+              ]
+            ],
+            "captured_cells": [
+              [
+                9,
+                10
+              ],
+              [
+                9,
+                11
+              ]
+            ],
+            "vulnerable_pair": 0,
+            "vulnerable_pairs": [],
+            "vulnerable_cells": []
+          },
+          "white": {
+            "capture_move": 0,
+            "capture_pair": 0,
+            "multi_pair_move": 0,
+            "moves": [],
+            "captured_pairs": [],
+            "captured_cells": [],
+            "vulnerable_pair": 1,
+            "vulnerable_pairs": [
+              [
+                [
+                  9,
+                  10
+                ],
+                [
+                  9,
+                  11
+                ]
+              ]
+            ],
+            "vulnerable_cells": [
+              [
+                9,
+                10
+              ],
+              [
+                9,
+                11
+              ]
+            ]
+          }
+        }
+      },
+      "disabled_total": -1,
+      "oracle_legal_moves_checked": 716,
+      "evaluation_time": {
+        "enabled": {
+          "median_ms": 8.055166999838548,
+          "max_ms": 8.907568000722677
+        },
+        "disabled": {
+          "median_ms": 5.99494700145442,
+          "max_ms": 6.36753199796658
+        }
+      }
+    },
+    "multiple": {
+      "board": [
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "capture-v1",
+        "configuration_id": "4012b34f68891fbb07edafd2be53153b6ed888a227fc2a0aec144d503467dff4",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 20,
+          "vulnerable_pair": -40
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential",
+          "captures"
+        ],
+        "features": {
+          "material": -2,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": -1,
+          "capture_move": 1,
+          "capture_pair": 2,
+          "multi_pair_move": 1,
+          "vulnerable_pair": -2
+        },
+        "contributions": {
+          "material": -2,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": -5,
+          "capture_move": 30,
+          "capture_pair": 20,
+          "multi_pair_move": 20,
+          "vulnerable_pair": 80
+        },
+        "raw_total": 143,
+        "total": 143,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 1,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": [
+                [
+                  [
+                    9,
+                    12
+                  ],
+                  [
+                    12,
+                    9
+                  ]
+                ]
+              ]
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 2,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": [
+                [
+                  [
+                    9,
+                    10
+                  ],
+                  [
+                    10,
+                    9
+                  ]
+                ],
+                [
+                  [
+                    9,
+                    11
+                  ],
+                  [
+                    11,
+                    9
+                  ]
+                ]
+              ]
+            }
+          }
+        },
+        "captures": {
+          "black": {
+            "capture_move": 1,
+            "capture_pair": 2,
+            "multi_pair_move": 1,
+            "moves": [
+              {
+                "move": [
+                  9,
+                  9
+                ],
+                "pair_count": 2,
+                "cell_count": 4,
+                "pairs": [
+                  [
+                    [
+                      9,
+                      10
+                    ],
+                    [
+                      9,
+                      11
+                    ]
+                  ],
+                  [
+                    [
+                      10,
+                      9
+                    ],
+                    [
+                      11,
+                      9
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    9,
+                    10
+                  ],
+                  [
+                    9,
+                    11
+                  ],
+                  [
+                    10,
+                    9
+                  ],
+                  [
+                    11,
+                    9
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              }
+            ],
+            "captured_pairs": [
+              [
+                [
+                  9,
+                  10
+                ],
+                [
+                  9,
+                  11
+                ]
+              ],
+              [
+                [
+                  10,
+                  9
+                ],
+                [
+                  11,
+                  9
+                ]
+              ]
+            ],
+            "captured_cells": [
+              [
+                9,
+                10
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                10,
+                9
+              ],
+              [
+                11,
+                9
+              ]
+            ],
+            "vulnerable_pair": 0,
+            "vulnerable_pairs": [],
+            "vulnerable_cells": []
+          },
+          "white": {
+            "capture_move": 0,
+            "capture_pair": 0,
+            "multi_pair_move": 0,
+            "moves": [],
+            "captured_pairs": [],
+            "captured_cells": [],
+            "vulnerable_pair": 2,
+            "vulnerable_pairs": [
+              [
+                [
+                  9,
+                  10
+                ],
+                [
+                  9,
+                  11
+                ]
+              ],
+              [
+                [
+                  10,
+                  9
+                ],
+                [
+                  11,
+                  9
+                ]
+              ]
+            ],
+            "vulnerable_cells": [
+              [
+                9,
+                10
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                10,
+                9
+              ],
+              [
+                11,
+                9
+              ]
+            ]
+          }
+        }
+      },
+      "disabled_total": -7,
+      "oracle_legal_moves_checked": 710,
+      "evaluation_time": {
+        "enabled": {
+          "median_ms": 7.6341450003383216,
+          "max_ms": 7.88453700079117
+        },
+        "disabled": {
+          "median_ms": 5.712133999622893,
+          "max_ms": 7.44117900103447
+        }
+      }
+    },
+    "edge": {
+      "board": [
+        [
+          -1,
+          1,
+          1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "capture-v1",
+        "configuration_id": "4012b34f68891fbb07edafd2be53153b6ed888a227fc2a0aec144d503467dff4",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 20,
+          "vulnerable_pair": -40
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential",
+          "captures"
+        ],
+        "features": {
+          "material": -1,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0,
+          "capture_move": 1,
+          "capture_pair": 1,
+          "multi_pair_move": 0,
+          "vulnerable_pair": -1
+        },
+        "contributions": {
+          "material": -1,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 0,
+          "vulnerable_pair": 40
+        },
+        "raw_total": 79,
+        "total": 79,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        },
+        "captures": {
+          "black": {
+            "capture_move": 1,
+            "capture_pair": 1,
+            "multi_pair_move": 0,
+            "moves": [
+              {
+                "move": [
+                  0,
+                  0
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      0,
+                      1
+                    ],
+                    [
+                      0,
+                      2
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    0,
+                    1
+                  ],
+                  [
+                    0,
+                    2
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              }
+            ],
+            "captured_pairs": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  2
+                ]
+              ]
+            ],
+            "captured_cells": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ],
+            "vulnerable_pair": 0,
+            "vulnerable_pairs": [],
+            "vulnerable_cells": []
+          },
+          "white": {
+            "capture_move": 0,
+            "capture_pair": 0,
+            "multi_pair_move": 0,
+            "moves": [],
+            "captured_pairs": [],
+            "captured_cells": [],
+            "vulnerable_pair": 1,
+            "vulnerable_pairs": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  2
+                ]
+              ]
+            ],
+            "vulnerable_cells": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          }
+        }
+      },
+      "disabled_total": -1,
+      "oracle_legal_moves_checked": 716,
+      "evaluation_time": {
+        "enabled": {
+          "median_ms": 7.739201002550544,
+          "max_ms": 8.921294000174385
+        },
+        "disabled": {
+          "median_ms": 5.871654997463338,
+          "max_ms": 7.025844999589026
+        }
+      }
+    },
+    "capture_defense": {
+      "board": [
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "capture-v1",
+        "configuration_id": "4012b34f68891fbb07edafd2be53153b6ed888a227fc2a0aec144d503467dff4",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 20,
+          "vulnerable_pair": -40
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential",
+          "captures"
+        ],
+        "features": {
+          "material": -4,
+          "open_four": -1,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": -2,
+          "verified_win": -2,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": -2,
+          "capture_move": 1,
+          "capture_pair": 1,
+          "multi_pair_move": 0,
+          "vulnerable_pair": -1
+        },
+        "contributions": {
+          "material": -4,
+          "open_four": -300,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": -600,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": -10,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 0,
+          "vulnerable_pair": 40
+        },
+        "raw_total": -834,
+        "total": -834,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 1,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 2,
+            "verified_win": 2,
+            "overline_trap": 0,
+            "geometric_completions": [
+              [
+                9,
+                5
+              ],
+              [
+                9,
+                10
+              ]
+            ],
+            "verified_wins": [
+              [
+                9,
+                5
+              ],
+              [
+                9,
+                10
+              ]
+            ],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 2,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": [
+                [
+                  [
+                    8,
+                    7
+                  ],
+                  [
+                    9,
+                    6
+                  ]
+                ],
+                [
+                  [
+                    8,
+                    7
+                  ],
+                  [
+                    9,
+                    8
+                  ]
+                ]
+              ]
+            }
+          }
+        },
+        "captures": {
+          "black": {
+            "capture_move": 1,
+            "capture_pair": 1,
+            "multi_pair_move": 0,
+            "moves": [
+              {
+                "move": [
+                  7,
+                  7
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      8,
+                      7
+                    ],
+                    [
+                      9,
+                      7
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    8,
+                    7
+                  ],
+                  [
+                    9,
+                    7
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              }
+            ],
+            "captured_pairs": [
+              [
+                [
+                  8,
+                  7
+                ],
+                [
+                  9,
+                  7
+                ]
+              ]
+            ],
+            "captured_cells": [
+              [
+                8,
+                7
+              ],
+              [
+                9,
+                7
+              ]
+            ],
+            "vulnerable_pair": 0,
+            "vulnerable_pairs": [],
+            "vulnerable_cells": []
+          },
+          "white": {
+            "capture_move": 0,
+            "capture_pair": 0,
+            "multi_pair_move": 0,
+            "moves": [],
+            "captured_pairs": [],
+            "captured_cells": [],
+            "vulnerable_pair": 1,
+            "vulnerable_pairs": [
+              [
+                [
+                  8,
+                  7
+                ],
+                [
+                  9,
+                  7
+                ]
+              ]
+            ],
+            "vulnerable_cells": [
+              [
+                8,
+                7
+              ],
+              [
+                9,
+                7
+              ]
+            ]
+          }
+        }
+      },
+      "disabled_total": -914,
+      "oracle_legal_moves_checked": 710,
+      "evaluation_time": {
+        "enabled": {
+          "median_ms": 7.8047390015854035,
+          "max_ms": 9.211974000209011
+        },
+        "disabled": {
+          "median_ms": 5.817453002237016,
+          "max_ms": 5.938657002843684
+        }
+      }
+    },
+    "opponent_win": {
+      "board": [
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "capture-v1",
+        "configuration_id": "4012b34f68891fbb07edafd2be53153b6ed888a227fc2a0aec144d503467dff4",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 20,
+          "vulnerable_pair": -40
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential",
+          "captures"
+        ],
+        "features": {
+          "material": -6,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": -2,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": -1,
+          "capture_move": 1,
+          "capture_pair": 1,
+          "multi_pair_move": 0,
+          "vulnerable_pair": -1
+        },
+        "contributions": {
+          "material": -6,
+          "open_four": 0,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 0,
+          "overline_trap": 40,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": -5,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 0,
+          "vulnerable_pair": 40
+        },
+        "raw_total": 109,
+        "total": 109,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 2,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": [
+              [
+                9,
+                4
+              ],
+              [
+                9,
+                11
+              ]
+            ]
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 1,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": [
+                [
+                  [
+                    9,
+                    9
+                  ],
+                  [
+                    10,
+                    10
+                  ]
+                ]
+              ]
+            }
+          }
+        },
+        "captures": {
+          "black": {
+            "capture_move": 1,
+            "capture_pair": 1,
+            "multi_pair_move": 0,
+            "moves": [
+              {
+                "move": [
+                  8,
+                  10
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      9,
+                      10
+                    ],
+                    [
+                      10,
+                      10
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    9,
+                    10
+                  ],
+                  [
+                    10,
+                    10
+                  ]
+                ],
+                "outcome": "white_win",
+                "classification": "opponent_win"
+              }
+            ],
+            "captured_pairs": [
+              [
+                [
+                  9,
+                  10
+                ],
+                [
+                  10,
+                  10
+                ]
+              ]
+            ],
+            "captured_cells": [
+              [
+                9,
+                10
+              ],
+              [
+                10,
+                10
+              ]
+            ],
+            "vulnerable_pair": 0,
+            "vulnerable_pairs": [],
+            "vulnerable_cells": []
+          },
+          "white": {
+            "capture_move": 0,
+            "capture_pair": 0,
+            "multi_pair_move": 0,
+            "moves": [],
+            "captured_pairs": [],
+            "captured_cells": [],
+            "vulnerable_pair": 1,
+            "vulnerable_pairs": [
+              [
+                [
+                  9,
+                  10
+                ],
+                [
+                  10,
+                  10
+                ]
+              ]
+            ],
+            "vulnerable_cells": [
+              [
+                9,
+                10
+              ],
+              [
+                10,
+                10
+              ]
+            ]
+          }
+        }
+      },
+      "disabled_total": 29,
+      "oracle_legal_moves_checked": 706,
+      "evaluation_time": {
+        "enabled": {
+          "median_ms": 7.564551000541542,
+          "max_ms": 8.011576002900256
+        },
+        "disabled": {
+          "median_ms": 5.962704002740793,
+          "max_ms": 6.7046999974991195
+        }
+      }
+    },
+    "simultaneous_draw": {
+      "board": [
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "capture-v1",
+        "configuration_id": "4012b34f68891fbb07edafd2be53153b6ed888a227fc2a0aec144d503467dff4",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 20,
+          "vulnerable_pair": -40
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential",
+          "captures"
+        ],
+        "features": {
+          "material": -2,
+          "open_four": 1,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 2,
+          "verified_win": 1,
+          "overline_trap": -2,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0,
+          "capture_move": 2,
+          "capture_pair": 2,
+          "multi_pair_move": 0,
+          "vulnerable_pair": -2
+        },
+        "contributions": {
+          "material": -2,
+          "open_four": 300,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": 40,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0,
+          "capture_move": 60,
+          "capture_pair": 20,
+          "multi_pair_move": 0,
+          "vulnerable_pair": 80
+        },
+        "raw_total": 798,
+        "total": 798,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 1,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 2,
+            "verified_win": 1,
+            "overline_trap": 0,
+            "geometric_completions": [
+              [
+                8,
+                5
+              ],
+              [
+                8,
+                10
+              ]
+            ],
+            "verified_wins": [
+              [
+                8,
+                5
+              ]
+            ],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 2,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": [
+              [
+                9,
+                4
+              ],
+              [
+                9,
+                11
+              ]
+            ]
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        },
+        "captures": {
+          "black": {
+            "capture_move": 2,
+            "capture_pair": 2,
+            "multi_pair_move": 0,
+            "moves": [
+              {
+                "move": [
+                  8,
+                  10
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      9,
+                      10
+                    ],
+                    [
+                      10,
+                      10
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    9,
+                    10
+                  ],
+                  [
+                    10,
+                    10
+                  ]
+                ],
+                "outcome": "draw",
+                "classification": "draw"
+              },
+              {
+                "move": [
+                  11,
+                  11
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      9,
+                      9
+                    ],
+                    [
+                      10,
+                      10
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    9,
+                    9
+                  ],
+                  [
+                    10,
+                    10
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              }
+            ],
+            "captured_pairs": [
+              [
+                [
+                  9,
+                  9
+                ],
+                [
+                  10,
+                  10
+                ]
+              ],
+              [
+                [
+                  9,
+                  10
+                ],
+                [
+                  10,
+                  10
+                ]
+              ]
+            ],
+            "captured_cells": [
+              [
+                9,
+                9
+              ],
+              [
+                9,
+                10
+              ],
+              [
+                10,
+                10
+              ]
+            ],
+            "vulnerable_pair": 0,
+            "vulnerable_pairs": [],
+            "vulnerable_cells": []
+          },
+          "white": {
+            "capture_move": 0,
+            "capture_pair": 0,
+            "multi_pair_move": 0,
+            "moves": [],
+            "captured_pairs": [],
+            "captured_cells": [],
+            "vulnerable_pair": 2,
+            "vulnerable_pairs": [
+              [
+                [
+                  9,
+                  9
+                ],
+                [
+                  10,
+                  10
+                ]
+              ],
+              [
+                [
+                  9,
+                  10
+                ],
+                [
+                  10,
+                  10
+                ]
+              ]
+            ],
+            "vulnerable_cells": [
+              [
+                9,
+                9
+              ],
+              [
+                9,
+                10
+              ],
+              [
+                10,
+                10
+              ]
+            ]
+          }
+        }
+      },
+      "disabled_total": 638,
+      "oracle_legal_moves_checked": 698,
+      "evaluation_time": {
+        "enabled": {
+          "median_ms": 7.687878001888748,
+          "max_ms": 7.874743998399936
+        },
+        "disabled": {
+          "median_ms": 5.960786998912226,
+          "max_ms": 6.60455099932733
+        }
+      }
+    },
+    "strict_capture_win": {
+      "board": [
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "capture-v1",
+        "configuration_id": "4012b34f68891fbb07edafd2be53153b6ed888a227fc2a0aec144d503467dff4",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 20,
+          "vulnerable_pair": -40
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential",
+          "captures"
+        ],
+        "features": {
+          "material": 3,
+          "open_four": 1,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 2,
+          "verified_win": 2,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 1,
+          "capture_move": 1,
+          "capture_pair": 1,
+          "multi_pair_move": 0,
+          "vulnerable_pair": -1
+        },
+        "contributions": {
+          "material": 3,
+          "open_four": 300,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 600,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 5,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 0,
+          "vulnerable_pair": 40
+        },
+        "raw_total": 988,
+        "total": 988,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 1,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 2,
+            "verified_win": 2,
+            "overline_trap": 0,
+            "geometric_completions": [
+              [
+                8,
+                5
+              ],
+              [
+                8,
+                10
+              ]
+            ],
+            "verified_wins": [
+              [
+                8,
+                5
+              ],
+              [
+                8,
+                10
+              ]
+            ],
+            "overline_traps": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 1,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": [
+                [
+                  [
+                    8,
+                    7
+                  ],
+                  [
+                    11,
+                    10
+                  ]
+                ]
+              ]
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        },
+        "captures": {
+          "black": {
+            "capture_move": 1,
+            "capture_pair": 1,
+            "multi_pair_move": 0,
+            "moves": [
+              {
+                "move": [
+                  8,
+                  10
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      9,
+                      10
+                    ],
+                    [
+                      10,
+                      10
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    9,
+                    10
+                  ],
+                  [
+                    10,
+                    10
+                  ]
+                ],
+                "outcome": "black_win",
+                "classification": "win"
+              }
+            ],
+            "captured_pairs": [
+              [
+                [
+                  9,
+                  10
+                ],
+                [
+                  10,
+                  10
+                ]
+              ]
+            ],
+            "captured_cells": [
+              [
+                9,
+                10
+              ],
+              [
+                10,
+                10
+              ]
+            ],
+            "vulnerable_pair": 0,
+            "vulnerable_pairs": [],
+            "vulnerable_cells": []
+          },
+          "white": {
+            "capture_move": 0,
+            "capture_pair": 0,
+            "multi_pair_move": 0,
+            "moves": [],
+            "captured_pairs": [],
+            "captured_cells": [],
+            "vulnerable_pair": 1,
+            "vulnerable_pairs": [
+              [
+                [
+                  9,
+                  10
+                ],
+                [
+                  10,
+                  10
+                ]
+              ]
+            ],
+            "vulnerable_cells": [
+              [
+                9,
+                10
+              ],
+              [
+                10,
+                10
+              ]
+            ]
+          }
+        }
+      },
+      "disabled_total": 908,
+      "oracle_legal_moves_checked": 708,
+      "evaluation_time": {
+        "enabled": {
+          "median_ms": 7.625219001056394,
+          "max_ms": 8.90921099926345
+        },
+        "disabled": {
+          "median_ms": 5.880584001715761,
+          "max_ms": 6.120747999375453
+        }
+      }
+    },
+    "dense": {
+      "board": [
+        [
+          1,
+          -1,
+          1,
+          0,
+          0,
+          -1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          -1,
+          1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          -1,
+          1,
+          -1,
+          1,
+          1,
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          -1,
+          1,
+          1,
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          -1,
+          1,
+          1,
+          -1,
+          0,
+          0,
+          1,
+          -1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0,
+          -1,
+          1,
+          -1,
+          0,
+          1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          -1,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          -1,
+          -1,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          1,
+          0,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          1,
+          1,
+          -1,
+          0
+        ],
+        [
+          1,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          0,
+          -1,
+          -1,
+          1,
+          -1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          0,
+          0,
+          1,
+          -1,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          -1,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          1,
+          0,
+          1,
+          -1,
+          -1
+        ],
+        [
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          0,
+          1,
+          -1,
+          1,
+          1,
+          -1,
+          0,
+          1,
+          1,
+          -1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          0,
+          -1,
+          -1,
+          1,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          0,
+          1,
+          -1,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0
+        ]
+      ],
+      "side_to_move": 0,
+      "inspection": {
+        "feature_version": "capture-v1",
+        "configuration_id": "4012b34f68891fbb07edafd2be53153b6ed888a227fc2a0aec144d503467dff4",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 20,
+          "vulnerable_pair": -40
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential",
+          "captures"
+        ],
+        "features": {
+          "material": 11,
+          "open_four": 2,
+          "closed_four": 0,
+          "broken_four": 7,
+          "geometric_completion": 11,
+          "verified_win": 11,
+          "overline_trap": -3,
+          "open_three": -4,
+          "broken_three": -2,
+          "two_stone": -1,
+          "capture_move": -17,
+          "capture_pair": -21,
+          "multi_pair_move": -4,
+          "vulnerable_pair": 21
+        },
+        "contributions": {
+          "material": 11,
+          "open_four": 600,
+          "closed_four": 0,
+          "broken_four": 1050,
+          "geometric_completion": 0,
+          "verified_win": 3300,
+          "overline_trap": 60,
+          "open_three": -160,
+          "broken_three": -50,
+          "two_stone": -5,
+          "capture_move": -510,
+          "capture_pair": -210,
+          "multi_pair_move": -80,
+          "vulnerable_pair": -840
+        },
+        "raw_total": 3166,
+        "total": 3166,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 3,
+            "closed_four": 0,
+            "broken_four": 11,
+            "geometric_completion": 15,
+            "verified_win": 15,
+            "overline_trap": 3,
+            "geometric_completions": [
+              [
+                0,
+                12
+              ],
+              [
+                1,
+                13
+              ],
+              [
+                1,
+                18
+              ],
+              [
+                2,
+                11
+              ],
+              [
+                2,
+                13
+              ],
+              [
+                3,
+                17
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                5,
+                12
+              ],
+              [
+                9,
+                2
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                14,
+                8
+              ],
+              [
+                15,
+                9
+              ],
+              [
+                16,
+                7
+              ],
+              [
+                18,
+                13
+              ]
+            ],
+            "verified_wins": [
+              [
+                0,
+                12
+              ],
+              [
+                1,
+                13
+              ],
+              [
+                1,
+                18
+              ],
+              [
+                2,
+                11
+              ],
+              [
+                2,
+                13
+              ],
+              [
+                3,
+                17
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                5,
+                12
+              ],
+              [
+                9,
+                2
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                14,
+                8
+              ],
+              [
+                15,
+                9
+              ],
+              [
+                16,
+                7
+              ],
+              [
+                18,
+                13
+              ]
+            ],
+            "overline_traps": [
+              [
+                5,
+                11
+              ],
+              [
+                7,
+                2
+              ],
+              [
+                18,
+                8
+              ]
+            ]
+          },
+          "white": {
+            "open_four": 1,
+            "closed_four": 0,
+            "broken_four": 4,
+            "geometric_completion": 4,
+            "verified_win": 4,
+            "overline_trap": 6,
+            "geometric_completions": [
+              [
+                2,
+                8
+              ],
+              [
+                3,
+                17
+              ],
+              [
+                8,
+                4
+              ],
+              [
+                9,
+                8
+              ]
+            ],
+            "verified_wins": [
+              [
+                2,
+                8
+              ],
+              [
+                3,
+                17
+              ],
+              [
+                8,
+                4
+              ],
+              [
+                9,
+                8
+              ]
+            ],
+            "overline_traps": [
+              [
+                8,
+                16
+              ],
+              [
+                9,
+                8
+              ],
+              [
+                10,
+                10
+              ],
+              [
+                13,
+                4
+              ],
+              [
+                14,
+                13
+              ],
+              [
+                15,
+                16
+              ]
+            ]
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 1,
+            "broken_three": 1,
+            "two_stone": 2,
+            "units": {
+              "open_three": [
+                [
+                  [
+                    11,
+                    17
+                  ],
+                  [
+                    12,
+                    17
+                  ],
+                  [
+                    13,
+                    17
+                  ]
+                ]
+              ],
+              "broken_three": [
+                [
+                  [
+                    11,
+                    9
+                  ],
+                  [
+                    12,
+                    8
+                  ],
+                  [
+                    14,
+                    6
+                  ]
+                ]
+              ],
+              "two_stone": [
+                [
+                  [
+                    12,
+                    12
+                  ],
+                  [
+                    14,
+                    10
+                  ]
+                ],
+                [
+                  [
+                    15,
+                    7
+                  ],
+                  [
+                    17,
+                    5
+                  ]
+                ]
+              ]
+            }
+          },
+          "white": {
+            "open_three": 5,
+            "broken_three": 3,
+            "two_stone": 3,
+            "units": {
+              "open_three": [
+                [
+                  [
+                    4,
+                    6
+                  ],
+                  [
+                    5,
+                    7
+                  ],
+                  [
+                    6,
+                    8
+                  ]
+                ],
+                [
+                  [
+                    5,
+                    14
+                  ],
+                  [
+                    6,
+                    14
+                  ],
+                  [
+                    7,
+                    14
+                  ]
+                ],
+                [
+                  [
+                    9,
+                    3
+                  ],
+                  [
+                    10,
+                    4
+                  ],
+                  [
+                    11,
+                    5
+                  ]
+                ],
+                [
+                  [
+                    11,
+                    4
+                  ],
+                  [
+                    11,
+                    5
+                  ],
+                  [
+                    11,
+                    6
+                  ]
+                ],
+                [
+                  [
+                    15,
+                    8
+                  ],
+                  [
+                    16,
+                    8
+                  ],
+                  [
+                    17,
+                    8
+                  ]
+                ]
+              ],
+              "broken_three": [
+                [
+                  [
+                    3,
+                    1
+                  ],
+                  [
+                    3,
+                    3
+                  ],
+                  [
+                    3,
+                    4
+                  ]
+                ],
+                [
+                  [
+                    9,
+                    13
+                  ],
+                  [
+                    9,
+                    15
+                  ],
+                  [
+                    9,
+                    16
+                  ]
+                ],
+                [
+                  [
+                    9,
+                    13
+                  ],
+                  [
+                    10,
+                    12
+                  ],
+                  [
+                    12,
+                    10
+                  ]
+                ]
+              ],
+              "two_stone": [
+                [
+                  [
+                    3,
+                    1
+                  ],
+                  [
+                    4,
+                    1
+                  ]
+                ],
+                [
+                  [
+                    4,
+                    2
+                  ],
+                  [
+                    5,
+                    2
+                  ]
+                ],
+                [
+                  [
+                    12,
+                    3
+                  ],
+                  [
+                    14,
+                    5
+                  ]
+                ]
+              ]
+            }
+          }
+        },
+        "captures": {
+          "black": {
+            "capture_move": 17,
+            "capture_pair": 18,
+            "multi_pair_move": 1,
+            "moves": [
+              {
+                "move": [
+                  3,
+                  9
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      1,
+                      9
+                    ],
+                    [
+                      2,
+                      9
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    1,
+                    9
+                  ],
+                  [
+                    2,
+                    9
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  4,
+                  12
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      5,
+                      13
+                    ],
+                    [
+                      6,
+                      14
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    5,
+                    13
+                  ],
+                  [
+                    6,
+                    14
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  5,
+                  1
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      3,
+                      3
+                    ],
+                    [
+                      4,
+                      2
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    3,
+                    3
+                  ],
+                  [
+                    4,
+                    2
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  6,
+                  10
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      4,
+                      10
+                    ],
+                    [
+                      5,
+                      10
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    4,
+                    10
+                  ],
+                  [
+                    5,
+                    10
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  8,
+                  14
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      9,
+                      15
+                    ],
+                    [
+                      10,
+                      16
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    9,
+                    15
+                  ],
+                  [
+                    10,
+                    16
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  9,
+                  6
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      7,
+                      8
+                    ],
+                    [
+                      8,
+                      7
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    7,
+                    8
+                  ],
+                  [
+                    8,
+                    7
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  10,
+                  10
+                ],
+                "pair_count": 2,
+                "cell_count": 4,
+                "pairs": [
+                  [
+                    [
+                      10,
+                      11
+                    ],
+                    [
+                      10,
+                      12
+                    ]
+                  ],
+                  [
+                    [
+                      11,
+                      10
+                    ],
+                    [
+                      12,
+                      10
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    10,
+                    11
+                  ],
+                  [
+                    10,
+                    12
+                  ],
+                  [
+                    11,
+                    10
+                  ],
+                  [
+                    12,
+                    10
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  10,
+                  17
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      11,
+                      16
+                    ],
+                    [
+                      12,
+                      15
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    11,
+                    16
+                  ],
+                  [
+                    12,
+                    15
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  12,
+                  5
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      12,
+                      3
+                    ],
+                    [
+                      12,
+                      4
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    12,
+                    3
+                  ],
+                  [
+                    12,
+                    4
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  13,
+                  2
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      11,
+                      4
+                    ],
+                    [
+                      12,
+                      3
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    11,
+                    4
+                  ],
+                  [
+                    12,
+                    3
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  13,
+                  8
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      11,
+                      6
+                    ],
+                    [
+                      12,
+                      7
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    11,
+                    6
+                  ],
+                  [
+                    12,
+                    7
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  13,
+                  11
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      13,
+                      12
+                    ],
+                    [
+                      13,
+                      13
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    13,
+                    12
+                  ],
+                  [
+                    13,
+                    13
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  15,
+                  16
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      15,
+                      14
+                    ],
+                    [
+                      15,
+                      15
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    15,
+                    14
+                  ],
+                  [
+                    15,
+                    15
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  16,
+                  6
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      16,
+                      4
+                    ],
+                    [
+                      16,
+                      5
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    16,
+                    4
+                  ],
+                  [
+                    16,
+                    5
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  16,
+                  18
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      14,
+                      16
+                    ],
+                    [
+                      15,
+                      17
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    14,
+                    16
+                  ],
+                  [
+                    15,
+                    17
+                  ]
+                ],
+                "outcome": "white_win",
+                "classification": "opponent_win"
+              },
+              {
+                "move": [
+                  17,
+                  6
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      15,
+                      4
+                    ],
+                    [
+                      16,
+                      5
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    15,
+                    4
+                  ],
+                  [
+                    16,
+                    5
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  17,
+                  13
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      15,
+                      11
+                    ],
+                    [
+                      16,
+                      12
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    15,
+                    11
+                  ],
+                  [
+                    16,
+                    12
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              }
+            ],
+            "captured_pairs": [
+              [
+                [
+                  1,
+                  9
+                ],
+                [
+                  2,
+                  9
+                ]
+              ],
+              [
+                [
+                  3,
+                  3
+                ],
+                [
+                  4,
+                  2
+                ]
+              ],
+              [
+                [
+                  4,
+                  10
+                ],
+                [
+                  5,
+                  10
+                ]
+              ],
+              [
+                [
+                  5,
+                  13
+                ],
+                [
+                  6,
+                  14
+                ]
+              ],
+              [
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  7
+                ]
+              ],
+              [
+                [
+                  9,
+                  15
+                ],
+                [
+                  10,
+                  16
+                ]
+              ],
+              [
+                [
+                  10,
+                  11
+                ],
+                [
+                  10,
+                  12
+                ]
+              ],
+              [
+                [
+                  11,
+                  4
+                ],
+                [
+                  12,
+                  3
+                ]
+              ],
+              [
+                [
+                  11,
+                  6
+                ],
+                [
+                  12,
+                  7
+                ]
+              ],
+              [
+                [
+                  11,
+                  10
+                ],
+                [
+                  12,
+                  10
+                ]
+              ],
+              [
+                [
+                  11,
+                  16
+                ],
+                [
+                  12,
+                  15
+                ]
+              ],
+              [
+                [
+                  12,
+                  3
+                ],
+                [
+                  12,
+                  4
+                ]
+              ],
+              [
+                [
+                  13,
+                  12
+                ],
+                [
+                  13,
+                  13
+                ]
+              ],
+              [
+                [
+                  14,
+                  16
+                ],
+                [
+                  15,
+                  17
+                ]
+              ],
+              [
+                [
+                  15,
+                  4
+                ],
+                [
+                  16,
+                  5
+                ]
+              ],
+              [
+                [
+                  15,
+                  11
+                ],
+                [
+                  16,
+                  12
+                ]
+              ],
+              [
+                [
+                  15,
+                  14
+                ],
+                [
+                  15,
+                  15
+                ]
+              ],
+              [
+                [
+                  16,
+                  4
+                ],
+                [
+                  16,
+                  5
+                ]
+              ]
+            ],
+            "captured_cells": [
+              [
+                1,
+                9
+              ],
+              [
+                2,
+                9
+              ],
+              [
+                3,
+                3
+              ],
+              [
+                4,
+                2
+              ],
+              [
+                4,
+                10
+              ],
+              [
+                5,
+                10
+              ],
+              [
+                5,
+                13
+              ],
+              [
+                6,
+                14
+              ],
+              [
+                7,
+                8
+              ],
+              [
+                8,
+                7
+              ],
+              [
+                9,
+                15
+              ],
+              [
+                10,
+                11
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                16
+              ],
+              [
+                11,
+                4
+              ],
+              [
+                11,
+                6
+              ],
+              [
+                11,
+                10
+              ],
+              [
+                11,
+                16
+              ],
+              [
+                12,
+                3
+              ],
+              [
+                12,
+                4
+              ],
+              [
+                12,
+                7
+              ],
+              [
+                12,
+                10
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                13,
+                12
+              ],
+              [
+                13,
+                13
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                15,
+                4
+              ],
+              [
+                15,
+                11
+              ],
+              [
+                15,
+                14
+              ],
+              [
+                15,
+                15
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                16,
+                4
+              ],
+              [
+                16,
+                5
+              ],
+              [
+                16,
+                12
+              ]
+            ],
+            "vulnerable_pair": 39,
+            "vulnerable_pairs": [
+              [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ]
+              ],
+              [
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ]
+              ],
+              [
+                [
+                  1,
+                  10
+                ],
+                [
+                  1,
+                  11
+                ]
+              ],
+              [
+                [
+                  1,
+                  17
+                ],
+                [
+                  2,
+                  17
+                ]
+              ],
+              [
+                [
+                  2,
+                  12
+                ],
+                [
+                  3,
+                  11
+                ]
+              ],
+              [
+                [
+                  3,
+                  10
+                ],
+                [
+                  4,
+                  11
+                ]
+              ],
+              [
+                [
+                  3,
+                  12
+                ],
+                [
+                  4,
+                  11
+                ]
+              ],
+              [
+                [
+                  3,
+                  12
+                ],
+                [
+                  4,
+                  13
+                ]
+              ],
+              [
+                [
+                  4,
+                  15
+                ],
+                [
+                  5,
+                  16
+                ]
+              ],
+              [
+                [
+                  4,
+                  17
+                ],
+                [
+                  5,
+                  17
+                ]
+              ],
+              [
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ]
+              ],
+              [
+                [
+                  5,
+                  5
+                ],
+                [
+                  6,
+                  4
+                ]
+              ],
+              [
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ]
+              ],
+              [
+                [
+                  6,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ]
+              ],
+              [
+                [
+                  6,
+                  7
+                ],
+                [
+                  7,
+                  6
+                ]
+              ],
+              [
+                [
+                  6,
+                  12
+                ],
+                [
+                  7,
+                  11
+                ]
+              ],
+              [
+                [
+                  6,
+                  16
+                ],
+                [
+                  7,
+                  17
+                ]
+              ],
+              [
+                [
+                  7,
+                  6
+                ],
+                [
+                  8,
+                  6
+                ]
+              ],
+              [
+                [
+                  7,
+                  13
+                ],
+                [
+                  8,
+                  13
+                ]
+              ],
+              [
+                [
+                  7,
+                  15
+                ],
+                [
+                  8,
+                  15
+                ]
+              ],
+              [
+                [
+                  9,
+                  4
+                ],
+                [
+                  9,
+                  5
+                ]
+              ],
+              [
+                [
+                  9,
+                  4
+                ],
+                [
+                  10,
+                  3
+                ]
+              ],
+              [
+                [
+                  10,
+                  2
+                ],
+                [
+                  10,
+                  3
+                ]
+              ],
+              [
+                [
+                  10,
+                  13
+                ],
+                [
+                  11,
+                  12
+                ]
+              ],
+              [
+                [
+                  11,
+                  8
+                ],
+                [
+                  11,
+                  9
+                ]
+              ],
+              [
+                [
+                  11,
+                  8
+                ],
+                [
+                  12,
+                  8
+                ]
+              ],
+              [
+                [
+                  11,
+                  18
+                ],
+                [
+                  12,
+                  18
+                ]
+              ],
+              [
+                [
+                  12,
+                  14
+                ],
+                [
+                  13,
+                  14
+                ]
+              ],
+              [
+                [
+                  12,
+                  14
+                ],
+                [
+                  13,
+                  15
+                ]
+              ],
+              [
+                [
+                  13,
+                  6
+                ],
+                [
+                  14,
+                  7
+                ]
+              ],
+              [
+                [
+                  14,
+                  2
+                ],
+                [
+                  14,
+                  3
+                ]
+              ],
+              [
+                [
+                  14,
+                  6
+                ],
+                [
+                  14,
+                  7
+                ]
+              ],
+              [
+                [
+                  14,
+                  6
+                ],
+                [
+                  15,
+                  7
+                ]
+              ],
+              [
+                [
+                  14,
+                  9
+                ],
+                [
+                  14,
+                  10
+                ]
+              ],
+              [
+                [
+                  16,
+                  14
+                ],
+                [
+                  16,
+                  15
+                ]
+              ],
+              [
+                [
+                  16,
+                  15
+                ],
+                [
+                  17,
+                  16
+                ]
+              ],
+              [
+                [
+                  16,
+                  17
+                ],
+                [
+                  17,
+                  17
+                ]
+              ],
+              [
+                [
+                  17,
+                  16
+                ],
+                [
+                  17,
+                  17
+                ]
+              ],
+              [
+                [
+                  18,
+                  6
+                ],
+                [
+                  18,
+                  7
+                ]
+              ]
+            ],
+            "vulnerable_cells": [
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                10
+              ],
+              [
+                1,
+                11
+              ],
+              [
+                1,
+                17
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                12
+              ],
+              [
+                2,
+                17
+              ],
+              [
+                3,
+                10
+              ],
+              [
+                3,
+                11
+              ],
+              [
+                3,
+                12
+              ],
+              [
+                4,
+                11
+              ],
+              [
+                4,
+                13
+              ],
+              [
+                4,
+                15
+              ],
+              [
+                4,
+                17
+              ],
+              [
+                5,
+                5
+              ],
+              [
+                5,
+                6
+              ],
+              [
+                5,
+                16
+              ],
+              [
+                5,
+                17
+              ],
+              [
+                6,
+                4
+              ],
+              [
+                6,
+                5
+              ],
+              [
+                6,
+                7
+              ],
+              [
+                6,
+                12
+              ],
+              [
+                6,
+                16
+              ],
+              [
+                7,
+                6
+              ],
+              [
+                7,
+                11
+              ],
+              [
+                7,
+                13
+              ],
+              [
+                7,
+                15
+              ],
+              [
+                7,
+                17
+              ],
+              [
+                8,
+                6
+              ],
+              [
+                8,
+                13
+              ],
+              [
+                8,
+                15
+              ],
+              [
+                9,
+                4
+              ],
+              [
+                9,
+                5
+              ],
+              [
+                10,
+                2
+              ],
+              [
+                10,
+                3
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                11,
+                8
+              ],
+              [
+                11,
+                9
+              ],
+              [
+                11,
+                12
+              ],
+              [
+                11,
+                18
+              ],
+              [
+                12,
+                8
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                12,
+                18
+              ],
+              [
+                13,
+                6
+              ],
+              [
+                13,
+                14
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                14,
+                2
+              ],
+              [
+                14,
+                3
+              ],
+              [
+                14,
+                6
+              ],
+              [
+                14,
+                7
+              ],
+              [
+                14,
+                9
+              ],
+              [
+                14,
+                10
+              ],
+              [
+                15,
+                7
+              ],
+              [
+                16,
+                14
+              ],
+              [
+                16,
+                15
+              ],
+              [
+                16,
+                17
+              ],
+              [
+                17,
+                16
+              ],
+              [
+                17,
+                17
+              ],
+              [
+                18,
+                6
+              ],
+              [
+                18,
+                7
+              ]
+            ]
+          },
+          "white": {
+            "capture_move": 34,
+            "capture_pair": 39,
+            "multi_pair_move": 5,
+            "moves": [
+              {
+                "move": [
+                  0,
+                  5
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      0,
+                      3
+                    ],
+                    [
+                      0,
+                      4
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    0,
+                    3
+                  ],
+                  [
+                    0,
+                    4
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  1,
+                  12
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      1,
+                      10
+                    ],
+                    [
+                      1,
+                      11
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    1,
+                    10
+                  ],
+                  [
+                    1,
+                    11
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  1,
+                  13
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      2,
+                      12
+                    ],
+                    [
+                      3,
+                      11
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    2,
+                    12
+                  ],
+                  [
+                    3,
+                    11
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  2,
+                  11
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      3,
+                      12
+                    ],
+                    [
+                      4,
+                      13
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    3,
+                    12
+                  ],
+                  [
+                    4,
+                    13
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  2,
+                  13
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      3,
+                      12
+                    ],
+                    [
+                      4,
+                      11
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    3,
+                    12
+                  ],
+                  [
+                    4,
+                    11
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  3,
+                  5
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      1,
+                      3
+                    ],
+                    [
+                      2,
+                      4
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    1,
+                    3
+                  ],
+                  [
+                    2,
+                    4
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  3,
+                  14
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      4,
+                      15
+                    ],
+                    [
+                      5,
+                      16
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    4,
+                    15
+                  ],
+                  [
+                    5,
+                    16
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  3,
+                  17
+                ],
+                "pair_count": 2,
+                "cell_count": 4,
+                "pairs": [
+                  [
+                    [
+                      1,
+                      17
+                    ],
+                    [
+                      2,
+                      17
+                    ]
+                  ],
+                  [
+                    [
+                      4,
+                      17
+                    ],
+                    [
+                      5,
+                      17
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    1,
+                    17
+                  ],
+                  [
+                    2,
+                    17
+                  ],
+                  [
+                    4,
+                    17
+                  ],
+                  [
+                    5,
+                    17
+                  ]
+                ],
+                "outcome": "white_win",
+                "classification": "win"
+              },
+              {
+                "move": [
+                  5,
+                  4
+                ],
+                "pair_count": 2,
+                "cell_count": 4,
+                "pairs": [
+                  [
+                    [
+                      5,
+                      5
+                    ],
+                    [
+                      5,
+                      6
+                    ]
+                  ],
+                  [
+                    [
+                      6,
+                      5
+                    ],
+                    [
+                      7,
+                      6
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    5,
+                    5
+                  ],
+                  [
+                    5,
+                    6
+                  ],
+                  [
+                    6,
+                    5
+                  ],
+                  [
+                    7,
+                    6
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  5,
+                  8
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      6,
+                      7
+                    ],
+                    [
+                      7,
+                      6
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    6,
+                    7
+                  ],
+                  [
+                    7,
+                    6
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  5,
+                  12
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      3,
+                      10
+                    ],
+                    [
+                      4,
+                      11
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    3,
+                    10
+                  ],
+                  [
+                    4,
+                    11
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  6,
+                  3
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      6,
+                      4
+                    ],
+                    [
+                      6,
+                      5
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    6,
+                    4
+                  ],
+                  [
+                    6,
+                    5
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  6,
+                  13
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      7,
+                      13
+                    ],
+                    [
+                      8,
+                      13
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    7,
+                    13
+                  ],
+                  [
+                    8,
+                    13
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  6,
+                  15
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      7,
+                      15
+                    ],
+                    [
+                      8,
+                      15
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    7,
+                    15
+                  ],
+                  [
+                    8,
+                    15
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  7,
+                  3
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      5,
+                      5
+                    ],
+                    [
+                      6,
+                      4
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    5,
+                    5
+                  ],
+                  [
+                    6,
+                    4
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  8,
+                  10
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      6,
+                      12
+                    ],
+                    [
+                      7,
+                      11
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    6,
+                    12
+                  ],
+                  [
+                    7,
+                    11
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  8,
+                  18
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      6,
+                      16
+                    ],
+                    [
+                      7,
+                      17
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    6,
+                    16
+                  ],
+                  [
+                    7,
+                    17
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  9,
+                  6
+                ],
+                "pair_count": 2,
+                "cell_count": 4,
+                "pairs": [
+                  [
+                    [
+                      7,
+                      6
+                    ],
+                    [
+                      8,
+                      6
+                    ]
+                  ],
+                  [
+                    [
+                      9,
+                      4
+                    ],
+                    [
+                      9,
+                      5
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    7,
+                    6
+                  ],
+                  [
+                    8,
+                    6
+                  ],
+                  [
+                    9,
+                    4
+                  ],
+                  [
+                    9,
+                    5
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  9,
+                  14
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      10,
+                      13
+                    ],
+                    [
+                      11,
+                      12
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    10,
+                    13
+                  ],
+                  [
+                    11,
+                    12
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  10,
+                  1
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      10,
+                      2
+                    ],
+                    [
+                      10,
+                      3
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    10,
+                    2
+                  ],
+                  [
+                    10,
+                    3
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  10,
+                  18
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      11,
+                      18
+                    ],
+                    [
+                      12,
+                      18
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    11,
+                    18
+                  ],
+                  [
+                    12,
+                    18
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  11,
+                  2
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      9,
+                      4
+                    ],
+                    [
+                      10,
+                      3
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    9,
+                    4
+                  ],
+                  [
+                    10,
+                    3
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  11,
+                  7
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      11,
+                      8
+                    ],
+                    [
+                      11,
+                      9
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    11,
+                    8
+                  ],
+                  [
+                    11,
+                    9
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  11,
+                  13
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      12,
+                      14
+                    ],
+                    [
+                      13,
+                      15
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    12,
+                    14
+                  ],
+                  [
+                    13,
+                    15
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  11,
+                  14
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      12,
+                      14
+                    ],
+                    [
+                      13,
+                      14
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    12,
+                    14
+                  ],
+                  [
+                    13,
+                    14
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  12,
+                  5
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      13,
+                      6
+                    ],
+                    [
+                      14,
+                      7
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    13,
+                    6
+                  ],
+                  [
+                    14,
+                    7
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  13,
+                  5
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      14,
+                      6
+                    ],
+                    [
+                      15,
+                      7
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    14,
+                    6
+                  ],
+                  [
+                    15,
+                    7
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  13,
+                  8
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      11,
+                      8
+                    ],
+                    [
+                      12,
+                      8
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    11,
+                    8
+                  ],
+                  [
+                    12,
+                    8
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  14,
+                  1
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      14,
+                      2
+                    ],
+                    [
+                      14,
+                      3
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    14,
+                    2
+                  ],
+                  [
+                    14,
+                    3
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  14,
+                  8
+                ],
+                "pair_count": 2,
+                "cell_count": 4,
+                "pairs": [
+                  [
+                    [
+                      14,
+                      6
+                    ],
+                    [
+                      14,
+                      7
+                    ]
+                  ],
+                  [
+                    [
+                      14,
+                      9
+                    ],
+                    [
+                      14,
+                      10
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    14,
+                    6
+                  ],
+                  [
+                    14,
+                    7
+                  ],
+                  [
+                    14,
+                    9
+                  ],
+                  [
+                    14,
+                    10
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  16,
+                  13
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      16,
+                      14
+                    ],
+                    [
+                      16,
+                      15
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    16,
+                    14
+                  ],
+                  [
+                    16,
+                    15
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  17,
+                  18
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      17,
+                      16
+                    ],
+                    [
+                      17,
+                      17
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    17,
+                    16
+                  ],
+                  [
+                    17,
+                    17
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  18,
+                  8
+                ],
+                "pair_count": 1,
+                "cell_count": 2,
+                "pairs": [
+                  [
+                    [
+                      18,
+                      6
+                    ],
+                    [
+                      18,
+                      7
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    18,
+                    6
+                  ],
+                  [
+                    18,
+                    7
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              },
+              {
+                "move": [
+                  18,
+                  17
+                ],
+                "pair_count": 2,
+                "cell_count": 4,
+                "pairs": [
+                  [
+                    [
+                      16,
+                      15
+                    ],
+                    [
+                      17,
+                      16
+                    ]
+                  ],
+                  [
+                    [
+                      16,
+                      17
+                    ],
+                    [
+                      17,
+                      17
+                    ]
+                  ]
+                ],
+                "cells": [
+                  [
+                    16,
+                    15
+                  ],
+                  [
+                    16,
+                    17
+                  ],
+                  [
+                    17,
+                    16
+                  ],
+                  [
+                    17,
+                    17
+                  ]
+                ],
+                "outcome": "ongoing",
+                "classification": "continuation"
+              }
+            ],
+            "captured_pairs": [
+              [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ]
+              ],
+              [
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ]
+              ],
+              [
+                [
+                  1,
+                  10
+                ],
+                [
+                  1,
+                  11
+                ]
+              ],
+              [
+                [
+                  1,
+                  17
+                ],
+                [
+                  2,
+                  17
+                ]
+              ],
+              [
+                [
+                  2,
+                  12
+                ],
+                [
+                  3,
+                  11
+                ]
+              ],
+              [
+                [
+                  3,
+                  10
+                ],
+                [
+                  4,
+                  11
+                ]
+              ],
+              [
+                [
+                  3,
+                  12
+                ],
+                [
+                  4,
+                  11
+                ]
+              ],
+              [
+                [
+                  3,
+                  12
+                ],
+                [
+                  4,
+                  13
+                ]
+              ],
+              [
+                [
+                  4,
+                  15
+                ],
+                [
+                  5,
+                  16
+                ]
+              ],
+              [
+                [
+                  4,
+                  17
+                ],
+                [
+                  5,
+                  17
+                ]
+              ],
+              [
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ]
+              ],
+              [
+                [
+                  5,
+                  5
+                ],
+                [
+                  6,
+                  4
+                ]
+              ],
+              [
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ]
+              ],
+              [
+                [
+                  6,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ]
+              ],
+              [
+                [
+                  6,
+                  7
+                ],
+                [
+                  7,
+                  6
+                ]
+              ],
+              [
+                [
+                  6,
+                  12
+                ],
+                [
+                  7,
+                  11
+                ]
+              ],
+              [
+                [
+                  6,
+                  16
+                ],
+                [
+                  7,
+                  17
+                ]
+              ],
+              [
+                [
+                  7,
+                  6
+                ],
+                [
+                  8,
+                  6
+                ]
+              ],
+              [
+                [
+                  7,
+                  13
+                ],
+                [
+                  8,
+                  13
+                ]
+              ],
+              [
+                [
+                  7,
+                  15
+                ],
+                [
+                  8,
+                  15
+                ]
+              ],
+              [
+                [
+                  9,
+                  4
+                ],
+                [
+                  9,
+                  5
+                ]
+              ],
+              [
+                [
+                  9,
+                  4
+                ],
+                [
+                  10,
+                  3
+                ]
+              ],
+              [
+                [
+                  10,
+                  2
+                ],
+                [
+                  10,
+                  3
+                ]
+              ],
+              [
+                [
+                  10,
+                  13
+                ],
+                [
+                  11,
+                  12
+                ]
+              ],
+              [
+                [
+                  11,
+                  8
+                ],
+                [
+                  11,
+                  9
+                ]
+              ],
+              [
+                [
+                  11,
+                  8
+                ],
+                [
+                  12,
+                  8
+                ]
+              ],
+              [
+                [
+                  11,
+                  18
+                ],
+                [
+                  12,
+                  18
+                ]
+              ],
+              [
+                [
+                  12,
+                  14
+                ],
+                [
+                  13,
+                  14
+                ]
+              ],
+              [
+                [
+                  12,
+                  14
+                ],
+                [
+                  13,
+                  15
+                ]
+              ],
+              [
+                [
+                  13,
+                  6
+                ],
+                [
+                  14,
+                  7
+                ]
+              ],
+              [
+                [
+                  14,
+                  2
+                ],
+                [
+                  14,
+                  3
+                ]
+              ],
+              [
+                [
+                  14,
+                  6
+                ],
+                [
+                  14,
+                  7
+                ]
+              ],
+              [
+                [
+                  14,
+                  6
+                ],
+                [
+                  15,
+                  7
+                ]
+              ],
+              [
+                [
+                  14,
+                  9
+                ],
+                [
+                  14,
+                  10
+                ]
+              ],
+              [
+                [
+                  16,
+                  14
+                ],
+                [
+                  16,
+                  15
+                ]
+              ],
+              [
+                [
+                  16,
+                  15
+                ],
+                [
+                  17,
+                  16
+                ]
+              ],
+              [
+                [
+                  16,
+                  17
+                ],
+                [
+                  17,
+                  17
+                ]
+              ],
+              [
+                [
+                  17,
+                  16
+                ],
+                [
+                  17,
+                  17
+                ]
+              ],
+              [
+                [
+                  18,
+                  6
+                ],
+                [
+                  18,
+                  7
+                ]
+              ]
+            ],
+            "captured_cells": [
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                10
+              ],
+              [
+                1,
+                11
+              ],
+              [
+                1,
+                17
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                12
+              ],
+              [
+                2,
+                17
+              ],
+              [
+                3,
+                10
+              ],
+              [
+                3,
+                11
+              ],
+              [
+                3,
+                12
+              ],
+              [
+                4,
+                11
+              ],
+              [
+                4,
+                13
+              ],
+              [
+                4,
+                15
+              ],
+              [
+                4,
+                17
+              ],
+              [
+                5,
+                5
+              ],
+              [
+                5,
+                6
+              ],
+              [
+                5,
+                16
+              ],
+              [
+                5,
+                17
+              ],
+              [
+                6,
+                4
+              ],
+              [
+                6,
+                5
+              ],
+              [
+                6,
+                7
+              ],
+              [
+                6,
+                12
+              ],
+              [
+                6,
+                16
+              ],
+              [
+                7,
+                6
+              ],
+              [
+                7,
+                11
+              ],
+              [
+                7,
+                13
+              ],
+              [
+                7,
+                15
+              ],
+              [
+                7,
+                17
+              ],
+              [
+                8,
+                6
+              ],
+              [
+                8,
+                13
+              ],
+              [
+                8,
+                15
+              ],
+              [
+                9,
+                4
+              ],
+              [
+                9,
+                5
+              ],
+              [
+                10,
+                2
+              ],
+              [
+                10,
+                3
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                11,
+                8
+              ],
+              [
+                11,
+                9
+              ],
+              [
+                11,
+                12
+              ],
+              [
+                11,
+                18
+              ],
+              [
+                12,
+                8
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                12,
+                18
+              ],
+              [
+                13,
+                6
+              ],
+              [
+                13,
+                14
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                14,
+                2
+              ],
+              [
+                14,
+                3
+              ],
+              [
+                14,
+                6
+              ],
+              [
+                14,
+                7
+              ],
+              [
+                14,
+                9
+              ],
+              [
+                14,
+                10
+              ],
+              [
+                15,
+                7
+              ],
+              [
+                16,
+                14
+              ],
+              [
+                16,
+                15
+              ],
+              [
+                16,
+                17
+              ],
+              [
+                17,
+                16
+              ],
+              [
+                17,
+                17
+              ],
+              [
+                18,
+                6
+              ],
+              [
+                18,
+                7
+              ]
+            ],
+            "vulnerable_pair": 18,
+            "vulnerable_pairs": [
+              [
+                [
+                  1,
+                  9
+                ],
+                [
+                  2,
+                  9
+                ]
+              ],
+              [
+                [
+                  3,
+                  3
+                ],
+                [
+                  4,
+                  2
+                ]
+              ],
+              [
+                [
+                  4,
+                  10
+                ],
+                [
+                  5,
+                  10
+                ]
+              ],
+              [
+                [
+                  5,
+                  13
+                ],
+                [
+                  6,
+                  14
+                ]
+              ],
+              [
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  7
+                ]
+              ],
+              [
+                [
+                  9,
+                  15
+                ],
+                [
+                  10,
+                  16
+                ]
+              ],
+              [
+                [
+                  10,
+                  11
+                ],
+                [
+                  10,
+                  12
+                ]
+              ],
+              [
+                [
+                  11,
+                  4
+                ],
+                [
+                  12,
+                  3
+                ]
+              ],
+              [
+                [
+                  11,
+                  6
+                ],
+                [
+                  12,
+                  7
+                ]
+              ],
+              [
+                [
+                  11,
+                  10
+                ],
+                [
+                  12,
+                  10
+                ]
+              ],
+              [
+                [
+                  11,
+                  16
+                ],
+                [
+                  12,
+                  15
+                ]
+              ],
+              [
+                [
+                  12,
+                  3
+                ],
+                [
+                  12,
+                  4
+                ]
+              ],
+              [
+                [
+                  13,
+                  12
+                ],
+                [
+                  13,
+                  13
+                ]
+              ],
+              [
+                [
+                  14,
+                  16
+                ],
+                [
+                  15,
+                  17
+                ]
+              ],
+              [
+                [
+                  15,
+                  4
+                ],
+                [
+                  16,
+                  5
+                ]
+              ],
+              [
+                [
+                  15,
+                  11
+                ],
+                [
+                  16,
+                  12
+                ]
+              ],
+              [
+                [
+                  15,
+                  14
+                ],
+                [
+                  15,
+                  15
+                ]
+              ],
+              [
+                [
+                  16,
+                  4
+                ],
+                [
+                  16,
+                  5
+                ]
+              ]
+            ],
+            "vulnerable_cells": [
+              [
+                1,
+                9
+              ],
+              [
+                2,
+                9
+              ],
+              [
+                3,
+                3
+              ],
+              [
+                4,
+                2
+              ],
+              [
+                4,
+                10
+              ],
+              [
+                5,
+                10
+              ],
+              [
+                5,
+                13
+              ],
+              [
+                6,
+                14
+              ],
+              [
+                7,
+                8
+              ],
+              [
+                8,
+                7
+              ],
+              [
+                9,
+                15
+              ],
+              [
+                10,
+                11
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                16
+              ],
+              [
+                11,
+                4
+              ],
+              [
+                11,
+                6
+              ],
+              [
+                11,
+                10
+              ],
+              [
+                11,
+                16
+              ],
+              [
+                12,
+                3
+              ],
+              [
+                12,
+                4
+              ],
+              [
+                12,
+                7
+              ],
+              [
+                12,
+                10
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                13,
+                12
+              ],
+              [
+                13,
+                13
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                15,
+                4
+              ],
+              [
+                15,
+                11
+              ],
+              [
+                15,
+                14
+              ],
+              [
+                15,
+                15
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                16,
+                4
+              ],
+              [
+                16,
+                5
+              ],
+              [
+                16,
+                12
+              ]
+            ]
+          }
+        }
+      },
+      "disabled_total": 4000,
+      "oracle_legal_moves_checked": 272,
+      "evaluation_time": {
+        "enabled": {
+          "median_ms": 27.947384001890896,
+          "max_ms": 30.081139000685653
+        },
+        "disabled": {
+          "median_ms": 10.429137000755873,
+          "max_ms": 11.602826998569071
+        }
+      }
+    }
+  }
+}

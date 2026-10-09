@@ -103,3 +103,13 @@ potential. Definitions and provisional weights are in [docs/evaluation.md](docs/
 python3 -m verification.potential --config configs/potential-v1.json
 python3 -m unittest tests.test_potential -q
 ```
+
+Issue #19 adds the experimental `capture-v1` evaluator for legal capture moves,
+multiple pairs and actual vulnerable pairs, with independently configurable
+opportunity/risk weights and rule-correct prospective outcomes. See
+[definitions](docs/evaluation.md) and [verification](docs/verification/issue-19.md).
+
+```sh
+python3 -m verification.captures --repetitions 5
+python3 -m unittest tests.test_captures -q
+```

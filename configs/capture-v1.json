@@ -1,0 +1,1 @@
+{"coefficients":{"broken_four":150,"broken_three":25,"capture_move":30,"capture_pair":10,"closed_four":100,"geometric_completion":0,"material":1,"multi_pair_move":20,"open_four":300,"open_three":40,"overline_trap":-20,"two_stone":5,"verified_win":300,"vulnerable_pair":-40},"enabled_families":["material","lines","potential","captures"],"feature_version":"capture-v1"}

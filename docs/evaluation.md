@@ -238,3 +238,72 @@ inspection and local timing. Its positions are nonterminal. It distinguishes
 chosen score-order hypotheses from exact-five development facts. The persisted
 report is `docs/verification/issue-18-suite.json`; timing is local static-evaluator
 evidence, not a league result, promotion claim, or official-clock guarantee.
+
+## Capture configuration (`capture-v1`, issue #19)
+
+AI-written by OpenAI Codex. These definitions and provisional parameters are
+implementation choices, separate from the supplied Phase 3 specification.
+`configs/capture-v1.json` includes all earlier families and adds `captures`.
+The Phase 2 default/checkpoint and all earlier JSON identities remain unchanged.
+
+Full recomputation visits every empty coordinate for both hypothetical movers
+regardless of the actual side to move, and checks all eight rays for the exact
+`empty–enemy–enemy–own` pattern. It resolves every matching move through the
+immutable simulator, with cooperative checks before/after hypothetical work.
+Terminal input has no legal capture continuations. Adjacent stones alone,
+occupied completion cells, missing endpoints, gaps, triples and truncated rays
+are not opportunities. Captures resolve simultaneously before either color's
+exact-five outcome is classified.
+
+| Feature | Counted unit per color | Provisional weight |
+| --- | --- | ---: |
+| `capture_move` | Unique legal empty coordinate capturing at least one pair | 30 |
+| `capture_pair` | Unique unordered pair of enemy coordinates captured by any such move | 10 |
+| `multi_pair_move` | Unique capture coordinate removing at least two pairs | 20 |
+| `vulnerable_pair` | Unique unordered pair of this color currently capturable by an opponent legal move | -40 |
+
+One multi-pair opportunity counts as one move, with explicit pair/cell multiplicity.
+Pair coordinates are sorted; sets deduplicate pairs and cells across rays/moves.
+Inspection adds `captures.black`/`white`, per-color counts, sorted `moves`,
+`captured_pairs`, `captured_cells`, `vulnerable_pairs`, and `vulnerable_cells`.
+Each move includes its coordinate, pairs/cells, pair/cell counts, resolved
+`outcome`, and classification `win`, `opponent_win`, `draw`, or `continuation`.
+Only a strict mover victory receives `win`; capture-induced opponent victory and
+simultaneous-win draws retain their correct labels. No cumulative capture totals
+are stored or treated as a victory condition.
+
+Vulnerability describes current capture geometry, including a legal capture
+that would lose for its mover. It does not mean inevitable capture or proved
+loss. Likewise the opportunity coefficients are geometric preferences: they
+can reward a prospective losing capture, whose outcome remains explicitly
+visible. Search terminal scores and protected tactics decide exact outcomes.
+Capture-based attack/defense effects beyond these labels remain issue #20 work.
+
+All scalar features are black minus white and independent of side to move.
+Opportunity and risk contributions overlap deliberately. In this symmetric
+one-move definition the signed vulnerable-pair feature is the negative of the
+signed captured-pair feature; their independently configurable coefficients
+therefore combine algebraically. This is not evidence of independent threats.
+Weights are built-in integers in [-4000, 4000]; `captures_enabled` is a boolean
+family switch. Ablation skips production capture work but inspection still
+exposes raw counts with zero capture contributions. Other families can be
+independently disabled. Configuration replacement retains table clearing and
+identity isolation. Scores remain bounded to [-4000, 4000], below terminal values.
+
+Cancellation publishes no partial inspection family or exact leaf cache score.
+All hypothetical children own their boards; input and parent state remain intact.
+No new derived feature cache, ranking, recursion, extension or clock policy is
+introduced. Production omits per-move outcome explanations; development
+inspection is separate and uses the same full rule recomputation.
+
+```sh
+python3 -m verification.evaluation --config configs/capture-v1.json --position position.json
+python3 -m verification.captures --repetitions 5
+python3 -m unittest tests.test_captures -q
+```
+
+The capture suite enumerates every legal move with the independent rules oracle
+on empty, single/multiple, edge, capture-defense, opponent-win, draw, strict-win
+and seeded dense boards. It records raw inspection, enabled/disabled totals and
+static evaluation timings. This is correctness/cost evidence, not a playing
+strength comparison or full Phase 3 acceptance.
