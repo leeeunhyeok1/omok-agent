@@ -53,3 +53,9 @@ substantially more, supporting retention of the Phase 2 default.
 No leagues, optimization, search extensions or final packaging were implemented.
 Capture effect scoring remains #20 scope. No LLM usage was recorded. Existing
 user deletions and the untracked phase specification are excluded from commits.
+
+Independent parallel code-review results are recorded in `issue-19-review.md`:
+Standards found no hard violations and one optional schema-maintenance suggestion;
+Spec found no issues. The optional schema refactor is deferred. Isolated
+standard-library-only iterative-player verification also passed. The follow-up
+commit records review results without changing implementation.
