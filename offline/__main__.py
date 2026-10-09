@@ -3,18 +3,17 @@
 import argparse
 import json
 import platform
-import random
 from hashlib import sha256
 from pathlib import Path
 from typing import Any
 
 from offline.fixtures import NAMES, fixture
-from offline.opponents import SeededSmokePlayer
 from offline.replay import load_trace, replay
-from offline.runner import player_source, run_game
+from offline.runner import player_source
+from offline.supervised import PlayerSpec, Supervision, run_supervised_game
 from omok.player import DevelopmentPlayer, IterativePlayer, LegalBaseline, TimePolicy
 from omok.evaluation import EvaluationConfig
-from offline.measurement import conditions, engine_sources, evaluation_identity, search_settings, configured_search
+from offline.measurement import conditions, engine_sources, evaluation_identity, search_settings
 from omok.simulator import Position
 
 
@@ -44,6 +43,10 @@ def main() -> None:
     parser.add_argument('--opponent', choices=('smoke', 'baseline', 'random', 'simple'), default='smoke')
     parser.add_argument('--black-ms', type=budget, default=60000)
     parser.add_argument('--white-ms', type=budget, default=60000)
+    parser.add_argument('--startup-ms', type=float, default=5000)
+    parser.add_argument('--cleanup-ms', type=float, default=500)
+    parser.add_argument('--unlimited-call-ms', type=float, default=1000)
+    parser.add_argument('--output-bytes', type=int, default=16384)
     parser.add_argument('--move-cap', type=int, default=1000)
     starts = parser.add_mutually_exclusive_group()
     starts.add_argument('--fixture', choices=NAMES, default='empty')
@@ -70,23 +73,15 @@ def main() -> None:
                                    radius=args.candidate_radius, cap=args.candidate_cap, policy=policy)
         color = 0 if args.agent_color == 'black' else 1
         sources = {}
-        search_options: dict[str, Any] = {}
-        if args.engine == 'search':
-            search_options = {'max_depth': args.max_depth, 'max_nodes': args.max_nodes,
-                              'policy': policy, 'search': configured_search(
-                                  evaluation, settings, profile_every=args.profile_every)}
-        if args.opponent in ('smoke', 'baseline'):
-            agent: DevelopmentPlayer = (IterativePlayer(color, **search_options)
-                                         if args.engine == 'search' else LegalBaseline(color))
-            opponent: DevelopmentPlayer = (SeededSmokePlayer(1 - color, args.seed)
-                                           if args.opponent == 'smoke' else LegalBaseline(1 - color))
-            players: list[DevelopmentPlayer] = [agent, opponent]
-        else:
-            from offline.provided import SOURCES, load_players
-            supplied = load_players()
-            random.seed(args.seed)
-            players = [supplied.create(args.engine, color, **search_options),
-                       supplied.create(args.opponent, 1 - color)]
+        supplied = args.opponent in ('random', 'simple')
+        agent_options = {'name': args.engine, 'supplied': supplied, 'settings': settings,
+                         'evaluation': evaluation.canonical_json() if evaluation else None,
+                         'profile_every': args.profile_every}
+        opponent_options = {'name': args.opponent, 'supplied': supplied, 'seed': args.seed}
+        players = [PlayerSpec('offline.worker_players', 'create', agent_options, args.seed),
+                   PlayerSpec('offline.worker_players', 'create', opponent_options, args.seed + 1)]
+        if supplied:
+            from offline.provided import SOURCES
             sources = {name: sha256((SOURCES / name).read_bytes()).hexdigest()
                        for name in ('player.py', 'randomplayer.py', 'simpleplayer.py')}
         if color == 1:
@@ -110,9 +105,13 @@ def main() -> None:
             'python': platform.python_version(), 'platform': platform.platform(),
             'machine': platform.machine(), 'workers': 1,
         }
-        trace = run_game(players[0], players[1], initial=initial,
+        config['conditions']['execution'] = 'sequential game; two persistent player subprocesses'
+        config['conditions']['player_processes'] = 2
+        trace = run_supervised_game(players[0], players[1], initial=initial,
                          budgets_ms=(args.black_ms, args.white_ms), move_cap=args.move_cap, config=config,
-                         diagnostics=search_diagnostics if args.diagnostics else None)
+                         diagnostics=args.diagnostics, supervision=Supervision(
+                             startup_ms=args.startup_ms, cleanup_ms=args.cleanup_ms,
+                             unlimited_call_ms=args.unlimited_call_ms, output_bytes=args.output_bytes))
         if args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(json.dumps(trace, indent=2, allow_nan=False) + '\n', encoding='utf-8')

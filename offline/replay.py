@@ -55,9 +55,21 @@ def load_trace(path: Path) -> dict[str, Any]:
 
 def _replay(trace: dict[str, Any]) -> Position:
     _require(isinstance(trace, dict))
-    _require(trace['format'] in ('omok-game-v1', FORMAT) and isinstance(trace['config'], dict))
+    _require(trace['format'] in ('omok-game-v1', FORMAT, 'omok-game-v3') and isinstance(trace['config'], dict))
     json.dumps(trace, allow_nan=False)
-    versioned_events = trace['format'] == FORMAT
+    supervised = trace['format'] == 'omok-game-v3'
+    if supervised and trace['status'] == 'supervisor_error' and trace['reason'] == 'cleanup_error':
+        failure = trace['failure']
+        _require(isinstance(failure, dict) and failure['reason'] == 'cleanup_error'
+                 and failure['color'] is None and not failure['called']
+                 and failure['elapsed_ms'] == 0)
+        _require(_same(trace['events'][-1], {'type': 'failure', **failure, 'remaining_ms': None}))
+        prior = trace['prior_result']
+        _require(isinstance(prior, dict) and prior.keys() == {'status', 'reason', 'failure'}
+                 and prior['reason'] != 'cleanup_error')
+        # Validate the original game/failure clock ledger before the cleanup event.
+        return _replay({**trace, **prior, 'events': trace['events'][:-1]})
+    versioned_events = trace['format'] != 'omok-game-v1'
     _require(isinstance(trace['players'], list) and len(trace['players']) == 2)
     for color, player in enumerate(trace['players']):
         _require(type(player['color']) is int and player['color'] == color
@@ -110,21 +122,25 @@ def _replay(trace: dict[str, Any]) -> Position:
     status, reason, failure = trace['status'], trace['reason'], trace['failure']
     if status == 'completed':
         _require(position.outcome != 'ongoing' and reason == position.reason and failure is None)
-    elif status == 'capped':
+    elif status == 'capped' and reason == 'move_cap':
         _require(position.outcome == 'ongoing' and reason == 'move_cap' and failure is None
                  and len(trace['moves']) == trace['move_cap'])
-    elif status == 'failed':
+    elif status == 'failed' or (supervised and status == 'capped' and reason == 'unlimited_call_cap'):
         _require(position.outcome == 'ongoing' and len(trace['moves']) < trace['move_cap'])
         color = position.side_to_move
         _require(type(failure['color']) is int and failure['color'] == color
                  and failure['player'] == trace['players'][color]['identifier'])
         _require(isinstance(failure['violations'], list) and bool(failure['violations'])
-                 and all(v in ('exception', 'invalid_move', 'mutation', 'timeout')
+                 and all(v in (('exception', 'invalid_move', 'mutation', 'timeout', 'player_exit',
+                            'protocol_error', 'unlimited_call_cap') if supervised else
+                           ('exception', 'invalid_move', 'mutation', 'timeout'))
                          for v in failure['violations'])
                  and reason == failure['reason'] == failure['violations'][0])
-        _require(failure['violations'] == [v for v in
+        _require(supervised or failure['violations'] == [v for v in
                  ('exception', 'mutation', 'timeout', 'invalid_move') if v in failure['violations']]
                  and ('invalid_move' not in failure['violations'] or failure['violations'] == ['invalid_move']))
+        if supervised and reason == 'unlimited_call_cap':
+            _require(status == 'capped' and remaining[color] is None)
         elapsed = _milliseconds(failure['elapsed_ms'])
         budget = remaining[color]
         _require(type(failure['called']) is bool)
@@ -134,7 +150,7 @@ def _replay(trace: dict[str, Any]) -> Position:
         else:
             _require(budget is None or budget > 0)
             _require(isinstance(failure['returned'], str))
-            if 'exception' in failure['violations']:
+            if 'exception' in failure['violations'] or (supervised and failure['exception'] is not None):
                 _require(isinstance(failure['exception']['type'], str)
                          and isinstance(failure['exception']['message'], str))
             else:
@@ -158,6 +174,17 @@ def _replay(trace: dict[str, Any]) -> Position:
             _require(_same(events[event_index], {'type': 'failure', **failure,
                                                 'remaining_ms': remaining[color]}))
             event_index += 1
+    elif supervised and status in ('setup_failed', 'supervisor_error'):
+        _require(isinstance(failure, dict) and failure['reason'] == reason
+                 and not failure['called'] and failure['elapsed_ms'] == 0)
+        if status == 'setup_failed':
+            _require(not trace['moves'] and failure['color'] in (0, 1)
+                     and reason in ('startup_timeout', 'setup_protocol_error', 'player_setup'))
+        else:
+            _require(failure['color'] is None and reason in ('supervisor_error', 'cleanup_error'))
+        _require(_same(events[event_index], {'type': 'failure', **failure,
+            'remaining_ms': remaining[failure['color']] if failure['color'] is not None else None}))
+        event_index += 1
     else:
         raise ValueError('Unknown game status in trace.')
     _require(event_index == len(events))

@@ -219,3 +219,84 @@ Official board types/runtime, final team class/file names, and official unlimite
 clock translation remain external gates. Offline `None` clocks pass `-1`, which
 still has a finite local search allocation. Cooperative cancellation and post-return
 timeout reporting remain unchanged; no hard isolation or leagues are introduced.
+
+## Supervised games (issue #25)
+
+AI-written by OpenAI Codex. The CLI now uses
+`offline.supervised.run_supervised_game(black_spec, white_spec, ...)` by default.
+`PlayerSpec(module, factory, options={}, seed=0)` names an importable factory called
+as `factory(color, **options)` inside a fresh Python subprocess. The factory must
+assign explicit `color`. Options must be JSON serializable. Each game starts new
+instances; each instance persists across all of its turns. The legacy
+`offline.runner.run_game` remains available for trusted deterministic checks and
+older measurements; it still cannot interrupt a nonreturning call.
+
+The supervisor starts one player process at a time, using the current Python
+executable and a repository-relative working directory. Authenticated loopback TCP
+carries length-prefixed JSON (65,536-byte maximum frames); no remote service is
+required. Separate stdout/stderr pipes are continuously drained, including native
+file-descriptor writes. Each stream retains a bounded prefix (16,384 bytes by
+default), with bytes-seen and truncation flags. No arbitrary returned object is
+pickled or represented by calling its `repr`; only a validated coordinate pair is
+transported, and malformed moves are rejected without substitution.
+
+Default setup is bounded at 5,000 ms **per player**, separately recorded and never
+debited from thinking time. Imports, construction, explicit color validation and
+source inspection must finish inside that bound. Player dependency/import errors
+are `setup_failed/player_setup`; startup expiry is `startup_timeout`. Failure to
+launch a process/socket is a `supervisor_error`, not a player forfeit.
+
+Finite clocks retain floating-point milliseconds. Each turn sends
+`floor(remaining_ms)`; a positive fraction under 1 ms sends zero, while an exhausted
+unrounded clock stops before `take_turn`. The authoritative timer starts immediately
+before request encoding/dispatch and ends after the complete response is received
+and its protocol fields checked. Dispatch, IPC, response serialization, optional
+worker diagnostics and caller scheduling delays within this envelope are charged
+to **only the active player**. Board snapshot preparation, ordinary idle time,
+startup, rule application and cleanup are excluded. This conservative policy does
+not claim to reproduce the grader's unknown timing implementation. The worker also
+reports its call/return-coordinate-validation elapsed time; the difference from the
+envelope is reported as overhead, with unavailable measurements kept null.
+
+There is no smaller finite per-turn kill limit: the watchdog uses the precise
+remaining cumulative clock. Replies received after that deadline are rejected.
+An exactly-budget reply is eligible, but the next turn cannot run with zero time.
+The public `clock` injection is for deterministic accounting verification only;
+when injected, a separate real watchdog is at least `unlimited_call_ms` so synthetic
+submillisecond clocks do not depend on OS scheduling. Production uses monotonic
+accounting and the exact finite budget for both watchdog and accounting.
+
+Python `None` / CLI `-1` denotes unlimited development time and is passed as `-1`.
+Negative budgets other than that CLI sentinel, nonfinite values and booleans are
+rejected. Unlimited calls still have a 1,000 ms watchdog by default; expiry records
+`capped/unlimited_call_cap`, never a rules draw. The move cap also remains a cap.
+Configure resource policies with `--startup-ms`, `--cleanup-ms`,
+`--unlimited-call-ms` and `--output-bytes`.
+
+At end/failure, close each connection, terminate the worker, and wait up to
+`cleanup_ms` (default 500 ms). If needed, kill and wait another `cleanup_ms`.
+Output-drain thread joins share one additional `cleanup_ms` window per worker.
+Process IDs, reaping status, exit codes, setup/cleanup timing and bounded output
+are retained. Normal worker termination by the supervisor is not a player crash.
+Failure to reap is a supervisor cleanup error. These processes provide lifecycle
+isolation, not a security sandbox or a guarantee about player-created descendants.
+
+Traces use `omok-game-v3`; replay retains support for v1/v2. Board winner/draw and
+execution status remain separate. Reasons distinguish exact-five, simultaneous
+wins, full board, exception, player exit, protocol failure, invalid move, observable
+snapshot mutation, timeout, resource caps, setup failure and supervisor errors.
+The board remains the last valid simulator state. A failure identifies the offending
+side where known; `winner` is only a rules winner. This API does not assign forfeit
+scores, coins or match-level crash overrides; those belong to the aggregation ticket.
+Snapshot mutation is reported by the worker even though process isolation already
+protects the authoritative board. Unobservable mutate-and-restore behavior is not
+claimed to be detected. Transport timeout takes precedence over an unusable late
+reply; otherwise exception, observable mutation and illegal move are checked in
+that order. Optional diagnostics are bounded to a 16,384-character JSON object.
+
+```sh
+python3 -m unittest tests.test_supervised -q
+python3 -m offline --engine search --opponent random --fixture mover-win --diagnostics --output .scratch/supervised.json
+python3 -m offline --replay .scratch/supervised.json
+python3 -m offline --black-ms -1 --white-ms -1 --unlimited-call-ms 1000 --move-cap 20
+```
