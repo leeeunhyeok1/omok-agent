@@ -1,0 +1,410 @@
+{
+  "format": "omok-checkpoint-verification-v1",
+  "python": "3.14.3",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+  "phase2": {
+    "commit": "798963cae696eead8353232d1cc8c289cce473a9",
+    "archive_sha256": "5a2e5aa701e2c70fc9202e2f2782c7313ee18bfbc10e4d1237f72130e0eddd8b",
+    "restored_source_sha256": {
+      "omok/__init__.py": "8fa4256f87cb48053e42cc4b325076ddcec37235cfa8d6ce9580704b8bcfc954",
+      "omok/player.py": "c2073eddb17f782ede4ea9a0b0a07beeb7965e579170cedec4f890e8536867da",
+      "omok/search.py": "e1191850e9182236c3eeb05fa5bd451cbabb681992d9b9953005e19a487cecc1",
+      "omok/simulator.py": "3dde4fd4c62df6123d920579e2b91e529d866ac608513701db38bf563acb1837",
+      "omok/tactics.py": "9cdb4f90a424157a22c7a2505c2ce6618aa16c3702f0b846485ce1020dd56a35",
+      "omok/transposition.py": "daf69437752d5b4cb8814fa1a0f3c94d3144f0f86255e4eed2296216b6b345d8",
+      "players/player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+      "players/randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+      "players/simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+    },
+    "isolated": true,
+    "no_site": true,
+    "probe": {
+      "engine_import": "restored omok/player.py",
+      "material_score": 1,
+      "both_color_legal_moves": true,
+      "input_unchanged": true
+    }
+  },
+  "phase3": {
+    "commit": "105a8f64edaeb86082425c1fecb12932c06c4367",
+    "archive_sha256": "58eab3cb76671b85f8fac176c2e322d2a105cf9a2fb20a1bde5e5ca4c64a8b58",
+    "restored_source_sha256": {
+      "configs/capture-v1.json": "f2bed0c3d79ef0aa03a134842bea012cae121ade6ce022c15ab9450432aace71",
+      "configs/effects-v1.json": "457f9c50605df7bbcc96a2035afdd867eb09e16efe1aab793d5bb8857f99639c",
+      "configs/lines-v1.json": "97210e372e7fc0f3b7c9370392b1737d342e728d8058b1310d0164e83b0c80fb",
+      "configs/material-v1.json": "2adc490ccf753a5ee7575db6477655c2e4ae46feea5a5926f2f1fad36ca504c9",
+      "configs/potential-v1.json": "bcdd19174703cca6dea8c67ba6fb603cbbaa9ce471f51df7406c9d85110ab667",
+      "omok/__init__.py": "8fa4256f87cb48053e42cc4b325076ddcec37235cfa8d6ce9580704b8bcfc954",
+      "omok/captures.py": "12d42ecfeffbb9ff5671230c205307f5be8a2ef69468c6e18e1172398d271062",
+      "omok/evaluation.py": "8668fb03b09d98d8353cf0b34eaa7ff86e3bccfa770cc99d385a622491780962",
+      "omok/lines.py": "c7149021f01c3845f1dccbba2a18920c44dbb17ea3667fb7ceb15fdc78c0f3fc",
+      "omok/measurement.py": "dcdd28ad43ab792bb83a8efdaf7250747744370f93a5c15a8349bb3c963c2748",
+      "omok/player.py": "987d25a074cf4fd19329a7252886e6cc718f72cd397380df560743a592c3165a",
+      "omok/search.py": "f0b5a1a93e1d4b9559ed00b0cc428eb2e13f7a78e1a67d5caddad641b0ccd572",
+      "omok/simulator.py": "3dde4fd4c62df6123d920579e2b91e529d866ac608513701db38bf563acb1837",
+      "omok/tactics.py": "9cdb4f90a424157a22c7a2505c2ce6618aa16c3702f0b846485ce1020dd56a35",
+      "omok/threat_effects.py": "2c2efa7bd0d6ee9a5d5b841ce500380da7e280adc0fa987b248b3a3573c9891a",
+      "omok/transposition.py": "daf69437752d5b4cb8814fa1a0f3c94d3144f0f86255e4eed2296216b6b345d8",
+      "players/player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+      "players/randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+      "players/simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+    },
+    "isolated": true,
+    "no_site": true,
+    "probe": {
+      "engine_import": "restored omok/player.py",
+      "material_score": 1,
+      "configurations": [
+        {
+          "path": "configs/capture-v1.json",
+          "identity": "4012b34f68891fbb07edafd2be53153b6ed888a227fc2a0aec144d503467dff4",
+          "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"capture_move\":30,\"capture_pair\":10,\"closed_four\":100,\"geometric_completion\":0,\"material\":1,\"multi_pair_move\":20,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_win\":300,\"vulnerable_pair\":-40},\"enabled_families\":[\"material\",\"lines\",\"potential\",\"captures\"],\"feature_version\":\"capture-v1\"}",
+          "empty_score": 0
+        },
+        {
+          "path": "configs/effects-v1.json",
+          "identity": "6b9b8d39d5d5a883e043c93789e07f734dac25644c88df9a79e9cd42e704a34c",
+          "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"capture_break_four\":120,\"capture_break_potential\":20,\"capture_create_four\":80,\"capture_create_potential\":15,\"capture_expose_five\":-300,\"capture_move\":30,\"capture_pair\":10,\"capture_remove_blocker\":25,\"closed_four\":100,\"defensive_urgency\":100,\"geometric_completion\":0,\"geometric_multiple\":0,\"material\":1,\"multi_pair_move\":20,\"offensive_opportunity\":60,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_multiple\":50,\"verified_win\":300,\"vulnerable_pair\":-40},\"enabled_families\":[\"material\",\"lines\",\"potential\",\"captures\",\"effects\",\"multiplicity\"],\"feature_version\":\"effects-v1\"}",
+          "empty_score": 0
+        },
+        {
+          "path": "configs/lines-v1.json",
+          "identity": "5aa78d22f509402b94f1967618933483300eb1599503d26fda1cff99654f9137",
+          "configuration": "{\"coefficients\":{\"broken_four\":150,\"closed_four\":100,\"geometric_completion\":0,\"material\":1,\"open_four\":300,\"overline_trap\":-20,\"verified_win\":300},\"enabled_families\":[\"material\",\"lines\"],\"feature_version\":\"lines-v1\"}",
+          "empty_score": 0
+        },
+        {
+          "path": "configs/material-v1.json",
+          "identity": "0f197f30a680dfe3909a2f04f4af164285df72c8826e9e164c6f6d4c7f4d7c48",
+          "configuration": "{\"coefficients\":{\"material\":1},\"enabled_families\":[\"material\"],\"feature_version\":\"material-v1\"}",
+          "empty_score": 0
+        },
+        {
+          "path": "configs/potential-v1.json",
+          "identity": "bdde92471e805d386f96605ad65e6cc48745705d38064d14910bd4ed3de9e960",
+          "configuration": "{\"coefficients\":{\"broken_four\":150,\"broken_three\":25,\"closed_four\":100,\"geometric_completion\":0,\"material\":1,\"open_four\":300,\"open_three\":40,\"overline_trap\":-20,\"two_stone\":5,\"verified_win\":300},\"enabled_families\":[\"material\",\"lines\",\"potential\"],\"feature_version\":\"potential-v1\"}",
+          "empty_score": 0
+        }
+      ],
+      "features": {
+        "material": 4,
+        "open_four": 1,
+        "closed_four": 0,
+        "broken_four": 0,
+        "geometric_completion": 2,
+        "verified_win": 2,
+        "overline_trap": 0,
+        "open_three": 0,
+        "broken_three": 0,
+        "two_stone": 0,
+        "capture_move": 0,
+        "capture_pair": 0,
+        "multi_pair_move": 0,
+        "vulnerable_pair": 0,
+        "capture_break_four": 0,
+        "capture_break_potential": 0,
+        "capture_create_four": 0,
+        "capture_create_potential": 0,
+        "capture_remove_blocker": 0,
+        "capture_expose_five": 0,
+        "geometric_multiple": 1,
+        "verified_multiple": 1,
+        "offensive_opportunity": 2,
+        "defensive_urgency": 0
+      },
+      "inspection": {
+        "feature_version": "effects-v1",
+        "configuration_id": "6b9b8d39d5d5a883e043c93789e07f734dac25644c88df9a79e9cd42e704a34c",
+        "context": {
+          "side_to_move": 0,
+          "outcome": "ongoing",
+          "perspective": "black",
+          "kind": "static_heuristic"
+        },
+        "coefficients": {
+          "material": 1,
+          "open_four": 300,
+          "closed_four": 100,
+          "broken_four": 150,
+          "geometric_completion": 0,
+          "verified_win": 300,
+          "overline_trap": -20,
+          "open_three": 40,
+          "broken_three": 25,
+          "two_stone": 5,
+          "capture_move": 30,
+          "capture_pair": 10,
+          "multi_pair_move": 20,
+          "vulnerable_pair": -40,
+          "capture_break_four": 120,
+          "capture_break_potential": 20,
+          "capture_create_four": 80,
+          "capture_create_potential": 15,
+          "capture_remove_blocker": 25,
+          "capture_expose_five": -300,
+          "geometric_multiple": 0,
+          "verified_multiple": 50,
+          "offensive_opportunity": 60,
+          "defensive_urgency": 100
+        },
+        "enabled_families": [
+          "material",
+          "lines",
+          "potential",
+          "captures",
+          "effects",
+          "multiplicity"
+        ],
+        "features": {
+          "material": 4,
+          "open_four": 1,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 2,
+          "verified_win": 2,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0,
+          "capture_move": 0,
+          "capture_pair": 0,
+          "multi_pair_move": 0,
+          "vulnerable_pair": 0,
+          "capture_break_four": 0,
+          "capture_break_potential": 0,
+          "capture_create_four": 0,
+          "capture_create_potential": 0,
+          "capture_remove_blocker": 0,
+          "capture_expose_five": 0,
+          "geometric_multiple": 1,
+          "verified_multiple": 1,
+          "offensive_opportunity": 2,
+          "defensive_urgency": 0
+        },
+        "contributions": {
+          "material": 4,
+          "open_four": 300,
+          "closed_four": 0,
+          "broken_four": 0,
+          "geometric_completion": 0,
+          "verified_win": 600,
+          "overline_trap": 0,
+          "open_three": 0,
+          "broken_three": 0,
+          "two_stone": 0,
+          "capture_move": 0,
+          "capture_pair": 0,
+          "multi_pair_move": 0,
+          "vulnerable_pair": 0,
+          "capture_break_four": 0,
+          "capture_break_potential": 0,
+          "capture_create_four": 0,
+          "capture_create_potential": 0,
+          "capture_remove_blocker": 0,
+          "capture_expose_five": 0,
+          "geometric_multiple": 0,
+          "verified_multiple": 50,
+          "offensive_opportunity": 120,
+          "defensive_urgency": 0
+        },
+        "raw_total": 1074,
+        "total": 1074,
+        "saturated": false,
+        "incomplete": false,
+        "cancellation": null,
+        "lines": {
+          "black": {
+            "open_four": 1,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 2,
+            "verified_win": 2,
+            "overline_trap": 0,
+            "geometric_completions": [
+              [
+                9,
+                5
+              ],
+              [
+                9,
+                10
+              ]
+            ],
+            "verified_wins": [
+              [
+                9,
+                5
+              ],
+              [
+                9,
+                10
+              ]
+            ],
+            "overline_traps": [],
+            "units": {
+              "open_four": [
+                [
+                  [
+                    9,
+                    6
+                  ],
+                  [
+                    9,
+                    7
+                  ],
+                  [
+                    9,
+                    8
+                  ],
+                  [
+                    9,
+                    9
+                  ]
+                ]
+              ],
+              "closed_four": [],
+              "broken_four": []
+            },
+            "exact_fives": [],
+            "overlines": []
+          },
+          "white": {
+            "open_four": 0,
+            "closed_four": 0,
+            "broken_four": 0,
+            "geometric_completion": 0,
+            "verified_win": 0,
+            "overline_trap": 0,
+            "geometric_completions": [],
+            "verified_wins": [],
+            "overline_traps": [],
+            "units": {
+              "open_four": [],
+              "closed_four": [],
+              "broken_four": []
+            },
+            "exact_fives": [],
+            "overlines": []
+          }
+        },
+        "potential": {
+          "black": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          },
+          "white": {
+            "open_three": 0,
+            "broken_three": 0,
+            "two_stone": 0,
+            "units": {
+              "open_three": [],
+              "broken_three": [],
+              "two_stone": []
+            }
+          }
+        },
+        "captures": {
+          "black": {
+            "capture_move": 0,
+            "capture_pair": 0,
+            "multi_pair_move": 0,
+            "moves": [],
+            "captured_pairs": [],
+            "captured_cells": [],
+            "vulnerable_pair": 0,
+            "vulnerable_pairs": [],
+            "vulnerable_cells": []
+          },
+          "white": {
+            "capture_move": 0,
+            "capture_pair": 0,
+            "multi_pair_move": 0,
+            "moves": [],
+            "captured_pairs": [],
+            "captured_cells": [],
+            "vulnerable_pair": 0,
+            "vulnerable_pairs": [],
+            "vulnerable_cells": []
+          }
+        },
+        "effects": {
+          "black": {
+            "capture_break_four": 0,
+            "capture_break_potential": 0,
+            "capture_create_four": 0,
+            "capture_create_potential": 0,
+            "capture_remove_blocker": 0,
+            "capture_expose_five": 0,
+            "moves": []
+          },
+          "white": {
+            "capture_break_four": 0,
+            "capture_break_potential": 0,
+            "capture_create_four": 0,
+            "capture_create_potential": 0,
+            "capture_remove_blocker": 0,
+            "capture_expose_five": 0,
+            "moves": []
+          }
+        },
+        "multiplicity": {
+          "black": {
+            "geometric_multiple": 1,
+            "verified_multiple": 1,
+            "offensive_opportunity": 2,
+            "defensive_urgency": 0,
+            "geometric_endpoints": [
+              [
+                9,
+                5
+              ],
+              [
+                9,
+                10
+              ]
+            ],
+            "verified_endpoints": [
+              [
+                9,
+                5
+              ],
+              [
+                9,
+                10
+              ]
+            ],
+            "independence": "verified",
+            "defenses_complete": true,
+            "shared_defenders": [],
+            "shared_capture_defenders": [],
+            "evidence_scope": "all legal defender moves against immediate strict wins; not a solved game"
+          },
+          "white": {
+            "geometric_multiple": 0,
+            "verified_multiple": 0,
+            "offensive_opportunity": 0,
+            "defensive_urgency": 0,
+            "geometric_endpoints": [],
+            "verified_endpoints": [],
+            "independence": "not_applicable",
+            "defenses_complete": false,
+            "shared_defenders": [],
+            "shared_capture_defenders": [],
+            "evidence_scope": "all legal defender moves against immediate strict wins; not a solved game"
+          }
+        }
+      },
+      "terminal_score": 10000,
+      "agent_isolation": true,
+      "input_unchanged": true,
+      "both_color_legal_moves": true,
+      "scope": "zero-clock public fallback/isolation; tactical strength tested separately"
+    }
+  }
+}

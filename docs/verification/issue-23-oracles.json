@@ -1,0 +1,70 @@
+{
+  "python": "3.14.3",
+  "workers": 1,
+  "runs": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "verification.potential",
+        "--repetitions",
+        "1"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.26518408999982057,
+      "stdout_sha256": "105096561b1b94ec3f1dabbc77cc4d442e341877fdb4100ace25b4d8e866f7cd",
+      "stderr": "",
+      "top_level_fields": [
+        "runtime",
+        "machine",
+        "workers",
+        "repetitions",
+        "dense_seed",
+        "configuration",
+        "interpretation",
+        "score_order_hypothesis",
+        "positions"
+      ]
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "verification.captures",
+        "--repetitions",
+        "1"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 7.682550506000553,
+      "stdout_sha256": "82251a9f17c3d0aad1f592d2c771cd977374668450dfd6e46514398d1dd0ac82",
+      "stderr": "",
+      "top_level_fields": [
+        "configuration",
+        "dense_seed",
+        "repetitions",
+        "interpretation",
+        "positions"
+      ]
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "verification.threat_effects",
+        "--repetitions",
+        "1"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 22.964359686000535,
+      "stdout_sha256": "54026b3358c860f216de2118addc5b56f23888c0f7b95d897c0ee22bb82e0ff2",
+      "stderr": "",
+      "top_level_fields": [
+        "configuration",
+        "interpretation",
+        "oracle_legal_transitions",
+        "positions",
+        "repetitions"
+      ]
+    }
+  ]
+}

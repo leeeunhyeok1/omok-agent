@@ -146,3 +146,12 @@ python3 -m verification.evaluation_acceptance integration
 python3 -m verification.evaluation_acceptance ablations
 python3 -m verification.evaluation_acceptance summary
 ```
+
+Issue #23 completes the [Phase 3 acceptance map and handoff](docs/phase-03-handoff.md)
+and verifies restoration of both immutable engine checkpoints. Engineering checks
+pass, but SimplePlayer qualification remains unmet (0/8 for both evaluators) and
+tiny-clock timing acceptance remains partial.
+
+```sh
+python3 -m verification.checkpoint --output .scratch/restoration.json
+```

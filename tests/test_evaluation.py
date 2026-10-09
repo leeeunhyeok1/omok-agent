@@ -1,4 +1,4 @@
-# AI-written by OpenAI Codex, for issue #16.
+# AI-written by OpenAI Codex, for issues #16 and #23.
 import json
 from pathlib import Path
 import tempfile
@@ -17,6 +17,24 @@ def candidates(position):
 
 
 class EvaluationTests(unittest.TestCase):
+    def test_restored_phase_checkpoints_load_inspect_and_keep_agents_independent(self):
+        import subprocess
+        import sys
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / 'restoration.json'
+            process = subprocess.run([sys.executable, '-m', 'verification.checkpoint',
+                                      '--output', str(output)], capture_output=True, text=True)
+            self.assertEqual(process.returncode, 0, process.stderr)
+            report = json.loads(output.read_text())
+            self.assertEqual(report['phase2']['probe']['material_score'], 1)
+            probe = report['phase3']['probe']
+            self.assertEqual(probe['features']['open_four'], 1)
+            self.assertEqual(probe['features']['verified_win'], 2)
+            self.assertEqual(probe['terminal_score'], 10000)
+            self.assertTrue(probe['agent_isolation'])
+            self.assertTrue(probe['input_unchanged'])
+            self.assertEqual(len(probe['configurations']), 5)
+
     def test_invalid_saved_configurations_fail_before_changing_live_engine(self):
         valid = json.loads(EvaluationConfig().canonical_json())
         invalid = [None, [], {}, dict(valid, unknown=1),
