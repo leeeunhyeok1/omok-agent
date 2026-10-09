@@ -1,7 +1,7 @@
-# AI-written by OpenAI Codex, for issue #16.
-"""Immutable material semantics and independently persisted agent coefficients."""
+# AI-written by OpenAI Codex, for issues #16 and #17.
+"""Immutable material/line semantics and independently persisted coefficients."""
 from collections.abc import Callable
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -9,11 +9,10 @@ from typing import Any
 
 from omok.search import EVALUATION_LIMIT, SearchCancelled, material_evaluation
 from omok.simulator import Position
+from omok.lines import LINE_FEATURES, line_features
 
 FEATURE_VERSION = 'material-v1'
 LINE_VERSION = 'lines-v1'
-LINE_WEIGHTS = {'open_four': 300, 'closed_four': 100, 'broken_four': 150,
-                'geometric_completion': 0, 'verified_win': 300, 'overline_trap': -20}
 
 
 @dataclass(frozen=True, slots=True)
@@ -35,11 +34,13 @@ class EvaluationConfig:
             raise ValueError('Unsupported feature version.')
         if type(self.material) is not int or not -4000 <= self.material <= 4000:
             raise ValueError('Material coefficient must be an integer in [-4000, 4000].')
-        for name, default in LINE_WEIGHTS.items():
-            value = getattr(self, name)
+        for field in fields(self):
+            if field.name not in LINE_FEATURES:
+                continue
+            value = getattr(self, field.name)
             if type(value) is not int or not -4000 <= value <= 4000:
                 raise ValueError('Line coefficient must be an integer in [-4000, 4000].')
-            if self.feature_version == FEATURE_VERSION and value != default:
+            if self.feature_version == FEATURE_VERSION and value != field.default:
                 raise ValueError('Line coefficients require lines-v1.')
         if self.feature_version == FEATURE_VERSION and self.lines_enabled is not True:
             raise ValueError('Line enablement requires lines-v1.')
@@ -47,7 +48,7 @@ class EvaluationConfig:
             raise ValueError('Family enablement must be boolean.')
 
     def coefficients(self) -> dict[str, int]:
-        names = ('material', *LINE_WEIGHTS) if self.feature_version == LINE_VERSION else ('material',)
+        names = ('material', *LINE_FEATURES) if self.feature_version == LINE_VERSION else ('material',)
         return {name: getattr(self, name) for name in names}
 
     def enabled_families(self) -> list[str]:
@@ -88,7 +89,7 @@ class EvaluationConfig:
         version = data['feature_version']
         if type(version) is not str or version not in (FEATURE_VERSION, LINE_VERSION):
             raise ValueError('Unsupported feature version.')
-        names = {'material', *LINE_WEIGHTS} if version == LINE_VERSION else {'material'}
+        names = {'material', *LINE_FEATURES} if version == LINE_VERSION else {'material'}
         allowed = ['material', 'lines'] if version == LINE_VERSION else ['material']
         if type(coefficients) is not dict or set(coefficients) != names:
             raise ValueError('Unknown or missing coefficient.')
@@ -119,7 +120,6 @@ class ConfiguredEvaluator:
                     if inspection or self.config.material_enabled else 0}
         lines = None
         if self.config.feature_version == LINE_VERSION:
-            from omok.lines import LINE_FEATURES, line_features
             if inspection or self.config.lines_enabled:
                 lines = line_features(position, check)
             features.update({name: lines['black'][name] - lines['white'][name] if lines else 0
