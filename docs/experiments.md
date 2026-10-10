@@ -24,7 +24,8 @@ source verification, not an embedded copy of every dependency.
 dispatch. `save(path)` writes a new JSON file; `load(path)` verifies its digest,
 registry/pool identities and the entire reconstructed schedule. `record()` returns
 an owned JSON object. `run_experiment(plan, output=directory)` executes the saved
-slots serially. Output must be a new directory; existing evidence is never replaced.
+slots serially. The first run requires a new directory; `resume=True` continues it
+using its authoritative checkpoint and preserves prior attempt evidence.
 
 `omok-experiment-v1` saves candidate/configuration, full pool snapshot, selected
 opponents, mode/purpose, cumulative clock and failure policies, opening and seed
@@ -97,11 +98,63 @@ are labeled `no-player-turns`. Fixture turn attempts are separately labeled.
 Caps, setup and infrastructure errors are not assigned player losses or rules
 draws. Player errors retain the offending color and raw reason. The saved failure
 policy deliberately performs no scoring on the raw facts. Issue #28 adds a
-separate, versioned scoring report; checkpoints/resume and ratings remain later
-tickets. See [eight-game scoring](matches.md) for the interpretation and limits.
+separate, versioned scoring report. See [eight-game scoring](matches.md) for the
+interpretation and limits.
 
-The output directory contains the manifest, one file per completed slot, and a
-final results file and `match-scores.json`. The returned/final results also contain
-an additive `match_scores` report. These exclusive writes preserve evidence but are not an atomic
-checkpoint/resume protocol. On interruption, the manifest still lists every slot;
-only written per-game records establish completed execution.
+The output directory contains the immutable manifest, an authoritative checkpoint,
+one export per committed slot, and `results.json` and `match-scores.json` summaries.
+The returned results contain `match_scores`, all attempts and execution segments.
+
+## Stop, checkpoint and resume (issue #29)
+
+```sh
+python3 -m offline.experiment_cli run --plan .scratch/screen-plan.json --output .scratch/bounded-run --max-jobs 1 --max-seconds 30
+python3 -m offline.experiment_cli run --plan .scratch/screen-plan.json --output .scratch/bounded-run --resume --max-seconds 30
+```
+
+`run_experiment` accepts `resume`, `max_jobs`, `max_seconds`, `stop_requested`
+(a predicate), `progress` (a counts callback), and `infrastructure_retries`.
+Job bounds count dispatched attempts per invocation, including retries. Time bounds
+use a monotonic wall clock and include preflight/game work; bounded worker cleanup
+and checkpoint/report writes may extend the segment beyond that bound. The CLI
+prints progress after each commit and at shutdown. Ctrl+C, SIGTERM where supported,
+or an existing `--stop-file` stops dispatch and interrupts active setup/turns.
+Polling is at most 50 ms during worker waits; cleanup follows the saved supervision
+limits. Caps remain experiment results; batch interruption leaves the job pending.
+
+`omok-batch-checkpoint-v1` stores the manifest identity, saved retry policy, attempts,
+latest committed results, and segments. Attempts are durably recorded as running
+before dispatch. Cleanup precedes result commit. A complete checksummed JSON document
+is flushed with `fsync` then atomically replaced from the same directory. POSIX also
+flushes the directory; Windows uses flushed files and atomic replacement, subject to
+the filesystem's power-loss guarantees. Temporary files from partial writes are not
+results. OS file locks enforce one authoritative owner and release on process exit.
+Identical duplicate commits are no-ops; conflicting duplicates and late commits for
+interrupted attempts are rejected. Each job counts once.
+
+Resume verifies the manifest, checkpoint checksum, assignments, replayable committed
+traces, runtime and source/configuration snapshots before dispatch. Truncated or
+conflicting committed exports are rejected. Missing or valid stale exports can be
+rebuilt from the authoritative checkpoint after a crash between commit and export.
+Old runs without a checkpoint are not silently imported. Committed successful,
+failed and capped jobs stay committed; uncommitted running attempts become explicitly
+interrupted before restarting the same job/seeds/colors with a new attempt ID.
+Graceful interruptions retain available partial trace/preflight and cleanup evidence.
+A hard process exit may leave only the durable dispatch record. No mid-game object
+serialization is used; abrupt supervisor termination cannot guarantee worker cleanup.
+
+`--infrastructure-retries N` saves a bounded setup/supervisor retry allowance in the
+checkpoint, separate from the raw manifest's no-scoring policy. It defaults to zero;
+resume inherits it and rejects changes. Every prior result remains in its attempt.
+Genuine player crashes/timeouts and cleanup errors retaining a player failure are
+never retried automatically. Attempt history is additive evidence; ordinary scoring
+uses the latest committed record for each slot. Resource limits may leave authorized
+infrastructure retries for the next resume.
+
+Outputs can move independently; their manifests contain project-relative source
+roots and immutable Git references, resolved in the current project. Move required
+source bundles and Git objects with the project when migrating machines. Each resume
+adds a labeled segment with fresh hardware/runtime/contention observations; traces
+and results identify their attempt and segment. Timing from different segments must
+not be presented as measurements under identical hardware conditions. Ratings remain
+outside this ticket.

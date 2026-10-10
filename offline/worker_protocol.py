@@ -1,5 +1,6 @@
 # AI-written by OpenAI Codex, for issue #25.
 """Length-bounded JSON frames on a private loopback worker connection."""
+from collections.abc import Callable
 import json
 import socket
 import struct
@@ -21,14 +22,16 @@ def send(connection: socket.socket, value: dict[str, Any], deadline: float) -> N
     connection.sendall(struct.pack('!I', len(data)) + data)
 
 
-def receive(connection: socket.socket, deadline: float) -> dict[str, Any]:
+def receive(connection: socket.socket, deadline: float, check_stop: Callable[[], None] | None = None) -> dict[str, Any]:
     def read(count: int) -> bytes:
         data = bytearray()
         while len(data) < count:
+            if check_stop:
+                check_stop()
             remaining = deadline - monotonic()
             if remaining <= 0:
                 raise TimeoutError('Worker deadline expired.')
-            connection.settimeout(remaining)
+            connection.settimeout(min(remaining, 0.05) if check_stop else remaining)
             # Issue #28: socket timeout rounding can fire before the authoritative
             # monotonic deadline. Retain partial frames and wait out the budget.
             try:

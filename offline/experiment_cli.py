@@ -2,6 +2,8 @@
 """Save a resolved experiment plan, then execute its exact serial schedule."""
 import argparse
 import json
+import signal
+from threading import Event
 from pathlib import Path
 
 from offline.experiments import ExperimentPlan, MODES, run_experiment, save_new_json
@@ -35,6 +37,11 @@ def main() -> None:
     run = commands.add_parser('run')
     run.add_argument('--plan', type=Path, required=True)
     run.add_argument('--output', type=Path, required=True, help='New directory for manifest, job records and results')
+    run.add_argument('--resume', action='store_true', help='Continue the saved output directory')
+    run.add_argument('--max-jobs', type=int, help='Maximum attempts dispatched in this segment')
+    run.add_argument('--max-seconds', type=float, help='Wall-clock bound, excluding bounded worker cleanup')
+    run.add_argument('--infrastructure-retries', type=int, help='Saved retry count; player failures are never retried')
+    run.add_argument('--stop-file', type=Path, help='Stop when this file exists')
     # AI-written by OpenAI Codex, for issue #28.
     score = commands.add_parser('score', help='Score saved raw results, including partial runs')
     score.add_argument('--plan', type=Path, required=True)
@@ -51,7 +58,16 @@ def main() -> None:
                               'unresolved': sum(not m['complete'] for m in report['matches'])}))
             return
         if args.command == 'run':
-            result = run_experiment(ExperimentPlan.load(args.plan), output=args.output)
+            stopped = Event()
+            previous = signal.signal(signal.SIGTERM, lambda *_: stopped.set())
+            try:
+                result = run_experiment(ExperimentPlan.load(args.plan), output=args.output,
+                    resume=args.resume, max_jobs=args.max_jobs, max_seconds=args.max_seconds,
+                    infrastructure_retries=args.infrastructure_retries,
+                    stop_requested=lambda: stopped.is_set() or bool(args.stop_file and args.stop_file.exists()),
+                    progress=lambda counts: print(json.dumps(counts), flush=True))
+            finally:
+                signal.signal(signal.SIGTERM, previous)
             print(json.dumps(result['counts']))
             return
         registry = json.loads(args.registry.read_text(encoding='utf-8'))

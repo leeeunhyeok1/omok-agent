@@ -74,8 +74,10 @@ class _Capture:
 
 
 class _Worker:
-    def __init__(self, spec: PlayerSpec, color: int, policy: Supervision):
+    def __init__(self, spec: PlayerSpec, color: int, policy: Supervision,
+                 check_stop: Callable[[], None] | None = None):
         self.spec, self.color, self.policy = spec, color, policy
+        self.check_stop = check_stop
         self.process: subprocess.Popen[bytes] | None = None
         self.connection: socket.socket | None = None
         self.captures: list[_Capture] = []
@@ -84,6 +86,8 @@ class _Worker:
                                       'cleanup_ms': None, 'reaped': False}
 
     def start(self) -> dict[str, Any]:
+        if self.check_stop:
+            self.check_stop()
         start = monotonic()
         deadline = start + self.policy.startup_ms / 1000
         token = secrets.token_hex(32)
@@ -101,12 +105,23 @@ class _Worker:
             self.captures = [_Capture(stream, self.policy.output_bytes)
                              for stream in (self.process.stdout, self.process.stderr)]
             listener.settimeout(max(0.000001, deadline - monotonic()))
-            self.connection, _ = listener.accept()
-        if receive(self.connection, deadline) != {'token': token}:
+            while True:
+                if self.check_stop:
+                    self.check_stop()
+                remaining = deadline - monotonic()
+                if remaining <= 0:
+                    raise TimeoutError('Worker startup deadline expired.')
+                listener.settimeout(min(remaining, 0.05) if self.check_stop else remaining)
+                try:
+                    self.connection, _ = listener.accept()
+                    break
+                except TimeoutError:
+                    continue
+        if receive(self.connection, deadline, self.check_stop) != {'token': token}:
             raise ProtocolError('Worker authentication failed.')
         send(self.connection, {**asdict(self.spec), 'color': self.color}, deadline)
         try:
-            return receive(self.connection, deadline)
+            return receive(self.connection, deadline, self.check_stop)
         finally:
             self.report['startup_ms'] = (monotonic() - start) * 1000
 
@@ -122,7 +137,7 @@ class _Worker:
         try:
             send(self.connection, {'kind': 'turn', 'board': board, 'sequence': sequence,
                 'time': -1 if budget is None else floor(budget), 'diagnostics': diagnostics}, deadline)
-            response = receive(self.connection, deadline)
+            response = receive(self.connection, deadline, self.check_stop)
             if response.get('kind') != 'reply' or response.get('sequence') != sequence:
                 raise ProtocolError('Unexpected worker response.')
             if (type(response.get('mutated')) is not bool
@@ -186,7 +201,8 @@ class _Worker:
 def run_supervised_game(black: PlayerSpec, white: PlayerSpec, *, initial: Position | None = None,
         budgets_ms: tuple[float | None, float | None] = (60000, 60000), move_cap: int = 1000,
         supervision: Supervision | None = None, config: dict[str, Any] | None = None,
-        diagnostics: bool = False, clock: Callable[[], float] = monotonic) -> dict[str, Any]:
+        diagnostics: bool = False, clock: Callable[[], float] = monotonic,
+        check_stop: Callable[[], None] | None = None) -> dict[str, Any]:
     """Run fresh workers, preserve valid state, and always attempt bounded cleanup."""
     if type(move_cap) is not int or move_cap < 0:
         raise ValueError('Move cap must be a nonnegative integer.')
@@ -200,7 +216,7 @@ def run_supervised_game(black: PlayerSpec, white: PlayerSpec, *, initial: Positi
         raise ValueError('Configuration must be a JSON object.')
     position = initial or Position.empty()
     remaining = list(budgets_ms)
-    workers = [_Worker(spec, color, policy) for color, spec in enumerate((black, white))]
+    workers = [_Worker(spec, color, policy, check_stop) for color, spec in enumerate((black, white))]
     trace: dict[str, Any] = {'format': FORMAT, 'initial': state(position),
         'players': [{'color': c, 'identifier': spec.factory, 'source': {
             'module': spec.module, 'qualname': spec.factory, 'sha256': None}, 'spec': specs[c]}
@@ -247,6 +263,8 @@ def run_supervised_game(black: PlayerSpec, white: PlayerSpec, *, initial: Positi
                     break
                 trace['players'][color].update(identifier=ready['identifier'], source=ready['source'])
         while position.outcome == 'ongoing' and trace['failure'] is None:
+            if check_stop:
+                check_stop()
             if len(trace['moves']) >= move_cap:
                 status, reason = 'capped', 'move_cap'
                 break
@@ -294,6 +312,11 @@ def run_supervised_game(black: PlayerSpec, white: PlayerSpec, *, initial: Positi
     except (OSError, ValueError, KeyError, TypeError, AssertionError) as error:
         fail('supervisor_error', 'supervisor_error', None,
              response={'exception': {'type': type(error).__name__, 'message': str(error)[:2048]}})
+    except BaseException as interruption:
+        # Keep partial game facts and cleanup reports with cancellation evidence.
+        status, reason = 'interrupted', 'batch_interruption'
+        setattr(interruption, 'interrupted_trace', trace)
+        raise
     finally:
         for worker in workers:
             try:
@@ -304,15 +327,16 @@ def run_supervised_game(black: PlayerSpec, white: PlayerSpec, *, initial: Positi
         if any(not w['reaped'] or w.get('cleanup_error') for w in trace['workers']):
             trace['prior_result'] = {'status': status, 'reason': reason, 'failure': trace['failure']}
             fail('supervisor_error', 'cleanup_error', None)
-    trace.update(status=status, reason=reason, final=state(position),
-                 remaining_ms=remaining, winner=rules_winner(position))
+        trace.update(status=status, reason=reason, final=state(position),
+                     remaining_ms=remaining, winner=rules_winner(position))
     return trace
 
 
 # AI-written by OpenAI Codex, for issue #26.
-def preflight_player(spec: PlayerSpec, color: int, policy: Supervision) -> dict[str, Any]:
+def preflight_player(spec: PlayerSpec, color: int, policy: Supervision,
+                     check_stop: Callable[[], None] | None = None) -> dict[str, Any]:
     """Bound imports/construction and check explicit color without competitive calls."""
-    worker = _Worker(spec, color, policy)
+    worker = _Worker(spec, color, policy, check_stop)
     result: dict[str, Any] = {'ready': False, 'detail': None}
     try:
         ready = worker.start()
@@ -321,6 +345,10 @@ def preflight_player(spec: PlayerSpec, color: int, policy: Supervision) -> dict[
             result['detail'] = ready.get('exception', ready)
     except (OSError, EOFError, ProtocolError) as error:
         result['detail'] = {'type': type(error).__name__, 'message': str(error)}
+    except BaseException as interruption:
+        setattr(interruption, 'interrupted_preflight', result)
+        result['worker'] = worker.report
+        raise
     finally:
         worker.close()
     result['worker'] = worker.report

@@ -1,5 +1,6 @@
 # AI-written by OpenAI Codex, for issue #27.
 """Resolved immutable schedules and serial execution over the supervised runner."""
+from collections.abc import Callable
 from dataclasses import asdict, dataclass
 import json
 import os
@@ -198,76 +199,63 @@ class ExperimentPlan:
         return cls(canonical(data))
 
 
-def run_experiment(plan: ExperimentPlan, *, output: Path | None = None) -> dict[str, Any]:
-    """Execute each slot once, retaining raw facts beside a separate scoring report."""
-    # Issue #28: scoring has its own versioned policy; saved raw plans remain readable.
-    from offline.matches import score_experiment
+def execute_job(plan: ExperimentPlan, job: dict[str, Any], check_stop: Callable[[], None] | None = None) -> dict[str, Any]:
     from offline.supervised import preflight_player, run_supervised_game
-
-    plan = ExperimentPlan.from_record(plan.record())
-    if output is not None:
-        output.mkdir(parents=True, exist_ok=False)
-        plan.save(output / 'manifest.json')
     data = plan.data
     candidate = Entry.from_record(data['candidate'])
     settings = data['settings']
     policy = Supervision(**settings['supervision'])
-    result: dict[str, Any] = {'format': 'omok-experiment-results-v1',
-        'manifest_identity': plan.identity, 'conditions': execution_conditions(),
-        'counts': {'planned': len(data['jobs']), 'completed': 0, 'failed': 0,
-                   'capped': 0, 'pending': len(data['jobs']), 'infrastructure_failed': 0},
-        'results': []}
-    for job in data['jobs']:
-        opponent = Entry.from_record(job['opponent'])
-        entries = [candidate, opponent] if job['candidate_color'] == 0 else [opponent, candidate]
-        roles = ['candidate', 'opponent'] if job['candidate_color'] == 0 else ['opponent', 'candidate']
-        specs = [entry.spec(job['seeds'][roles[c]]) for c, entry in enumerate(entries)]
-        record: dict[str, Any] = {'game_id': job['game_id'], 'match_id': job['match_id'],
-            'slot': job['slot'], 'candidate_color': job['candidate_color'], 'trace': None,
-            'status': 'setup_failed', 'preflight': [], 'error': None}
-        try:
-            for entry in entries:
-                for color in (0, 1):
-                    report = preflight_player(entry.spec(job['seeds'][
-                        'candidate' if entry.identity == candidate.identity else 'opponent']), color, policy)
-                    record['preflight'].append({'identity': entry.identity, 'color': color, **report})
-                    if not report['ready']:
-                        raise ValueError('Preflight failed: ' + str(report['detail']))
-            start = job['opening']
-            trace = run_supervised_game(*specs, initial=Position(start['board'], start['side_to_move']),
-                budgets_ms=tuple(settings['budgets_ms']), move_cap=settings['move_cap'],
-                supervision=policy, diagnostics=settings['diagnostics'], config={'experiment': {
-                    'manifest_identity': plan.identity, 'job': job, 'mode': settings['mode'],
-                    'candidate': candidate.record(), 'purpose': settings['purpose']},
-                    'registry': {'format': 'omok-registry-game-v1',
-                        'candidate': candidate.record(), 'opponent': opponent.record(),
-                        'candidate_color': job['candidate_color'],
-                        'pool_snapshot': data['pool_snapshot'], 'game_seed': job['game_seed'],
-                        'seeds': [job['seeds'][role] for role in roles],
-                        'preflight': record['preflight'], 'exposure': {
-                            'purpose': settings['purpose'], 'pool': job['pool'],
-                            'identity': opponent.identity, 'kind': 'competitive-game-attempt'
-                            if settings['mode'] != 'fixture' else 'fixture-game-attempt'}}})
-            record.update(trace=trace, status=trace['status'])
-        except (ValueError, TypeError, KeyError, OSError) as error:
-            record['error'] = {'type': type(error).__name__, 'message': str(error)}
-        trace = record['trace']
-        calls = [sum(event['type'] == 'returned' and event['color'] == color
-                     for event in trace['events']) for color in (0, 1)] if trace else [0, 0]
-        record['exposure'] = {'purpose': settings['purpose'], 'pool': job['pool'],
-            'candidate_identity': candidate.identity, 'opponent_identity': opponent.identity,
-            'kind': ('fixture-turn-attempt' if settings['mode'] == 'fixture' else 'competitive-turn-attempt')
-                    if any(calls) else 'no-player-turns',
-            'turns_called': calls, 'applied_moves': len(trace['moves']) if trace else 0}
-        bucket = {'completed': 'completed', 'failed': 'failed', 'capped': 'capped'}.get(
-            record['status'], 'infrastructure_failed')
-        result['counts'][bucket] += 1
-        result['counts']['pending'] -= 1
-        result['results'].append(record)
-        if output is not None:
-            save_new_json(output / (job['game_id'] + '.json'), record)
-    result['match_scores'] = score_experiment(plan, result)
-    if output is not None:
-        save_new_json(output / 'results.json', result)
-        save_new_json(output / 'match-scores.json', result['match_scores'])
-    return result
+    opponent = Entry.from_record(job['opponent'])
+    entries = [candidate, opponent] if job['candidate_color'] == 0 else [opponent, candidate]
+    roles = ['candidate', 'opponent'] if job['candidate_color'] == 0 else ['opponent', 'candidate']
+    specs = [entry.spec(job['seeds'][roles[c]]) for c, entry in enumerate(entries)]
+    record: dict[str, Any] = {'game_id': job['game_id'], 'match_id': job['match_id'],
+        'slot': job['slot'], 'candidate_color': job['candidate_color'], 'trace': None,
+        'status': 'setup_failed', 'preflight': [], 'error': None}
+    try:
+        for entry in entries:
+            for color in (0, 1):
+                report = preflight_player(entry.spec(job['seeds'][
+                    'candidate' if entry.identity == candidate.identity else 'opponent']), color, policy, check_stop=check_stop)
+                record['preflight'].append({'identity': entry.identity, 'color': color, **report})
+                if not report['ready']:
+                    raise ValueError('Preflight failed: ' + str(report['detail']))
+        start = job['opening']
+        trace = run_supervised_game(*specs, initial=Position(start['board'], start['side_to_move']),
+            budgets_ms=tuple(settings['budgets_ms']), move_cap=settings['move_cap'],
+            supervision=policy, diagnostics=settings['diagnostics'], check_stop=check_stop, config={'experiment': {
+                'manifest_identity': plan.identity, 'job': job, 'mode': settings['mode'],
+                'candidate': candidate.record(), 'purpose': settings['purpose']},
+                'registry': {'format': 'omok-registry-game-v1',
+                    'candidate': candidate.record(), 'opponent': opponent.record(),
+                    'candidate_color': job['candidate_color'],
+                    'pool_snapshot': data['pool_snapshot'], 'game_seed': job['game_seed'],
+                    'seeds': [job['seeds'][role] for role in roles],
+                    'preflight': record['preflight'], 'exposure': {
+                        'purpose': settings['purpose'], 'pool': job['pool'],
+                        'identity': opponent.identity, 'kind': 'competitive-game-attempt'
+                        if settings['mode'] != 'fixture' else 'fixture-game-attempt'}}})
+        record.update(trace=trace, status=trace['status'])
+    except (ValueError, TypeError, KeyError, OSError) as error:
+        record['error'] = {'type': type(error).__name__, 'message': str(error)}
+    trace = record['trace']
+    calls = [sum(event['type'] == 'returned' and event['color'] == color
+                 for event in trace['events']) for color in (0, 1)] if trace else [0, 0]
+    record['exposure'] = {'purpose': settings['purpose'], 'pool': job['pool'],
+        'candidate_identity': candidate.identity, 'opponent_identity': opponent.identity,
+        'kind': ('fixture-turn-attempt' if settings['mode'] == 'fixture' else 'competitive-turn-attempt')
+                if any(calls) else 'no-player-turns',
+        'turns_called': calls, 'applied_moves': len(trace['moves']) if trace else 0}
+    return record
+
+
+def run_experiment(plan: ExperimentPlan, *, output: Path | None = None,
+        resume: bool = False, max_jobs: int | None = None, max_seconds: float | None = None,
+        stop_requested: Callable[[], bool] | None = None,
+        progress: Callable[[dict[str, Any]], None] | None = None,
+        infrastructure_retries: int | None = None) -> dict[str, Any]:
+    """Run a bounded serial segment; checkpoint attempts before dispatch and results after cleanup."""
+    from offline.batches import run_batch
+    return run_batch(plan, output=output, resume=resume, max_jobs=max_jobs,
+        max_seconds=max_seconds, stop_requested=stop_requested, progress=progress,
+        infrastructure_retries=infrastructure_retries)
