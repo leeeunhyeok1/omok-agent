@@ -1,5 +1,12 @@
 # omok-agent
 
+Issue #38 adds predeclared balanced training screening, retained failure gates,
+explicit incomplete fitness, and incumbent retention. See [screening](docs/screening.md).
+
+```sh
+python -m verification.screening --output .scratch/screening-pilot
+```
+
 Issue #37 adds saved, seeded parameter policies, deduplicated immutable candidates,
 and execution through the existing registry. See [candidate proposals](docs/proposals.md).
 

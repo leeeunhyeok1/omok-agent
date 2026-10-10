@@ -1,0 +1,52 @@
+{
+  "format": "omok-screening-pilot-v1",
+  "incumbent": "999ca6426149c70ada1222061659f910758fb32dcbc4aa1c8bc11637b1917c72",
+  "candidates": {
+    "999ca6426149c70ada1222061659f910758fb32dcbc4aa1c8bc11637b1917c72": {
+      "status": "retain",
+      "fitness": 0.75,
+      "gain": 0.0,
+      "reasons": [],
+      "reliability_samples": {
+        "committed_attempts": 4,
+        "candidate_failure_attempts": 0
+      }
+    },
+    "b9c5a74b585fbb63fb6fe0c69cb4114804fb305de936e5c02c9e2e6be20bea42": {
+      "status": "fail",
+      "fitness": 0.75,
+      "gain": 0.0,
+      "reasons": [
+        "insufficient_favorable_gain"
+      ],
+      "reliability_samples": {
+        "committed_attempts": 4,
+        "candidate_failure_attempts": 0
+      }
+    },
+    "bf956545505779e6c582d2807978c6034d643c6ace99cebaffb8aa692f9fdd4a": {
+      "status": "fail",
+      "fitness": 0.75,
+      "gain": 0.0,
+      "reasons": [
+        "insufficient_favorable_gain"
+      ],
+      "reliability_samples": {
+        "committed_attempts": 4,
+        "candidate_failure_attempts": 0
+      }
+    }
+  },
+  "partial_statuses": {
+    "999ca6426149c70ada1222061659f910758fb32dcbc4aa1c8bc11637b1917c72": "inconclusive",
+    "b9c5a74b585fbb63fb6fe0c69cb4114804fb305de936e5c02c9e2e6be20bea42": "inconclusive",
+    "bf956545505779e6c582d2807978c6034d643c6ace99cebaffb8aa692f9fdd4a": "inconclusive"
+  },
+  "replayed_traces": 12,
+  "retained_incumbent": "999ca6426149c70ada1222061659f910758fb32dcbc4aa1c8bc11637b1917c72",
+  "promotion": false,
+  "elapsed_seconds": 32.25724220008124,
+  "validation_exposures": [],
+  "holdout_exposures": [],
+  "limitations": "12 reduced-clock games from one easy legal paired opening against two training designs. No full-league, promotion, validation or official-clock claim."
+}
