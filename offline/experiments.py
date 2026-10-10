@@ -1,5 +1,5 @@
 # AI-written by OpenAI Codex, for issue #27.
-"""Resolved immutable schedules and serial execution over the supervised runner."""
+"""Resolved immutable schedules and bounded execution over the supervised runner."""
 from collections.abc import Callable
 from dataclasses import asdict, dataclass
 import json
@@ -27,14 +27,26 @@ def save_new_json(path: Path, value: dict[str, Any]) -> None:
         stream.write(json.dumps(value, indent=2, allow_nan=False) + '\n')
 
 
-def execution_conditions() -> dict[str, Any]:
+def execution_conditions(workers: int = 1, contention: str = 'external contention uncontrolled') -> dict[str, Any]:
     observed = conditions()
-    observed.update(execution='serial games; two persistent player subprocesses', player_processes=2)
+    observed.update(workers=workers, execution='bounded game supervisor threads; isolated player subprocesses',
+        player_processes=2 * workers, start_method='fresh-python-subprocess',
+        contention=contention, timing_comparison='serial wall-clock; verify declared contention' if workers == 1
+        else 'concurrent wall-clock; contention affects strength; unsuitable for final timing comparison')
     try:
         sysconf = getattr(os, 'sysconf')
         observed['ram_bytes'] = sysconf('SC_PHYS_PAGES') * sysconf('SC_PAGE_SIZE')
     except (AttributeError, OSError, ValueError):
         observed['ram_bytes'] = None
+    if os.name == 'nt':
+        import ctypes
+        class MemoryStatus(ctypes.Structure):
+            _fields_ = [('length', ctypes.c_ulong), ('load', ctypes.c_ulong),
+                        ('values', ctypes.c_ulonglong * 7)]
+        memory = MemoryStatus()
+        memory.length = ctypes.sizeof(memory)
+        if ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(memory)):
+            observed['ram_bytes'] = memory.values[0]
     return observed
 
 
@@ -253,9 +265,10 @@ def run_experiment(plan: ExperimentPlan, *, output: Path | None = None,
         resume: bool = False, max_jobs: int | None = None, max_seconds: float | None = None,
         stop_requested: Callable[[], bool] | None = None,
         progress: Callable[[dict[str, Any]], None] | None = None,
-        infrastructure_retries: int | None = None) -> dict[str, Any]:
-    """Run a bounded serial segment; checkpoint attempts before dispatch and results after cleanup."""
+        infrastructure_retries: int | None = None, workers: int = 1,
+        contention: str = 'external contention uncontrolled') -> dict[str, Any]:
+    """Execute saved jobs with one commit owner and bounded concurrent supervision."""
     from offline.batches import run_batch
     return run_batch(plan, output=output, resume=resume, max_jobs=max_jobs,
         max_seconds=max_seconds, stop_requested=stop_requested, progress=progress,
-        infrastructure_retries=infrastructure_retries)
+        infrastructure_retries=infrastructure_retries, workers=workers, contention=contention)

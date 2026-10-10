@@ -1,5 +1,8 @@
 # omok-agent
 
+Issue #32 adds bounded concurrent resumable batches with one result owner, isolated
+players and execution-segment metadata. See [controlled concurrency](docs/experiments.md#controlled-concurrency-issue-32).
+
 Issue #31 adds supervised trace validation, bounded preceding-position loss
 exports and independently checked rule fixtures. See [replay and inspection](docs/replay.md).
 

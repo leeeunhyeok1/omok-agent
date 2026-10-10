@@ -1,5 +1,5 @@
 # AI-written by OpenAI Codex, for issue #27.
-"""Save a resolved experiment plan, then execute its exact serial schedule."""
+"""Save a resolved experiment plan, then execute its exact bounded schedule."""
 import argparse
 import json
 import signal
@@ -42,6 +42,8 @@ def main() -> None:
     run.add_argument('--max-seconds', type=float, help='Wall-clock bound, excluding bounded worker cleanup')
     run.add_argument('--infrastructure-retries', type=int, help='Saved retry count; player failures are never retried')
     run.add_argument('--stop-file', type=Path, help='Stop when this file exists')
+    run.add_argument('--workers', type=int, default=1, help='Bound concurrent games (1..64); final timing checks use 1')
+    run.add_argument('--contention', default='external contention uncontrolled', help='Describe other CPU load and controls')
     # AI-written by OpenAI Codex, for issue #28.
     score = commands.add_parser('score', help='Score saved raw results, including partial runs')
     score.add_argument('--plan', type=Path, required=True)
@@ -64,6 +66,7 @@ def main() -> None:
                 result = run_experiment(ExperimentPlan.load(args.plan), output=args.output,
                     resume=args.resume, max_jobs=args.max_jobs, max_seconds=args.max_seconds,
                     infrastructure_retries=args.infrastructure_retries,
+                    workers=args.workers, contention=args.contention,
                     stop_requested=lambda: stopped.is_set() or bool(args.stop_file and args.stop_file.exists()),
                     progress=lambda counts: print(json.dumps(counts), flush=True))
             finally:

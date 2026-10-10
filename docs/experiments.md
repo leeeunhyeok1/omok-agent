@@ -159,3 +159,59 @@ adds a labeled segment with fresh hardware/runtime/contention observations; trac
 and results identify their attempt and segment. Timing from different segments must
 not be presented as measurements under identical hardware conditions. Ratings remain
 outside this ticket.
+
+## Controlled concurrency (issue #32)
+
+```sh
+python3 -m offline.experiment_cli run --plan .scratch/screen-plan.json --output .scratch/parallel-run --workers 2 --max-seconds 30 --contention "development screening; other CPU load uncontrolled"
+python3 -m offline.experiment_cli run --plan .scratch/screen-plan.json --output .scratch/parallel-run --resume --workers 1 --contention "dedicated timing run; other experiments stopped"
+```
+
+`run_experiment` accepts `workers` (1..64, default 1) and a nonempty `contention`
+description. Each slot runs in a supervisor thread with fresh, isolated Python
+player subprocesses; each player's instance persists across that game's turns.
+There are at most `workers` active games and at most `2 * workers` live player
+processes during normal supervision. No executor backlog is submitted. The main
+owner alone creates attempts, validates/commits results, writes checkpoints and
+calls progress callbacks. A game cannot have overlapping attempts. Completion
+order does not alter saved job IDs, seeds, colors, openings or configurations.
+Returned results stay in planned order; segments also record completion order.
+The job bound limits dispatched attempts; already dispatched games finish before
+stopping at that bound. Time bounds and stop requests interrupt every active game.
+
+Changing workers on resume changes execution conditions rather than the saved plan.
+The manifest's original resource settings are defaults; each durable segment records
+the actual worker count, process-start policy, CPU/count/affinity, RAM, Python/platform,
+load average when available and declared contention. `changed_conditions` explicitly
+lists changes from the preceding segment. Segment `wall_seconds` includes cleanup;
+`owner_cpu_seconds` measures CPU consumed by the owner process (including supervisor
+threads), excluding player subprocess CPU. Windows RAM uses the native memory API;
+POSIX uses physical page counts. Reports retain all segments and each result's segment.
+Hardware and worker changes must remain separate timing evidence.
+
+Each result's `scheduling.queue_ms` measures waiting from segment start to execution
+start, including waiting for an available game slot. `execution_ms` covers setup,
+play and cleanup. Per-player startup/cleanup observations remain in preflight and
+trace worker records. None of these scheduler times are charged to player clocks.
+Only that player's dispatch-through-response calls consume its cumulative clock.
+
+Cancellation sets a shared stop event, stops dispatch, joins supervisors and uses
+the existing finite player cleanup policy concurrently across games. Interrupted
+attempts retain partial trace/preflight and cleanup evidence. Completed responses
+awaiting commit at cancellation are stored as discarded evidence, never counted.
+Checkpoint commits reject results from interrupted, superseded or foreign-owner
+attempts; identical current committed duplicates remain no-ops. Owner/reporting
+exceptions also cancel other games and preserve the checkpoint before propagating.
+Unexpected supervisor faults are infrastructure results with explicit error and
+available cleanup evidence, without player losses; retry limits still apply.
+An abrupt OS-level owner kill remains outside graceful cleanup guarantees.
+
+Use a dedicated machine with other experiments stopped, stable power/CPU settings,
+and **one game worker** for final wall-clock comparisons. Record those controls with
+`--contention`; the default honestly says uncontrolled. Parallel segments are labeled
+unsuitable for final timing comparisons even when they use official 60-second budgets.
+No automatic promotion or claim of controlled external load is made. Choose development
+worker counts conservatively from measured throughput/RAM and observe timing spikes.
+Reduced-clock screening remains wall-clock screening. Saved candidate node/depth caps
+describe separate screening conditions; they do not remove the opponent's clock or
+make a mixed clock/work-limit experiment equivalent to an official timing check.

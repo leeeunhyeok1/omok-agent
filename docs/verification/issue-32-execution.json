@@ -1,0 +1,115 @@
+{
+  "fixture": "zero-move-cap CLI dispatch/resume; no strength evidence",
+  "counts": {
+    "completed": 0,
+    "failed": 0,
+    "capped": 4,
+    "infrastructure_failed": 0,
+    "planned": 4,
+    "pending": 0
+  },
+  "segments": [
+    {
+      "id": "0fa84d8f278a4f419338463c8dc1a0d1",
+      "conditions": {
+        "python": "3.14.8",
+        "implementation": "CPython",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "machine": "AMD64",
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+        "cpu_count": 8,
+        "affinity": null,
+        "load_average": null,
+        "workers": 2,
+        "execution": "bounded game supervisor threads; isolated player subprocesses",
+        "clock": {
+          "implementation": "QueryPerformanceCounter()",
+          "monotonic": true,
+          "adjustable": false,
+          "resolution": 1e-07
+        },
+        "player_processes": 4,
+        "start_method": "fresh-python-subprocess",
+        "contention": "controlled CLI fixture; full tests also running",
+        "timing_comparison": "concurrent wall-clock; contention affects strength; unsuitable for final timing comparison",
+        "ram_bytes": 25700585472
+      },
+      "stop_reason": "batch job bound",
+      "max_jobs": 3,
+      "max_seconds": null,
+      "changed_conditions": [],
+      "completion_order": [
+        "78ecc1f3c56cab580bd813daac97b17e52dd77fb2a2c8446a3c0f3353d4565a5",
+        "2fb24f9e118fff3cf29c3df505ff76670014f527e22bff863886b59492cd7270",
+        "10f009a49465db952df46accb1b2d3244dfaa1dd275a84611ac86397da9ab39d"
+      ],
+      "peak_active_games": 2,
+      "wall_seconds": 3.174833199940622,
+      "owner_cpu_seconds": 0.234375
+    },
+    {
+      "id": "39d36d087b634f89b75a6e57c3478eb8",
+      "conditions": {
+        "python": "3.14.8",
+        "implementation": "CPython",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "machine": "AMD64",
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+        "cpu_count": 8,
+        "affinity": null,
+        "load_average": null,
+        "workers": 1,
+        "execution": "bounded game supervisor threads; isolated player subprocesses",
+        "clock": {
+          "implementation": "QueryPerformanceCounter()",
+          "monotonic": true,
+          "adjustable": false,
+          "resolution": 1e-07
+        },
+        "player_processes": 2,
+        "start_method": "fresh-python-subprocess",
+        "contention": "controlled CLI fixture; full tests also running",
+        "timing_comparison": "serial wall-clock; verify declared contention",
+        "ram_bytes": 25700585472
+      },
+      "stop_reason": null,
+      "max_jobs": null,
+      "max_seconds": null,
+      "changed_conditions": [
+        "workers"
+      ],
+      "completion_order": [
+        "b70922c49750e238a2e1a14d80f9b76b0801c799f097a38aa212ff43ece03e0a"
+      ],
+      "peak_active_games": 1,
+      "wall_seconds": 1.4536349999252707,
+      "owner_cpu_seconds": 0.109375
+    }
+  ],
+  "attempts": [
+    {
+      "game_id": "78ecc1f3c56cab580bd813daac97b17e52dd77fb2a2c8446a3c0f3353d4565a5",
+      "attempt_id": "f379cefb5f004ff592cebb4826e2d773",
+      "segment": "0fa84d8f278a4f419338463c8dc1a0d1",
+      "state": "committed"
+    },
+    {
+      "game_id": "2fb24f9e118fff3cf29c3df505ff76670014f527e22bff863886b59492cd7270",
+      "attempt_id": "76f1223b1c25412a8436fdf6a85d4f0b",
+      "segment": "0fa84d8f278a4f419338463c8dc1a0d1",
+      "state": "committed"
+    },
+    {
+      "game_id": "10f009a49465db952df46accb1b2d3244dfaa1dd275a84611ac86397da9ab39d",
+      "attempt_id": "ce7a30d507694c63aeb7b434ba40cb80",
+      "segment": "0fa84d8f278a4f419338463c8dc1a0d1",
+      "state": "committed"
+    },
+    {
+      "game_id": "b70922c49750e238a2e1a14d80f9b76b0801c799f097a38aa212ff43ece03e0a",
+      "attempt_id": "18994f7068f544c5aba578ab401cee20",
+      "segment": "39d36d087b634f89b75a6e57c3478eb8",
+      "state": "committed"
+    }
+  ]
+}

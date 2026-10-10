@@ -1,13 +1,15 @@
 # AI-written by OpenAI Codex, for issue #29.
 """Single-owner, checksummed atomic checkpoints at completed-game boundaries."""
 from collections.abc import Callable
+from concurrent.futures import Future, ThreadPoolExecutor, wait, FIRST_COMPLETED
 from contextlib import contextmanager
 import json
 import os
 from pathlib import Path
 import sys
 from tempfile import NamedTemporaryFile
-from time import monotonic
+from threading import Event
+from time import monotonic, process_time
 from typing import Any, Iterator
 from uuid import uuid4
 
@@ -179,6 +181,11 @@ class Checkpoint:
         return attempt
 
     def commit(self, attempt: dict[str, Any], record: dict[str, Any]) -> None:
+        if not any(attempt is saved for saved in self.data['attempts']):
+            raise ValueError('Late result from foreign checkpoint owner.')
+        if any(a is not attempt and a['game_id'] == attempt['game_id']
+               for a in self.data['attempts'][self.data['attempts'].index(attempt) + 1:]):
+            raise ValueError('Late result from superseded attempt.')
         self.validate_result(attempt['game_id'], record)
         record = {**record, 'attempt_id': attempt['attempt_id'], 'segment': attempt['segment']}
         if attempt['state'] == 'committed':
@@ -205,6 +212,15 @@ class Checkpoint:
                        for a in self.data['attempts'])
         return failures <= self.data['policy']['infrastructure_retries']
 
+    def reconcile_shutdown(self, attempt: dict[str, Any], reason: str,
+                           evidence: dict[str, Any]) -> None:
+        """Preserve a completed commit or interrupt an uncommitted attempt after cleanup."""
+        if attempt['state'] == 'committed':
+            # Ctrl+C can interrupt commit between attempt and result mutations.
+            self.data['results'][attempt['game_id']] = attempt['result']
+        else:
+            attempt.update(state='interrupted', reason=reason, **evidence)
+
     def report(self) -> dict[str, Any]:
         from offline.matches import score_experiment
         records = [self.data['results'][j] for j in self.jobs if j in self.data['results']]
@@ -229,7 +245,8 @@ class Checkpoint:
 
 def run_batch(plan: ExperimentPlan, *, output: Path | None, resume: bool,
         max_jobs: int | None, max_seconds: float | None, stop_requested: Callable[[], bool] | None,
-        progress: Callable[[dict[str, Any]], None] | None, infrastructure_retries: int | None) -> dict[str, Any]:
+        progress: Callable[[dict[str, Any]], None] | None, infrastructure_retries: int | None,
+        workers: int = 1, contention: str = 'external contention uncontrolled') -> dict[str, Any]:
     from math import isfinite
     for value, name in ((max_jobs, 'Job bound'), (infrastructure_retries, 'Retries')):
         if value is not None and (type(value) is not int or value < 0):
@@ -238,6 +255,10 @@ def run_batch(plan: ExperimentPlan, *, output: Path | None, resume: bool,
         raise ValueError('Batch seconds must be finite and nonnegative.')
     if resume and output is None:
         raise ValueError('Resume requires a saved output directory.')
+    if type(workers) is not int or not 1 <= workers <= 64:
+        raise ValueError('Workers must be an integer in 1..64.')
+    if not isinstance(contention, str) or not contention.strip():
+        raise ValueError('Describe execution contention.')
     plan = ExperimentPlan.from_record(plan.record())
     if output is not None:
         if resume:
@@ -247,11 +268,19 @@ def run_batch(plan: ExperimentPlan, *, output: Path | None, resume: bool,
             output.mkdir(parents=True, exist_ok=False)
     with owner(output):
         checkpoint = Checkpoint(plan, output, resume, infrastructure_retries)
-        segment: dict[str, Any] = {'id': uuid4().hex, 'conditions': execution_conditions(), 'stop_reason': None,
-                   'max_jobs': max_jobs, 'max_seconds': max_seconds}
+        observed = execution_conditions(workers, contention)
+        previous = checkpoint.data['segments'][-1]['conditions'] if checkpoint.data['segments'] else None
+        changes = [key for key in ('cpu', 'cpu_count', 'ram_bytes', 'machine', 'platform', 'python',
+                   'implementation', 'affinity', 'workers', 'contention', 'start_method')
+                   if previous is not None and previous.get(key) != observed.get(key)]
+        segment: dict[str, Any] = {'id': uuid4().hex, 'conditions': observed, 'stop_reason': None,
+                   'max_jobs': max_jobs, 'max_seconds': max_seconds, 'changed_conditions': changes,
+                   'completion_order': [], 'peak_active_games': 0}
         checkpoint.data['segments'].append(segment)
         checkpoint.flush()
-        deadline = None if max_seconds is None else monotonic() + max_seconds
+        start, cpu_start = monotonic(), process_time()
+        deadline = None if max_seconds is None else start + max_seconds
+        cancelled = Event()
 
         def check_stop() -> None:
             if stop_requested and stop_requested():
@@ -259,33 +288,84 @@ def run_batch(plan: ExperimentPlan, *, output: Path | None, resume: bool,
             if deadline is not None and monotonic() >= deadline:
                 raise BatchStopped('batch time bound')
 
+        def worker_stop() -> None:
+            if cancelled.is_set():
+                raise BatchStopped('segment cancelled')
+            if deadline is not None and monotonic() >= deadline:
+                raise BatchStopped('batch time bound')
+
+        def execute(job: dict[str, Any], queued: float) -> dict[str, Any]:
+            started = monotonic()
+            timing = {'queue_ms': (started - queued) * 1000}
+            try:
+                return_record = execute_job(plan, job, worker_stop)
+            except Exception as error:
+                # A supervisor defect is infrastructure evidence, never a player forfeit.
+                return_record = {k: job[k] for k in ('game_id', 'match_id', 'slot', 'candidate_color')}
+                return_record.update(status='supervisor_error', trace=None, preflight=[], exposure={
+                    'kind': 'unknown-supervisor-failure', 'pool': job['pool']},
+                    error={'type': type(error).__name__, 'message': str(error)})
+                return_record['infrastructure_evidence'] = {key: getattr(error, key)
+                    for key in ('interrupted_trace', 'interrupted_preflight') if hasattr(error, key)}
+            except BaseException as error:
+                timing['execution_ms'] = (monotonic() - started) * 1000
+                setattr(error, 'scheduling', timing)
+                raise
+            timing['execution_ms'] = (monotonic() - started) * 1000
+            return {**return_record, 'scheduling': timing}
+
         dispatched = 0
-        active = None
+        active: dict[Future[dict[str, Any]], dict[str, Any]] = {}
+        executor = ThreadPoolExecutor(max_workers=workers, thread_name_prefix='omok-game')
         try:
-            for job in plan.data['jobs']:
-                while checkpoint.retryable(job['game_id']):
+            while True:
+                check_stop()
+                busy = {a['game_id'] for a in active.values()}
+                for job in plan.data['jobs']:
+                    if len(active) >= workers or (max_jobs is not None and dispatched >= max_jobs):
+                        break
+                    if job['game_id'] in busy or not checkpoint.retryable(job['game_id']):
+                        continue
                     check_stop()
-                    if max_jobs is not None and dispatched >= max_jobs:
-                        raise BatchStopped('batch job bound')
-                    active = checkpoint.begin(job['game_id'], segment['id'])
+                    attempt = checkpoint.begin(job['game_id'], segment['id'])
+                    future = executor.submit(execute, job, start)
+                    active[future] = attempt
+                    busy.add(job['game_id'])
                     dispatched += 1
-                    record = execute_job(plan, job, check_stop)
-                    checkpoint.commit(active, record)
-                    active = None
+                    segment['peak_active_games'] = max(segment['peak_active_games'], len(active))
+                if not active:
+                    if max_jobs is not None and dispatched >= max_jobs:
+                        segment['stop_reason'] = 'batch job bound'
+                    break
+                ready, _ = wait(active, timeout=0.05, return_when=FIRST_COMPLETED)
+                for future in ready:
+                    check_stop()
+                    record = future.result()
+                    attempt = active[future]
+                    checkpoint.commit(attempt, record)
+                    segment['completion_order'].append(attempt['game_id'])
+                    del active[future]
                     report = checkpoint.report()
                     if progress:
                         progress(dict(report['counts']))
         except (BatchStopped, KeyboardInterrupt) as error:
             segment['stop_reason'] = str(error) or 'keyboard interrupt'
-            if active is not None and active['state'] == 'committed':
-                # Ctrl+C may arrive between commit's attempt/result mutations.
-                checkpoint.data['results'][active['game_id']] = active['result']
-            if active is not None and active['state'] == 'running':
-                active.update(state='interrupted', reason=segment['stop_reason'])
-                for key in ('interrupted_trace', 'interrupted_preflight'):
-                    if hasattr(error, key):
-                        active[key] = getattr(error, key)
         finally:
+            cancelled.set()
+            executor.shutdown(wait=True, cancel_futures=True)
+            for future, attempt in active.items():
+                evidence = {}
+                if not future.cancelled():
+                    failure = future.exception()
+                    if failure is None:
+                        evidence['discarded_result'] = future.result()
+                    else:
+                        for key in ('interrupted_trace', 'interrupted_preflight', 'scheduling'):
+                            if hasattr(failure, key):
+                                evidence[key] = getattr(failure, key)
+                checkpoint.reconcile_shutdown(attempt, segment['stop_reason'] or 'owner failure', evidence)
+            segment.update(wall_seconds=monotonic() - start,
+                           owner_cpu_seconds=process_time() - cpu_start)
             checkpoint.flush()
         report = checkpoint.report()
         if progress:

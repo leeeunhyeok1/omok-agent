@@ -38,6 +38,9 @@ def game_score(job: dict[str, Any], record: dict[str, Any] | None, manifest: dic
     slot['category'] = 'infrastructure_failed'
     if trace is None and record.get('status') == 'setup_failed':
         return slot
+    if trace is None and record.get('status') == 'supervisor_error' and isinstance(record.get('error'), dict):
+        if all(isinstance(record['error'].get(k), str) for k in ('type', 'message')):
+            return slot
     try:
         if not isinstance(trace, dict) or record['status'] != trace['status']:
             raise ValueError('Missing trace or conflicting execution status.')
