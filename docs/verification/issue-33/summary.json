@@ -1,0 +1,435 @@
+{
+  "format": "omok-matchup-report-v1",
+  "mode": "fixture",
+  "ordinary_strength_evidence": false,
+  "jobs": {
+    "counts": {
+      "completed": 4,
+      "failed": 1,
+      "capped": 1,
+      "infrastructure_failed": 1,
+      "pending": 1,
+      "planned": 8
+    },
+    "recognized": {
+      "wins": 2,
+      "losses": 2,
+      "draws": 1,
+      "win_rate": {
+        "numerator": 2,
+        "denominator": 5,
+        "value": 0.4
+      }
+    },
+    "failure_violations": {
+      "candidate": {
+        "exception": 1
+      },
+      "opponent": {}
+    },
+    "failure_rate": {
+      "numerator": 2,
+      "denominator": 7,
+      "value": 0.2857142857142857
+    },
+    "completion_rate": {
+      "numerator": 4,
+      "denominator": 8,
+      "value": 0.5
+    },
+    "candidate_crashes": 1,
+    "opponent_crashes": 0,
+    "by_color": {
+      "black": {
+        "counts": {
+          "completed": 2,
+          "failed": 1,
+          "capped": 1,
+          "infrastructure_failed": 0,
+          "pending": 0,
+          "planned": 4
+        },
+        "recognized": {
+          "wins": 1,
+          "losses": 2,
+          "draws": 0,
+          "win_rate": {
+            "numerator": 1,
+            "denominator": 3,
+            "value": 0.3333333333333333
+          }
+        },
+        "failure_violations": {
+          "candidate": {
+            "exception": 1
+          },
+          "opponent": {}
+        },
+        "failure_rate": {
+          "numerator": 1,
+          "denominator": 4,
+          "value": 0.25
+        },
+        "completion_rate": {
+          "numerator": 2,
+          "denominator": 4,
+          "value": 0.5
+        },
+        "candidate_crashes": 1,
+        "opponent_crashes": 0
+      },
+      "white": {
+        "counts": {
+          "completed": 2,
+          "failed": 0,
+          "capped": 0,
+          "infrastructure_failed": 1,
+          "pending": 1,
+          "planned": 4
+        },
+        "recognized": {
+          "wins": 1,
+          "losses": 0,
+          "draws": 1,
+          "win_rate": {
+            "numerator": 1,
+            "denominator": 2,
+            "value": 0.5
+          }
+        },
+        "failure_violations": {
+          "candidate": {},
+          "opponent": {}
+        },
+        "failure_rate": {
+          "numerator": 1,
+          "denominator": 3,
+          "value": 0.3333333333333333
+        },
+        "completion_rate": {
+          "numerator": 2,
+          "denominator": 4,
+          "value": 0.5
+        },
+        "candidate_crashes": 0,
+        "opponent_crashes": 0
+      }
+    }
+  },
+  "clean_games": {
+    "counts": {
+      "completed": 4,
+      "failed": 0,
+      "capped": 0,
+      "infrastructure_failed": 0,
+      "pending": 0,
+      "planned": 4
+    },
+    "recognized": {
+      "wins": 2,
+      "losses": 1,
+      "draws": 1,
+      "win_rate": {
+        "numerator": 2,
+        "denominator": 4,
+        "value": 0.5
+      }
+    },
+    "failure_violations": {
+      "candidate": {},
+      "opponent": {}
+    },
+    "failure_rate": {
+      "numerator": 0,
+      "denominator": 4,
+      "value": 0.0
+    },
+    "completion_rate": {
+      "numerator": 4,
+      "denominator": 4,
+      "value": 1.0
+    },
+    "candidate_crashes": 0,
+    "opponent_crashes": 0,
+    "by_color": {
+      "black": {
+        "counts": {
+          "completed": 2,
+          "failed": 0,
+          "capped": 0,
+          "infrastructure_failed": 0,
+          "pending": 0,
+          "planned": 2
+        },
+        "recognized": {
+          "wins": 1,
+          "losses": 1,
+          "draws": 0,
+          "win_rate": {
+            "numerator": 1,
+            "denominator": 2,
+            "value": 0.5
+          }
+        },
+        "failure_violations": {
+          "candidate": {},
+          "opponent": {}
+        },
+        "failure_rate": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0.0
+        },
+        "completion_rate": {
+          "numerator": 2,
+          "denominator": 2,
+          "value": 1.0
+        },
+        "candidate_crashes": 0,
+        "opponent_crashes": 0
+      },
+      "white": {
+        "counts": {
+          "completed": 2,
+          "failed": 0,
+          "capped": 0,
+          "infrastructure_failed": 0,
+          "pending": 0,
+          "planned": 2
+        },
+        "recognized": {
+          "wins": 1,
+          "losses": 0,
+          "draws": 1,
+          "win_rate": {
+            "numerator": 1,
+            "denominator": 2,
+            "value": 0.5
+          }
+        },
+        "failure_violations": {
+          "candidate": {},
+          "opponent": {}
+        },
+        "failure_rate": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0.0
+        },
+        "completion_rate": {
+          "numerator": 2,
+          "denominator": 2,
+          "value": 1.0
+        },
+        "candidate_crashes": 0,
+        "opponent_crashes": 0
+      }
+    }
+  },
+  "all_attempts": {
+    "total": 9,
+    "interrupted": 1,
+    "running": 0,
+    "committed": {
+      "counts": {
+        "completed": 4,
+        "failed": 1,
+        "capped": 1,
+        "infrastructure_failed": 2,
+        "pending": 0,
+        "planned": 8
+      },
+      "recognized": {
+        "wins": 2,
+        "losses": 2,
+        "draws": 1,
+        "win_rate": {
+          "numerator": 2,
+          "denominator": 5,
+          "value": 0.4
+        }
+      },
+      "failure_violations": {
+        "candidate": {
+          "exception": 1
+        },
+        "opponent": {}
+      },
+      "failure_rate": {
+        "numerator": 3,
+        "denominator": 8,
+        "value": 0.375
+      },
+      "completion_rate": {
+        "numerator": 4,
+        "denominator": 8,
+        "value": 0.5
+      },
+      "candidate_crashes": 1,
+      "opponent_crashes": 0,
+      "by_color": {
+        "black": {
+          "counts": {
+            "completed": 2,
+            "failed": 1,
+            "capped": 1,
+            "infrastructure_failed": 0,
+            "pending": 0,
+            "planned": 4
+          },
+          "recognized": {
+            "wins": 1,
+            "losses": 2,
+            "draws": 0,
+            "win_rate": {
+              "numerator": 1,
+              "denominator": 3,
+              "value": 0.3333333333333333
+            }
+          },
+          "failure_violations": {
+            "candidate": {
+              "exception": 1
+            },
+            "opponent": {}
+          },
+          "failure_rate": {
+            "numerator": 1,
+            "denominator": 4,
+            "value": 0.25
+          },
+          "completion_rate": {
+            "numerator": 2,
+            "denominator": 4,
+            "value": 0.5
+          },
+          "candidate_crashes": 1,
+          "opponent_crashes": 0
+        },
+        "white": {
+          "counts": {
+            "completed": 2,
+            "failed": 0,
+            "capped": 0,
+            "infrastructure_failed": 2,
+            "pending": 0,
+            "planned": 4
+          },
+          "recognized": {
+            "wins": 1,
+            "losses": 0,
+            "draws": 1,
+            "win_rate": {
+              "numerator": 1,
+              "denominator": 2,
+              "value": 0.5
+            }
+          },
+          "failure_violations": {
+            "candidate": {},
+            "opponent": {}
+          },
+          "failure_rate": {
+            "numerator": 2,
+            "denominator": 4,
+            "value": 0.5
+          },
+          "completion_rate": {
+            "numerator": 2,
+            "denominator": 4,
+            "value": 0.5
+          },
+          "candidate_crashes": 0,
+          "opponent_crashes": 0
+        }
+      }
+    },
+    "history_available": true,
+    "duplicate_deliveries": 1
+  },
+  "averages": {
+    "micro": {
+      "numerator": 2,
+      "denominator": 5,
+      "value": 0.4
+    },
+    "equal_opponent_macro": {
+      "numerator": 0.4,
+      "denominator": 1,
+      "value": 0.4,
+      "unavailable_opponents": 0
+    },
+    "clean_game_micro": {
+      "numerator": 2,
+      "denominator": 4,
+      "value": 0.5
+    },
+    "clean_game_equal_opponent_macro": {
+      "numerator": 0.5,
+      "denominator": 1,
+      "value": 0.5,
+      "unavailable_opponents": 0
+    }
+  },
+  "rating": {
+    "status": "deferred",
+    "reason": "No calibrated independent opponent pool; descriptive outcomes suffice. Caps and unresolved matches receive no rating outcomes; no class rank is inferred."
+  },
+  "uncertainty": {
+    "independent_trials_assumed": false,
+    "intervals": null,
+    "reason": "Small, paired, repeated and related-family samples may be dependent. Rates are descriptive, not confidence intervals or promotion thresholds."
+  },
+  "matches": [
+    {
+      "counts": {
+        "completed": 4,
+        "failed": 1,
+        "capped": 1,
+        "infrastructure_failed": 1,
+        "pending": 1,
+        "planned": 8
+      },
+      "crashes": {
+        "candidate": true,
+        "opponent": false
+      },
+      "flags": [
+        "incomplete",
+        "capped",
+        "infrastructure_invalid"
+      ],
+      "qualification": {
+        "qualified": false
+      },
+      "tournament": {
+        "outcome": "unresolved",
+        "coins": null,
+        "override": "candidate_crash"
+      }
+    }
+  ],
+  "segments": [
+    {
+      "changed_conditions": [],
+      "conditions": {
+        "fixture": true,
+        "hardware": "controlled A",
+        "workers": 2
+      },
+      "id": "old"
+    },
+    {
+      "changed_conditions": [
+        "workers",
+        "hardware"
+      ],
+      "conditions": {
+        "fixture": true,
+        "hardware": "controlled B",
+        "workers": 1
+      },
+      "id": "new"
+    }
+  ]
+}

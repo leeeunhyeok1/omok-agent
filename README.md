@@ -1,5 +1,9 @@
 # omok-agent
 
+Issue #33 adds saved matchup reports with explicit rate denominators, retained attempt
+history, clean-game views, family/duplicate coverage and separate runtime segments.
+See [report commands and limitations](docs/reports.md).
+
 Issue #32 adds bounded concurrent resumable batches with one result owner, isolated
 players and execution-segment metadata. See [controlled concurrency](docs/experiments.md#controlled-concurrency-issue-32).
 

@@ -8,6 +8,7 @@ from pathlib import Path
 
 from offline.experiments import ExperimentPlan, MODES, run_experiment, save_new_json
 from offline.matches import score_experiment
+from offline.reports import report_experiment
 from offline.registry import Entry, PoolSnapshot, PURPOSES
 from offline.supervised import Supervision
 from omok.simulator import Position
@@ -49,10 +50,15 @@ def main() -> None:
     score.add_argument('--plan', type=Path, required=True)
     score.add_argument('--results', type=Path, required=True)
     score.add_argument('--output', type=Path, required=True)
+    report_command = commands.add_parser('report', help='Describe saved matchup, reliability and coverage evidence')
+    report_command.add_argument('--plan', type=Path, required=True)
+    report_command.add_argument('--results', type=Path, required=True)
+    report_command.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     try:
-        if args.command == 'score':
-            report = score_experiment(ExperimentPlan.load(args.plan),
+        if args.command in ('score', 'report'):
+            summarize = report_experiment if args.command == 'report' else score_experiment
+            report = summarize(ExperimentPlan.load(args.plan),
                 json.loads(args.results.read_text(encoding='utf-8')))
             args.output.parent.mkdir(parents=True, exist_ok=True)
             save_new_json(args.output, report)
