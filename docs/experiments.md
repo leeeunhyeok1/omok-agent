@@ -90,7 +90,8 @@ Execution then proceeds to the next slot, without retrying away failure evidence
 
 `omok-experiment-results-v1` records planned/completed/failed/capped/pending and
 infrastructure-failed counts. Each slot retains IDs, preflight facts, raw replayable
-`omok-game-v3` trace when available, and exposure purpose/pool/version identities.
+`omok-game-v4` trace when available, and exposure purpose/pool/version identities.
+Saved v1–v3 traces remain replayable; see [replay and loss inspection](replay.md).
 Exposure counts dispatched turn attempts by color and applied moves; a timed-out
 call is still an attempted exposure. Preflight, zero-move caps and terminal fixtures
 are labeled `no-player-turns`. Fixture turn attempts are separately labeled.

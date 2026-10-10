@@ -1,5 +1,8 @@
 # omok-agent
 
+Issue #31 adds supervised trace validation, bounded preceding-position loss
+exports and independently checked rule fixtures. See [replay and inspection](docs/replay.md).
+
 Issue #30 adds contrasting frozen synthetic opponents, documented families and
 protected actual holdout metadata. See [strategies, pools and bounded verification](docs/synthetic.md).
 

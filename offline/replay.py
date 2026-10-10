@@ -55,9 +55,11 @@ def load_trace(path: Path) -> dict[str, Any]:
 
 def _replay(trace: dict[str, Any]) -> Position:
     _require(isinstance(trace, dict))
-    _require(trace['format'] in ('omok-game-v1', FORMAT, 'omok-game-v3') and isinstance(trace['config'], dict))
+    _require(trace['format'] in ('omok-game-v1', FORMAT, 'omok-game-v3', 'omok-game-v4') and isinstance(trace['config'], dict))
     json.dumps(trace, allow_nan=False)
-    supervised = trace['format'] == 'omok-game-v3'
+    supervised = trace['format'] in ('omok-game-v3', 'omok-game-v4')
+    if trace['format'] == 'omok-game-v4':
+        _supervision(trace)
     if supervised and trace['status'] == 'supervisor_error' and trace['reason'] == 'cleanup_error':
         failure = trace['failure']
         _require(isinstance(failure, dict) and failure['reason'] == 'cleanup_error'
@@ -68,7 +70,7 @@ def _replay(trace: dict[str, Any]) -> Position:
         _require(isinstance(prior, dict) and prior.keys() == {'status', 'reason', 'failure'}
                  and prior['reason'] != 'cleanup_error')
         # Validate the original game/failure clock ledger before the cleanup event.
-        return _replay({**trace, **prior, 'events': trace['events'][:-1]})
+        return _replay({**trace, **prior, 'format': 'omok-game-v3', 'events': trace['events'][:-1]})
     versioned_events = trace['format'] != 'omok-game-v1'
     _require(isinstance(trace['players'], list) and len(trace['players']) == 2)
     for color, player in enumerate(trace['players']):
@@ -195,6 +197,55 @@ def _replay(trace: dict[str, Any]) -> Position:
 
 def _coordinate(move: Any) -> None:
     _require(isinstance(move, list) and len(move) == 2 and all(type(n) is int for n in move))
+
+
+def _supervision(trace: dict[str, Any]) -> None:
+    """V4 requires lifecycle, factory/configuration, and turn transport evidence."""
+    from offline.supervised import Supervision
+    policy = trace['supervision']
+    limits = {k: policy[k] for k in ('startup_ms', 'cleanup_ms', 'unlimited_call_ms', 'output_bytes')}
+    Supervision(**limits)
+    _require(policy['clock_policy'] == 'dispatch-through-response'
+             and policy['start_method'] == 'fresh-python-subprocess')
+    workers = trace['workers']
+    _require(isinstance(workers, list) and len(workers) == 2)
+    for color, (player, worker) in enumerate(zip(trace['players'], workers)):
+        spec = player['spec']
+        _require(isinstance(spec['module'], str) and bool(spec['module'])
+                 and isinstance(spec['factory'], str) and bool(spec['factory'])
+                 and isinstance(spec['options'], dict) and type(spec['seed']) is int
+                 and type(worker['color']) is int and worker['color'] == color
+                 and type(worker['reaped']) is bool)
+        if worker['cleanup_ms'] is None:
+            _require(trace['reason'] == 'cleanup_error'
+                     and isinstance(worker.get('cleanup_error'), str) and bool(worker['cleanup_error']))
+        else:
+            _milliseconds(worker['cleanup_ms'])
+        if worker['pid'] is not None:
+            _require(type(worker['pid']) is int and worker['pid'] > 0)
+            _milliseconds(worker['startup_ms'])
+            if 'exitcode' not in worker:
+                _require(trace['reason'] == 'cleanup_error'
+                         and isinstance(worker.get('cleanup_error'), str) and bool(worker['cleanup_error']))
+            else:
+                _require(type(worker['exitcode']) is int or worker['exitcode'] is None)
+        for stream in ('stdout', 'stderr'):
+            if stream in worker:
+                output = worker[stream]
+                _require(isinstance(output['text'], str) and type(output['bytes_seen']) is int
+                         and output['bytes_seen'] >= 0 and type(output['truncated']) is bool)
+        _require(worker['reaped'] or trace['reason'] == 'cleanup_error')
+    for event in trace['events']:
+        if event['type'] == 'returned':
+            call, overhead = event['call_elapsed_ms'], event['overhead_ms']
+            _require((call is None) == (overhead is None))
+            if call is not None:
+                _milliseconds(call)
+                _require(_milliseconds(overhead) == max(0, event['elapsed_ms'] - call))
+            if 'search' in event:
+                _require(isinstance(event['search'], dict))
+            if 'diagnostics_error' in event:
+                _require(isinstance(event['diagnostics_error'], str))
 
 
 def _captures(captures: Any) -> set[tuple[int, int, int]]:

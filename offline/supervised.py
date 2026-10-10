@@ -19,7 +19,7 @@ from offline.runner import captured_cells, rules_winner, state
 from offline.worker_protocol import ProtocolError, receive, send
 from omok.simulator import Position
 
-FORMAT = 'omok-game-v3'
+FORMAT = 'omok-game-v4'
 ROOT = Path(__file__).resolve().parents[1]
 
 

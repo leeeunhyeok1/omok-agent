@@ -281,7 +281,8 @@ are retained. Normal worker termination by the supervisor is not a player crash.
 Failure to reap is a supervisor cleanup error. These processes provide lifecycle
 isolation, not a security sandbox or a guarantee about player-created descendants.
 
-Traces use `omok-game-v3`; replay retains support for v1/v2. Board winner/draw and
+Traces use `omok-game-v4`; replay retains support for v1–v3. See
+[versioned evidence and loss inspection](replay.md). Board winner/draw and
 execution status remain separate. Reasons distinguish exact-five, simultaneous
 wins, full board, exception, player exit, protocol failure, invalid move, observable
 snapshot mutation, timeout, resource caps, setup failure and supervisor errors.

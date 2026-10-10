@@ -1,0 +1,102 @@
+{
+  "legacy_replays": [
+    {
+      "path": "docs/verification/issue-30/game-00.json.gz",
+      "outcome": "white_win"
+    },
+    {
+      "path": "docs/verification/issue-30/game-01.json.gz",
+      "outcome": "black_win"
+    },
+    {
+      "path": "docs/verification/issue-30/game-02.json.gz",
+      "outcome": "ongoing"
+    },
+    {
+      "path": "docs/verification/issue-30/game-03.json.gz",
+      "outcome": "black_win"
+    },
+    {
+      "path": "docs/verification/issue-30/game-04.json.gz",
+      "outcome": "ongoing"
+    },
+    {
+      "path": "docs/verification/issue-30/game-05.json.gz",
+      "outcome": "ongoing"
+    },
+    {
+      "path": "docs/verification/issue-30/game-06.json.gz",
+      "outcome": "white_win"
+    },
+    {
+      "path": "docs/verification/issue-30/game-07.json.gz",
+      "outcome": "black_win"
+    },
+    {
+      "path": "docs/verification/issue-30/game-08.json.gz",
+      "outcome": "ongoing"
+    },
+    {
+      "path": "docs/verification/issue-30/game-09.json.gz",
+      "outcome": "ongoing"
+    },
+    {
+      "path": "docs/verification/issue-30/game-10.json.gz",
+      "outcome": "white_win"
+    },
+    {
+      "path": "docs/verification/issue-30/game-11.json.gz",
+      "outcome": "black_win"
+    },
+    {
+      "path": "docs/verification/issue-30/game-12.json.gz",
+      "outcome": "white_win"
+    },
+    {
+      "path": "docs/verification/issue-30/game-13.json.gz",
+      "outcome": "black_win"
+    },
+    {
+      "path": "docs/verification/issue-30/game-14.json.gz",
+      "outcome": "ongoing"
+    },
+    {
+      "path": "docs/verification/issue-30/game-15.json.gz",
+      "outcome": "black_win"
+    }
+  ],
+  "supervised": [
+    {
+      "behavior": "raise",
+      "reason": "exception",
+      "exported": 1
+    },
+    {
+      "behavior": "exit",
+      "reason": "player_exit",
+      "exported": 1
+    },
+    {
+      "behavior": "loop",
+      "reason": "timeout",
+      "exported": 1
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "mover-win",
+      "outcome": "black_win",
+      "checked": true
+    },
+    {
+      "name": "opponent-win",
+      "outcome": "white_win",
+      "checked": true
+    },
+    {
+      "name": "simultaneous",
+      "outcome": "draw",
+      "checked": true
+    }
+  ]
+}
