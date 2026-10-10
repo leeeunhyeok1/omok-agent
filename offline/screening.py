@@ -99,6 +99,16 @@ def prepare(policy_path: Path, incumbent: Entry, candidates: list[Entry], snapsh
             gates: dict[str, list[dict[str, Any]]] | None = None) -> dict[str, Any]:
     """Save the entire cohort and requested coverage before any jobs are dispatched."""
     policy = ScreeningPolicy.load(policy_path)
+    stage = build_stage(policy, incumbent, candidates, snapshot, fixture=fixture, openings=openings, gates=gates)
+    output.mkdir(parents=True, exist_ok=False)
+    save_new_json(output / 'stage.json', {'identity': digest(stage), 'stage': stage})
+    return stage
+
+
+def build_stage(policy: ScreeningPolicy, incumbent: Entry, candidates: list[Entry], snapshot: PoolSnapshot, *,
+                fixture: Position | None = None, openings: list[list[list[int]]] | None = None,
+                gates: dict[str, list[dict[str, Any]]] | None = None) -> dict[str, Any]:
+    """Resolve and validate a cohort without dispatch or filesystem side effects."""
     data = policy.data
     pools = snapshot.record()['pools']
     requested = {}
@@ -130,8 +140,6 @@ def prepare(policy_path: Path, incumbent: Entry, candidates: list[Entry], snapsh
              'pool_snapshot': snapshot.record(), 'requested_opponents': requested,
              'incumbent': incumbent.identity, 'members': members}
     validate_stage(stage)
-    output.mkdir(parents=True, exist_ok=False)
-    save_new_json(output / 'stage.json', {'identity': digest(stage), 'stage': stage})
     return stage
 
 

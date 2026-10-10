@@ -1,0 +1,49 @@
+{
+  "selection": "controlled artificial winner; no actual selection strength claim",
+  "confirmation": "16 actual supervised artificial games using restored incumbent/proposed configuration",
+  "partial_statuses": {
+    "e979cf333bb44368e5ab351e1ebaa6cdaeced6aabb7e4c2699901d71669eda2c": "retain",
+    "0e89a082dfdcc6089465cbf99e7c3e02fd7432d8cd8a4b0d560fd77eb4b86e34": "inconclusive"
+  },
+  "candidates": {
+    "e979cf333bb44368e5ab351e1ebaa6cdaeced6aabb7e4c2699901d71669eda2c": {
+      "status": "retain",
+      "reasons": [
+        "incomplete_coverage",
+        "incumbent_evidence_not_eligible",
+        "insufficient_distinct_evidence"
+      ],
+      "effect": null,
+      "distinct_pairs": 0,
+      "sensitivity_range": null,
+      "reliability_samples": {
+        "committed_attempts": 8,
+        "candidate_failure_attempts": 0
+      }
+    },
+    "0e89a082dfdcc6089465cbf99e7c3e02fd7432d8cd8a4b0d560fd77eb4b86e34": {
+      "status": "inconclusive",
+      "reasons": [
+        "incomplete_coverage",
+        "incumbent_evidence_not_eligible",
+        "insufficient_distinct_evidence",
+        "insufficient_distinct_pairs",
+        "insufficient_families",
+        "insufficient_sensitivity_coverage"
+      ],
+      "effect": null,
+      "distinct_pairs": 0,
+      "sensitivity_range": null,
+      "reliability_samples": {
+        "committed_attempts": 8,
+        "candidate_failure_attempts": 0
+      }
+    }
+  },
+  "retained_incumbent": "e979cf333bb44368e5ab351e1ebaa6cdaeced6aabb7e4c2699901d71669eda2c",
+  "promotion": false,
+  "ordinary_strength_evidence": false,
+  "elapsed_seconds": 61.71814050001558,
+  "validation_exposures": [],
+  "holdout_exposures": []
+}

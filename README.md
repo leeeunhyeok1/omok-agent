@@ -233,7 +233,9 @@ python3 -m verification.league_acceptance gates --output .scratch/new-phase04-ga
 python3 -m verification.league_acceptance smoke --output .scratch/new-phase04-smoke
 ```
 
-Phase 5 supports [bounded optimizer stop/resume](docs/optimizer.md) over immutable
+Phase 5 supports [fresh finalist confirmation](docs/confirmation.md) with saved
+paired jobs, duplicate-aware effects, sensitivity checks and auditable incumbent
+retention. It also supports [bounded optimizer stop/resume](docs/optimizer.md) over immutable
 proposals and training cohorts. Resume preserves committed attempts, proposal RNG
 state, ancestry, decisions, and execution provenance. See the command examples
 and abrupt-owner-death limits in that contract.
