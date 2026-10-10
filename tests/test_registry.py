@@ -138,8 +138,10 @@ class RegistryTests(unittest.TestCase):
                 replay(trace)
         self.assertEqual(catalog['random'].data['origin'], 'professor-provided')
         self.assertEqual(catalog['random'].data['seed_support'], 'process-global')
-        self.assertEqual(snapshot.select(purpose='validation'), [])
-        self.assertEqual(snapshot.select(purpose='final-evaluation'), snapshot.select())
+        self.assertEqual([e.data['logical_id'] for _, e in snapshot.select(purpose='validation')],
+                         ['synthetic-defensive'])
+        self.assertEqual({e.data['logical_id'] for _, e in snapshot.select(purpose='final-evaluation')}
+                         - {e.data['logical_id'] for _, e in snapshot.select()}, {'synthetic-space'})
 
     def test_adding_source_cannot_silently_change_a_frozen_bundle(self):
         with tempfile.TemporaryDirectory() as directory:

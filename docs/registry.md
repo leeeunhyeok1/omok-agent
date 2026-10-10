@@ -82,8 +82,10 @@ evidence. Diagnostics are optional and bounded by the existing worker protocol.
 | smoke | SeededSmokePlayer | Locally authored smoke behavior, constructor seed |
 
 Git checkpoints restore the actual historical code, not current strategy renamed
-as an old version. All built-ins were previously exposed: they are **training /
-development evidence**. Validation and holdout are empty. Missing supplied files
+as an old version. These original built-ins were previously exposed: they are
+**training / development evidence**. Issue #30 extends the catalog with
+[frozen synthetic strategies](synthetic.md), including validation `synthetic-defensive`
+and reserved holdout `synthetic-space`; default development selection excludes holdout. Missing supplied files
 are registered pending. Hidden TA agents and absent classmates are not listed as
 played opponents. No strength qualification, pool independence, or untouched
 holdout claim follows from these registry checks.

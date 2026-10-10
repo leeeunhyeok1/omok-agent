@@ -288,5 +288,34 @@ def default_catalog() -> tuple[dict[str, Entry], PoolSnapshot]:
                 for file in ('player.py', name + 'player.py')) else 'pending',
             seed_support='process-global' if name == 'random' else 'constructor' if name == 'smoke' else 'deterministic',
             limitations='Already exposed during development; not reserved validation/holdout evidence.'))
-    return ({e.data['logical_id']: e for e in entries},
-            PoolSnapshot.freeze({'training': entries, 'validation': [], 'holdout': []}))
+    # Issue #30: benchmark-only strategies and related variants have explicit pools.
+    synthetic_pools = synthetic_catalog()
+    pools = {'training': entries + synthetic_pools['training'],
+             'validation': synthetic_pools['validation'], 'holdout': synthetic_pools['holdout']}
+    all_entries = [entry for pool in pools.values() for entry in pool]
+    return ({e.data['logical_id']: e for e in all_entries}, PoolSnapshot.freeze(pools))
+
+
+def synthetic_catalog() -> dict[str, list[Entry]]:
+    """Freeze locally authored designs; metadata only does not expose holdout play."""
+    definitions = (
+        ('local', 'local-density', 'training', 'Own-neighbor density; ignores remote tactics.'),
+        ('aggressive', 'line-pattern', 'training', 'Own maximal run extension; ignores opponent replies.'),
+        ('pattern', 'line-pattern', 'training', 'Unblocked five-cell windows including gaps; not forced threats.'),
+        ('capture', 'capture-collection', 'training', 'Actual captured cells before central tie breaking; no capture win rule.'),
+        ('search1', 'reply-minimax', 'training', 'One-ply cubic maximal-run evaluation; eight ranked moves plus immediate win/block cells.'),
+        ('search2', 'reply-minimax', 'training', 'Two-ply worst-reply minimax with the same bounded move policy.'),
+        ('random', 'frontier-random', 'training', 'Uniform seeded adjacent frontier selection; no tactical override.'),
+        ('defensive', 'reply-denial', 'validation', 'Minimize actual immediate opponent wins, then remaining run pressure.'),
+        ('space', 'space-filling', 'holdout', 'Maximize distance from occupied cells; reserved, unplayed design.'),
+    )
+    pools: dict[str, list[Entry]] = {pool: [] for pool in POOLS}
+    for strategy, family, pool, behavior in definitions:
+        pools[pool].append(Entry.local('synthetic-' + strategy,
+            module='offline.synthetic', factory='create', options={'strategy': strategy},
+            source_paths=('offline', 'omok/__init__.py', 'omok/simulator.py'),
+            origin='synthetic', family=family, variant=strategy + '-v1',
+            acknowledgment='Locally authored by OpenAI Codex for issue #30; no external strategy source.',
+            seed_support='constructor' if strategy == 'random' else 'deterministic',
+            dependencies=(), limitations=behavior + ' Shared rules, source bundle and line utilities limit independent family coverage; see docs/synthetic.md.'))
+    return pools

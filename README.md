@@ -1,5 +1,8 @@
 # omok-agent
 
+Issue #30 adds contrasting frozen synthetic opponents, documented families and
+protected actual holdout metadata. See [strategies, pools and bounded verification](docs/synthetic.md).
+
 Omok++ simulator, verified one-ply baseline, bounded local runner, and versioned
 record/replay and supplied-player integration implemented for GitHub issues #3–#8. Python **3.14.3** is the
 verified local runtime; the grader runtime is not yet known. Engine and rule

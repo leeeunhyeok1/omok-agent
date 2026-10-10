@@ -1,0 +1,223 @@
+{
+  "format": "omok-synthetic-evidence-v1",
+  "conditions": {
+    "affinity": null,
+    "clock": {
+      "adjustable": false,
+      "implementation": "QueryPerformanceCounter()",
+      "monotonic": true,
+      "resolution": 1e-07
+    },
+    "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+    "cpu_count": 8,
+    "execution": "serial games; two persistent player subprocesses",
+    "implementation": "CPython",
+    "load_average": null,
+    "machine": "AMD64",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "player_processes": 2,
+    "python": "3.14.8",
+    "ram_bytes": null,
+    "workers": 1
+  },
+  "candidate": "6fe3d6d39c64d3426a8117d571c9fc2ab04268b6a1c0dc4042191971a7be12a8",
+  "pool_snapshot": "13dee565024099e6c97103fbb9cf07fa23de27d560b8cbbf6c037d896a71882e",
+  "fixtures": [
+    {
+      "strategy": "local",
+      "move": [
+        11,
+        11
+      ],
+      "captures": 0
+    },
+    {
+      "strategy": "aggressive",
+      "move": [
+        3,
+        6
+      ],
+      "captures": 0
+    },
+    {
+      "strategy": "defensive",
+      "move": [
+        5,
+        9
+      ],
+      "captures": 0
+    },
+    {
+      "strategy": "search1",
+      "move": [
+        12,
+        9
+      ],
+      "captures": 0
+    },
+    {
+      "strategy": "search2",
+      "move": [
+        5,
+        9
+      ],
+      "captures": 0
+    },
+    {
+      "strategy": "capture",
+      "move": [
+        5,
+        5
+      ],
+      "captures": 2
+    },
+    {
+      "strategy": "pattern",
+      "move": [
+        3,
+        5
+      ],
+      "captures": 0
+    },
+    {
+      "strategy": "pattern",
+      "move": [
+        9,
+        9
+      ],
+      "captures": 0
+    },
+    {
+      "strategy": "aggressive",
+      "move": [
+        3,
+        6
+      ],
+      "captures": 0
+    },
+    {
+      "strategy": "random",
+      "move": [
+        10,
+        8
+      ],
+      "captures": 0
+    }
+  ],
+  "games": [
+    {
+      "opponent": "synthetic-aggressive",
+      "candidate_color": 0,
+      "status": "completed",
+      "moves": 10,
+      "artifact": "game-00.json.gz"
+    },
+    {
+      "opponent": "synthetic-aggressive",
+      "candidate_color": 1,
+      "status": "completed",
+      "moves": 9,
+      "artifact": "game-01.json.gz"
+    },
+    {
+      "opponent": "synthetic-capture",
+      "candidate_color": 0,
+      "status": "capped",
+      "moves": 12,
+      "artifact": "game-02.json.gz"
+    },
+    {
+      "opponent": "synthetic-capture",
+      "candidate_color": 1,
+      "status": "completed",
+      "moves": 11,
+      "artifact": "game-03.json.gz"
+    },
+    {
+      "opponent": "synthetic-local",
+      "candidate_color": 0,
+      "status": "capped",
+      "moves": 12,
+      "artifact": "game-04.json.gz"
+    },
+    {
+      "opponent": "synthetic-local",
+      "candidate_color": 1,
+      "status": "capped",
+      "moves": 12,
+      "artifact": "game-05.json.gz"
+    },
+    {
+      "opponent": "synthetic-pattern",
+      "candidate_color": 0,
+      "status": "completed",
+      "moves": 10,
+      "artifact": "game-06.json.gz"
+    },
+    {
+      "opponent": "synthetic-pattern",
+      "candidate_color": 1,
+      "status": "completed",
+      "moves": 9,
+      "artifact": "game-07.json.gz"
+    },
+    {
+      "opponent": "synthetic-random",
+      "candidate_color": 0,
+      "status": "capped",
+      "moves": 12,
+      "artifact": "game-08.json.gz"
+    },
+    {
+      "opponent": "synthetic-random",
+      "candidate_color": 1,
+      "status": "capped",
+      "moves": 12,
+      "artifact": "game-09.json.gz"
+    },
+    {
+      "opponent": "synthetic-search1",
+      "candidate_color": 0,
+      "status": "completed",
+      "moves": 12,
+      "artifact": "game-10.json.gz"
+    },
+    {
+      "opponent": "synthetic-search1",
+      "candidate_color": 1,
+      "status": "completed",
+      "moves": 9,
+      "artifact": "game-11.json.gz"
+    },
+    {
+      "opponent": "synthetic-search2",
+      "candidate_color": 0,
+      "status": "completed",
+      "moves": 12,
+      "artifact": "game-12.json.gz"
+    },
+    {
+      "opponent": "synthetic-search2",
+      "candidate_color": 1,
+      "status": "completed",
+      "moves": 9,
+      "artifact": "game-13.json.gz"
+    },
+    {
+      "opponent": "synthetic-defensive",
+      "candidate_color": 0,
+      "status": "capped",
+      "moves": 12,
+      "artifact": "game-14.json.gz"
+    },
+    {
+      "opponent": "synthetic-defensive",
+      "candidate_color": 1,
+      "status": "completed",
+      "moves": 11,
+      "artifact": "game-15.json.gz"
+    }
+  ],
+  "holdout_exposures": [],
+  "limitations": "Short capped screening proves runnable contrasting behavior, not strength or independent trials."
+}
