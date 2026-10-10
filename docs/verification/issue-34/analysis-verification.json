@@ -1,0 +1,65 @@
+{
+  "command": "saved plan/results -> final inspect_run -> exact saved summary comparison",
+  "collector_sha256": "35cc8edb568d16cf4f3d8bc48503b3ef728a1d9e7606d6ed2fe40a39c60e280f",
+  "runs": [
+    {
+      "run": "experimental-effects",
+      "manifest_identity": "00f8c67197abe064a82fd4454aeedbc3a59b20372c39cf46a272efa7e77124a8",
+      "verified_summary": true,
+      "counts": {
+        "capped": 2,
+        "completed": 2,
+        "failed": 0,
+        "infrastructure_failed": 0,
+        "pending": 0,
+        "planned": 4
+      }
+    },
+    {
+      "run": "material",
+      "manifest_identity": "52de1d4e2e79a619a12a516697b9e8fa10c36121a8aa50a786c9b73588b02bfe",
+      "verified_summary": true,
+      "counts": {
+        "capped": 9,
+        "completed": 7,
+        "failed": 0,
+        "infrastructure_failed": 0,
+        "pending": 0,
+        "planned": 16
+      }
+    },
+    {
+      "run": "throughput-1",
+      "manifest_identity": "5b8bd4f8418e2e70f6a3db8e5412ee86ccd3f999669bb2baf88a96c963ddbeb2",
+      "verified_summary": true,
+      "counts": {
+        "capped": 4,
+        "completed": 0,
+        "failed": 0,
+        "infrastructure_failed": 0,
+        "pending": 0,
+        "planned": 4
+      }
+    },
+    {
+      "run": "throughput-2",
+      "manifest_identity": "5b8bd4f8418e2e70f6a3db8e5412ee86ccd3f999669bb2baf88a96c963ddbeb2",
+      "verified_summary": true,
+      "counts": {
+        "capped": 4,
+        "completed": 0,
+        "failed": 0,
+        "infrastructure_failed": 0,
+        "pending": 0,
+        "planned": 4
+      }
+    }
+  ],
+  "hardware_query": "{\n    \"Name\":  \"AMD Ryzen 3 3300X 4-Core Processor             \",\n    \"NumberOfCores\":  4,\n    \"NumberOfLogicalProcessors\":  8\n}\n",
+  "post_smoke_process_query": {
+    "command": "Get-CimInstance Win32_Process -Filter \"Name = 'python.exe'\" | Select-Object ProcessId,CommandLine",
+    "observed_processes": [],
+    "when": "after smoke exited; before final full-suite run"
+  },
+  "collector_review_changes": "Scheduled runs share recording logic; real player failures are reported separately from infrastructure completeness. Final saved-data analysis reproduced every collected summary."
+}

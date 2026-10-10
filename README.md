@@ -199,3 +199,14 @@ infrastructure errors and both-player crashes remain unresolved. See
 python3 -m offline.experiment_cli score --plan .scratch/official-run/manifest.json --results .scratch/official-run/results.json --output .scratch/match-scores.json
 python3 -m unittest tests.test_matches -q
 ```
+
+Phase 4's [acceptance evidence](docs/verification/issue-34.md) and
+[Phase 5 handoff](docs/phase-04-handoff.md) preserve controlled verification,
+the actual frozen candidate smoke league, protected pool snapshots, local
+throughput measurements, restoration and execution/reporting contracts.
+Rerun the bounded collector with a fresh output directory:
+
+```sh
+python3 -m verification.league_acceptance gates --output .scratch/new-phase04-gates
+python3 -m verification.league_acceptance smoke --output .scratch/new-phase04-smoke
+```

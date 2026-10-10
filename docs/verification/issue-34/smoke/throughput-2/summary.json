@@ -1,0 +1,110 @@
+{
+  "manifest_identity": "5b8bd4f8418e2e70f6a3db8e5412ee86ccd3f999669bb2baf88a96c963ddbeb2",
+  "counts": {
+    "completed": 0,
+    "failed": 0,
+    "capped": 4,
+    "infrastructure_failed": 0,
+    "planned": 4,
+    "pending": 0
+  },
+  "games": [
+    {
+      "game_id": "828a38d41128958ff7f28149285c33ec8070bac5f0de0d00479e888c2a09d120",
+      "opponent": "synthetic-capture",
+      "candidate_color": 0,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 8,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "e4a56180fec1bdc9720d7cba56274d1ea015724d1875f45b459ac2223b6b80e5",
+      "opponent": "synthetic-capture",
+      "candidate_color": 1,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 8,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "341be115a1e8dbce8887783be09064ea0402d698b102c5beeba962cc79bc0de7",
+      "opponent": "synthetic-pattern",
+      "candidate_color": 0,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 8,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "da9b6d46f33db9ee50394a9ea04509ae3462d65d12790f96759bc7d1b0ed0eae",
+      "opponent": "synthetic-pattern",
+      "candidate_color": 1,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 8,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    }
+  ],
+  "conditions": [
+    {
+      "python": "3.14.8",
+      "implementation": "CPython",
+      "platform": "Windows-10-10.0.19045-SP0",
+      "machine": "AMD64",
+      "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+      "cpu_count": 8,
+      "affinity": null,
+      "load_average": null,
+      "workers": 2,
+      "execution": "bounded game supervisor threads; isolated player subprocesses",
+      "clock": {
+        "implementation": "QueryPerformanceCounter()",
+        "monotonic": true,
+        "adjustable": false,
+        "resolution": 1e-07
+      },
+      "player_processes": 4,
+      "start_method": "fresh-python-subprocess",
+      "contention": "acceptance throughput probe; no other agent experiments; OS load uncontrolled",
+      "timing_comparison": "concurrent wall-clock; contention affects strength; unsuitable for final timing comparison",
+      "ram_bytes": 25700585472
+    }
+  ],
+  "wall_seconds": 4.296328200027347,
+  "observed_slots_per_second": 0.9310275690703842,
+  "completed_rule_games_per_second": 0.0,
+  "rating": {
+    "status": "deferred",
+    "reason": "No calibrated independent opponent pool; descriptive outcomes suffice. Caps and unresolved matches receive no rating outcomes; no class rank is inferred."
+  },
+  "averages": {
+    "micro": {
+      "numerator": 0,
+      "denominator": 0,
+      "value": null
+    },
+    "equal_opponent_macro": {
+      "numerator": 0,
+      "denominator": 0,
+      "value": null,
+      "unavailable_opponents": 2
+    },
+    "clean_game_micro": {
+      "numerator": 0,
+      "denominator": 0,
+      "value": null
+    },
+    "clean_game_equal_opponent_macro": {
+      "numerator": 0,
+      "denominator": 0,
+      "value": null,
+      "unavailable_opponents": 2
+    }
+  },
+  "candidate": "1137ab3676a0cf2e2bf41e609671107d07a004409cee2e6d12703b9f894b78c8"
+}

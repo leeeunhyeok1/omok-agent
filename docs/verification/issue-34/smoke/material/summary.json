@@ -1,0 +1,230 @@
+{
+  "manifest_identity": "52de1d4e2e79a619a12a516697b9e8fa10c36121a8aa50a786c9b73588b02bfe",
+  "counts": {
+    "completed": 7,
+    "failed": 0,
+    "capped": 9,
+    "infrastructure_failed": 0,
+    "planned": 16,
+    "pending": 0
+  },
+  "games": [
+    {
+      "game_id": "b57227e767943742c69638bd12aad60387e7ec16bbaa09f1c30e7fc62b101cc3",
+      "opponent": "phase1",
+      "candidate_color": 0,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 20,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "59cb57ddf76de28282e2f2f8a8103ab037de370c6aff0a3c7e96760a0d7290c4",
+      "opponent": "phase1",
+      "candidate_color": 1,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 20,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "343bc765770e41096f91ebfe81f800e32d049018f49388482b7f0462ac0d4b8e",
+      "opponent": "phase2",
+      "candidate_color": 0,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 20,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "a3702774507bc23a7771a66a084ea1a5dfa2d8cb73467754a3e5130119e756db",
+      "opponent": "phase2",
+      "candidate_color": 1,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 20,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "0f70ac62c883124b66033698a6a37ec454aed6d53d83734a6b51784bdf2b5b55",
+      "opponent": "synthetic-capture",
+      "candidate_color": 0,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 20,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "a1fe3e44b881739d5a20b114fb9a0dc5069914b6932e7d13fd90466a9fb08958",
+      "opponent": "synthetic-capture",
+      "candidate_color": 1,
+      "status": "completed",
+      "reason": "exact_five",
+      "moves": 11,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "246c41cc20358b3ab0dcc4a00168e1da19fddf369d921ed825722dcb1b651e34",
+      "opponent": "synthetic-pattern",
+      "candidate_color": 0,
+      "status": "completed",
+      "reason": "exact_five",
+      "moves": 10,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "c4b34aef13cca134bd41dc6b0bb3b7ebb6d0156b197a7d24ced20e5936e5cace",
+      "opponent": "synthetic-pattern",
+      "candidate_color": 1,
+      "status": "completed",
+      "reason": "exact_five",
+      "moves": 9,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "6f8df95344736116903f6953824b1a40a7bcd8375453226e84ccd5ba2e63815f",
+      "opponent": "synthetic-search2",
+      "candidate_color": 0,
+      "status": "completed",
+      "reason": "exact_five",
+      "moves": 10,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "7a47e32303cc03a112966f38215729d2544e71c21cd0427025be00cd313e6ec7",
+      "opponent": "synthetic-search2",
+      "candidate_color": 1,
+      "status": "completed",
+      "reason": "exact_five",
+      "moves": 9,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "23db1e82f51e5d3eb260db34eae99faf375e00b207c9ed89eb82ba300f5608a3",
+      "opponent": "synthetic-defensive",
+      "candidate_color": 0,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 20,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "bfadbe0bbd9e3ce78deeb41d6216352e6cc1110d4cfc48e754f1c119c0dd4e0e",
+      "opponent": "synthetic-defensive",
+      "candidate_color": 1,
+      "status": "completed",
+      "reason": "exact_five",
+      "moves": 11,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "4186f3f85b53e8f71e52c765009449fe2752368de915849cdbd952bbc3cb6750",
+      "opponent": "random",
+      "candidate_color": 0,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 20,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "73091a41f63001a328e931ead57b8d908301d52ab4e25d9b9b1b268ba97ec137",
+      "opponent": "random",
+      "candidate_color": 1,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 20,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "d362f134811b3fb3dac0fd642d1fe3d101be10fc623c98eea0a8c1b470ae64ea",
+      "opponent": "simple",
+      "candidate_color": 0,
+      "status": "completed",
+      "reason": "exact_five",
+      "moves": 12,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    },
+    {
+      "game_id": "909223c4ffb3abc4587ee2628866a506633d0d5781e56ccbd11e4645f39ab0de",
+      "opponent": "simple",
+      "candidate_color": 1,
+      "status": "capped",
+      "reason": "move_cap",
+      "moves": 20,
+      "independent_replay": true,
+      "all_workers_reaped": true
+    }
+  ],
+  "conditions": [
+    {
+      "python": "3.14.8",
+      "implementation": "CPython",
+      "platform": "Windows-10-10.0.19045-SP0",
+      "machine": "AMD64",
+      "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+      "cpu_count": 8,
+      "affinity": null,
+      "load_average": null,
+      "workers": 1,
+      "execution": "bounded game supervisor threads; isolated player subprocesses",
+      "clock": {
+        "implementation": "QueryPerformanceCounter()",
+        "monotonic": true,
+        "adjustable": false,
+        "resolution": 1e-07
+      },
+      "player_processes": 2,
+      "start_method": "fresh-python-subprocess",
+      "contention": "serial acceptance; no other agent experiments; external OS load uncontrolled",
+      "timing_comparison": "serial wall-clock; verify declared contention",
+      "ram_bytes": 25700585472
+    }
+  ],
+  "wall_seconds": 46.38713060005102,
+  "observed_slots_per_second": 0.3449232533469617,
+  "completed_rule_games_per_second": 0.15090392333929575,
+  "rating": {
+    "status": "deferred",
+    "reason": "No calibrated independent opponent pool; descriptive outcomes suffice. Caps and unresolved matches receive no rating outcomes; no class rank is inferred."
+  },
+  "averages": {
+    "micro": {
+      "numerator": 0,
+      "denominator": 7,
+      "value": 0.0
+    },
+    "equal_opponent_macro": {
+      "numerator": 0.0,
+      "denominator": 5,
+      "value": 0.0,
+      "unavailable_opponents": 3
+    },
+    "clean_game_micro": {
+      "numerator": 0,
+      "denominator": 7,
+      "value": 0.0
+    },
+    "clean_game_equal_opponent_macro": {
+      "numerator": 0.0,
+      "denominator": 5,
+      "value": 0.0,
+      "unavailable_opponents": 3
+    }
+  },
+  "candidate": "f5f912035b0acbdf4bd9b996c50ce5a3415698449fbb547cd8ebb354acba25c1"
+}
