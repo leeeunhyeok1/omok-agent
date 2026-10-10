@@ -1,0 +1,30 @@
+{
+  "memory": {
+    "TotalVisibleMemorySize": 25098228,
+    "FreePhysicalMemory": 12890280
+  },
+  "cpu": {
+    "Name": "AMD Ryzen 3 3300X 4-Core Processor             ",
+    "NumberOfCores": 4,
+    "NumberOfLogicalProcessors": 8
+  },
+  "observed_at": "2026-10-10T21:31:21.9244532+09:00",
+  "python_processes": [
+    {
+      "ProcessId": 18924,
+      "ParentProcessId": 15156,
+      "WorkingSetSize": 25903104
+    },
+    {
+      "ProcessId": 18588,
+      "ParentProcessId": 18924,
+      "WorkingSetSize": 40075264
+    },
+    {
+      "ProcessId": 9244,
+      "ParentProcessId": 18588,
+      "WorkingSetSize": 22839296
+    }
+  ],
+  "observation": "during correctness gates, before throughput; snapshot, not peak game memory"
+}

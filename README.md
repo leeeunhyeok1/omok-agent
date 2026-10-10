@@ -1,5 +1,13 @@
 # omok-agent
 
+Issue #36 adds a restorable frozen incumbent and bounded one-worker optimizer
+baseline collector. See [baseline commands and limits](docs/optimizer-baseline.md).
+
+```sh
+python -m verification.optimizer_baseline collect --output .scratch/baseline-run
+python -m verification.optimizer_baseline verify --output .scratch/baseline-run
+```
+
 Issue #33 adds saved matchup reports with explicit rate denominators, retained attempt
 history, clean-game views, family/duplicate coverage and separate runtime segments.
 See [report commands and limitations](docs/reports.md).

@@ -1,0 +1,32 @@
+{
+  "identity": "e101b2fc11cd53d21247dcd48fad82e2224333a71961ec58adee35e6d9dcb49f",
+  "restoration": "exact",
+  "isolated": true,
+  "no_site": true,
+  "resolved_player": {
+    "config": {
+      "candidates": "omok.search.legal_moves",
+      "max_depth": 8,
+      "max_nodes": 10000,
+      "ordering": null,
+      "profile_every": 0,
+      "table_capacity": 4096,
+      "tactics": {
+        "cap": 24,
+        "full_width": false,
+        "ordinary_rank": "omok.tactics.static_rank",
+        "radius": 2
+      },
+      "time_policy": {
+        "max_time_ms": 100.0,
+        "reserve_fraction": 0.5,
+        "return_margin_ms": 2.0,
+        "soft_fraction": 0.8,
+        "turn_fraction": 0.1
+      }
+    },
+    "engine": "iterative-negamax-v1",
+    "evaluation": null,
+    "evaluator": "omok.search.material_evaluation"
+  }
+}

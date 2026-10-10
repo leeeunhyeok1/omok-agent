@@ -1,0 +1,9 @@
+{
+  "observation": "after gates and throughput, before final suite; no Python workers observed",
+  "memory": {
+    "TotalVisibleMemorySize": 25098228,
+    "FreePhysicalMemory": 13603596
+  },
+  "observed_at": "2026-10-10T21:33:10.6562997+09:00",
+  "python_processes": []
+}
