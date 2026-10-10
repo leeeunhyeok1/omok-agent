@@ -228,3 +228,8 @@ Rerun the bounded collector with a fresh output directory:
 python3 -m verification.league_acceptance gates --output .scratch/new-phase04-gates
 python3 -m verification.league_acceptance smoke --output .scratch/new-phase04-smoke
 ```
+
+Phase 5 supports [bounded optimizer stop/resume](docs/optimizer.md) over immutable
+proposals and training cohorts. Resume preserves committed attempts, proposal RNG
+state, ancestry, decisions, and execution provenance. See the command examples
+and abrupt-owner-death limits in that contract.

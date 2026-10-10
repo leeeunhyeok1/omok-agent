@@ -358,7 +358,10 @@ def run_batch(plan: ExperimentPlan, *, output: Path | None, resume: bool,
                 if not future.cancelled():
                     failure = future.exception()
                     if failure is None:
-                        evidence['discarded_result'] = future.result()
+                        # A stop ends dispatch, not ownership of already verified evidence.
+                        checkpoint.commit(attempt, future.result())
+                        if attempt['game_id'] not in segment['completion_order']:
+                            segment['completion_order'].append(attempt['game_id'])
                     else:
                         for key in ('interrupted_trace', 'interrupted_preflight', 'scheduling'):
                             if hasattr(failure, key):

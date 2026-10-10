@@ -1,0 +1,25 @@
+{
+  "partial": {
+    "planned_jobs": 4,
+    "committed_jobs": 1,
+    "pending_jobs": 3,
+    "attempts": 1
+  },
+  "final": {
+    "planned_jobs": 4,
+    "committed_jobs": 4,
+    "pending_jobs": 0,
+    "attempts": 4
+  },
+  "again": {
+    "planned_jobs": 4,
+    "committed_jobs": 4,
+    "pending_jobs": 0,
+    "attempts": 4
+  },
+  "same_population": true,
+  "same_decisions": true,
+  "same_evidence": true,
+  "promotion": false,
+  "limitation": "fixed tactical fixture, one-ply caps, missing external gates; recovery evidence only"
+}
