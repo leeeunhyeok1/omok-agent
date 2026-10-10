@@ -137,8 +137,14 @@ class MeasurementTests(unittest.TestCase):
         evidence = Path('docs/verification/issue-22')
         with TemporaryDirectory() as directory:
             output = Path(directory)
-            (output / 'gate.json').write_text((evidence / 'gate.json').read_text())
+            # Issue #28: this test isolates changed batch identity, independently
+            # of historical byte hashes (including Windows checkout line endings).
+            from offline.measurement import engine_sources
+            gate = json.loads((evidence / 'gate.json').read_text())
+            gate['engine_source_sha256'] = engine_sources()
+            (output / 'gate.json').write_text(json.dumps(gate))
             report = json.loads((evidence / 'integration.json').read_text())
+            report['engine_source_sha256'] = engine_sources()
             report['batch_identity'] = {'configurations': 'changed', 'opponents': 'changed'}
             (output / 'integration.json').write_text(json.dumps(report))
             result = subprocess.run([sys.executable, '-m', 'verification.evaluation_acceptance',

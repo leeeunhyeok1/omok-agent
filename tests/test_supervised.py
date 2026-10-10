@@ -90,6 +90,28 @@ class SupervisedTests(unittest.TestCase):
             PlayerSpec('tests.test_supervised', 'StatefulPlayer'), move_cap=2)
         self.assertEqual(len(fresh['moves']), 2)
 
+    def test_early_socket_timeout_waits_for_authoritative_deadline_and_replays(self):
+        # Issue #28: some transports report timeout before the monotonic deadline.
+        # Inject that OS event at the socket boundary, never into runner internals.
+        import socket
+        original_recv = socket.socket.recv
+        early = [False]
+
+        def receive_early(connection, *args, **kwargs):
+            if not early[0] and connection.gettimeout() is not None and connection.gettimeout() < .1:
+                early[0] = True
+                raise TimeoutError('controlled early transport timeout')
+            return original_recv(connection, *args, **kwargs)
+
+        with patch.object(socket.socket, 'recv', receive_early):
+            trace = run_supervised_game(
+                PlayerSpec('tests.test_supervised', 'BrokenPlayer', {'behavior': 'loop'}),
+                PlayerSpec('tests.test_supervised', 'StatefulPlayer'), budgets_ms=(40, 100))
+        self.assertTrue(early[0])
+        self.assertEqual(trace['reason'], 'timeout')
+        self.assertGreaterEqual(trace['failure']['elapsed_ms'], 40)
+        replay(trace)
+
     def test_broken_players_have_distinct_failures_and_never_change_valid_state(self):
         for behavior, reason in (('raise', 'exception'), ('exit', 'player_exit'),
                 ('mutate', 'mutation'), ('malformed', 'invalid_move'), ('occupied', 'invalid_move')):

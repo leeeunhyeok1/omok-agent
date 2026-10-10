@@ -4,7 +4,8 @@ import argparse
 import json
 from pathlib import Path
 
-from offline.experiments import ExperimentPlan, MODES, run_experiment
+from offline.experiments import ExperimentPlan, MODES, run_experiment, save_new_json
+from offline.matches import score_experiment
 from offline.registry import Entry, PoolSnapshot, PURPOSES
 from offline.supervised import Supervision
 from omok.simulator import Position
@@ -34,8 +35,21 @@ def main() -> None:
     run = commands.add_parser('run')
     run.add_argument('--plan', type=Path, required=True)
     run.add_argument('--output', type=Path, required=True, help='New directory for manifest, job records and results')
+    # AI-written by OpenAI Codex, for issue #28.
+    score = commands.add_parser('score', help='Score saved raw results, including partial runs')
+    score.add_argument('--plan', type=Path, required=True)
+    score.add_argument('--results', type=Path, required=True)
+    score.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     try:
+        if args.command == 'score':
+            report = score_experiment(ExperimentPlan.load(args.plan),
+                json.loads(args.results.read_text(encoding='utf-8')))
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            save_new_json(args.output, report)
+            print(json.dumps({'matches': len(report['matches']),
+                              'unresolved': sum(not m['complete'] for m in report['matches'])}))
+            return
         if args.command == 'run':
             result = run_experiment(ExperimentPlan.load(args.plan), output=args.output)
             print(json.dumps(result['counts']))

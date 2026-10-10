@@ -175,3 +175,14 @@ python3 -m offline.experiment_cli plan --registry .scratch/registry-v1.json --ca
 python3 -m offline.experiment_cli run --plan .scratch/official-plan.json --output .scratch/official-run
 python3 -m unittest tests.test_experiments -q
 ```
+
+Issue #28 adds separate qualification, tournament and coin decisions while
+preserving raw game outcomes and execution failures. Missing slots, caps,
+infrastructure errors and both-player crashes remain unresolved. See
+[the scoring policy and commands](docs/matches.md) and
+[acceptance evidence](docs/verification/issue-28.md).
+
+```sh
+python3 -m offline.experiment_cli score --plan .scratch/official-run/manifest.json --results .scratch/official-run/results.json --output .scratch/match-scores.json
+python3 -m unittest tests.test_matches -q
+```

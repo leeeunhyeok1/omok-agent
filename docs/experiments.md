@@ -96,10 +96,12 @@ are labeled `no-player-turns`. Fixture turn attempts are separately labeled.
 
 Caps, setup and infrastructure errors are not assigned player losses or rules
 draws. Player errors retain the offending color and raw reason. The saved failure
-policy deliberately performs no match scoring: eight-game aggregation/crash
-match overrides, checkpoints/resume and ratings are separate phase tickets.
+policy deliberately performs no scoring on the raw facts. Issue #28 adds a
+separate, versioned scoring report; checkpoints/resume and ratings remain later
+tickets. See [eight-game scoring](matches.md) for the interpretation and limits.
 
 The output directory contains the manifest, one file per completed slot, and a
-final results file. These exclusive writes preserve evidence but are not an atomic
+final results file and `match-scores.json`. The returned/final results also contain
+an additive `match_scores` report. These exclusive writes preserve evidence but are not an atomic
 checkpoint/resume protocol. On interruption, the manifest still lists every slot;
 only written per-game records establish completed execution.

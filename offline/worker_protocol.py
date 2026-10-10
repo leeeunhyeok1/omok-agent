@@ -29,7 +29,14 @@ def receive(connection: socket.socket, deadline: float) -> dict[str, Any]:
             if remaining <= 0:
                 raise TimeoutError('Worker deadline expired.')
             connection.settimeout(remaining)
-            chunk = connection.recv(count - len(data))
+            # Issue #28: socket timeout rounding can fire before the authoritative
+            # monotonic deadline. Retain partial frames and wait out the budget.
+            try:
+                chunk = connection.recv(count - len(data))
+            except TimeoutError:
+                if monotonic() < deadline:
+                    continue
+                raise
             if not chunk:
                 raise EOFError('Worker connection closed.')
             data.extend(chunk)

@@ -30,7 +30,8 @@ def execution_conditions() -> dict[str, Any]:
     observed = conditions()
     observed.update(execution='serial games; two persistent player subprocesses', player_processes=2)
     try:
-        observed['ram_bytes'] = os.sysconf('SC_PHYS_PAGES') * os.sysconf('SC_PAGE_SIZE')
+        sysconf = getattr(os, 'sysconf')
+        observed['ram_bytes'] = sysconf('SC_PHYS_PAGES') * sysconf('SC_PAGE_SIZE')
     except (AttributeError, OSError, ValueError):
         observed['ram_bytes'] = None
     return observed
@@ -198,7 +199,9 @@ class ExperimentPlan:
 
 
 def run_experiment(plan: ExperimentPlan, *, output: Path | None = None) -> dict[str, Any]:
-    """Execute every planned slot once; retain raw facts without match scoring/retries."""
+    """Execute each slot once, retaining raw facts beside a separate scoring report."""
+    # Issue #28: scoring has its own versioned policy; saved raw plans remain readable.
+    from offline.matches import score_experiment
     from offline.supervised import preflight_player, run_supervised_game
 
     plan = ExperimentPlan.from_record(plan.record())
@@ -263,6 +266,8 @@ def run_experiment(plan: ExperimentPlan, *, output: Path | None = None) -> dict[
         result['results'].append(record)
         if output is not None:
             save_new_json(output / (job['game_id'] + '.json'), record)
+    result['match_scores'] = score_experiment(plan, result)
     if output is not None:
         save_new_json(output / 'results.json', result)
+        save_new_json(output / 'match-scores.json', result['match_scores'])
     return result

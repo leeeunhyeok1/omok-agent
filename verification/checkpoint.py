@@ -95,7 +95,8 @@ def restore(ref: str, phase: str) -> dict[str, Any]:
         root = Path(directory)
         with tarfile.open(fileobj=io.BytesIO(archive)) as stream:
             stream.extractall(root, filter='data')
-        hashes = {str(path.relative_to(root)): sha256(path.read_bytes()).hexdigest()
+        # Issue #28: portable report keys must match the slash-separated lookups.
+        hashes = {path.relative_to(root).as_posix(): sha256(path.read_bytes()).hexdigest()
                   for path in sorted(root.rglob('*')) if path.is_file()}
         command = [sys.executable, '-I', '-S', '-B', str(Path(__file__).resolve()),
                    '--probe', str(root), '--phase', phase]
