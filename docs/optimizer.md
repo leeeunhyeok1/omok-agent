@@ -6,8 +6,9 @@ AI-written by OpenAI Codex for #39, under Phase 5 (#35).
 prepared #38 training stage. Prepare proposals and the matching stage through
 those APIs first; the stage must contain precisely the unique proposed candidates
 and the recorded incumbent parent. This command evaluates one fixed cohort.
-Advancement is screening only; broader confirmation, promotion, and adaptive
-multi-generation scheduling are subsequent work.
+Advancement is screening only. The recorded survivors and raw results can feed
+the [broader training league](league.md); fresh confirmation, promotion, and
+adaptive multi-generation scheduling are subsequent work.
 
 ```sh
 python -m offline.optimizer create --proposals .scratch/population/proposals.json --stage .scratch/stage --output .scratch/optimizer

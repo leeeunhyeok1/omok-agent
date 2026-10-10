@@ -1,5 +1,9 @@
 # omok-agent
 
+Issue #40 adds broader balanced survivor rounds, permanent champion source
+archives, recorded historical rotation and family/color/matchup regression gates.
+See [the broader training league](docs/league.md).
+
 Issue #38 adds predeclared balanced training screening, retained failure gates,
 explicit incomplete fitness, and incumbent retention. See [screening](docs/screening.md).
 

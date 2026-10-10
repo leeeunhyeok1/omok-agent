@@ -1,0 +1,66 @@
+{
+  "incumbent": "8892fb5fde2c97a948c878adae4df57d01685cd8f19ac66f88971d6e05178a79",
+  "candidate": "f0a3418e91a691b58519a69a6987a75f692ab4d60da007024e465fa05117ec41",
+  "candidates": {
+    "8892fb5fde2c97a948c878adae4df57d01685cd8f19ac66f88971d6e05178a79": {
+      "status": "retain",
+      "fitness": 0.5,
+      "gain": 0.0,
+      "reasons": [],
+      "by_family": {
+        "capture-collection": 0.5,
+        "line-pattern": 0.5,
+        "omok": 0.5
+      },
+      "by_color": {
+        "black": 1.0,
+        "white": 0.0
+      },
+      "worst_matchup": 0.5,
+      "reliability_samples": {
+        "committed_attempts": 8,
+        "candidate_failure_attempts": 0
+      }
+    },
+    "f0a3418e91a691b58519a69a6987a75f692ab4d60da007024e465fa05117ec41": {
+      "status": "fail",
+      "fitness": 0.5,
+      "gain": 0.0,
+      "reasons": [
+        "insufficient_favorable_gain"
+      ],
+      "by_family": {
+        "capture-collection": 0.5,
+        "line-pattern": 0.5,
+        "omok": 0.5
+      },
+      "by_color": {
+        "black": 1.0,
+        "white": 0.0
+      },
+      "worst_matchup": 0.5,
+      "reliability_samples": {
+        "committed_attempts": 8,
+        "candidate_failure_attempts": 0
+      }
+    }
+  },
+  "partial_statuses": {
+    "8892fb5fde2c97a948c878adae4df57d01685cd8f19ac66f88971d6e05178a79": "inconclusive",
+    "f0a3418e91a691b58519a69a6987a75f692ab4d60da007024e465fa05117ec41": "inconclusive"
+  },
+  "resumed_samples_unchanged": true,
+  "history_coverage": {
+    "857c6eeff73340d851500381309a77f22a794eda387a1597788a2a425db880c1": {
+      "due": true,
+      "complete": true
+    }
+  },
+  "replayed_traces": 16,
+  "elapsed_seconds": 52.46555580000859,
+  "advanced": [],
+  "promotion": false,
+  "validation_exposures": [],
+  "holdout_exposures": [],
+  "limitations": "Controlled screening admission; 16 actual reduced-clock jobs from one easy legal opening, two synthetic designs plus incumbent and retained phase2. No full-game strength, promotion or official-clock claim."
+}

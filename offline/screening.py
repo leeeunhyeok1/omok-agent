@@ -292,6 +292,12 @@ def member_evidence(member: dict[str, Any], stage: dict[str, Any], raw: dict[str
 def assess(output: Path, raw: dict[str, dict[str, Any]]) -> dict[str, Any]:
     """Interpret controlled or saved execution results using the already saved policy."""
     stage = load_stage(output)
+    return assess_stage(stage, raw)
+
+
+def assess_stage(stage: dict[str, Any], raw: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    """Assess an embedded immutable stage, retaining the same validation boundary."""
+    validate_stage(stage)
     expected = {r['identity'] for m in stage['members'] for r in m['plans']}
     if set(raw) - expected:
         raise ValueError('Foreign cohort evidence.')
