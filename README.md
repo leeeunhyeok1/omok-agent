@@ -165,3 +165,13 @@ python3 -m offline.registry_cli freeze --output .scratch/registry-v1.json
 python3 -m offline.registry_cli play --registry .scratch/registry-v1.json --candidate phase3-material --opponent random --move-cap 20 --output .scratch/registered-game.json
 python3 -m unittest tests.test_registry -q
 ```
+
+Issue #27 adds saved color-balanced experiment plans and serial execution with
+stable game identities, paired seeds/openings, explicit modes and exposure records.
+See [the experiment API and commands](docs/experiments.md).
+
+```sh
+python3 -m offline.experiment_cli plan --registry .scratch/registry-v1.json --candidate phase2 --opponent random --mode official --output .scratch/official-plan.json
+python3 -m offline.experiment_cli run --plan .scratch/official-plan.json --output .scratch/official-run
+python3 -m unittest tests.test_experiments -q
+```

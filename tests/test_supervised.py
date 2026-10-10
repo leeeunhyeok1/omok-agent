@@ -123,7 +123,8 @@ class SupervisedTests(unittest.TestCase):
                 (PlayerSpec('tests.test_supervised', 'BrokenPlayer', {'behavior': 'constructor_raise'}), 'player_setup'),
                 (PlayerSpec('nonexistent_issue25_module', 'Player'), 'player_setup')):
             trace = run_supervised_game(spec, PlayerSpec('tests.test_supervised', 'StatefulPlayer'),
-                supervision=Supervision(startup_ms=200, cleanup_ms=100))
+                # Allow normal process/import startup before classifying setup defects.
+                supervision=Supervision(startup_ms=1000, cleanup_ms=100))
             self.assertEqual((trace['status'], trace['reason']), ('setup_failed', reason))
             self.assertEqual(trace['remaining_ms'], [60000, 60000])
             self.assertTrue(all(w['reaped'] for w in trace['workers']))
