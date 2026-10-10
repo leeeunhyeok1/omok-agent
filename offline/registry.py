@@ -74,6 +74,12 @@ class Entry:
             if (not isinstance(value, str) or Path(value).is_absolute()
                     or '..' in Path(value).parts or value not in data['sources']):
                 raise RegistryError('Evaluator path must identify a verified asset inside the source snapshot.')
+        if 'candidate_configuration' in data['options']:
+            from offline.proposals import validate_configuration
+            if (set(data['options']) != {'candidate_configuration'}
+                    or (data['loader']['module'], data['loader']['factory']) != ('omok.player', 'IterativePlayer')):
+                raise RegistryError('Candidate settings require the supported IterativePlayer adapter.')
+            validate_configuration(data['options']['candidate_configuration'])
         object.__setattr__(self, 'definition', canonical(data))
 
     @property

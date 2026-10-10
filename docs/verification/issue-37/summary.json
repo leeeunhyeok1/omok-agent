@@ -1,0 +1,1862 @@
+{
+  "identity": "ac5767a27fdbc9512ebbe909a6fe5e87c1ab1115ff60589cc367e98f0b5b452d",
+  "pilot": {
+    "format": "omok-proposal-pilot-v1",
+    "parent": {
+      "identity": "7c5d3ddd848693884cb69598a068dd59f2a632c376de12eb6906847cf8eb9525",
+      "acknowledgment": "Local AI-written engine",
+      "adapter_sources": {
+        "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+        "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+        "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+        "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+        "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+        "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+        "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+        "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+        "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+        "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+        "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+        "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+        "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+        "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+        "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+        "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+        "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+        "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+        "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+        "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+        "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+        "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+        "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+        "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+      },
+      "availability": "ready",
+      "color_mapping": {
+        "black": 0,
+        "constructor": "color",
+        "white": 1
+      },
+      "dependencies": [],
+      "diagnostics": [
+        "search"
+      ],
+      "family": "omok",
+      "limitations": "Related engine versions; deterministic duplicates are not independent evidence.",
+      "loader": {
+        "commit": "105a8f64edaeb86082425c1fecb12932c06c4367",
+        "factory": "IterativePlayer",
+        "kind": "checkpoint",
+        "module": "omok.player",
+        "paths": [
+          "omok",
+          "players"
+        ]
+      },
+      "logical_id": "phase3-material",
+      "options": {},
+      "origin": "retained-engine",
+      "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+      "seed_support": "deterministic",
+      "source_paths": [
+        "omok",
+        "players"
+      ],
+      "sources": {
+        "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+        "omok/captures.py": "f4e394e5b362dee5b67214860e8ab67490057857d44b35dc2c568f9c057694ec",
+        "omok/evaluation.py": "14f51744a307d918ddea8313a630695f44698c82a578b0a0c2c35d958f44a7f9",
+        "omok/lines.py": "26f99a150f969fc690196203232454c403747d6b29ab418bb320d7e625eadbf5",
+        "omok/measurement.py": "22e9f0c38e023168d853c60707e6aba41a3f97af03efa89ff5df2981a9833065",
+        "omok/player.py": "a50affac85c9c97686118d3712866849a5e2a3c75383c4b0db26b52d36ee8dd6",
+        "omok/search.py": "43ff298f9d2930bc6a4d16a362dd974bfb3e09f438b92541264ad51ddf14b84b",
+        "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b",
+        "omok/tactics.py": "7ddd482d4899c8dcf746442ac16ca77a1ef57709e23ff553eb882699d3a026e7",
+        "omok/threat_effects.py": "f56032d47fe4268eb3bda37d823b4d0ec583c9f7d4c2cd56356193e2d404af53",
+        "omok/transposition.py": "cf2f451b0282ea7369484f60e6bf14e3dc7cd2d0b8f54cfa6541e8595cdb0c05",
+        "players/player.py": "d481f46f20ab553168e5e049b1131f361a2f45603b5e3e85833532944d739a6f",
+        "players/randomplayer.py": "d0136d6f19abdfc5cdbb88e899be27b8e9935c392fc936b21e0c44ed6de9909f",
+        "players/simpleplayer.py": "25f5057a33e202ad851b531d770bac336e48264b8d83d2eb43697252a0a8bf1f"
+      },
+      "variant": "phase3-material"
+    },
+    "parent_configuration": {
+      "evaluation": {
+        "coefficients": {
+          "material": 1
+        },
+        "enabled_families": [
+          "material"
+        ],
+        "feature_version": "material-v1"
+      },
+      "settings": {
+        "candidate_cap": 24,
+        "candidate_radius": 2,
+        "extensions": "none",
+        "full_width": false,
+        "max_depth": 8,
+        "max_nodes": 10000,
+        "ordering": "omok.tactics.static_rank",
+        "table_capacity": 4096,
+        "time_policy": {
+          "max_time_ms": 100.0,
+          "reserve_fraction": 0.5,
+          "return_margin_ms": 2.0,
+          "soft_fraction": 0.8,
+          "turn_fraction": 0.1
+        }
+      }
+    },
+    "pool_snapshot": {
+      "identity": "fc839069922951400e5f2a11dfa7bd34cf218bc32ff7ec3b6fb1b6e397ce2249",
+      "pools": {
+        "holdout": [
+          {
+            "acknowledgment": "Locally authored by OpenAI Codex for issue #30; no external strategy source.",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [],
+            "family": "space-filling",
+            "identity": "25c50b0a3d92274223facfebb32aa8847ddb2694f8713a506a436f0f7f3c0beb",
+            "limitations": "Maximize distance from occupied cells; reserved, unplayed design. Shared rules, source bundle and line utilities limit independent family coverage; see docs/synthetic.md.",
+            "loader": {
+              "factory": "create",
+              "kind": "local",
+              "module": "offline.synthetic",
+              "root": "."
+            },
+            "logical_id": "synthetic-space",
+            "options": {
+              "strategy": "space"
+            },
+            "origin": "synthetic",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "deterministic",
+            "source_paths": [
+              "offline",
+              "omok/__init__.py",
+              "omok/simulator.py"
+            ],
+            "sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b",
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b"
+            },
+            "variant": "space-v1"
+          }
+        ],
+        "training": [
+          {
+            "acknowledgment": "Local AI-written engine",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [],
+            "family": "omok",
+            "identity": "831c6857bf0bb17501bb6ced94ff88152841bbdc0ca7d50c07284f8d7ad6ef06",
+            "limitations": "Related engine versions; deterministic duplicates are not independent evidence.",
+            "loader": {
+              "commit": "c0c56fa40826719794f0765fd35464a5c0174cc3",
+              "factory": "LegalBaseline",
+              "kind": "checkpoint",
+              "module": "omok.player",
+              "paths": [
+                "omok",
+                "players"
+              ]
+            },
+            "logical_id": "phase1",
+            "options": {},
+            "origin": "retained-engine",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "deterministic",
+            "source_paths": [
+              "omok",
+              "players"
+            ],
+            "sources": {
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/player.py": "1ab7009f69e21c919f97bd5d1b9ead9f66f9e9c055e3e798df107119eea5039e",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b",
+              "players/player.py": "d481f46f20ab553168e5e049b1131f361a2f45603b5e3e85833532944d739a6f",
+              "players/randomplayer.py": "d0136d6f19abdfc5cdbb88e899be27b8e9935c392fc936b21e0c44ed6de9909f",
+              "players/simpleplayer.py": "25f5057a33e202ad851b531d770bac336e48264b8d83d2eb43697252a0a8bf1f"
+            },
+            "variant": "phase1-baseline"
+          },
+          {
+            "acknowledgment": "Local AI-written engine",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [
+              "search"
+            ],
+            "family": "omok",
+            "identity": "9d155dec594319e93dc2d3045b982fef701bcf14f85d03a552f8a20eda2ec0aa",
+            "limitations": "Related engine versions; deterministic duplicates are not independent evidence.",
+            "loader": {
+              "commit": "798963cae696eead8353232d1cc8c289cce473a9",
+              "factory": "IterativePlayer",
+              "kind": "checkpoint",
+              "module": "omok.player",
+              "paths": [
+                "omok",
+                "players"
+              ]
+            },
+            "logical_id": "phase2",
+            "options": {},
+            "origin": "retained-engine",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "deterministic",
+            "source_paths": [
+              "omok",
+              "players"
+            ],
+            "sources": {
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/player.py": "822a4e50a10f675423b3c1b80833ef4209100f917ba5202189d8a0ce6a33fbd4",
+              "omok/search.py": "c6d2e8358e2cd08ae18c31934cc61d98fb170b6d19c2b2697ea8e4fe31085f42",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b",
+              "omok/tactics.py": "7ddd482d4899c8dcf746442ac16ca77a1ef57709e23ff553eb882699d3a026e7",
+              "omok/transposition.py": "cf2f451b0282ea7369484f60e6bf14e3dc7cd2d0b8f54cfa6541e8595cdb0c05",
+              "players/player.py": "d481f46f20ab553168e5e049b1131f361a2f45603b5e3e85833532944d739a6f",
+              "players/randomplayer.py": "d0136d6f19abdfc5cdbb88e899be27b8e9935c392fc936b21e0c44ed6de9909f",
+              "players/simpleplayer.py": "25f5057a33e202ad851b531d770bac336e48264b8d83d2eb43697252a0a8bf1f"
+            },
+            "variant": "phase2-material"
+          },
+          {
+            "acknowledgment": "Local AI-written engine",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [
+              "search"
+            ],
+            "family": "omok",
+            "identity": "b662d6fa76c45c12765f3a2d681b1a9f06617ea4ed6b63f50fd02de7e8c20942",
+            "limitations": "Related engine versions; deterministic duplicates are not independent evidence.",
+            "loader": {
+              "commit": "105a8f64edaeb86082425c1fecb12932c06c4367",
+              "factory": "IterativePlayer",
+              "kind": "checkpoint",
+              "module": "omok.player",
+              "paths": [
+                "omok",
+                "players",
+                "configs"
+              ]
+            },
+            "logical_id": "phase3-effects",
+            "options": {
+              "evaluation_path": "configs/effects-v1.json"
+            },
+            "origin": "retained-engine",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "deterministic",
+            "source_paths": [
+              "omok",
+              "players",
+              "configs"
+            ],
+            "sources": {
+              "configs/capture-v1.json": "d32429ef4c6e505776d9e1926f38247d364e1b0f78896c659adb82bce4a97ed6",
+              "configs/effects-v1.json": "308ab3a757bfcf89f3d6ef314c8914ac42197b8b01881402b3796964b70e127f",
+              "configs/lines-v1.json": "6e2e202e186ce8a2c5a4fb9430916f4f1f6b53423b267f57f72489fb113a33e1",
+              "configs/material-v1.json": "cfb06f7944e05b9a28f36043dd7ea40d9b3ab1c76128a7dac35919da0b4ef2c2",
+              "configs/potential-v1.json": "6637ae8fdce1dbcfbe599b84c1a445c85de863bf540f0011779b6bbb7c3106f1",
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/captures.py": "f4e394e5b362dee5b67214860e8ab67490057857d44b35dc2c568f9c057694ec",
+              "omok/evaluation.py": "14f51744a307d918ddea8313a630695f44698c82a578b0a0c2c35d958f44a7f9",
+              "omok/lines.py": "26f99a150f969fc690196203232454c403747d6b29ab418bb320d7e625eadbf5",
+              "omok/measurement.py": "22e9f0c38e023168d853c60707e6aba41a3f97af03efa89ff5df2981a9833065",
+              "omok/player.py": "a50affac85c9c97686118d3712866849a5e2a3c75383c4b0db26b52d36ee8dd6",
+              "omok/search.py": "43ff298f9d2930bc6a4d16a362dd974bfb3e09f438b92541264ad51ddf14b84b",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b",
+              "omok/tactics.py": "7ddd482d4899c8dcf746442ac16ca77a1ef57709e23ff553eb882699d3a026e7",
+              "omok/threat_effects.py": "f56032d47fe4268eb3bda37d823b4d0ec583c9f7d4c2cd56356193e2d404af53",
+              "omok/transposition.py": "cf2f451b0282ea7369484f60e6bf14e3dc7cd2d0b8f54cfa6541e8595cdb0c05",
+              "players/player.py": "d481f46f20ab553168e5e049b1131f361a2f45603b5e3e85833532944d739a6f",
+              "players/randomplayer.py": "d0136d6f19abdfc5cdbb88e899be27b8e9935c392fc936b21e0c44ed6de9909f",
+              "players/simpleplayer.py": "25f5057a33e202ad851b531d770bac336e48264b8d83d2eb43697252a0a8bf1f"
+            },
+            "variant": "phase3-experimental-effects"
+          },
+          {
+            "acknowledgment": "Local AI-written engine",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [
+              "search"
+            ],
+            "family": "omok",
+            "identity": "7c5d3ddd848693884cb69598a068dd59f2a632c376de12eb6906847cf8eb9525",
+            "limitations": "Related engine versions; deterministic duplicates are not independent evidence.",
+            "loader": {
+              "commit": "105a8f64edaeb86082425c1fecb12932c06c4367",
+              "factory": "IterativePlayer",
+              "kind": "checkpoint",
+              "module": "omok.player",
+              "paths": [
+                "omok",
+                "players"
+              ]
+            },
+            "logical_id": "phase3-material",
+            "options": {},
+            "origin": "retained-engine",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "deterministic",
+            "source_paths": [
+              "omok",
+              "players"
+            ],
+            "sources": {
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/captures.py": "f4e394e5b362dee5b67214860e8ab67490057857d44b35dc2c568f9c057694ec",
+              "omok/evaluation.py": "14f51744a307d918ddea8313a630695f44698c82a578b0a0c2c35d958f44a7f9",
+              "omok/lines.py": "26f99a150f969fc690196203232454c403747d6b29ab418bb320d7e625eadbf5",
+              "omok/measurement.py": "22e9f0c38e023168d853c60707e6aba41a3f97af03efa89ff5df2981a9833065",
+              "omok/player.py": "a50affac85c9c97686118d3712866849a5e2a3c75383c4b0db26b52d36ee8dd6",
+              "omok/search.py": "43ff298f9d2930bc6a4d16a362dd974bfb3e09f438b92541264ad51ddf14b84b",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b",
+              "omok/tactics.py": "7ddd482d4899c8dcf746442ac16ca77a1ef57709e23ff553eb882699d3a026e7",
+              "omok/threat_effects.py": "f56032d47fe4268eb3bda37d823b4d0ec583c9f7d4c2cd56356193e2d404af53",
+              "omok/transposition.py": "cf2f451b0282ea7369484f60e6bf14e3dc7cd2d0b8f54cfa6541e8595cdb0c05",
+              "players/player.py": "d481f46f20ab553168e5e049b1131f361a2f45603b5e3e85833532944d739a6f",
+              "players/randomplayer.py": "d0136d6f19abdfc5cdbb88e899be27b8e9935c392fc936b21e0c44ed6de9909f",
+              "players/simpleplayer.py": "25f5057a33e202ad851b531d770bac336e48264b8d83d2eb43697252a0a8bf1f"
+            },
+            "variant": "phase3-material"
+          },
+          {
+            "acknowledgment": "Professor-provided source; recovered Player base, see issue #7.",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [],
+            "family": "provided-random",
+            "identity": "6754e8c084d55072a12ef11a705037e8ccbe6e4ff37d33e93a94e357c1d0bf80",
+            "limitations": "Already exposed during development; not reserved validation/holdout evidence.",
+            "loader": {
+              "factory": "create",
+              "kind": "local",
+              "module": "offline.worker_players",
+              "root": "."
+            },
+            "logical_id": "random",
+            "options": {
+              "name": "random",
+              "supplied": true
+            },
+            "origin": "professor-provided",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "process-global",
+            "source_paths": [
+              "omok",
+              "offline",
+              "players"
+            ],
+            "sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b",
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/captures.py": "f4e394e5b362dee5b67214860e8ab67490057857d44b35dc2c568f9c057694ec",
+              "omok/evaluation.py": "14f51744a307d918ddea8313a630695f44698c82a578b0a0c2c35d958f44a7f9",
+              "omok/lines.py": "26f99a150f969fc690196203232454c403747d6b29ab418bb320d7e625eadbf5",
+              "omok/measurement.py": "22e9f0c38e023168d853c60707e6aba41a3f97af03efa89ff5df2981a9833065",
+              "omok/player.py": "a50affac85c9c97686118d3712866849a5e2a3c75383c4b0db26b52d36ee8dd6",
+              "omok/search.py": "43ff298f9d2930bc6a4d16a362dd974bfb3e09f438b92541264ad51ddf14b84b",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b",
+              "omok/tactics.py": "7ddd482d4899c8dcf746442ac16ca77a1ef57709e23ff553eb882699d3a026e7",
+              "omok/threat_effects.py": "f56032d47fe4268eb3bda37d823b4d0ec583c9f7d4c2cd56356193e2d404af53",
+              "omok/transposition.py": "cf2f451b0282ea7369484f60e6bf14e3dc7cd2d0b8f54cfa6541e8595cdb0c05",
+              "players/player.py": "d481f46f20ab553168e5e049b1131f361a2f45603b5e3e85833532944d739a6f",
+              "players/randomplayer.py": "d0136d6f19abdfc5cdbb88e899be27b8e9935c392fc936b21e0c44ed6de9909f",
+              "players/simpleplayer.py": "25f5057a33e202ad851b531d770bac336e48264b8d83d2eb43697252a0a8bf1f"
+            },
+            "variant": "v1"
+          },
+          {
+            "acknowledgment": "Professor-provided source; recovered Player base, see issue #7.",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [],
+            "family": "provided-simple",
+            "identity": "83cb1523cd512d16c83b51499c5727985299348f6f4590342a7a1f913b8c7a0a",
+            "limitations": "Already exposed during development; not reserved validation/holdout evidence.",
+            "loader": {
+              "factory": "create",
+              "kind": "local",
+              "module": "offline.worker_players",
+              "root": "."
+            },
+            "logical_id": "simple",
+            "options": {
+              "name": "simple",
+              "supplied": true
+            },
+            "origin": "professor-provided",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "deterministic",
+            "source_paths": [
+              "omok",
+              "offline",
+              "players"
+            ],
+            "sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b",
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/captures.py": "f4e394e5b362dee5b67214860e8ab67490057857d44b35dc2c568f9c057694ec",
+              "omok/evaluation.py": "14f51744a307d918ddea8313a630695f44698c82a578b0a0c2c35d958f44a7f9",
+              "omok/lines.py": "26f99a150f969fc690196203232454c403747d6b29ab418bb320d7e625eadbf5",
+              "omok/measurement.py": "22e9f0c38e023168d853c60707e6aba41a3f97af03efa89ff5df2981a9833065",
+              "omok/player.py": "a50affac85c9c97686118d3712866849a5e2a3c75383c4b0db26b52d36ee8dd6",
+              "omok/search.py": "43ff298f9d2930bc6a4d16a362dd974bfb3e09f438b92541264ad51ddf14b84b",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b",
+              "omok/tactics.py": "7ddd482d4899c8dcf746442ac16ca77a1ef57709e23ff553eb882699d3a026e7",
+              "omok/threat_effects.py": "f56032d47fe4268eb3bda37d823b4d0ec583c9f7d4c2cd56356193e2d404af53",
+              "omok/transposition.py": "cf2f451b0282ea7369484f60e6bf14e3dc7cd2d0b8f54cfa6541e8595cdb0c05",
+              "players/player.py": "d481f46f20ab553168e5e049b1131f361a2f45603b5e3e85833532944d739a6f",
+              "players/randomplayer.py": "d0136d6f19abdfc5cdbb88e899be27b8e9935c392fc936b21e0c44ed6de9909f",
+              "players/simpleplayer.py": "25f5057a33e202ad851b531d770bac336e48264b8d83d2eb43697252a0a8bf1f"
+            },
+            "variant": "v1"
+          },
+          {
+            "acknowledgment": "Local AI-written smoke bot.",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [],
+            "family": "random-smoke",
+            "identity": "32e83cc1570e8bb41f8d2bb9c4f1c3e99371454516ca260f8f1e5e44844c5583",
+            "limitations": "Already exposed during development; not reserved validation/holdout evidence.",
+            "loader": {
+              "factory": "create",
+              "kind": "local",
+              "module": "offline.worker_players",
+              "root": "."
+            },
+            "logical_id": "smoke",
+            "options": {
+              "name": "smoke",
+              "supplied": false
+            },
+            "origin": "synthetic",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "constructor",
+            "source_paths": [
+              "omok",
+              "offline"
+            ],
+            "sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b",
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/captures.py": "f4e394e5b362dee5b67214860e8ab67490057857d44b35dc2c568f9c057694ec",
+              "omok/evaluation.py": "14f51744a307d918ddea8313a630695f44698c82a578b0a0c2c35d958f44a7f9",
+              "omok/lines.py": "26f99a150f969fc690196203232454c403747d6b29ab418bb320d7e625eadbf5",
+              "omok/measurement.py": "22e9f0c38e023168d853c60707e6aba41a3f97af03efa89ff5df2981a9833065",
+              "omok/player.py": "a50affac85c9c97686118d3712866849a5e2a3c75383c4b0db26b52d36ee8dd6",
+              "omok/search.py": "43ff298f9d2930bc6a4d16a362dd974bfb3e09f438b92541264ad51ddf14b84b",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b",
+              "omok/tactics.py": "7ddd482d4899c8dcf746442ac16ca77a1ef57709e23ff553eb882699d3a026e7",
+              "omok/threat_effects.py": "f56032d47fe4268eb3bda37d823b4d0ec583c9f7d4c2cd56356193e2d404af53",
+              "omok/transposition.py": "cf2f451b0282ea7369484f60e6bf14e3dc7cd2d0b8f54cfa6541e8595cdb0c05"
+            },
+            "variant": "v1"
+          },
+          {
+            "acknowledgment": "Locally authored by OpenAI Codex for issue #30; no external strategy source.",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [],
+            "family": "line-pattern",
+            "identity": "a5efa5e2b86bc0367e907a4fe7a23604e2c5886ab1a2c103cdc1ac4e421a9178",
+            "limitations": "Own maximal run extension; ignores opponent replies. Shared rules, source bundle and line utilities limit independent family coverage; see docs/synthetic.md.",
+            "loader": {
+              "factory": "create",
+              "kind": "local",
+              "module": "offline.synthetic",
+              "root": "."
+            },
+            "logical_id": "synthetic-aggressive",
+            "options": {
+              "strategy": "aggressive"
+            },
+            "origin": "synthetic",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "deterministic",
+            "source_paths": [
+              "offline",
+              "omok/__init__.py",
+              "omok/simulator.py"
+            ],
+            "sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b",
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b"
+            },
+            "variant": "aggressive-v1"
+          },
+          {
+            "acknowledgment": "Locally authored by OpenAI Codex for issue #30; no external strategy source.",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [],
+            "family": "capture-collection",
+            "identity": "4756101a2e54eeb14fdaa6acfa9253c56d7bb32c98e32e22cfe747669b82cdb9",
+            "limitations": "Actual captured cells before central tie breaking; no capture win rule. Shared rules, source bundle and line utilities limit independent family coverage; see docs/synthetic.md.",
+            "loader": {
+              "factory": "create",
+              "kind": "local",
+              "module": "offline.synthetic",
+              "root": "."
+            },
+            "logical_id": "synthetic-capture",
+            "options": {
+              "strategy": "capture"
+            },
+            "origin": "synthetic",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "deterministic",
+            "source_paths": [
+              "offline",
+              "omok/__init__.py",
+              "omok/simulator.py"
+            ],
+            "sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b",
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b"
+            },
+            "variant": "capture-v1"
+          },
+          {
+            "acknowledgment": "Locally authored by OpenAI Codex for issue #30; no external strategy source.",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [],
+            "family": "local-density",
+            "identity": "295c6cae72f9eb8295f1472fd413853ec3c448686ce1f8e7705bde02fb76230e",
+            "limitations": "Own-neighbor density; ignores remote tactics. Shared rules, source bundle and line utilities limit independent family coverage; see docs/synthetic.md.",
+            "loader": {
+              "factory": "create",
+              "kind": "local",
+              "module": "offline.synthetic",
+              "root": "."
+            },
+            "logical_id": "synthetic-local",
+            "options": {
+              "strategy": "local"
+            },
+            "origin": "synthetic",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "deterministic",
+            "source_paths": [
+              "offline",
+              "omok/__init__.py",
+              "omok/simulator.py"
+            ],
+            "sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b",
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b"
+            },
+            "variant": "local-v1"
+          },
+          {
+            "acknowledgment": "Locally authored by OpenAI Codex for issue #30; no external strategy source.",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [],
+            "family": "line-pattern",
+            "identity": "aaf3b450cfc1f3375ad852e93017461a76c0032cd8fb7d01aa349efe3d84f54e",
+            "limitations": "Unblocked five-cell windows including gaps; not forced threats. Shared rules, source bundle and line utilities limit independent family coverage; see docs/synthetic.md.",
+            "loader": {
+              "factory": "create",
+              "kind": "local",
+              "module": "offline.synthetic",
+              "root": "."
+            },
+            "logical_id": "synthetic-pattern",
+            "options": {
+              "strategy": "pattern"
+            },
+            "origin": "synthetic",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "deterministic",
+            "source_paths": [
+              "offline",
+              "omok/__init__.py",
+              "omok/simulator.py"
+            ],
+            "sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b",
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b"
+            },
+            "variant": "pattern-v1"
+          },
+          {
+            "acknowledgment": "Locally authored by OpenAI Codex for issue #30; no external strategy source.",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [],
+            "family": "frontier-random",
+            "identity": "269729b729646dbe5a4fb99872f9a48e4eebfc8d25593633568638da0150ac4e",
+            "limitations": "Uniform seeded adjacent frontier selection; no tactical override. Shared rules, source bundle and line utilities limit independent family coverage; see docs/synthetic.md.",
+            "loader": {
+              "factory": "create",
+              "kind": "local",
+              "module": "offline.synthetic",
+              "root": "."
+            },
+            "logical_id": "synthetic-random",
+            "options": {
+              "strategy": "random"
+            },
+            "origin": "synthetic",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "constructor",
+            "source_paths": [
+              "offline",
+              "omok/__init__.py",
+              "omok/simulator.py"
+            ],
+            "sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b",
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b"
+            },
+            "variant": "random-v1"
+          },
+          {
+            "acknowledgment": "Locally authored by OpenAI Codex for issue #30; no external strategy source.",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [],
+            "family": "reply-minimax",
+            "identity": "9261452f6e2f4ed03a495ee9ed7dd9131af11de7b9ed35cfd1aea59b01eb1be0",
+            "limitations": "One-ply cubic maximal-run evaluation; eight ranked moves plus immediate win/block cells. Shared rules, source bundle and line utilities limit independent family coverage; see docs/synthetic.md.",
+            "loader": {
+              "factory": "create",
+              "kind": "local",
+              "module": "offline.synthetic",
+              "root": "."
+            },
+            "logical_id": "synthetic-search1",
+            "options": {
+              "strategy": "search1"
+            },
+            "origin": "synthetic",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "deterministic",
+            "source_paths": [
+              "offline",
+              "omok/__init__.py",
+              "omok/simulator.py"
+            ],
+            "sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b",
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b"
+            },
+            "variant": "search1-v1"
+          },
+          {
+            "acknowledgment": "Locally authored by OpenAI Codex for issue #30; no external strategy source.",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [],
+            "family": "reply-minimax",
+            "identity": "368f84f0cef509e24d03c686f7881969d7872b5dea525cfe83d14ebd728b474c",
+            "limitations": "Two-ply worst-reply minimax with the same bounded move policy. Shared rules, source bundle and line utilities limit independent family coverage; see docs/synthetic.md.",
+            "loader": {
+              "factory": "create",
+              "kind": "local",
+              "module": "offline.synthetic",
+              "root": "."
+            },
+            "logical_id": "synthetic-search2",
+            "options": {
+              "strategy": "search2"
+            },
+            "origin": "synthetic",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "deterministic",
+            "source_paths": [
+              "offline",
+              "omok/__init__.py",
+              "omok/simulator.py"
+            ],
+            "sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b",
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b"
+            },
+            "variant": "search2-v1"
+          }
+        ],
+        "validation": [
+          {
+            "acknowledgment": "Locally authored by OpenAI Codex for issue #30; no external strategy source.",
+            "adapter_sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+            },
+            "availability": "ready",
+            "color_mapping": {
+              "black": 0,
+              "constructor": "color",
+              "white": 1
+            },
+            "dependencies": [],
+            "diagnostics": [],
+            "family": "reply-denial",
+            "identity": "a7f09d474ec08211ecd5e84b3ce00e2652b0470dc34885d8f8dfa4702148fed8",
+            "limitations": "Minimize actual immediate opponent wins, then remaining run pressure. Shared rules, source bundle and line utilities limit independent family coverage; see docs/synthetic.md.",
+            "loader": {
+              "factory": "create",
+              "kind": "local",
+              "module": "offline.synthetic",
+              "root": "."
+            },
+            "logical_id": "synthetic-defensive",
+            "options": {
+              "strategy": "defensive"
+            },
+            "origin": "synthetic",
+            "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+            "seed_support": "deterministic",
+            "source_paths": [
+              "offline",
+              "omok/__init__.py",
+              "omok/simulator.py"
+            ],
+            "sources": {
+              "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+              "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+              "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+              "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+              "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+              "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+              "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+              "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+              "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+              "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+              "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+              "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+              "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+              "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+              "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+              "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+              "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+              "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+              "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+              "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+              "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+              "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+              "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+              "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b",
+              "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+              "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b"
+            },
+            "variant": "defensive-v1"
+          }
+        ]
+      }
+    },
+    "batches": [
+      {
+        "kind": "evaluation",
+        "policy_identity": "cb0006c324521d411085e250635d2aac8c081cd511d8788c2a67169ddc8a206b",
+        "seed": 37,
+        "reproduced_exactly": true,
+        "accepted": 2,
+        "attempts": 4,
+        "exhausted_slots": [],
+        "executed_genotype": "603b4b95f70ebba809bd2c404f2a9c0bdea028767cc94b101c9b89a3458681c8",
+        "candidate": {
+          "identity": "d9e9c0c993bd969b73adf227c5b9669f22850b69a382caf9305b3af15a364980",
+          "acknowledgment": "Local AI-written engine",
+          "adapter_sources": {
+            "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+            "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+            "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+            "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+            "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+            "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+            "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+            "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+            "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+            "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+            "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+            "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+            "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+            "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+            "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+            "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+            "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+            "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+            "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+            "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+            "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+            "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+            "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+            "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+          },
+          "availability": "ready",
+          "color_mapping": {
+            "black": 0,
+            "constructor": "color",
+            "white": 1
+          },
+          "dependencies": [],
+          "diagnostics": [
+            "search"
+          ],
+          "family": "omok",
+          "limitations": "Related engine versions; deterministic duplicates are not independent evidence.",
+          "loader": {
+            "commit": "105a8f64edaeb86082425c1fecb12932c06c4367",
+            "factory": "IterativePlayer",
+            "kind": "checkpoint",
+            "module": "omok.player",
+            "paths": [
+              "omok",
+              "players"
+            ]
+          },
+          "logical_id": "candidate-603b4b95f70ebba809bd2c404f2a9c0bdea028767cc94b101c9b89a3458681c8",
+          "options": {
+            "candidate_configuration": {
+              "evaluation": {
+                "coefficients": {
+                  "material": 0
+                },
+                "enabled_families": [
+                  "material"
+                ],
+                "feature_version": "material-v1"
+              },
+              "settings": {
+                "candidate_cap": 24,
+                "candidate_radius": 2,
+                "extensions": "none",
+                "full_width": false,
+                "max_depth": 8,
+                "max_nodes": 10000,
+                "ordering": "omok.tactics.static_rank",
+                "table_capacity": 4096,
+                "time_policy": {
+                  "max_time_ms": 100.0,
+                  "reserve_fraction": 0.5,
+                  "return_margin_ms": 2.0,
+                  "soft_fraction": 0.8,
+                  "turn_fraction": 0.1
+                }
+              }
+            }
+          },
+          "origin": "retained-engine",
+          "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+          "seed_support": "deterministic",
+          "source_paths": [
+            "omok",
+            "players"
+          ],
+          "sources": {
+            "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+            "omok/captures.py": "f4e394e5b362dee5b67214860e8ab67490057857d44b35dc2c568f9c057694ec",
+            "omok/evaluation.py": "14f51744a307d918ddea8313a630695f44698c82a578b0a0c2c35d958f44a7f9",
+            "omok/lines.py": "26f99a150f969fc690196203232454c403747d6b29ab418bb320d7e625eadbf5",
+            "omok/measurement.py": "22e9f0c38e023168d853c60707e6aba41a3f97af03efa89ff5df2981a9833065",
+            "omok/player.py": "a50affac85c9c97686118d3712866849a5e2a3c75383c4b0db26b52d36ee8dd6",
+            "omok/search.py": "43ff298f9d2930bc6a4d16a362dd974bfb3e09f438b92541264ad51ddf14b84b",
+            "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b",
+            "omok/tactics.py": "7ddd482d4899c8dcf746442ac16ca77a1ef57709e23ff553eb882699d3a026e7",
+            "omok/threat_effects.py": "f56032d47fe4268eb3bda37d823b4d0ec583c9f7d4c2cd56356193e2d404af53",
+            "omok/transposition.py": "cf2f451b0282ea7369484f60e6bf14e3dc7cd2d0b8f54cfa6541e8595cdb0c05",
+            "players/player.py": "d481f46f20ab553168e5e049b1131f361a2f45603b5e3e85833532944d739a6f",
+            "players/randomplayer.py": "d0136d6f19abdfc5cdbb88e899be27b8e9935c392fc936b21e0c44ed6de9909f",
+            "players/simpleplayer.py": "25f5057a33e202ad851b531d770bac336e48264b8d83d2eb43697252a0a8bf1f"
+          },
+          "variant": "proposal-603b4b95f70ebba809bd2c404f2a9c0bdea028767cc94b101c9b89a3458681c8"
+        },
+        "actual_configuration": {
+          "evaluation": {
+            "coefficients": {
+              "material": 0
+            },
+            "enabled_families": [
+              "material"
+            ],
+            "feature_version": "material-v1"
+          },
+          "settings": {
+            "candidate_cap": 24,
+            "candidate_radius": 2,
+            "extensions": "none",
+            "full_width": false,
+            "max_depth": 8,
+            "max_nodes": 10000,
+            "ordering": "omok.tactics.static_rank",
+            "table_capacity": 4096,
+            "time_policy": {
+              "max_time_ms": 100.0,
+              "reserve_fraction": 0.5,
+              "return_margin_ms": 2.0,
+              "soft_fraction": 0.8,
+              "turn_fraction": 0.1
+            }
+          }
+        }
+      },
+      {
+        "kind": "search-time",
+        "policy_identity": "8f7fbe83478e57990bc4e1181fdcc0d0c9e3db9be50ccc2f37c4ebd673891fe3",
+        "seed": 37,
+        "reproduced_exactly": true,
+        "accepted": 2,
+        "attempts": 2,
+        "exhausted_slots": [],
+        "executed_genotype": "833edeba6276691d266d94ac964eb8344eef966cbab13739c53a0fdb10733fbd",
+        "candidate": {
+          "identity": "e0d1e559a6fe7999ff64f10e7105a9c96d802e940386c3c0166dd39660e8cfcc",
+          "acknowledgment": "Local AI-written engine",
+          "adapter_sources": {
+            "offline/__init__.py": "586f86b0f0d5a6c3f95727dd013479a2bdb2275121a823f1835abf00422c5af6",
+            "offline/__main__.py": "6194c8c4ee8c50ee1cda010e7d8ebd100654f25ac33efa757f8ca6667a213a14",
+            "offline/batches.py": "313309404bae72bee555ae79dc87d9f71d2ddc96c5e898a91d8da617fbfab419",
+            "offline/compare.py": "819ead089b24b57336b7f004120ca993d728e7933f32c1ca39bb2103513f3759",
+            "offline/experiment_cli.py": "0e277eabbcf44e4682dd2c1df27ba81837694316c2c1b9fe7ad8e5f493ea451f",
+            "offline/experiments.py": "d9243135e6430b8617d721219dc9d1277c3f13081022f947d646a6ff9c6cfabf",
+            "offline/fixtures.py": "a7426b673bb9795a22d7c663f441f975249f1d43c8b2dd8a76e8b4c5a13832b8",
+            "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+            "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+            "offline/measurement.py": "eb942582f85491262c11946fa9719c7b6511df3cfa363330ffb3a7175f8a5894",
+            "offline/opponents.py": "583deb1aa1e96eabc2b103280426eb5297c156df35d6a6be1040a1203fc84eb9",
+            "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+            "offline/provided.py": "28742bdcc7234b5b733de45e24d326da848fc6784da1c86abeefdaab555ffbbf",
+            "offline/registry.py": "041e07f1a995fbc780b951fb3b1e12405c8246cd9d307279e2f8881420f9e010",
+            "offline/registry_cli.py": "72ba20465cab332b71dc18efeffa5605b5dcb54554b3b477e0e9f213e90523d9",
+            "offline/registry_worker.py": "d68d88f69bd958baf8970ccd774bb5e53d2f111aeb9e68a15ef8ebea921f4669",
+            "offline/replay.py": "fcc843dfbc962c427dbf29a21790bc3cbed25efcc2dff9b99bbff4a28af19dc7",
+            "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+            "offline/runner.py": "a7a3583d1b54ccca574010a5f3f7536c84749e014e6db1d973b003b9103ccddb",
+            "offline/supervised.py": "961021163e91f2fa7eeddb2f8442c7d1534d301a3c09461e7a6bb1062c7dd794",
+            "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+            "offline/worker.py": "d1b34e7ffd3473cd9a8ae0b418ee1cdb7346e14cb96d3f36770bec008948b2a7",
+            "offline/worker_players.py": "148feb9dbb01881625f17ff4120bab1fa8f27f32b65dcaa6bf8c27bea2b58204",
+            "offline/worker_protocol.py": "ce022e19b6790c223b7aeeed8761bfce452111b09101dc5ab7f767cae4c2be8b"
+          },
+          "availability": "ready",
+          "color_mapping": {
+            "black": 0,
+            "constructor": "color",
+            "white": 1
+          },
+          "dependencies": [],
+          "diagnostics": [
+            "search"
+          ],
+          "family": "omok",
+          "limitations": "Related engine versions; deterministic duplicates are not independent evidence.",
+          "loader": {
+            "commit": "105a8f64edaeb86082425c1fecb12932c06c4367",
+            "factory": "IterativePlayer",
+            "kind": "checkpoint",
+            "module": "omok.player",
+            "paths": [
+              "omok",
+              "players"
+            ]
+          },
+          "logical_id": "candidate-833edeba6276691d266d94ac964eb8344eef966cbab13739c53a0fdb10733fbd",
+          "options": {
+            "candidate_configuration": {
+              "evaluation": {
+                "coefficients": {
+                  "material": 1
+                },
+                "enabled_families": [
+                  "material"
+                ],
+                "feature_version": "material-v1"
+              },
+              "settings": {
+                "candidate_cap": 23,
+                "candidate_radius": 1,
+                "extensions": "none",
+                "full_width": false,
+                "max_depth": 8,
+                "max_nodes": 10000,
+                "ordering": "omok.tactics.static_rank",
+                "table_capacity": 4096,
+                "time_policy": {
+                  "max_time_ms": 100.0,
+                  "reserve_fraction": 0.5,
+                  "return_margin_ms": 2.0,
+                  "soft_fraction": 0.8,
+                  "turn_fraction": 0.1
+                }
+              }
+            }
+          },
+          "origin": "retained-engine",
+          "runtime": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+          "seed_support": "deterministic",
+          "source_paths": [
+            "omok",
+            "players"
+          ],
+          "sources": {
+            "omok/__init__.py": "e4aa222f8777a9398f55788a9e1671838a5a79b80237b52ba6a4a0df76ffc8c4",
+            "omok/captures.py": "f4e394e5b362dee5b67214860e8ab67490057857d44b35dc2c568f9c057694ec",
+            "omok/evaluation.py": "14f51744a307d918ddea8313a630695f44698c82a578b0a0c2c35d958f44a7f9",
+            "omok/lines.py": "26f99a150f969fc690196203232454c403747d6b29ab418bb320d7e625eadbf5",
+            "omok/measurement.py": "22e9f0c38e023168d853c60707e6aba41a3f97af03efa89ff5df2981a9833065",
+            "omok/player.py": "a50affac85c9c97686118d3712866849a5e2a3c75383c4b0db26b52d36ee8dd6",
+            "omok/search.py": "43ff298f9d2930bc6a4d16a362dd974bfb3e09f438b92541264ad51ddf14b84b",
+            "omok/simulator.py": "958af23a2704927c1af0ac478f7bf726fc6bb824a76b5ee8054fec4a5abf2d9b",
+            "omok/tactics.py": "7ddd482d4899c8dcf746442ac16ca77a1ef57709e23ff553eb882699d3a026e7",
+            "omok/threat_effects.py": "f56032d47fe4268eb3bda37d823b4d0ec583c9f7d4c2cd56356193e2d404af53",
+            "omok/transposition.py": "cf2f451b0282ea7369484f60e6bf14e3dc7cd2d0b8f54cfa6541e8595cdb0c05",
+            "players/player.py": "d481f46f20ab553168e5e049b1131f361a2f45603b5e3e85833532944d739a6f",
+            "players/randomplayer.py": "d0136d6f19abdfc5cdbb88e899be27b8e9935c392fc936b21e0c44ed6de9909f",
+            "players/simpleplayer.py": "25f5057a33e202ad851b531d770bac336e48264b8d83d2eb43697252a0a8bf1f"
+          },
+          "variant": "proposal-833edeba6276691d266d94ac964eb8344eef966cbab13739c53a0fdb10733fbd"
+        },
+        "actual_configuration": {
+          "evaluation": {
+            "coefficients": {
+              "material": 1
+            },
+            "enabled_families": [
+              "material"
+            ],
+            "feature_version": "material-v1"
+          },
+          "settings": {
+            "candidate_cap": 23,
+            "candidate_radius": 1,
+            "extensions": "none",
+            "full_width": false,
+            "max_depth": 8,
+            "max_nodes": 10000,
+            "ordering": "omok.tactics.static_rank",
+            "table_capacity": 4096,
+            "time_policy": {
+              "max_time_ms": 100.0,
+              "reserve_fraction": 0.5,
+              "return_margin_ms": 2.0,
+              "soft_fraction": 0.8,
+              "turn_fraction": 0.1
+            }
+          }
+        }
+      }
+    ],
+    "games": [
+      {
+        "batch": "evaluation",
+        "candidate_color": 0,
+        "status": "capped",
+        "moves": 4,
+        "trace": "evaluation-color-0.json.gz",
+        "sha256": "a5b67b5a1caba4c3eb69dc3659bd5e09f891b17e7c3a73e4adaee83bb8d99248",
+        "replay_verified": true,
+        "reference_outcome": "ongoing"
+      },
+      {
+        "batch": "evaluation",
+        "candidate_color": 1,
+        "status": "capped",
+        "moves": 4,
+        "trace": "evaluation-color-1.json.gz",
+        "sha256": "7622218050222b75b4bbd3724e6257a08bd9a693b1bc4191099e801c59f11908",
+        "replay_verified": true,
+        "reference_outcome": "ongoing"
+      },
+      {
+        "batch": "search-time",
+        "candidate_color": 0,
+        "status": "capped",
+        "moves": 4,
+        "trace": "search-time-color-0.json.gz",
+        "sha256": "4172b732a9947b3153c9a031c4025c1f590c93c92f2e74c82153beefce34218d",
+        "replay_verified": true,
+        "reference_outcome": "ongoing"
+      },
+      {
+        "batch": "search-time",
+        "candidate_color": 1,
+        "status": "capped",
+        "moves": 4,
+        "trace": "search-time-color-1.json.gz",
+        "sha256": "9bff9947333de3015d0647bd329959ca0d94f1673edb8dfd345d2385a8e59414",
+        "replay_verified": true,
+        "reference_outcome": "ongoing"
+      }
+    ],
+    "elapsed_seconds": 8.12677099998109,
+    "holdout_exposures": [],
+    "validation_exposures": [],
+    "limitations": "4 capped screening games; no completed league fitness, strength claim or promotion",
+    "proposal_artifacts": {
+      "evaluation/parents.json": "04da8bde2c96f3a9f669594659304b66def7e0c5696647a7531993ff0d9c6e5b",
+      "evaluation/policy.json": "603e36556f448550060bda47b3ba2028833b58c4af747cc5013f72b33df06f19",
+      "evaluation/proposals.json": "e515269d17497abfaf3b22941980c1b597e106cc99912e9340b9c291fb624b18",
+      "evaluation-policy.json": "603e36556f448550060bda47b3ba2028833b58c4af747cc5013f72b33df06f19",
+      "evaluation-repeat/parents.json": "04da8bde2c96f3a9f669594659304b66def7e0c5696647a7531993ff0d9c6e5b",
+      "evaluation-repeat/policy.json": "603e36556f448550060bda47b3ba2028833b58c4af747cc5013f72b33df06f19",
+      "evaluation-repeat/proposals.json": "e515269d17497abfaf3b22941980c1b597e106cc99912e9340b9c291fb624b18",
+      "search-time/parents.json": "04da8bde2c96f3a9f669594659304b66def7e0c5696647a7531993ff0d9c6e5b",
+      "search-time/policy.json": "7e109b01e8e6add0b0954e8dc6b28144c55b83d79bd6c6f9cbdcb518625373d6",
+      "search-time/proposals.json": "939a1a1b8bcc435b8621ded5efaa06be14bcf8e0473a457057165fe93e322bbd",
+      "search-time-policy.json": "7e109b01e8e6add0b0954e8dc6b28144c55b83d79bd6c6f9cbdcb518625373d6",
+      "search-time-repeat/parents.json": "04da8bde2c96f3a9f669594659304b66def7e0c5696647a7531993ff0d9c6e5b",
+      "search-time-repeat/policy.json": "7e109b01e8e6add0b0954e8dc6b28144c55b83d79bd6c6f9cbdcb518625373d6",
+      "search-time-repeat/proposals.json": "939a1a1b8bcc435b8621ded5efaa06be14bcf8e0473a457057165fe93e322bbd"
+    }
+  }
+}

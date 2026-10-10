@@ -2,6 +2,7 @@
 """Worker-only verified loading; external imports/global RNGs live in one process."""
 from importlib import import_module
 import io
+import json
 import os
 import shutil
 from pathlib import Path
@@ -89,6 +90,23 @@ def create(color: int, *, entry: dict[str, Any], seed: int) -> Any:
     for part in loader['factory'].split('.'):
         factory = getattr(factory, part)
     options = dict(data['options'])
+    if 'candidate_configuration' in options:
+        # Construct with the verified/restored engine modules, never live engine classes.
+        # Entry already validated the serialized configuration before any scheduling.
+        configuration = options.pop('candidate_configuration')
+        settings = configuration['settings']
+        evaluation_module = import_module('omok.evaluation')
+        search_module = import_module('omok.search')
+        tactics_module = import_module('omok.tactics')
+        table_module = import_module('omok.transposition')
+        player_module = import_module('omok.player')
+        config = evaluation_module.EvaluationConfig.from_json(
+            json.dumps(configuration['evaluation'], allow_nan=False))
+        options = {'max_depth': settings['max_depth'], 'max_nodes': settings['max_nodes'],
+            'policy': player_module.TimePolicy(**settings['time_policy']),
+            'search': search_module.FixedDepthSearch(evaluation_config=config,
+                tactics=tactics_module.TacticalPolicy(radius=settings['candidate_radius'], cap=settings['candidate_cap']),
+                table=table_module.TranspositionTable(settings['table_capacity']))}
     if 'evaluation_path' in options:
         from omok.evaluation import EvaluationConfig
         path = (root / options.pop('evaluation_path')).resolve()

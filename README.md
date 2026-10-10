@@ -1,5 +1,8 @@
 # omok-agent
 
+Issue #37 adds saved, seeded parameter policies, deduplicated immutable candidates,
+and execution through the existing registry. See [candidate proposals](docs/proposals.md).
+
 Issue #36 adds a restorable frozen incumbent and bounded one-worker optimizer
 baseline collector. See [baseline commands and limits](docs/optimizer-baseline.md).
 
