@@ -258,6 +258,11 @@ def paired_effects(member: dict[str, Any], incumbent: dict[str, Any], report: di
 
 def assess(output: Path, raw: dict[str, dict[str, Any]]) -> dict[str, Any]:
     record = load(output)
+    return assess_record(record, raw)
+
+
+def assess_record(record: dict[str, Any], raw: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    validate(record)
     report = assess_stage(record['stage'], raw)
     report.update(format=FORMAT, confirmation_identity=digest(record),
         selection_identity=digest(record['selection']), policy_identity=digest(record['policy']))

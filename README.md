@@ -1,5 +1,9 @@
 # omok-agent
 
+Issue #42 adds [validation and practical official-clock eligibility](docs/promotion.md),
+saved promotion margins, retained validation exposure and optimizer holdout guards.
+Eligibility leaves the incumbent retained until the separate promotion transaction.
+
 Issue #40 adds broader balanced survivor rounds, permanent champion source
 archives, recorded historical rotation and family/color/matchup regression gates.
 See [the broader training league](docs/league.md).

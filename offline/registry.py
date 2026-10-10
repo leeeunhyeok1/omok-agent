@@ -206,12 +206,18 @@ class PoolSnapshot:
 
     def validate_candidate(self, candidate: Entry, *, purpose: str) -> None:
         # Related versions cannot bypass reserved membership by changing role/ID.
-        for records in json.loads(self.definition).values():
+        for pool, records in json.loads(self.definition).items():
             for record in records:
                 if (record['identity'] == candidate.identity
                         or (record['family'], record['origin']) ==
                            (candidate.data['family'], candidate.data['origin'])):
-                    self.select([record['logical_id']], purpose=purpose)
+                    # Validation checks a training candidate against validation opponents.
+                    candidate_purpose = 'training' if purpose == 'validation' and pool == 'training' else purpose
+                    self.select([record['logical_id']], purpose=candidate_purpose)
+
+    def validate_optimizer_candidate(self, candidate: Entry) -> None:
+        """Reserved designs cannot enter optimization by switching to the candidate role."""
+        self.validate_candidate(candidate, purpose='training')
 
     def select(self, names: list[str] | None = None, *, purpose: str = 'development') -> list[tuple[str, Entry]]:
         if purpose not in PURPOSES:
