@@ -1,0 +1,288 @@
+{
+  "incumbent": "dd75b4c467b15fedbeafd312323ede3012cf4f55b71b8a4f679e14caa4945ef0",
+  "status": "checked_incumbent",
+  "reasons": [],
+  "validation": {
+    "requested_jobs": 4,
+    "by_opponent": {
+      "synthetic-defensive": {
+        "by_color": {
+          "black": {
+            "numerator": 2.0,
+            "denominator": 2,
+            "value": 1.0,
+            "distinct_evidence": 2,
+            "counts": {
+              "completed": 2,
+              "failed": 0,
+              "capped": 0,
+              "infrastructure_failed": 0,
+              "pending": 0,
+              "planned": 2
+            }
+          },
+          "white": {
+            "numerator": 0.0,
+            "denominator": 2,
+            "value": 0.0,
+            "distinct_evidence": 2,
+            "counts": {
+              "completed": 2,
+              "failed": 0,
+              "capped": 0,
+              "infrastructure_failed": 0,
+              "pending": 0,
+              "planned": 2
+            }
+          }
+        },
+        "value": 0.5,
+        "family": "reply-denial"
+      }
+    },
+    "reliability_samples": {
+      "committed_attempts": 4,
+      "candidate_failure_attempts": 0
+    }
+  },
+  "official": {
+    "requested_jobs": 8,
+    "by_opponent": {
+      "smoke": {
+        "by_color": {
+          "black": {
+            "numerator": 4.0,
+            "denominator": 4,
+            "value": 1.0,
+            "distinct_evidence": 4,
+            "counts": {
+              "completed": 4,
+              "failed": 0,
+              "capped": 0,
+              "infrastructure_failed": 0,
+              "pending": 0,
+              "planned": 4
+            }
+          },
+          "white": {
+            "numerator": 4.0,
+            "denominator": 4,
+            "value": 1.0,
+            "distinct_evidence": 4,
+            "counts": {
+              "completed": 4,
+              "failed": 0,
+              "capped": 0,
+              "infrastructure_failed": 0,
+              "pending": 0,
+              "planned": 4
+            }
+          }
+        },
+        "value": 1.0,
+        "family": "random-smoke"
+      }
+    },
+    "reliability_samples": {
+      "committed_attempts": 8,
+      "candidate_failure_attempts": 0
+    }
+  },
+  "clock": {
+    "minimum_remaining_ms": 58880.750200129114,
+    "samples": 8,
+    "conditions": [
+      {
+        "python": "3.14.8",
+        "implementation": "CPython",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "machine": "AMD64",
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+        "cpu_count": 8,
+        "affinity": null,
+        "load_average": null,
+        "workers": 1,
+        "execution": "bounded game supervisor threads; isolated player subprocesses",
+        "clock": {
+          "implementation": "QueryPerformanceCounter()",
+          "monotonic": true,
+          "adjustable": false,
+          "resolution": 1e-07
+        },
+        "player_processes": 2,
+        "start_method": "fresh-python-subprocess",
+        "contention": "{\"load\":\"AMD Ryzen 3 3300X; observed Win32_Processor load 7 percent before dispatch; no other Python experiment processes; experiments stopped; other desktop activity uncontrolled\",\"other_experiments_stopped\":true,\"power\":\"Desktop; no Win32_Battery reported; Windows Balanced scheme 381b4222-f694-41f0-9685-ff5bb260df2e; AC-line telemetry not independently available\"}",
+        "timing_comparison": "serial wall-clock; verify declared contention",
+        "ram_bytes": 25700585472
+      },
+      {
+        "python": "3.14.8",
+        "implementation": "CPython",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "machine": "AMD64",
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+        "cpu_count": 8,
+        "affinity": null,
+        "load_average": null,
+        "workers": 1,
+        "execution": "bounded game supervisor threads; isolated player subprocesses",
+        "clock": {
+          "implementation": "QueryPerformanceCounter()",
+          "monotonic": true,
+          "adjustable": false,
+          "resolution": 1e-07
+        },
+        "player_processes": 2,
+        "start_method": "fresh-python-subprocess",
+        "contention": "{\"load\":\"AMD Ryzen 3 3300X; observed Win32_Processor load 7 percent before dispatch; no other Python experiment processes; experiments stopped; other desktop activity uncontrolled\",\"other_experiments_stopped\":true,\"power\":\"Desktop; no Win32_Battery reported; Windows Balanced scheme 381b4222-f694-41f0-9685-ff5bb260df2e; AC-line telemetry not independently available\"}",
+        "timing_comparison": "serial wall-clock; verify declared contention",
+        "ram_bytes": 25700585472
+      },
+      {
+        "python": "3.14.8",
+        "implementation": "CPython",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "machine": "AMD64",
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+        "cpu_count": 8,
+        "affinity": null,
+        "load_average": null,
+        "workers": 1,
+        "execution": "bounded game supervisor threads; isolated player subprocesses",
+        "clock": {
+          "implementation": "QueryPerformanceCounter()",
+          "monotonic": true,
+          "adjustable": false,
+          "resolution": 1e-07
+        },
+        "player_processes": 2,
+        "start_method": "fresh-python-subprocess",
+        "contention": "{\"load\":\"AMD Ryzen 3 3300X; observed Win32_Processor load 7 percent before dispatch; no other Python experiment processes; experiments stopped; other desktop activity uncontrolled\",\"other_experiments_stopped\":true,\"power\":\"Desktop; no Win32_Battery reported; Windows Balanced scheme 381b4222-f694-41f0-9685-ff5bb260df2e; AC-line telemetry not independently available\"}",
+        "timing_comparison": "serial wall-clock; verify declared contention",
+        "ram_bytes": 25700585472
+      },
+      {
+        "python": "3.14.8",
+        "implementation": "CPython",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "machine": "AMD64",
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+        "cpu_count": 8,
+        "affinity": null,
+        "load_average": null,
+        "workers": 1,
+        "execution": "bounded game supervisor threads; isolated player subprocesses",
+        "clock": {
+          "implementation": "QueryPerformanceCounter()",
+          "monotonic": true,
+          "adjustable": false,
+          "resolution": 1e-07
+        },
+        "player_processes": 2,
+        "start_method": "fresh-python-subprocess",
+        "contention": "{\"load\":\"AMD Ryzen 3 3300X; observed Win32_Processor load 7 percent before dispatch; no other Python experiment processes; experiments stopped; other desktop activity uncontrolled\",\"other_experiments_stopped\":true,\"power\":\"Desktop; no Win32_Battery reported; Windows Balanced scheme 381b4222-f694-41f0-9685-ff5bb260df2e; AC-line telemetry not independently available\"}",
+        "timing_comparison": "serial wall-clock; verify declared contention",
+        "ram_bytes": 25700585472
+      },
+      {
+        "python": "3.14.8",
+        "implementation": "CPython",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "machine": "AMD64",
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+        "cpu_count": 8,
+        "affinity": null,
+        "load_average": null,
+        "workers": 1,
+        "execution": "bounded game supervisor threads; isolated player subprocesses",
+        "clock": {
+          "implementation": "QueryPerformanceCounter()",
+          "monotonic": true,
+          "adjustable": false,
+          "resolution": 1e-07
+        },
+        "player_processes": 2,
+        "start_method": "fresh-python-subprocess",
+        "contention": "{\"load\":\"AMD Ryzen 3 3300X; observed Win32_Processor load 7 percent before dispatch; no other Python experiment processes; experiments stopped; other desktop activity uncontrolled\",\"other_experiments_stopped\":true,\"power\":\"Desktop; no Win32_Battery reported; Windows Balanced scheme 381b4222-f694-41f0-9685-ff5bb260df2e; AC-line telemetry not independently available\"}",
+        "timing_comparison": "serial wall-clock; verify declared contention",
+        "ram_bytes": 25700585472
+      },
+      {
+        "python": "3.14.8",
+        "implementation": "CPython",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "machine": "AMD64",
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+        "cpu_count": 8,
+        "affinity": null,
+        "load_average": null,
+        "workers": 1,
+        "execution": "bounded game supervisor threads; isolated player subprocesses",
+        "clock": {
+          "implementation": "QueryPerformanceCounter()",
+          "monotonic": true,
+          "adjustable": false,
+          "resolution": 1e-07
+        },
+        "player_processes": 2,
+        "start_method": "fresh-python-subprocess",
+        "contention": "{\"load\":\"AMD Ryzen 3 3300X; observed Win32_Processor load 7 percent before dispatch; no other Python experiment processes; experiments stopped; other desktop activity uncontrolled\",\"other_experiments_stopped\":true,\"power\":\"Desktop; no Win32_Battery reported; Windows Balanced scheme 381b4222-f694-41f0-9685-ff5bb260df2e; AC-line telemetry not independently available\"}",
+        "timing_comparison": "serial wall-clock; verify declared contention",
+        "ram_bytes": 25700585472
+      },
+      {
+        "python": "3.14.8",
+        "implementation": "CPython",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "machine": "AMD64",
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+        "cpu_count": 8,
+        "affinity": null,
+        "load_average": null,
+        "workers": 1,
+        "execution": "bounded game supervisor threads; isolated player subprocesses",
+        "clock": {
+          "implementation": "QueryPerformanceCounter()",
+          "monotonic": true,
+          "adjustable": false,
+          "resolution": 1e-07
+        },
+        "player_processes": 2,
+        "start_method": "fresh-python-subprocess",
+        "contention": "{\"load\":\"AMD Ryzen 3 3300X; observed Win32_Processor load 7 percent before dispatch; no other Python experiment processes; experiments stopped; other desktop activity uncontrolled\",\"other_experiments_stopped\":true,\"power\":\"Desktop; no Win32_Battery reported; Windows Balanced scheme 381b4222-f694-41f0-9685-ff5bb260df2e; AC-line telemetry not independently available\"}",
+        "timing_comparison": "serial wall-clock; verify declared contention",
+        "ram_bytes": 25700585472
+      },
+      {
+        "python": "3.14.8",
+        "implementation": "CPython",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "machine": "AMD64",
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+        "cpu_count": 8,
+        "affinity": null,
+        "load_average": null,
+        "workers": 1,
+        "execution": "bounded game supervisor threads; isolated player subprocesses",
+        "clock": {
+          "implementation": "QueryPerformanceCounter()",
+          "monotonic": true,
+          "adjustable": false,
+          "resolution": 1e-07
+        },
+        "player_processes": 2,
+        "start_method": "fresh-python-subprocess",
+        "contention": "{\"load\":\"AMD Ryzen 3 3300X; observed Win32_Processor load 7 percent before dispatch; no other Python experiment processes; experiments stopped; other desktop activity uncontrolled\",\"other_experiments_stopped\":true,\"power\":\"Desktop; no Win32_Battery reported; Windows Balanced scheme 381b4222-f694-41f0-9685-ff5bb260df2e; AC-line telemetry not independently available\"}",
+        "timing_comparison": "serial wall-clock; verify declared contention",
+        "ram_bytes": 25700585472
+      }
+    ],
+    "reasons": []
+  },
+  "promotion": false,
+  "holdout_exposures": [],
+  "untouched_final_evidence": false,
+  "replayed_traces": 12,
+  "elapsed_seconds": 36.59591409994755,
+  "limitations": "Validation influenced Phase 4 and repeated development decisions; limited design independence. No untouched final evidence, class rank or qualification claim. Zero failures is sample-limited. Eligibility only; champion transaction is separate. Power/load are recorded observations/declarations, not isolation guarantees."
+}

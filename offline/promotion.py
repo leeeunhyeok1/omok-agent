@@ -11,7 +11,7 @@ from offline.confirmation import assess_record, load as load_confirmation, paire
 from offline.experiments import ExperimentPlan, run_experiment, save_new_json
 from offline.league import assess_round
 from offline.registry import Entry, PoolSnapshot, canonical, digest
-from offline.screening import GATES, ScreeningPolicy, member_evidence
+from offline.screening import GATES, ScreeningPolicy, member_evidence, assess_stage
 from omok.simulator import Position
 
 FORMAT = 'omok-promotion-eligibility-v1'
@@ -300,6 +300,28 @@ def assess(output: Path, raw: dict[str, dict[str, Any]]) -> dict[str, Any]:
     return assess_record_checks(load(output), raw)
 
 
+def training_vetoes(source: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
+    """All retained training attempts count, including unsuccessful earlier rounds."""
+    vetoes: dict[str, list[dict[str, Any]]] = {}
+
+    def retain(stage: dict[str, Any], raw: dict[str, dict[str, Any]]) -> None:
+        report = assess_stage(stage, raw)
+        for identity, evidence in report['candidates'].items():
+            vetoes.setdefault(identity, []).extend(evidence['vetoes'])
+
+    def history(context: dict[str, Any]) -> None:
+        for rung in context['prior_rungs']:
+            retain(rung['stage'], rung['raw'])
+        for previous in context['prior_rounds']:
+            retain(previous['stage']['screening'], previous['raw'])
+            history(previous['stage'])
+
+    retain(source['selection'], source['selection_raw'])
+    if source['selection_context'] is not None:
+        history(source['selection_context'])
+    return {identity: list({digest(v): v for v in values}.values()) for identity, values in vetoes.items()}
+
+
 def assess_record_checks(record: dict[str, Any], raw: dict[str, dict[str, Any]]) -> dict[str, Any]:
     validate(record)
     p = record['policy']
@@ -321,6 +343,7 @@ def assess_record_checks(record: dict[str, Any], raw: dict[str, dict[str, Any]])
     confirmed = assess_record(source, record['confirmation_raw']) if source is not None else None
     context = source['selection_context'] if source is not None else None
     league = assess_round(context, source['selection_raw']) if context is not None else None
+    retained_vetoes = training_vetoes(source) if source is not None else {}
     candidates = {}
     for member, official_member in zip(stage['members'], record['official']['members']):
         identity = member['entry']['identity']
@@ -328,7 +351,7 @@ def assess_record_checks(record: dict[str, Any], raw: dict[str, dict[str, Any]])
         official = tables['official'][identity]
         clocks = clock_evidence(official_member, official, raw, p)
         reasons = ['validation_' + r for r in validation['reasons']] + official['reasons'] + clocks['reasons']
-        vetoes = validation['vetoes'] + official['vetoes']
+        vetoes = validation['vetoes'] + official['vetoes'] + retained_vetoes.get(identity, [])
         pair_policy = {'screening': stage['policy']['policy'], 'min_pairs_per_opponent': p['min_validation_pairs'],
                        'min_families': 1}
         paired = paired_effects(member, base_member, validation, tables['validation'][incumbent], raw, pair_policy)
@@ -371,6 +394,10 @@ def assess_record_checks(record: dict[str, Any], raw: dict[str, dict[str, Any]])
                 histories = {b['entry']['logical_id'] for b in context['history']['champions']}
                 rejected.extend(regressions(training, league['candidates'][incumbent], p, historical=histories,
                     weights=context['screening']['policy']['policy']['opponent_weights']))
+                if confirmed is not None:
+                    rejected.extend('confirmation_' + reason for reason in regressions(
+                        confirmed['candidates'][identity], confirmed['candidates'][incumbent], p,
+                        historical=histories, weights=source['stage']['policy']['policy']['opponent_weights']))
                 required = histories | {member['entry']['logical_id'] for member in context['screening']['members']
                                          if member['entry']['identity'] == incumbent}
                 distinct = {o['family'] for n, o in training['by_opponent'].items() if n not in required}

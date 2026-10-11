@@ -58,7 +58,10 @@ preapproved thresholds or a claim of statistical significance:
 Family comparisons respect saved opponent weights within each family. Color
 regressions are checked for each matchup, which is stricter than only checking
 league-wide color averages. Training regressions outside these margins reject even
-when an earlier, looser selection policy allowed advancement. The fresh-confirmation
+when an earlier, looser selection policy allowed advancement. These margins apply
+to both the selection league and fresh confirmation. Failures in all retained
+screening rungs and previous training rounds remain vetoes even after a successful
+rescreen of the same immutable candidate. The fresh-confirmation
 robustness method and its independence limitations remain applicable. Residual clock
 differences also depend on game length and opponent behavior: this conservative
 timing veto can reject useful candidates and needs investigation, not automatic

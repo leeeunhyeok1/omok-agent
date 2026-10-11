@@ -56,7 +56,8 @@ def legal_opening():
 
 
 class PromotionTests(unittest.TestCase):
-    def cohort(self, root, training_regression=False, **policy_settings):
+    def cohort(self, root, training_regression=False, confirmation_regression=False,
+               prior_training_failure=False, **policy_settings):
         incumbent, candidate = entry('incumbent'), entry('candidate')
         old = entry('old')
         pool = PoolSnapshot.freeze({'training': [entry('line'), entry('capture')],
@@ -67,13 +68,13 @@ class PromotionTests(unittest.TestCase):
         ScreeningPolicy.create(**settings).save(root / 'screen-policy.json')
         selected = screen(root / 'screen-policy.json', incumbent, [candidate], pool,
             output=root / 'screen', openings=[legal_opening()], gates=gates)
-        def evidence(stage):
+        def evidence(stage, fresh=False):
             raw = {}
             for m in stage['members']:
                 for p in m['plans']:
                     baseline = m['entry']['identity'] == incumbent.identity
                     outcome = 'loss' if baseline else 'win'
-                    if training_regression and p['settings']['opponents'] == ['old']:
+                    if (training_regression or (fresh and confirmation_regression)) and p['settings']['opponents'] == ['old']:
                         outcome = 'win' if baseline else 'loss'
                     raw[p['identity']] = controlled_results(ExperimentPlan.from_record(p), [outcome] * len(p['jobs']))
             return raw
@@ -83,10 +84,30 @@ class PromotionTests(unittest.TestCase):
         LeaguePolicy.create(screening=ScreeningPolicy.create(**settings, seed=40).data,
             history_slots={old.identity: 0}, max_family_regression=1, max_matchup_regression=1,
             max_color_regression=1).save(root / 'league-policy.json')
+        archived = archive_history(root / 'history', [old])
+        previous = []
+        if prior_training_failure:
+            from offline.registry import digest
+            from offline.experiments import save_new_json
+            from tests.test_matches import FailurePlayer, MovePlayer
+            earlier = league(root / 'league-policy.json', incumbent, pool, history=archived,
+                rungs=[(root / 'screen', evidence(selected))], output=root / 'earlier',
+                openings=[legal_opening()], gates=gates)
+            old_raw = evidence(earlier['screening'])
+            member = next(m for m in earlier['screening']['members'] if m['entry']['identity'] == candidate.identity)
+            plan = member['plans'][0]
+            start = plan['jobs'][0]['opening']
+            trace = run_game(FailurePlayer(0, 'exception'), MovePlayer(1, (0, 1)),
+                initial=Position(start['board'], 0), move_cap=2, budgets_ms=(5000, 5000))
+            old_raw[plan['identity']]['results'][0].update(status=trace['status'], trace=trace)
+            data = {'stage': earlier, 'raw': old_raw}
+            save_new_json(root / 'earlier/league-results.json', {'identity': digest(data), 'data': data})
+            previous = [root / 'earlier']
         broad = league(root / 'league-policy.json', incumbent, pool,
-            history=archive_history(root / 'history', [old]), rungs=[(root / 'screen', evidence(selected))],
-            output=root / 'league', openings=[legal_opening()], gates=gates)
-        ConfirmationPolicy.create(screening=ScreeningPolicy.create(**settings, seed=41).data,
+            history=archived, rungs=[(root / 'screen', evidence(selected))],
+            output=root / 'league', openings=[legal_opening()], gates=gates,
+            round_index=len(previous), previous_rounds=previous)
+        ConfirmationPolicy.create(screening=ScreeningPolicy.create(**settings, seed=43).data,
             max_family_regression=1, max_color_regression=1).save(root / 'confirm-policy.json')
         fresh = confirm(root / 'confirm-policy.json', selection=root / 'league', selection_raw=evidence(broad['screening']),
             output=root / 'confirmation', openings=[legal_opening()])
@@ -94,7 +115,7 @@ class PromotionTests(unittest.TestCase):
         snapshot = PoolSnapshot.from_record(fresh['pool_snapshot'])
         record = prepare(root / 'policy.json', incumbent, snapshot, output=root / 'checks',
             prior_exposures=[dict(source='Phase 4', details='previous validation games; limited independence')],
-            confirmation=root / 'confirmation', confirmation_raw=evidence(fresh), openings=[legal_opening()])
+            confirmation=root / 'confirmation', confirmation_raw=evidence(fresh, fresh=True), openings=[legal_opening()])
         raw = {}
         for stage_name in ('validation', 'official'):
             for member in record[stage_name]['members']:
@@ -121,6 +142,22 @@ class PromotionTests(unittest.TestCase):
             self.assertEqual(chosen['status'], 'reject')
             self.assertIn('historical_regression', chosen['reasons'])
             self.assertIn('family_regression', chosen['reasons'])
+
+    def test_new_confirmation_regression_cannot_use_looser_earlier_margins(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            record, raw, incumbent, candidate = self.cohort(root, confirmation_regression=True)
+            chosen = assess(root / 'checks', raw)['candidates'][candidate.identity]
+            self.assertEqual(chosen['status'], 'reject')
+            self.assertIn('confirmation_historical_regression', chosen['reasons'])
+
+    def test_candidate_failure_in_earlier_training_round_remains_a_veto(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            record, raw, incumbent, candidate = self.cohort(root, prior_training_failure=True)
+            chosen = assess(root / 'checks', raw)['candidates'][candidate.identity]
+            self.assertEqual(chosen['status'], 'reject')
+            self.assertTrue(chosen['vetoes'])
 
     def test_per_color_validation_regression_vetoes_favorable_aggregate(self):
         with TemporaryDirectory() as directory:
