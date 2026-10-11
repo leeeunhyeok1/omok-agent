@@ -1,5 +1,8 @@
 # omok-agent
 
+Issue #43 adds [atomic champion promotion, exact exports and rollback](docs/champions.md),
+retained evidence/decisions and permanent historical source bundles.
+
 Issue #42 adds [validation and practical official-clock eligibility](docs/promotion.md),
 saved promotion margins, retained validation exposure and optimizer holdout guards.
 Eligibility leaves the incumbent retained until the separate promotion transaction.

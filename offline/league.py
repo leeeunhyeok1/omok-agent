@@ -55,6 +55,23 @@ class LeaguePolicy:
         save_new_json(path, {'identity': digest(self.data), 'policy': self.data})
 
 
+def champion_bundle(entry: Entry) -> dict[str, Any]:
+    """Capture verified source bytes and the unchanged registered configuration."""
+    data = entry.data
+    loader = data['loader']
+    if loader['kind'] == 'checkpoint':
+        archive = checkpoint_archive(loader['commit'], tuple(loader['paths']))
+        with tarfile.open(fileobj=io.BytesIO(archive)) as stream:
+            files = {m.name: stream.extractfile(m).read() for m in stream.getmembers() if m.isfile()}  # type: ignore[union-attr]
+    else:
+        root = (ROOT / loader['root']).resolve()
+        files = {name: (root / name).read_bytes() for name in data['sources']}
+    sources = {name: base64.b64encode(files[name]).decode('ascii') for name in data['sources']}
+    bundle = {'entry': entry.record(), 'sources': sources}
+    validate_history({'champions': [bundle]})
+    return bundle
+
+
 def archive_history(output: Path, champions: list[Entry]) -> dict[str, Any]:
     """Append write-once code/configuration bundles; never remove older champions."""
     output.mkdir(parents=True, exist_ok=True)
@@ -63,18 +80,7 @@ def archive_history(output: Path, champions: list[Entry]) -> dict[str, Any]:
             path = output / (entry.identity + '.json')
             if path.exists():
                 continue
-            data = entry.data
-            loader = data['loader']
-            if loader['kind'] == 'checkpoint':
-                archive = checkpoint_archive(loader['commit'], tuple(loader['paths']))
-                with tarfile.open(fileobj=io.BytesIO(archive)) as stream:
-                    files = {m.name: stream.extractfile(m).read() for m in stream.getmembers() if m.isfile()}  # type: ignore[union-attr]
-            else:
-                root = ROOT if loader['root'] == '.' else Path(loader['root'])
-                files = {name: (root / name).read_bytes() for name in data['sources']}
-            sources = {name: base64.b64encode(files[name]).decode('ascii') for name in data['sources']}
-            bundle = {'entry': entry.record(), 'sources': sources}
-            validate_history({'champions': [bundle]})
+            bundle = champion_bundle(entry)
             save_new_json(path, {'identity': digest(bundle), 'bundle': bundle})
         bundles = []
         for path in sorted(output.glob('*.json')):

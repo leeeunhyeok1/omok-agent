@@ -68,6 +68,13 @@ def create(color: int, *, entry: dict[str, Any], seed: int) -> Any:
             for name in list(sys.modules):
                 if name == 'omok' or name.startswith('omok.'):
                     del sys.modules[name]
+    return construct_player(root, registered, color, seed)
+
+
+def construct_player(root: Path, registered: Entry, color: int, seed: int) -> Any:
+    """Construct only after a caller has verified and isolated the source tree."""
+    data = registered.data
+    loader = data['loader']
     sys.path.insert(0, str(root))
     for dependency in data['dependencies']:
         module = import_module(dependency)
