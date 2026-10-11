@@ -7,14 +7,22 @@ from typing import Any
 
 from offline.batches import atomic_json, owner
 from offline.confirmation import assess_record as assess_confirmation
-from offline.league import champion_bundle, validate_history
+from offline.league import champion_bundle, validate_history, with_adapter
 from offline.promotion import load as load_checks, assess_record_checks
 from offline.registry import Entry, canonical, digest
 from offline.supervised import PlayerSpec
 
 FORMAT = 'omok-champion-store-v1'
 EXPORT = 'omok-champion-export-v1'
-SELECTION = 'maximum fresh-confirmation sensitivity lower bound; ascending identity breaks ties'
+SELECTION = 'complete declared check cohort; maximum fresh-confirmation sensitivity lower bound; ascending identity breaks ties'
+
+
+def validate_suite(suite: dict[str, Any]) -> None:
+    if (set(suite) != {'identity', 'sources'} or not suite['sources']
+            or suite['identity'] != digest(suite['sources'])
+            or any(not isinstance(value, str) or len(value) != 64
+                   or any(c not in '0123456789abcdef' for c in value) for value in suite['sources'].values())):
+        raise ValueError('Identify the fixed tactical suite by its source hashes.')
 
 
 def read_envelope(path: Path) -> dict[str, Any]:
@@ -50,6 +58,7 @@ def validate_version(version: dict[str, Any]) -> None:
         raise ValueError('Champion version identity mismatch.')
     if not version['reason'] or not isinstance(version['context'], dict):
         raise ValueError('Champion requires decision reason and saved context.')
+    validate_suite(version['context'].get('tactical_suite', {}))
 
 
 def load_export(path: Path) -> dict[str, Any]:
@@ -57,6 +66,12 @@ def load_export(path: Path) -> dict[str, Any]:
     if data['format'] != EXPORT or data['version_identity'] != digest(data['version']):
         raise ValueError('Champion export version mismatch.')
     validate_version(data['version'])
+    reference = data['version']['context'].get('evidence_identity')
+    if reference is not None:
+        retained = data['evidence']
+        if (digest(retained['data']) != reference or retained['data']['check_identity'] != digest(retained['checks'])
+                or data['decision']['request']['evidence'] != reference):
+            raise ValueError('Champion export evidence mismatch.')
     return data
 
 
@@ -84,6 +99,7 @@ class ChampionStore:
                    history_slots: dict[str, int] | None = None) -> dict[str, Any]:
         if not context or not reason or type(history_period) is not int or history_period < 1:
             raise ValueError('Declare baseline provenance, reason and regression period.')
+        validate_suite(context.get('tactical_suite', {}))
         archive = history or {'champions': []}
         previous = validate_history(archive)
         slots = history_slots if history_slots is not None else {e.identity: 0 for e in previous}
@@ -95,13 +111,14 @@ class ChampionStore:
             if self.path.exists():
                 raise FileExistsError(self.path)
             versions = {}
-            for bundle in archive['champions'] + [champion_bundle(incumbent)]:
+            for original in archive['champions'] + [champion_bundle(incumbent)]:
+                bundle = with_adapter(original)
                 version = {'entry_identity': bundle['entry']['identity'], 'parent': None,
                     'bundle': bundle, 'context': context, 'reason': reason}
                 versions[digest(version)] = version
             current = next(k for k, v in versions.items() if v['entry_identity'] == incumbent.identity)
             data = {'format': FORMAT, 'selection': SELECTION, 'current': current, 'versions': versions,
-                'history_period': history_period, 'history_slots': slots, 'transactions': {}}
+                'history_period': history_period, 'history_slots': slots, 'transactions': {}, 'evidence': {}}
             self._commit(data)
         return self.load()
 
@@ -113,6 +130,9 @@ class ChampionStore:
             if identity != digest(version) or (version['parent'] is not None and version['parent'] not in data['versions']):
                 raise ValueError('Corrupt champion version/parent.')
             validate_version(version)
+            reference = version['context'].get('evidence_identity')
+            if reference is not None and reference not in data['evidence']:
+                raise ValueError('Champion evidence is missing.')
         entries = {v['entry_identity'] for v in data['versions'].values()}
         if (not set(data['history_slots']) <= entries or type(data['history_period']) is not int
                 or data['history_period'] < 1 or any(type(s) is not int or not 0 <= s < data['history_period']
@@ -138,6 +158,37 @@ class ChampionStore:
             if record['validation']['incumbent'] != incumbent:
                 raise ValueError('Stale eligibility incumbent; remeasure before promotion.')
             report = assess_record_checks(record, evidence['raw'])
+            suite = data['versions'][data['current']]['context']['tactical_suite']
+            missing_suite = {m['entry']['identity'] for m in record['validation']['members']
+                if not any(g['check'] == 'mandatory_tactic' and g.get('suite_identity') == suite['identity'] for g in m['gates'])}
+            for identity, candidate in report['candidates'].items():
+                if identity in missing_suite or incumbent in missing_suite:
+                    candidate['status'] = 'reject' if candidate['status'] == 'reject' else 'inconclusive'
+                    candidate['reasons'] = sorted(set(candidate['reasons'] + ['tactical_suite_identity_missing_or_changed']))
+            complete = all({r['game_id'] for r in evidence['raw'].get(p['identity'], {}).get('results', [])}
+                           == {j['game_id'] for j in p['jobs']}
+                           for stage in ('validation', 'official') for m in record[stage]['members'] for p in m['plans'])
+            source = record['confirmation']
+            history_context = source['selection_context'] if source is not None else None
+            incoming = history_context['history'] if history_context is not None else {'champions': []}
+            incoming_entries = validate_history(incoming)
+            declared = {e.identity for e in incoming_entries}
+            known = set(data['history_slots']) - {incumbent}
+            blockers = [] if complete else ['promotion_cohort_incomplete']
+            if known - declared:
+                blockers.append('retained_historical_coverage_missing')
+            rotation = history_context['policy'] if history_context is not None else None
+            if rotation is not None and (
+                    (data['history_slots'] and data['history_period'] != rotation['history_period'])
+                    or any(data['history_slots'][i] != rotation['history_slots'].get(i) for i in known & declared)):
+                blockers.append('retained_historical_schedule_changed')
+            for identity, candidate in report['candidates'].items():
+                if blockers and identity != incumbent:
+                    candidate['status'] = 'reject' if candidate['status'] == 'reject' else 'inconclusive'
+                    candidate['reasons'] = sorted(set(candidate['reasons'] + blockers))
+            report['cohort_complete'] = complete
+            report['eligible'] = sorted(i for i, c in report['candidates'].items() if c['status'] == 'eligible')
+            data['evidence'][digest(evidence)] = {'checks': record, 'data': evidence}
             candidates = report['eligible']
             winner = None
             if candidates:
@@ -145,12 +196,27 @@ class ChampionStore:
                 winner = min(candidates, key=lambda i: (-confirmed['candidates'][i]['sensitivity_range'][0], i))
             previous = data['current']
             if winner is not None:
+                assert rotation is not None
+                if not data['history_slots']:
+                    data['history_period'] = rotation['history_period']
+                retained = {v['entry_identity'] for v in data['versions'].values()}
+                for original in incoming['champions']:
+                    historical = original['entry']['identity']
+                    if historical not in retained:
+                        version = {'entry_identity': historical, 'parent': None, 'bundle': with_adapter(original),
+                            'context': {'tactical_suite': suite, 'check_identity': digest(record),
+                                'limitations': 'Imported unchanged historical source/configuration from the saved run archive; '
+                                    'earlier promotion metadata was not supplied. Suite declaration belongs to this run.'},
+                            'reason': 'Retain historical opponent and its predeclared rotation from committed eligibility evidence'}
+                        data['versions'][digest(version)] = version
+                    data['history_slots'].setdefault(historical, rotation['history_slots'][historical])
                 entry = next(Entry.from_record(m['entry']) for m in record['validation']['members']
                              if m['entry']['identity'] == winner)
                 version = {'entry_identity': winner, 'parent': previous, 'bundle': champion_bundle(entry),
-                    'context': {'eligibility': record, 'evidence': evidence, 'report': report,
+                    'context': {'evidence_identity': digest(evidence), 'decision_identity': transaction_id,
                         'run_identity': digest(record['confirmation']),
                         'pool_identity': record['validation']['pool_snapshot']['identity'],
+                        'tactical_suite': suite,
                         'policy_identity': report['policy_identity'], 'limitations': report['limitations']},
                     'reason': 'Eligible under saved policy; selected by ' + SELECTION}
                 current = digest(version)
@@ -159,7 +225,7 @@ class ChampionStore:
                 data['current'] = current
             transaction = {'request': request, 'previous': previous, 'current': data['current'],
                 'winner': winner, 'reason': 'promote eligible candidate' if winner else 'retain incumbent: no eligible candidate',
-                'report': report, 'eligibility': record, 'evidence': evidence}
+                'report': report}
             data['transactions'][transaction_id] = transaction
             self._commit(data, interrupt)
             return transaction
@@ -200,7 +266,10 @@ class ChampionStore:
         identity = version_identity or data['current']
         if identity not in data['versions']:
             raise ValueError('Export requires a known champion version.')
-        artifact = {'format': EXPORT, 'version_identity': identity, 'version': data['versions'][identity]}
+        version = data['versions'][identity]
+        artifact = {'format': EXPORT, 'version_identity': identity, 'version': version,
+            'evidence': data['evidence'].get(version['context'].get('evidence_identity')),
+            'decision': data['transactions'].get(version['context'].get('decision_identity'))}
         path.parent.mkdir(parents=True, exist_ok=True)
         with owner(path.parent):
             if path.exists():

@@ -3,6 +3,7 @@
 from collections.abc import Callable
 from dataclasses import asdict, dataclass, field
 import json
+from hashlib import sha256
 import os
 from math import floor, isfinite
 from pathlib import Path
@@ -16,7 +17,7 @@ from time import monotonic
 from typing import Any, IO
 
 from offline.runner import captured_cells, rules_winner, state
-from offline.worker_protocol import ProtocolError, receive, send
+from offline.worker_protocol import MAX_FRAME, ProtocolError, receive, send
 from omok.simulator import Position
 
 FORMAT = 'omok-game-v4'
@@ -119,7 +120,14 @@ class _Worker:
                     continue
         if receive(self.connection, deadline, self.check_stop) != {'token': token}:
             raise ProtocolError('Worker authentication failed.')
-        send(self.connection, {**asdict(self.spec), 'color': self.color}, deadline)
+        description = {**asdict(self.spec), 'color': self.color}
+        serialized = json.dumps(description, allow_nan=False).encode('utf-8')
+        if len(serialized) > MAX_FRAME:
+            assert self.workspace is not None
+            path = Path(self.workspace.name) / 'player-spec.json'
+            path.write_bytes(serialized)
+            description = {'spec_file': str(path), 'sha256': sha256(serialized).hexdigest()}
+        send(self.connection, description, deadline)
         try:
             return receive(self.connection, deadline, self.check_stop)
         finally:

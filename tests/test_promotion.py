@@ -57,16 +57,23 @@ def legal_opening():
 
 class PromotionTests(unittest.TestCase):
     def cohort(self, root, training_regression=False, confirmation_regression=False,
-               prior_training_failure=False, **policy_settings):
-        incumbent, candidate = entry('incumbent'), entry('candidate')
+               prior_training_failure=False, suite_identity=None, candidate_names=('candidate',), **policy_settings):
+        incumbent = entry('incumbent')
+        candidates = [entry(name) for name in candidate_names]
+        candidate = candidates[0]
         old = entry('old')
         pool = PoolSnapshot.freeze({'training': [entry('line'), entry('capture')],
             'validation': [entry('valid')], 'holdout': [entry('reserved')]})
-        gates = passed_gates([incumbent, candidate])
+        gates = passed_gates([incumbent] + candidates)
+        if suite_identity is not None:
+            for records in gates.values():
+                for gate in records:
+                    if gate['check'] == 'mandatory_tactic':
+                        gate['suite_identity'] = suite_identity
         settings = dict(opponents={'line': 4}, opponent_weights={'line': 1},
             family_weights={'line': 1}, move_cap=2, min_evidence_per_color=1)
         ScreeningPolicy.create(**settings).save(root / 'screen-policy.json')
-        selected = screen(root / 'screen-policy.json', incumbent, [candidate], pool,
+        selected = screen(root / 'screen-policy.json', incumbent, candidates, pool,
             output=root / 'screen', openings=[legal_opening()], gates=gates)
         def evidence(stage, fresh=False):
             raw = {}

@@ -1,6 +1,9 @@
 # AI-written by OpenAI Codex, for issue #26.
 """Immutable offline player descriptions, pool snapshots, and supervised selection."""
 from dataclasses import dataclass
+import base64
+import gzip
+from functools import lru_cache
 from hashlib import sha256
 import json
 import io
@@ -48,6 +51,21 @@ class RegistryError(ValueError):
     """A requested version cannot be used as registered."""
 
 
+def archived_bundle(loader: dict[str, Any]) -> dict[str, Any]:
+    """Compact portable archives avoid repeating source text in every game record."""
+    return json.loads(gzip.decompress(base64.b64decode(loader['archive'], validate=True)))
+
+
+@lru_cache(maxsize=32)
+def archive_definition(archive: str) -> str:
+    """Validate immutable archive bytes once, retaining no mutable player state."""
+    from offline.league import validate_history
+    bundle = archived_bundle({'archive': archive})
+    if not bundle.get('adapter'):
+        raise RegistryError('Archive execution requires the compatible construction adapter.')
+    return validate_history({'champions': [bundle]})[0].definition
+
+
 @dataclass(frozen=True)
 class Entry:
     # Store canonical JSON, rather than a mutable options/source dictionary.
@@ -69,6 +87,12 @@ class Entry:
         if any(not isinstance(data[key], str) or not data[key] for key in
                ('logical_id', 'origin', 'family', 'acknowledgment')):
             raise RegistryError('IDs, family, origin and acknowledgment must be explicit.')
+        if data['loader']['kind'] == 'archive':
+            original = json.loads(archive_definition(data['loader']['archive']))
+            if ({k: v for k, v in data.items() if k != 'loader'} !=
+                    {k: v for k, v in original.items() if k != 'loader'}
+                    or any(data['loader'][k] != original['loader'][k] for k in ('module', 'factory'))):
+                raise RegistryError('Archive descriptor differs from its retained code/configuration.')
         if 'evaluation_path' in data['options']:
             value = data['options']['evaluation_path']
             if (not isinstance(value, str) or Path(value).is_absolute()
@@ -149,7 +173,23 @@ class Entry:
     def spec(self, seed: int) -> PlayerSpec:
         if self.data['availability'] != 'ready':
             raise RegistryError(f"Requested opponent {self.data['logical_id']} is {self.data['availability']}.")
+        if self.data['loader']['kind'] == 'archive':
+            bundle = archived_bundle(self.data['loader'])
+            return PlayerSpec('offline.champions_worker', 'create_bundle',
+                              {'bundle': bundle, 'identity': digest(bundle), 'seed': seed}, seed)
         return PlayerSpec('offline.registry_worker', 'create', {'entry': self.record(), 'seed': seed}, seed)
+
+    @classmethod
+    def archived(cls, bundle: dict[str, Any]) -> 'Entry':
+        from offline.league import validate_history
+        original = validate_history({'champions': [bundle]})[0]
+        if 'adapter' not in bundle:
+            raise RegistryError('Archive execution requires the compatible construction adapter.')
+        data = original.data
+        data['loader'] = {'kind': 'archive', 'module': data['loader']['module'],
+                          'factory': data['loader']['factory'],
+                          'archive': base64.b64encode(gzip.compress(canonical(bundle).encode(), mtime=0)).decode('ascii')}
+        return cls(canonical(data))
 
 
 def checkpoint_archive(commit: str, paths: tuple[str, ...]) -> bytes:

@@ -1,0 +1,20 @@
+{
+  "candidate": "957cf4857b98290c7e34c950825c4c50397579d1ebdd8c13ee92f3885107352e",
+  "winner": "957cf4857b98290c7e34c950825c4c50397579d1ebdd8c13ee92f3885107352e",
+  "baseline_version": "6ff5026a4aa535f15613aa17f17b041c068bc4983b0f3ef51c03fd5f6e551976",
+  "promoted_version": "3a9f583ac6e77c58801301d3b3d3d42be4ade03d7c8eb6e1b2a1a0c0f29e232d",
+  "restored_version": "6ff5026a4aa535f15613aa17f17b041c068bc4983b0f3ef51c03fd5f6e551976",
+  "export_identity": "e32483597a42d3c24bd77a541250bfc61732cf6e5be16dfc698af496d5142204",
+  "historical_identities": [
+    "0a29c4fb07a75d157f3d754c56d7c058b593731bb43e297075a0904f37eff62f",
+    "9552d45eff8c965bd87de08a077ad7e80f633caa766e5a644d0dde1c81b422b7"
+  ],
+  "tactical_suite_identity": "af501dabdd945457e21793fa06a05a665ec348fcbca666e5e21bda6f19937bf5",
+  "real_reload_status": "capped",
+  "real_reload_moves": 2,
+  "configuration_identity": "d1dbe18a037b153206f3e0ddae1785fb7309d5e61bc45d3110daf79b29f71117",
+  "configuration_reload_games": 2,
+  "holdout_exposures": [],
+  "elapsed_seconds": 135.96654519999993,
+  "limitations": "Controlled feasible outcome/clock fixtures prove decision mechanics, not measured strength. Archived synthetic callbacks were actually executed. Config/cache probes use an injected accounting clock. No qualification, untouched validation, class-rank or hidden-TA claim."
+}

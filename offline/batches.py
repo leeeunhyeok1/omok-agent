@@ -14,7 +14,7 @@ from typing import Any, Iterator
 from uuid import uuid4
 
 from offline.experiments import ExperimentPlan, execute_job, execution_conditions
-from offline.registry import Entry, ROOT, checkpoint_archive, digest, source_snapshot
+from offline.registry import Entry, ROOT, checkpoint_archive, digest, source_snapshot, archived_bundle
 
 
 class BatchStopped(BaseException):
@@ -78,10 +78,15 @@ def verify_versions(plan: ExperimentPlan) -> None:
     entries = [plan.data['candidate']] + [j['opponent'] for j in plan.data['jobs']]
     for record in {r['identity']: r for r in entries}.values():
         data = Entry.from_record(record).data
-        if data['runtime'] != sys.version or data['adapter_sources'] != source_snapshot(ROOT, ('offline',)):
-            raise ValueError('Registered runtime or adapter version changed.')
         loader = data['loader']
-        if loader['kind'] == 'checkpoint':
+        if data['runtime'] != sys.version:
+            raise ValueError('Registered runtime changed.')
+        if loader['kind'] == 'archive':
+            from offline.league import validate_history
+            validate_history({'champions': [archived_bundle(loader)]})
+        elif data['adapter_sources'] != source_snapshot(ROOT, ('offline',)):
+            raise ValueError('Registered adapter version changed.')
+        elif loader['kind'] == 'checkpoint':
             # Frozen Git content is addressed by a full immutable commit.
             checkpoint_archive(loader['commit'], tuple(loader['paths']))
         else:

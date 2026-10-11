@@ -2,6 +2,10 @@
 """Private worker entry point; imports and player construction happen here."""
 from importlib import import_module
 import random
+from hashlib import sha256
+import json
+import os
+from pathlib import Path
 import socket
 import sys
 from time import monotonic
@@ -21,6 +25,14 @@ def main() -> None:
     send(connection, {'token': sys.argv[2]}, monotonic() + 5)
     spec = receive(connection, monotonic() + 10)
     try:
+        if 'spec_file' in spec:
+            path = Path(spec['spec_file']).resolve()
+            if not path.is_relative_to(Path(os.environ['OMOK_WORKER_SNAPSHOTS']).resolve()):
+                raise ValueError('Player specification is outside its worker workspace.')
+            serialized = path.read_bytes()
+            if sha256(serialized).hexdigest() != spec['sha256']:
+                raise ValueError('Player specification identity mismatch.')
+            spec = json.loads(serialized)
         random.seed(spec['seed'])
         factory: Any = import_module(spec['module'])
         for part in spec['factory'].split('.'):
@@ -57,7 +69,6 @@ def main() -> None:
             'exception': error_data, 'call_elapsed_ms': elapsed}
         if request['diagnostics']:
             try:
-                import json
                 diagnostics = getattr(player, 'diagnostics', lambda: None)()
                 encoded = json.dumps(diagnostics, allow_nan=False)
                 if diagnostics is not None and (not isinstance(diagnostics, dict) or len(encoded) > 16384):

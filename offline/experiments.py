@@ -1,7 +1,9 @@
 # AI-written by OpenAI Codex, for issue #27.
 """Resolved immutable schedules and bounded execution over the supervised runner."""
 from collections.abc import Callable
+from copy import deepcopy
 from dataclasses import asdict, dataclass
+from functools import lru_cache
 import json
 import os
 from math import isfinite
@@ -20,6 +22,12 @@ FAILURE_POLICY = {
     'caps': 'no rules draw or player loss', 'setup_and_infrastructure': 'no player loss',
     'player_failure': 'retain offending color; match scoring deferred', 'retries': 'none',
 }
+
+
+@lru_cache(maxsize=32)
+def _parsed_plan(definition: str) -> dict[str, Any]:
+    """Bounded immutable metadata cache for repeatedly assessed archived plans."""
+    return json.loads(definition)
 
 
 def save_new_json(path: Path, value: dict[str, Any]) -> None:
@@ -112,7 +120,8 @@ class ExperimentPlan:
 
     @property
     def data(self) -> dict[str, Any]:
-        return json.loads(self.definition)
+        # Callers may edit their copy; the saved plan and cached metadata stay frozen.
+        return deepcopy(_parsed_plan(self.definition))
 
     @property
     def identity(self) -> str:

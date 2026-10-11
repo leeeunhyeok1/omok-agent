@@ -1,4 +1,5 @@
 # AI-written by OpenAI Codex, for issue #40.
+# Issue #43 adds portable archives and compatible construction adapters.
 """Frozen broader training rounds, retained screening evidence and champion history."""
 import base64
 from dataclasses import dataclass
@@ -12,7 +13,7 @@ from typing import Any
 
 from offline.batches import Checkpoint, atomic_json, owner, verify_versions
 from offline.experiments import ExperimentPlan, run_experiment, save_new_json
-from offline.registry import Entry, PoolSnapshot, ROOT, canonical, checkpoint_archive, digest
+from offline.registry import Entry, PoolSnapshot, ROOT, canonical, checkpoint_archive, digest, archived_bundle
 from offline.screening import ScreeningPolicy, assess_stage, load_stage, prepare as prepare_screening
 from omok.simulator import Position
 
@@ -59,6 +60,11 @@ def champion_bundle(entry: Entry) -> dict[str, Any]:
     """Capture verified source bytes and the unchanged registered configuration."""
     data = entry.data
     loader = data['loader']
+    if loader['kind'] == 'archive':
+        archived = archived_bundle(loader)
+        bundle = {'entry': entry.record(), 'sources': archived['sources'], 'adapter': archived['adapter']}
+        validate_history({'champions': [bundle]})
+        return bundle
     if loader['kind'] == 'checkpoint':
         archive = checkpoint_archive(loader['commit'], tuple(loader['paths']))
         with tarfile.open(fileobj=io.BytesIO(archive)) as stream:
@@ -67,9 +73,23 @@ def champion_bundle(entry: Entry) -> dict[str, Any]:
         root = (ROOT / loader['root']).resolve()
         files = {name: (root / name).read_bytes() for name in data['sources']}
     sources = {name: base64.b64encode(files[name]).decode('ascii') for name in data['sources']}
-    bundle = {'entry': entry.record(), 'sources': sources}
+    bundle = with_adapter({'entry': entry.record(), 'sources': sources})
     validate_history({'champions': [bundle]})
     return bundle
+
+
+def with_adapter(bundle: dict[str, Any]) -> dict[str, Any]:
+    """Retain the exact registered construction adapter alongside player code."""
+    if 'adapter' in bundle:
+        validate_history({'champions': [bundle]})
+        return bundle
+    entry = Entry.from_record(bundle['entry'])
+    files = {name: (ROOT / name).read_bytes() for name in entry.data['adapter_sources']}
+    if {name: sha256(value).hexdigest() for name, value in files.items()} != entry.data['adapter_sources']:
+        raise ValueError('Registered construction adapter changed; retain compatible bytes or revalidate.')
+    result = dict(bundle, adapter={name: base64.b64encode(value).decode('ascii') for name, value in files.items()})
+    validate_history({'champions': [result]})
+    return result
 
 
 def archive_history(output: Path, champions: list[Entry]) -> dict[str, Any]:
@@ -96,11 +116,19 @@ def archive_history(output: Path, champions: list[Entry]) -> dict[str, Any]:
 def validate_history(history: dict[str, Any]) -> list[Entry]:
     entries = []
     for bundle in history['champions']:
+        if any(not name or Path(name).is_absolute() or Path(name).drive or '..' in Path(name).parts
+               for name in bundle['sources'] | bundle.get('adapter', {})):
+            raise ValueError('Archived source paths must stay inside their snapshot.')
         entry = Entry.from_record(bundle['entry'])
         hashes = {name: sha256(base64.b64decode(value, validate=True)).hexdigest()
                   for name, value in bundle['sources'].items()}
         if hashes != entry.data['sources']:
             raise ValueError('Archived champion source mismatch.')
+        if 'adapter' in bundle:
+            adapter = {name: sha256(base64.b64decode(value, validate=True)).hexdigest()
+                       for name, value in bundle['adapter'].items()}
+            if adapter != entry.data['adapter_sources']:
+                raise ValueError('Archived construction adapter mismatch.')
         entries.append(entry)
     if len({e.identity for e in entries}) != len(entries):
         raise ValueError('Duplicate historical champion.')
@@ -117,7 +145,8 @@ def prepare(policy_path: Path, incumbent: Entry, snapshot: PoolSnapshot, *, hist
     policy = LeaguePolicy(canonical(record['policy']))
     if record['identity'] != digest(policy.data):
         raise ValueError('League policy identity mismatch.')
-    champions = validate_history(history)
+    originals = validate_history(history)
+    champions = [Entry.archived(with_adapter(bundle)) for bundle in history['champions']]
     p = policy.data
     if type(round_index) is not int or round_index < 0 or len(previous_rounds or []) != round_index:
         raise ValueError('All preceding rounds are required for historical coverage.')
@@ -131,7 +160,7 @@ def prepare(policy_path: Path, incumbent: Entry, snapshot: PoolSnapshot, *, hist
         if previous['history_period'] != p['history_period'] or any(
                 p['history_slots'].get(key) != slot for key, slot in previous['history_slots'].items()):
             raise ValueError('Historical rotation cannot silently change or delete versions.')
-    if set(p['history_slots']) != {e.identity for e in champions}:
+    if set(p['history_slots']) != {e.identity for e in originals}:
         raise ValueError('Schedule every archived historical champion.')
     if incumbent.identity in p['history_slots']:
         raise ValueError('Current incumbent is not a historical opponent.')
@@ -159,8 +188,11 @@ def prepare(policy_path: Path, incumbent: Entry, snapshot: PoolSnapshot, *, hist
     for e in [incumbent] + champions:
         if e.data['logical_id'] in names:
             existing = next(r for entries in pools.values() for r in entries if r.data['logical_id'] == e.data['logical_id'])
-            if existing.identity != e.identity or e.identity not in {r.identity for r in pools['training']}:
+            original = next((o for o in originals if o.data['logical_id'] == e.data['logical_id']), e)
+            if existing.identity not in (e.identity, original.identity) or existing.identity not in {r.identity for r in pools['training']}:
                 raise ValueError('Incumbent/history conflicts with pool membership.')
+            if existing.identity != e.identity:
+                pools['training'] = [e if r.identity == existing.identity else r for r in pools['training']]
         else:
             pools['training'].append(e)
             names.add(e.data['logical_id'])
@@ -174,7 +206,7 @@ def prepare(policy_path: Path, incumbent: Entry, snapshot: PoolSnapshot, *, hist
                and e.data['logical_id'] not in required]
     if len({(e.data['origin'], e.data['family']) for e in diverse}) < 2:
         raise ValueError('Broader league requires at least two frozen training design families.')
-    selected_history = [e for e in champions if p['history_slots'][e.identity] == round_index % p['history_period']]
+    selected_history = [e for e in originals if p['history_slots'][e.identity] == round_index % p['history_period']]
     selected_names = set(screen_data['opponents']) - historical_names | {e.data['logical_id'] for e in selected_history}
     selected = league_snapshot.record()['pools']['training']
     requested = {r['logical_id']: r for r in selected if r['logical_id'] in screen_data['opponents']}
