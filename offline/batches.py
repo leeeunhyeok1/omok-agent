@@ -96,6 +96,15 @@ def verify_versions(plan: ExperimentPlan) -> None:
 
 
 class Checkpoint:
+    @classmethod
+    def validate_saved(cls, plan: ExperimentPlan, data: dict[str, Any]) -> None:
+        """Validate retained checkpoint evidence without resuming or writing files."""
+        saved = object.__new__(cls)
+        saved.plan, saved.output = plan, None
+        saved.jobs = {j['game_id']: j for j in plan.data['jobs']}
+        saved.data = data
+        saved.validate()
+
     def __init__(self, plan: ExperimentPlan, output: Path | None, resume: bool,
                  retries: int | None):
         self.plan, self.output = plan, output

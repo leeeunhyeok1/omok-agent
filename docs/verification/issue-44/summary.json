@@ -1,0 +1,15 @@
+{
+  "format": "omok-review-controlled-example-v1",
+  "attribution": "AI-written OpenAI Codex controlled examples; fabricated outcomes, not measured strength",
+  "holdout_calls": 0,
+  "validation_calls": 0,
+  "registered_opponent_calls": 0,
+  "checked_fixture": "fixtures\\af50106de9d5721eef713a8842cd4cfa3c2b7a1d14097a90fdd2d7e04c9172ac.json",
+  "allowed_moves": [
+    [
+      9,
+      9
+    ]
+  ],
+  "partial_status": "unknown"
+}

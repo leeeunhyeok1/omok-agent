@@ -246,3 +246,7 @@ retention. It also supports [bounded optimizer stop/resume](docs/optimizer.md) o
 proposals and training cohorts. Resume preserves committed attempts, proposal RNG
 state, ancestry, decisions, and execution provenance. See the command examples
 and abrupt-owner-death limits in that contract.
+
+Phase 5 also provides [saved-evidence batch reviews and additive checked
+regressions](docs/reviews.md), with representative replay histories, explicit
+hypotheses and separately bounded independent tactical analysis.
