@@ -27,6 +27,9 @@ explicit margins, bounded proposal/retry handling and stage clocks/caps. Inspect
 JSON using `starter_policy` and `ProposalPolicy.for_parent(...,
 batch='search-time', groups=['time'])`, then pass `initialize --policy FILE`.
 Only supported implemented settings change; the optimizer never rewrites code.
+The saved policy deduplicates within a population and against its selected parents.
+A later round may revisit a configuration using new round seeds; it records that
+configuration identity and does not invent another independent genotype.
 
 The small one-worker choice follows the measured #36 baseline (0.415 dispatched
 slots/s, 0.277 rule-completed games/s, reduced-clock capped screening on its recorded

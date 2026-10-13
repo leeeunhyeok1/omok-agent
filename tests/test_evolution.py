@@ -57,12 +57,66 @@ class EvolutionTests(unittest.TestCase):
             self.assertEqual([r['stage'] for r in final['rounds']], ['committed', 'committed'])
             self.assertEqual(final['rounds'][0]['population'], first)
             self.assertEqual(final['rounds'][1]['parents'], final['rounds'][0]['decision']['parents'])
-            self.assertNotEqual(final['rounds'][1]['population']['candidates'], first['candidates'])
+            self.assertNotEqual(final['rounds'][1]['seed'], final['rounds'][0]['seed'])
             self.assertEqual(final['segments'][-1]['attempts'], 55)
             again = run(output, max_games=0, max_seconds=0)
             self.assertEqual(again['rounds'], final['rounds'])
             self.assertEqual(again['incumbent'], prepared['incumbent'])
             self.assertEqual(status(output)['parents'], final['rounds'][1]['decision']['parents'])
+
+    def test_exhaustion_records_a_review_without_dispatch(self):
+        import subprocess
+        import sys
+        with TemporaryDirectory() as directory:
+            output = Path(directory) / 'search'
+            p = small_policy()
+            p['seed'] = 0
+            p['proposal'].update(max_attempts=1, diversity_probability=0)
+            initialize(output, policy=p, snapshot=small_snapshot())
+            final = run(output, max_games=10, max_seconds=120)
+            self.assertEqual(final['stopped'], 'proposal exhaustion')
+            self.assertEqual(final['segments'][-1]['attempts'], 0)
+            result = subprocess.run([sys.executable, '-m', 'offline.optimizer', 'review',
+                                     '--output', str(output), '--round', '0'], capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn('proposal exhaustion', result.stdout)
+
+    def test_equal_gate_evidence_preserves_decisions_across_all_commit_boundaries(self):
+        """Fabricated gate vetoes compare mechanics; no strength evidence or game draws."""
+        import subprocess
+        from unittest.mock import patch
+        from offline.champions import ChampionStore
+        execute = subprocess.run
+        def fail_gate(argv, **kwargs):
+            if 'input' in kwargs:
+                return subprocess.CompletedProcess(argv, 1, '', 'FABRICATED gate rejection mechanics')
+            return execute(argv, **kwargs)
+        with TemporaryDirectory() as directory:
+            reference = Path(directory) / 'reference'
+            recovered = Path(directory) / 'recovered'
+            p, snapshot = small_policy(), small_snapshot()
+            initialize(reference, policy=p, snapshot=snapshot)
+            initialize(recovered, policy=p, snapshot=snapshot)
+            events = ('round created', 'proposal persisted', 'screening prepared', 'league prepared',
+                      'round committed', 'round created', 'proposal persisted')
+            with patch('offline.gates.subprocess.run', side_effect=fail_gate):
+                expected = run(reference, max_games=20, max_seconds=600, max_rounds=2)
+                for boundary in events:
+                    def crash(event, target=boundary):
+                        if event == target:
+                            raise RuntimeError(event)
+                    with self.assertRaisesRegex(RuntimeError, boundary):
+                        run(recovered, max_games=20, max_seconds=600, max_rounds=2, interrupt=crash)
+                    if boundary == 'round committed':
+                        run(recovered, max_games=0, max_seconds=0)
+                        version = ChampionStore(recovered / 'champions').load()['current']
+                        self.assertTrue((recovered / 'exports' / (version + '.json')).is_file())
+                actual = run(recovered, max_games=20, max_seconds=600, max_rounds=1)
+            self.assertEqual([r['population'] for r in actual['rounds']], [r['population'] for r in expected['rounds']])
+            self.assertEqual([r['decision'] for r in actual['rounds']], [r['decision'] for r in expected['rounds']])
+            self.assertEqual(actual['rng_state'], expected['rng_state'])
+            self.assertEqual(actual['parents'], expected['parents'])
+            self.assertTrue(all(s['attempts'] == 0 for s in actual['segments']))
 
     def test_initialize_rejects_later_training_role_changes_before_proposals(self):
         with TemporaryDirectory() as directory:

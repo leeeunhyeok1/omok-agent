@@ -2,6 +2,7 @@
 """Durable repeated optimization using the existing Phase 5 stage contracts."""
 from collections.abc import Callable
 import json
+import os
 from math import isfinite
 from pathlib import Path
 import random
@@ -39,6 +40,7 @@ def starter_policy(incumbent: Entry) -> dict[str, Any]:
         'historical_gaps': 'stop after recorded round; do not erase obligations',
         'validation_every': 2, 'workers': 1, 'gate_timeout_seconds': 30,
         'seed_schedule': 'stage seed plus round index; openings remain stage-specific',
+        'repeat_configurations': 'allowed across rounds with fresh seeded jobs; deduplicate within population and against parents',
         'resource_basis': 'Issue #36 measured 0.415 slots/s, 0.277 completed games/s under reduced clocks; start with one worker and measure locally',
         'proposal': ProposalPolicy.for_parent(incumbent, batch='evaluation', groups=['material']).data,
         'screening': screening.ScreeningPolicy.create(**training).data,
@@ -61,6 +63,8 @@ def validate_policy(p: dict[str, Any]) -> None:
         raise ValueError('Unsupported evolution/selection policy.')
     if p['seed_schedule'] != 'stage seed plus round index; openings remain stage-specific' or not p['resource_basis']:
         raise ValueError('Declare the seed schedule and measured resource basis.')
+    if p['repeat_configurations'] != 'allowed across rounds with fresh seeded jobs; deduplicate within population and against parents':
+        raise ValueError('Unsupported repeated-configuration policy.')
     for name, limit in (('population_size', 1000), ('parent_count', 1000), ('workers', 64)):
         if type(p[name]) is not int or not 1 <= p[name] <= limit:
             raise ValueError('Invalid ' + name)
@@ -163,6 +167,15 @@ def publish_directory(path: Path, build: Callable[[Path], Any]) -> None:
                     raise ValueError('Conflicting prepared artifact: ' + str(saved))
         else:
             temporary.rename(path)
+            try:
+                descriptor = os.open(path.parent, os.O_RDONLY)
+                try:
+                    os.fsync(descriptor)
+                finally:
+                    os.close(descriptor)
+            except OSError:
+                # Same directory-durability limitation as the existing atomic writer.
+                pass
     finally:
         if temporary.exists():
             shutil.rmtree(temporary)
@@ -383,6 +396,9 @@ def run(output: Path, *, max_games: int, max_seconds: float, max_rounds: int | N
                 if saved['complete'] and (not complete or report != saved['report']):
                     raise ValueError('Committed stage decision changed.')
                 saved.update(raw=raw, report=report, complete=complete)
+        if state['rounds'] and state['rounds'][-1]['stage'] == 'committed':
+            current = store.load()
+            store.export(output / 'exports' / (current['current'] + '.json'))
         segment: dict[str, Any] = {'conditions': execution_conditions(worker_count, contention), 'official_conditions': conditions,
                    'max_games': max_games, 'max_seconds': max_seconds, 'max_rounds': max_rounds,
                    'attempts': 0, 'stop_reason': None}
@@ -453,7 +469,19 @@ def run(output: Path, *, max_games: int, max_seconds: float, max_rounds: int | N
                 candidates = [Entry.from_record(c['entry']) for c in r['population']['candidates']]
                 if not candidates:
                     r['decision'] = {'reason': 'proposal exhaustion', 'parents': [incumbent.record()], 'promotion': False}
+                    review = {'format': 'omok-batch-review-v1', 'retained_incumbent': incumbent.identity,
+                        'strongest_verified': incumbent.identity, 'strongest_screened': None,
+                        'promotion': {'performed': False, 'status': 'retain incumbent: proposal exhaustion'},
+                        'candidates': {}, 'resources': [], 'failures': [],
+                        'next_bounded_experiment': {'action': 'initialize another predeclared proposal policy',
+                            'max_failures': 0, 'max_positions': 0, 'proposed_max_new_games': 0},
+                        'source': {'kind': 'proposal', 'stage_identity': digest(r['population']),
+                            'raw_identity': digest({}), 'attribution': 'AI-written OpenAI Codex; no games dispatched'},
+                        'limitations': 'Bounded proposal exhaustion; prior incumbent retained without new strength evidence.'}
+                    atomic_json(root / 'review.json', review)
+                    r['review_identity'] = digest(review)
                     r['stage'] = 'committed'
+                    state['parents'] = r['decision']['parents']
                     state['stopped'] = 'proposal exhaustion'
                     commit('round committed')
                     break
@@ -566,6 +594,11 @@ def run(output: Path, *, max_games: int, max_seconds: float, max_rounds: int | N
                         {'round_index': r['index'], 'identity': i} for i, c in broader['report']['history_coverage'].items()
                         if c['due'] and not c['complete']]}
                 review = review_batch(screening.load_stage(root / 'screening'), screened['raw'], max_failures=1)
+                review['retained_incumbent'] = elite['identity']
+                review['strongest_verified'] = elite['identity']
+                review['promotion'] = {'performed': bool(transaction and transaction['winner']),
+                    'status': 'promoted' if transaction and transaction['winner'] else 'retain incumbent',
+                    'decision': transaction or {}}
                 atomic_json(root / 'review.json', review)
                 r['review_identity'] = digest(review)
                 state['parents'] = parents

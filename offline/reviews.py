@@ -283,7 +283,7 @@ def render_review(review: dict[str, Any]) -> str:
         f"proposed new-game cap {review['next_bounded_experiment']['proposed_max_new_games']}, "
         'analysis cap 361 transitions / 30 seconds per position. Freeze the experiment policy before dispatch. '
         'No new games scheduled.', '',
-        review['limitations'], '', f"Source stage: `{review['source']['stage_identity']}`; "
+        review['limitations'], '', f"Source {review['source'].get('kind', 'stage')}: `{review['source']['stage_identity']}`; "
         f"evidence: `{review['source']['raw_identity']}`. {review['source']['attribution']}", ''])
     return '\n'.join(lines)
 

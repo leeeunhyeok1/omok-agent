@@ -27,7 +27,7 @@ def collect(output: Path, *, power: str, load: str) -> dict[str, Any]:
     policy = starter_policy(incumbent)
     # A near-win opening limits pilot cost. This measures execution, not general strength.
     opening = [[9, 5], [10, 5], [9, 6], [10, 6], [9, 7], [10, 7], [9, 8], [10, 8]]
-    policy.update(population_size=1, validation_every=2)
+    policy.update(population_size=1, validation_every=2, seed=46)
     for name in ('screening', 'league', 'confirmation'):
         screen = policy[name] if name == 'screening' else policy[name]['screening']
         screen.update(opponents={'smoke': 2, 'synthetic-aggressive': 2},
@@ -99,7 +99,8 @@ def collect(output: Path, *, power: str, load: str) -> dict[str, Any]:
                     if result.get('trace') is not None:
                         replay(result['trace'])
                         replayed += 1
-    if any(e['pool'] == 'holdout' or e['purpose'] == 'final' for e in exposures):
+    unknown_exposures = [e for e in exposures if not e.get('purpose') or e.get('kind') == 'unknown-supervisor-failure']
+    if any(e.get('pool') == 'holdout' or e.get('purpose') in ('final', 'final-evaluation') for e in exposures):
         raise ValueError('Reserved final evidence was consumed.')
     checks = final['rounds'][1]['stages']['checks']['report']
     checked = checks['candidates'][final['rounds'][1]['incumbent']['identity']]
@@ -114,12 +115,12 @@ def collect(output: Path, *, power: str, load: str) -> dict[str, Any]:
     print('Two rounds, actual clock checks and exact export complete; retaining checked failure evidence.', flush=True)
     checked_failure(output / 'checked-failure')
     save_new_json(output / 'exposure-audit.json', {'snapshot': snapshot.record(), 'exposures': exposures,
-        'holdout_execution_count': 0, 'holdout_tactical_calls': 0,
+        'known_holdout_execution_count': 0, 'holdout_tactical_calls': 0,
+        'unknown_exposures': unknown_exposures,
         'scope': 'This collector; historical development exposure retained in earlier reports.'})
     training_attempts = sum(len(raw['attempts']) for r in final['rounds']
                            for name, stage in r['stages'].items() if name != 'checks'
                            for raw in stage['raw'].values())
-    training_seconds = sum(s['wall_seconds'] for s in final['segments'][:2])
     summary = {'format': 'omok-phase05-acceptance-v1', 'context_identity': digest(context),
         'rounds': [{'index': r['index'], 'seed': r['seed'], 'parents': [p['identity'] for p in r['parents']],
                     'candidates': [c['entry']['identity'] for c in r['population']['candidates']],
@@ -128,10 +129,11 @@ def collect(output: Path, *, power: str, load: str) -> dict[str, Any]:
         'actual_validation': {k: checked['validation'][k] for k in ('requested_jobs', 'by_opponent', 'reliability_samples')},
         'actual_official': {k: checked['official'][k] for k in ('requested_jobs', 'by_opponent', 'reliability_samples')},
         'clock': checked['clock'], 'training_attempts': training_attempts,
-        'first_round_attempts_per_second': first['segments'][-1]['attempts'] / max(training_seconds, .001),
+        'first_round_attempts_per_second': sum(s['attempts'] for s in first['segments']) /
+            max(sum(s['wall_seconds'] for s in first['segments']), .001),
         'replayed_traces': replayed, 'export_identity': digest(json.loads((output / 'exports/incumbent.json').read_text())),
         'champion_transactions': len(ChampionStore(run_output / 'champions').load()['transactions']),
-        'holdout_exposures': 0, 'elapsed_seconds': monotonic() - start,
+        'holdout_exposures': 0, 'unknown_exposure_count': len(unknown_exposures), 'elapsed_seconds': monotonic() - start,
         'limitations': 'Tiny near-win-opening pilot proves execution, not strength gain. Official smoke '
             'audit is not professor-player qualification. Validation was already development-exposed. '
             'Checked missed-win fixture is fabricated mechanics evidence. No Phase 6 or submission package.'}
