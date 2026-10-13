@@ -34,7 +34,8 @@ configuration identity and does not invent another independent genotype.
 The small one-worker choice follows the measured #36 baseline (0.415 dispatched
 slots/s, 0.277 rule-completed games/s, reduced-clock capped screening on its recorded
 machine). That measurement is not an official-clock throughput promise. The #45
-pilot records the present machine's actual throughput; begin small and inspect
+pilot measured 0.374 attempts/s on this Intel i5/8 GiB Mac under its small
+near-win-opening workload, including gates and persistence; begin small and inspect
 those timings before increasing budgets. `nice` is optional on Unix and is omitted
 on Windows. One game worker runs two isolated player processes and a controller.
 
@@ -42,7 +43,8 @@ Every invocation shares its game-attempt and wall-time dispatch bounds across
 rounds, training, validation, official games and infrastructure retries. A round
 limit counts newly committed rounds in that invocation, including a pending round
 that finishes. Exhausting a budget pauses the pending stage. Gate probes use the
-remaining wall-time budget. Plan verification, atomic persistence and supervised
+remaining wall-time budget. A stop file observed during an already-running gate
+is handled when that gate finishes, at most its saved timeout (30s in the starter). Plan verification, atomic persistence and supervised
 cleanup can extend beyond dispatch limits: default player cleanup allows up to two
 500ms process waits per player plus bounded output-thread joins; startup/callback
 checks poll cancellation every 50ms. File verification/persistence overhead varies

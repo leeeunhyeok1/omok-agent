@@ -1,0 +1,5 @@
+{
+  "power": "Observed Battery Power, discharging at 42% at launch; power policy not measured",
+  "load": "Observed load averages 1.14/1.60/1.98 at launch; other Omok experiments stopped; desktop/Codex load uncontrolled",
+  "other_experiments_stopped": true
+}

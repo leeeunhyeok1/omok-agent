@@ -1,0 +1,515 @@
+{
+  "format": "omok-evolution-v1",
+  "population_size": 1,
+  "parent_count": 2,
+  "seed": 46,
+  "selection": "incumbent elite plus best advanced training fitness; identity tie break; no validation fitness",
+  "no_survivors": "continue with incumbent",
+  "exhaustion": "stop if no proposals; record partial populations",
+  "historical_gaps": "stop after recorded round; do not erase obligations",
+  "validation_every": 2,
+  "workers": 1,
+  "gate_timeout_seconds": 30,
+  "seed_schedule": "stage seed plus round index; openings remain stage-specific",
+  "repeat_configurations": "allowed across rounds with fresh seeded jobs; deduplicate within population and against parents",
+  "resource_basis": "Issue #36 measured 0.415 slots/s, 0.277 completed games/s under reduced clocks; start with one worker and measure locally",
+  "proposal": {
+    "adapter_sources": {
+      "offline/__init__.py": "08bc38bc5932935a9a90b698931ee7fd4105a12655a54a66050c43a7a368465b",
+      "offline/__main__.py": "59868f1e0f1c3f246d9e92c3fb6c800f1d20ec55aabe1a1cf07173b344acb68d",
+      "offline/batches.py": "940e1814ceb643c605125b8c56f67b195138fb34f822d9557b86b0a80a13c68e",
+      "offline/champions.py": "f720c362798b7c31816dfed684f08899f365e7ad8e680ca05a2d9107cbaa6d5e",
+      "offline/champions_worker.py": "9d744726b195ed600e4cc525ed23ba04e807e7483be20ce1dae37005c5ec0784",
+      "offline/compare.py": "66381686175fab4dfc76dd77ac183c3b96fb67a351c877a0a30a609e5658e5a9",
+      "offline/confirmation.py": "da4a5c3956a6b39153af8f3f12b39c0a447c2a5649ea314ac6a33239af2bd5d9",
+      "offline/evolution.py": "7e275554e2f9286aee30183e63b345ea6a3cf610f1ea4ec88f3736f7849b9d4d",
+      "offline/experiment_cli.py": "2571840cffe5a5bda423dee7188e4d17d50866e34931c456079f2cbb976b6b73",
+      "offline/experiments.py": "2979884d042dd24a196c7a566f906d077198d5215123fad7f62906f85291048c",
+      "offline/fixtures.py": "5dcfe210da28ab98df244df883cb78f2c4da3e638d8e3aeec1e27397055a597b",
+      "offline/gates.py": "f6b6a95587b7b13a55b2ad9ea828009a029e72c9245297802dbc1eaae13d481b",
+      "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+      "offline/league.py": "108910bfb7b468b7120192098d6a0e49a55bafdb8b1e6d0ece620081c3791555",
+      "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+      "offline/measurement.py": "a46671828ebe044bb7cc29c1a6294cad8e4a1224f5c434810439ae87f9e92cca",
+      "offline/opponents.py": "a8578ee6f122c349f83152f31fb263678ce9560ef939aa70cd22ae42635cd2d2",
+      "offline/optimizer.py": "8d04cc43651c4e53dd42b5945ff64a29e56b01d8c38e78102a971b1abeb66d4c",
+      "offline/promotion.py": "aa79d096873b82c9cac7c4ff79640645c4c9464c6465ede0941ffb3603996e25",
+      "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+      "offline/provided.py": "2034f304e2cc67e3f927448b3447ad46aa8392130679a660b39df1481d48a906",
+      "offline/registry.py": "1f45d31e24878d1cca1cd4d25183f1341e0b8d69f0fe04486a1d65aaacc49d3f",
+      "offline/registry_cli.py": "a2deb06e0a2117838038c230b24c0c70b167508d78d3017a41c0cdd4c81946c1",
+      "offline/registry_worker.py": "19da544af0788616ec175325eccb44e5c430f84108a41364a1625484130d2b43",
+      "offline/regressions.py": "5a3de2ffeed2231664442172af09b9d8f3cf04688c0bc697c0dbd844452d0aa5",
+      "offline/replay.py": "84d6c4cd9498e4169e37a1adde06701439b28a79991c37ac3311cf64489756de",
+      "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+      "offline/reviews.py": "09aaaa4a233c3d43d671b8e1c628bd361bbbc4593b40dafa624ebcfed29656e3",
+      "offline/runner.py": "d304aab4be11d72a1407633f0404c4f3de9bc619156d5f0eea94fb1c64c25693",
+      "offline/screening.py": "f7d091e504455c55af428675c5ddf2e361a5630eafc88bb0ffca6603344e28fd",
+      "offline/supervised.py": "63fe5dc4bcfa11ea33834c33bd048e6155828aac80d1fa1a6621c51847da88d2",
+      "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+      "offline/worker.py": "3ca61eaac61bacac392d83b19159e876f1d898f88b65c88e34d476d0b559e022",
+      "offline/worker_players.py": "e88bb324bb302fee47b7e0365ad86144cee4526cfcef1d9b5282f3e44f4f4919",
+      "offline/worker_protocol.py": "25f8b9f678a0f6d6b8047c6f024df6614efeddc0960e72f918a463062929475f"
+    },
+    "batch": "evaluation",
+    "constraints": {
+      "deduplication": "exact resolved values plus engine source/runtime/dependencies; no normalization",
+      "diversity": "uniform actual values within the selected group domains",
+      "evaluation_limit": 4000,
+      "memory": "table_capacity <= 8192 entries; no byte-memory guarantee",
+      "mutation": "one coherent group; uniform integer steps; additive real steps rounded to 6 decimals",
+      "perspective": "black-centric feature differences; negamax converts once",
+      "retry": "at most max_attempts per requested slot; duplicates and invalid attempts consume retries",
+      "semantics": "feature version/families fixed; mandatory tactics, rules, total clocks, outcome accounting and pools engine-owned",
+      "terminal_score": 10000
+    },
+    "dependencies": [],
+    "diversity_probability": 0.1,
+    "engine_sources": {
+      "omok/__init__.py": "8fa4256f87cb48053e42cc4b325076ddcec37235cfa8d6ce9580704b8bcfc954",
+      "omok/captures.py": "12d42ecfeffbb9ff5671230c205307f5be8a2ef69468c6e18e1172398d271062",
+      "omok/evaluation.py": "8668fb03b09d98d8353cf0b34eaa7ff86e3bccfa770cc99d385a622491780962",
+      "omok/lines.py": "c7149021f01c3845f1dccbba2a18920c44dbb17ea3667fb7ceb15fdc78c0f3fc",
+      "omok/measurement.py": "dcdd28ad43ab792bb83a8efdaf7250747744370f93a5c15a8349bb3c963c2748",
+      "omok/player.py": "987d25a074cf4fd19329a7252886e6cc718f72cd397380df560743a592c3165a",
+      "omok/search.py": "f0b5a1a93e1d4b9559ed00b0cc428eb2e13f7a78e1a67d5caddad641b0ccd572",
+      "omok/simulator.py": "3dde4fd4c62df6123d920579e2b91e529d866ac608513701db38bf563acb1837",
+      "omok/tactics.py": "9cdb4f90a424157a22c7a2505c2ce6618aa16c3702f0b846485ce1020dd56a35",
+      "omok/threat_effects.py": "2c2efa7bd0d6ee9a5d5b841ce500380da7e280adc0fa987b248b3a3573c9891a",
+      "omok/transposition.py": "daf69437752d5b4cb8814fa1a0f3c94d3144f0f86255e4eed2296216b6b345d8",
+      "players/player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+      "players/randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+      "players/simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+    },
+    "groups": [
+      "material"
+    ],
+    "max_attempts": 12,
+    "repair": "reject",
+    "runtime": "3.14.3 (v3.14.3:323c59a5e34, Feb  3 2026, 11:41:37) [Clang 16.0.0 (clang-1600.0.26.6)]",
+    "scales": {
+      "material": 1.0
+    },
+    "schema": {
+      "enabled_families": [
+        "material"
+      ],
+      "feature_version": "material-v1",
+      "genes": {
+        "evaluation.coefficients.material": {
+          "default": 1,
+          "domain": [
+            -4000,
+            4000
+          ],
+          "step": 1,
+          "transformation": "identity",
+          "type": "integer"
+        },
+        "settings.candidate_cap": {
+          "default": 24,
+          "domain": [
+            4,
+            64
+          ],
+          "step": 4,
+          "transformation": "identity",
+          "type": "integer"
+        },
+        "settings.candidate_radius": {
+          "default": 2,
+          "domain": [
+            1,
+            4
+          ],
+          "step": 1,
+          "transformation": "identity",
+          "type": "integer"
+        },
+        "settings.max_depth": {
+          "default": 8,
+          "domain": [
+            1,
+            16
+          ],
+          "step": 1,
+          "transformation": "identity",
+          "type": "integer"
+        },
+        "settings.max_nodes": {
+          "default": 10000,
+          "domain": [
+            100,
+            100000
+          ],
+          "step": 2000,
+          "transformation": "identity",
+          "type": "integer"
+        },
+        "settings.table_capacity": {
+          "default": 4096,
+          "domain": [
+            0,
+            8192
+          ],
+          "step": 512,
+          "transformation": "identity",
+          "type": "integer"
+        },
+        "settings.time_policy.max_time_ms": {
+          "default": 100.0,
+          "domain": [
+            5.0,
+            250.0
+          ],
+          "step": 10.0,
+          "transformation": "identity",
+          "type": "real"
+        },
+        "settings.time_policy.reserve_fraction": {
+          "default": 0.5,
+          "domain": [
+            0.25,
+            0.75
+          ],
+          "step": 0.05,
+          "transformation": "identity",
+          "type": "real"
+        },
+        "settings.time_policy.return_margin_ms": {
+          "default": 2.0,
+          "domain": [
+            2.0,
+            20.0
+          ],
+          "step": 1.0,
+          "transformation": "identity",
+          "type": "real"
+        },
+        "settings.time_policy.soft_fraction": {
+          "default": 0.8,
+          "domain": [
+            0.5,
+            0.95
+          ],
+          "step": 0.05,
+          "transformation": "identity",
+          "type": "real"
+        },
+        "settings.time_policy.turn_fraction": {
+          "default": 0.1,
+          "domain": [
+            0.02,
+            0.2
+          ],
+          "step": 0.02,
+          "transformation": "identity",
+          "type": "real"
+        }
+      },
+      "groups": {
+        "candidates": [
+          "settings.candidate_radius",
+          "settings.candidate_cap"
+        ],
+        "material": [
+          "evaluation.coefficients.material"
+        ],
+        "resources": [
+          "settings.max_depth",
+          "settings.max_nodes",
+          "settings.table_capacity"
+        ],
+        "time": [
+          "settings.time_policy.max_time_ms",
+          "settings.time_policy.reserve_fraction",
+          "settings.time_policy.return_margin_ms",
+          "settings.time_policy.soft_fraction",
+          "settings.time_policy.turn_fraction"
+        ]
+      }
+    },
+    "version": "coherent-mutation-v1"
+  },
+  "screening": {
+    "color_weights": {
+      "black": 1,
+      "white": 1
+    },
+    "completion": "100% requested recognized jobs, all opponents available; partial display only",
+    "denominators": "recognized games per opponent/color; normalized colors, opponents within family, then families",
+    "draw_credit": 0.5,
+    "failures": "any candidate player failure in any validated attempt vetoes; external gates required; infrastructure unresolved",
+    "family_weights": {
+      "random-smoke": 1,
+      "line-pattern": 1
+    },
+    "infrastructure_retries": 1,
+    "max_cap_excess": 0,
+    "min_evidence_per_color": 1,
+    "min_gain": 0.05,
+    "move_cap": 20,
+    "objective": "weighted game points: win=1, loss=0, draw=draw_credit; no match coins or ratings",
+    "opponent_weights": {
+      "smoke": 1,
+      "synthetic-aggressive": 1
+    },
+    "opponents": {
+      "smoke": 2,
+      "synthetic-aggressive": 2
+    },
+    "purpose": "training",
+    "seed": 45001,
+    "stopping": "fixed saved jobs; no outcome-driven resampling; advance requires strictly positive gain >= min_gain",
+    "total_ms": 5000,
+    "version": "omok-training-screening-v1"
+  },
+  "league": {
+    "history_period": 1,
+    "history_slots": {},
+    "max_color_regression": 0,
+    "max_family_regression": 0,
+    "max_matchup_regression": 0,
+    "screening": {
+      "color_weights": {
+        "black": 1,
+        "white": 1
+      },
+      "completion": "100% requested recognized jobs, all opponents available; partial display only",
+      "denominators": "recognized games per opponent/color; normalized colors, opponents within family, then families",
+      "draw_credit": 0.5,
+      "failures": "any candidate player failure in any validated attempt vetoes; external gates required; infrastructure unresolved",
+      "family_weights": {
+        "random-smoke": 1,
+        "line-pattern": 1
+      },
+      "infrastructure_retries": 1,
+      "max_cap_excess": 0,
+      "min_evidence_per_color": 1,
+      "min_gain": 0.05,
+      "move_cap": 20,
+      "objective": "weighted game points: win=1, loss=0, draw=draw_credit; no match coins or ratings",
+      "opponent_weights": {
+        "smoke": 1,
+        "synthetic-aggressive": 1
+      },
+      "opponents": {
+        "smoke": 2,
+        "synthetic-aggressive": 2
+      },
+      "purpose": "training",
+      "seed": 45001,
+      "stopping": "fixed saved jobs; no outcome-driven resampling; advance requires strictly positive gain >= min_gain",
+      "total_ms": 5000,
+      "version": "omok-training-screening-v1"
+    },
+    "version": "omok-training-league-v1"
+  },
+  "incumbent_games": 16,
+  "historical_games": 4,
+  "confirmation": {
+    "max_color_regression": 0,
+    "max_family_regression": 0,
+    "method": "paired distinct color-block effects; weighted families; leave-one-block/family sensitivity",
+    "min_families": 2,
+    "min_pairs_per_opponent": 2,
+    "screening": {
+      "color_weights": {
+        "black": 1,
+        "white": 1
+      },
+      "completion": "100% requested recognized jobs, all opponents available; partial display only",
+      "denominators": "recognized games per opponent/color; normalized colors, opponents within family, then families",
+      "draw_credit": 0.5,
+      "failures": "any candidate player failure in any validated attempt vetoes; external gates required; infrastructure unresolved",
+      "family_weights": {
+        "random-smoke": 1,
+        "line-pattern": 1
+      },
+      "infrastructure_retries": 1,
+      "max_cap_excess": 0,
+      "min_evidence_per_color": 1,
+      "min_gain": 0.05,
+      "move_cap": 20,
+      "objective": "weighted game points: win=1, loss=0, draw=draw_credit; no match coins or ratings",
+      "opponent_weights": {
+        "smoke": 1,
+        "synthetic-aggressive": 1
+      },
+      "opponents": {
+        "smoke": 2,
+        "synthetic-aggressive": 2
+      },
+      "purpose": "training",
+      "seed": 45002,
+      "stopping": "fixed saved jobs; no outcome-driven resampling; advance requires strictly positive gain >= min_gain",
+      "total_ms": 5000,
+      "version": "omok-training-screening-v1"
+    },
+    "stopping": "fixed saved jobs and bounded infrastructure retries; no outcome-driven elimination or resampling",
+    "version": "omok-training-confirmation-v1"
+  },
+  "promotion": {
+    "cadence": "every selected finalist before eligibility; incumbent on each check; fixed declared coverage",
+    "infrastructure_retries": 1,
+    "max_color_regression": 0.05,
+    "max_family_regression": 0.05,
+    "max_headroom_regression_ms": 1000,
+    "max_historical_regression": 0.05,
+    "max_matchup_regression": 0.05,
+    "max_validation_regression": 0.05,
+    "min_incumbent_games": 16,
+    "min_incumbent_score": 0.55,
+    "min_league_gain": 0.05,
+    "min_official_headroom_ms": 2,
+    "min_training_families": 2,
+    "min_validation_pairs": 2,
+    "official_opponents": [
+      "smoke"
+    ],
+    "seed": 42,
+    "validation": {
+      "synthetic-defensive": 4
+    },
+    "validation_cap": 100,
+    "validation_ms": 5000,
+    "version": "omok-promotion-eligibility-v1"
+  },
+  "screening_openings": [
+    [
+      [
+        9,
+        5
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        10,
+        8
+      ]
+    ]
+  ],
+  "league_openings": [
+    [
+      [
+        9,
+        5
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        10,
+        8
+      ]
+    ]
+  ],
+  "confirmation_openings": [
+    [
+      [
+        8,
+        8
+      ],
+      [
+        8,
+        9
+      ]
+    ],
+    [
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        11
+      ]
+    ]
+  ],
+  "validation_openings": [
+    [],
+    [
+      [
+        9,
+        5
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        10,
+        8
+      ]
+    ]
+  ],
+  "prior_exposures": [
+    {
+      "source": "docs/phase-04-handoff.md and docs/verification/issue-42.md",
+      "details": "Validation already development-exposed; earlier counts retained in those reports."
+    }
+  ]
+}

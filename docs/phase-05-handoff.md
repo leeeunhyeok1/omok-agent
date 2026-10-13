@@ -7,9 +7,18 @@ saved reviews and next-parent selection into repeated autonomous optimization.
 public `offline.optimizer` interface. Phase 6 selection, final holdout evaluation
 and submission packaging are not implemented here.
 
-The retained shortlist starts with `phase3-material`, the established material
-engine; exact identity, configuration, source lineage and exported archive are
-retained in the #45 acceptance artifacts. Mutated candidates are experimental
+The verified shortlist contains `phase3-material`, entry
+`e3de4b49cfa3b3b92981e00a946fbbf0925cbe5974f06ae8d1db4d1c421c46dc`,
+frozen engine commit `105a8f64edaeb86082425c1fecb12932c06c4367`.
+The real two-round pilot rejected material-coefficient 2 and 0 variants because
+both tied the incumbent at screening fitness 0.75. No new champion was promoted.
+It retained 56 actual training attempts, four validation games (2/2 black wins,
+0/2 white wins), and eight official-clock smoke wins (4/4 each color), with minimum
+remaining incumbent clock 58,964.978ms and no clock rejection reasons.
+Exact configuration/source lineage, attempts, histories and export are in the
+[acceptance report](verification/issue-45.md),
+[compact summary](verification/issue-45/summary.json) and
+[lossless evidence archive](verification/issue-45/evidence.tar.xz). Mutated candidates are experimental
 parameter variants on that unchanged engine. Candidate acceptance is conditional
 on actual gates, balanced training coverage, fresh confirmation, validation,
 historical coverage and practical official-clock reliability. A mechanics fixture
