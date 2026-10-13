@@ -1,5 +1,5 @@
 # AI-written by OpenAI Codex, for issue #39.
-"""Bounded, single-owner optimization of one immutable proposed cohort."""
+"""Bounded autonomous evolution, with legacy prepared-cohort support."""
 from collections.abc import Callable
 import json
 from math import isfinite
@@ -240,20 +240,64 @@ def main() -> None:
     initialize.add_argument('--proposals', type=Path, required=True)
     initialize.add_argument('--stage', type=Path, required=True)
     initialize.add_argument('--output', type=Path, required=True)
+    fresh = commands.add_parser('initialize', help='Save resolved policy and initialize autonomous evolution')
+    fresh.add_argument('--output', type=Path, required=True)
+    fresh.add_argument('--policy', type=Path, help='Complete evolution policy JSON; otherwise use the small local starter')
+    show = commands.add_parser('status', help='Inspect an autonomous run without dispatch')
+    show.add_argument('--output', type=Path, required=True)
+    review = commands.add_parser('review', help='Read a committed round review')
+    review.add_argument('--output', type=Path, required=True)
+    review.add_argument('--round', type=int, required=True)
+    export = commands.add_parser('export', help='Export the exact retained champion')
+    export.add_argument('--output', type=Path, required=True)
+    export.add_argument('--destination', type=Path, required=True)
     resume = commands.add_parser('run', help='Run or resume the exact saved cohort')
     resume.add_argument('--output', type=Path, required=True)
     resume.add_argument('--max-games', type=int, required=True)
     resume.add_argument('--max-seconds', type=float, required=True)
-    resume.add_argument('--workers', type=int, default=1)
+    resume.add_argument('--workers', type=int)
+    resume.add_argument('--max-rounds', type=int)
+    resume.add_argument('--conditions', type=Path, help='Actual official-clock power/load/isolation conditions JSON')
     resume.add_argument('--stop-file', type=Path)
     resume.add_argument('--contention', default='external contention uncontrolled')
     args = parser.parse_args()
-    if args.command == 'create':
+    if args.command in ('initialize', 'status', 'review', 'export'):
+        from offline import evolution
+        if args.command == 'initialize':
+            evolution.initialize(args.output, policy=json.loads(args.policy.read_text()) if args.policy else None)
+        if args.command == 'review':
+            state = evolution.status(args.output)
+            if not 0 <= args.round < len(state['rounds']) or state['rounds'][args.round]['stage'] != 'committed':
+                parser.error('Review requires a committed round.')
+            from offline.reviews import render_review
+            data = json.loads((args.output / 'rounds' / str(args.round) / 'review.json').read_text())
+            print(render_review(data))
+            return
+        if args.command == 'export':
+            from offline.champions import ChampionStore
+            ChampionStore(args.output / 'champions').export(args.destination)
+            print(canonical({'export': str(args.destination)}))
+            return
+        state = evolution.status(args.output)
+        print(canonical({'checkpoint': str(args.output / 'evolution-checkpoint.json'),
+            'incumbent': state['incumbent']['identity'], 'stopped': state['stopped'],
+            'rounds': [{'index': r['index'], 'stage': r['stage'], 'decision': r['decision']} for r in state['rounds']]}))
+    elif args.command == 'create':
         create(args.output, proposals=args.proposals, stage=args.stage)
         print(canonical({'checkpoint': str(args.output / 'optimizer-checkpoint.json'), 'status': 'prepared'}))
     else:
+        if (args.output / 'evolution.json').exists():
+            from offline import evolution
+            state = evolution.run(args.output, max_games=args.max_games, max_seconds=args.max_seconds,
+                max_rounds=args.max_rounds, workers=args.workers,
+                conditions=json.loads(args.conditions.read_text()) if args.conditions else None,
+                stop_requested=args.stop_file.exists if args.stop_file else None,
+                contention=args.contention, progress=lambda counts: print(canonical(counts), flush=True))
+            print(canonical({'checkpoint': str(args.output / 'evolution-checkpoint.json'),
+                             'segment': state['segments'][-1], 'stopped': state['stopped']}))
+            return
         state = run(args.output, max_games=args.max_games, max_seconds=args.max_seconds,
-            workers=args.workers, stop_requested=args.stop_file.exists if args.stop_file else None,
+            workers=args.workers or 1, stop_requested=args.stop_file.exists if args.stop_file else None,
             contention=args.contention, progress=lambda counts: print(canonical(counts), flush=True))
         print(canonical({'checkpoint': str(args.output / 'optimizer-checkpoint.json'),
             'decision_committed': state['decision_committed'], 'progress': state['progress']}))

@@ -1,5 +1,9 @@
 # omok-agent
 
+Issue #45 adds [autonomous repeated optimization](docs/evolution.md): initialize once,
+run with global game/time/round limits, stop/resume, review and export the retained
+champion. See the [Phase 5 handoff](docs/phase-05-handoff.md).
+
 Issue #43 adds [atomic champion promotion, exact exports and rollback](docs/champions.md),
 retained evidence/decisions and permanent historical source bundles.
 

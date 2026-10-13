@@ -53,7 +53,7 @@ def execution_conditions(workers: int = 1, contention: str = 'external contentio
                         ('values', ctypes.c_ulonglong * 7)]
         memory = MemoryStatus()
         memory.length = ctypes.sizeof(memory)
-        if ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(memory)):
+        if getattr(ctypes, 'windll').kernel32.GlobalMemoryStatusEx(ctypes.byref(memory)):
             observed['ram_bytes'] = memory.values[0]
     return observed
 
