@@ -469,7 +469,7 @@ def run(output: Path, *, max_games: int, max_seconds: float, max_rounds: int | N
                 candidates = [Entry.from_record(c['entry']) for c in r['population']['candidates']]
                 if not candidates:
                     r['decision'] = {'reason': 'proposal exhaustion', 'parents': [incumbent.record()], 'promotion': False}
-                    review = {'format': 'omok-batch-review-v1', 'retained_incumbent': incumbent.identity,
+                    review: dict[str, Any] = {'format': 'omok-batch-review-v1', 'retained_incumbent': incumbent.identity,
                         'strongest_verified': incumbent.identity, 'strongest_screened': None,
                         'promotion': {'performed': False, 'status': 'retain incumbent: proposal exhaustion'},
                         'candidates': {}, 'resources': [], 'failures': [],
