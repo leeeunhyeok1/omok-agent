@@ -110,3 +110,9 @@ Phase 6 selection, untouched final holdout evaluation and final submission
 assembly remain separate work. No new LLM usage transcript was recorded at the
 user's request. [Independent review](issue-45-review.md) has no remaining
 confirmed specification findings and one optional maintenance suggestion.
+
+The full regression suite remains incomplete by the user's explicit decision
+to finish on 2026-10-14. Of 350 discovered tests, 25 completed successfully in
+the initial run; the remaining 325 were interrupted during the resumed run.
+No full-suite pass is claimed. The real acceptance pilot, focused checks and
+47-file type check above completed successfully. All test processes were stopped.
