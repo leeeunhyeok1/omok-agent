@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from omok.evaluation import EvaluationConfig
 
 from omok.simulator import Coordinate, EMPTY, Position, SIZE, Transition
-from omok.search import FixedDepthSearch, SearchLimits, SearchResult, legal_moves
+from omok.search import FixedDepthSearch, SearchLimits, SearchResult, fallback_move
 
 
 class DevelopmentPlayer(Protocol):
@@ -48,9 +48,10 @@ class FixedDepthPlayer:
         position = Position(board, self.color)
         if position.outcome != 'ongoing':
             raise ValueError('take_turn requires a live position.')
-        fallback = next(legal_moves(position))
         if time != -1 and time <= 2:
-            self.last_result = SearchResult(fallback, None, False, cancellation='low_time')
+            fallback = fallback_move(position)
+            self.last_result = SearchResult(fallback, None, False, cancellation='low_time',
+                                            fallback_source='static_ordering')
             return fallback
         allowance = self.max_time_ms if time == -1 else min(
             self.max_time_ms, max(0.0, (time - 2) * 0.1))
@@ -129,9 +130,10 @@ class IterativePlayer:
         position = Position(board, self.color)
         if position.outcome != 'ongoing':
             raise ValueError('take_turn requires a live position.')
-        fallback = next(legal_moves(position))
         if allowance == 0:
-            result = SearchResult(fallback, None, False, cancellation='low_time')
+            fallback = fallback_move(position)
+            result = SearchResult(fallback, None, False, cancellation='low_time',
+                                  fallback_source='static_ordering')
         else:
             result = self.search.iterative(
                 position, self.max_depth,
@@ -185,6 +187,7 @@ class IterativePlayer:
                 name: getattr(result.tactics, name) for name in
                 ('complete', 'wins_complete', 'threats_complete', 'defenses_complete', 'cancellation')},
             'fallback_reason': result.cancellation if result.completed_depth == 0 else None,
+            'fallback_source': result.fallback_source,
             'completed_depth': result.completed_depth, 'attempted_depth': result.attempted_depth,
             'score': result.score, 'principal_variation': [list(move) for move in line],
             'pv_status': 'truncated' if len(line) < len(result.principal_variation) else result.pv_status,

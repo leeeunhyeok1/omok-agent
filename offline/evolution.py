@@ -102,8 +102,13 @@ def validate_policy(p: dict[str, Any]) -> None:
 def initialize(output: Path, *, policy: dict[str, Any] | None = None,
                incumbent: Entry | None = None, snapshot: PoolSnapshot | None = None,
                history: dict[str, Any] | None = None) -> dict[str, Any]:
-    catalog, default_pool = default_catalog()
-    incumbent = incumbent or catalog['phase3-material']
+    _, default_pool = default_catalog()
+    incumbent = incumbent or Entry.local(
+        'current-material', module='omok.player', factory='IterativePlayer',
+        source_paths=('omok', 'players', 'configs'), origin='local-engine',
+        family='omok', acknowledgment='Local AI-written engine',
+        variant='current-material', diagnostics=('search',),
+        limitations='Current-source starter; playing strength unverified.')
     snapshot = snapshot or default_pool
     p = policy or starter_policy(incumbent)
     validate_policy(p)

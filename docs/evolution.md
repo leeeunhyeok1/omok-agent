@@ -16,6 +16,10 @@ nice -n 10 python3 -m offline.optimizer run --output .scratch/my-evolution \
   --stop-file .scratch/my-evolution/STOP --contention 'one game worker; external desktop load uncontrolled'
 ```
 
+Fresh initialization registers the current local engine as its starting player;
+historical catalog versions retain their frozen checkpoint code. Changing engine
+source requires a fresh output directory, rather than resuming an older run.
+
 Initialization saves the complete resolved policy, pool, source identities,
 incumbent archive, tactical-suite identity and proposal RNG before generating
 anything. The starter has two material-coefficient mutations per round, incumbent

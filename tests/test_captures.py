@@ -178,9 +178,12 @@ class CaptureTests(unittest.TestCase):
             self.assertEqual(len(engine.table), 0)
             self.assertEqual(root.board, tuple(tuple(row) for row in board))
         ticks[0] = 0
+        evaluator.inspect(root, check=count)
+        inspection_total = ticks[0]
+        ticks[0] = 0
         def cancel_late():
             ticks[0] += 1
-            if ticks[0] > 8000:
+            if ticks[0] >= inspection_total:
                 raise SearchCancelled('inspection')
         # Cancellation of inspection must hide every family, including completed earlier scans.
         report = evaluator.inspect(root, check=cancel_late)

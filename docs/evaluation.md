@@ -396,8 +396,12 @@ and inherit the after-position shared-defender evidence. Terminal outcomes remai
 separate from continuation sets. Inspection recomputes even disabled families;
 production ablations skip their work and contribute zero.
 
-Effect recomputation is intentionally a full-board feature reference, not an
-incremental optimization. Sparse measured calls were about 18–38 ms; the dense
+Effect recomputation is a full-board feature reference. The current evaluator
+shares complete same-position line/capture scans across families, and capture
+effects skip line work when neither color has a capture move. Fixed maximal-line
+geometry is precomputed, with feature-ineligible sparse lines skipped. No mutable
+incremental position cache is introduced. Historical measurements before these
+optimizations: sparse calls were about 18–38 ms; the dense
 capture-heavy sample was about 1.16 seconds without a deadline. All work checks
 cooperative cancellation. This configuration is unsuitable for default promotion
 on these measurements. See [issue #20 evidence](verification/issue-20.md).

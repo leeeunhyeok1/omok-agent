@@ -81,7 +81,8 @@ These are correctness checks, not evidence of exhaustive 19 × 19 strategy.
 
 `SearchLimits` optionally supplies an absolute monotonic `deadline`, `max_nodes`,
 and a `cancelled()` predicate. `FixedDepthSearch(clock=...)` permits controlled
-clock tests. A live search establishes its first row-major legal fallback before
+clock tests. A live search establishes a legal fallback ranked by adjacent stones,
+center distance, and coordinates before
 candidate generation or evaluation. `SearchCancelled` is the intentional signal;
 only this exception is caught. Other candidate, evaluator, clock and simulator
 errors propagate. State remains intact on either kind of interruption.
@@ -111,8 +112,9 @@ evaluation. Simulator transitions and arbitrary user-supplied callbacks are
 cooperative atomic work; they cannot be preempted. Board conversion and fallback
 cost are outside those checks. Small budgets and scheduler delays cannot guarantee
 a hard deadline; the existing runner still reports actual elapsed-time failures.
-A canceled fixed-depth search uses fallback even if some promising root moves
-were explored. Completed-iteration retention and the refined clock manager are
+A canceled depth-one search can use the best fully evaluated child as its fallback,
+without publishing a completed root score or PV. Deeper partial searches do not
+mix scores from different horizons. Completed-iteration retention and the refined clock manager are
 issue #11; verified tactical candidates, caching, integrated runner diagnostics and
 Phase 02 acceptance belong to issues #12–#15. Final official inheritance/naming and
 packaging remain deferred; this class makes no new compatibility claim.
@@ -125,7 +127,8 @@ Run `python3 -m unittest tests.test_search -v` and
 
 `FixedDepthSearch.iterative(position, max_depth, limits=None, soft_deadline=None)`
 searches depths 1 through the configured maximum under one cumulative node/deadline
-budget. It establishes a row-major legal fallback before invoking callbacks. Only a
+budget. It establishes a fallback ranked by adjacent stones and center distance
+before invoking callbacks. Only a
 fully completed root search replaces the committed result. `completed` means a
 coherent iteration exists, even when a later iteration was canceled; inspect
 `cancellation` to determine why work stopped. A terminal entry has a score and no
@@ -249,8 +252,11 @@ If any tactical or membership work is interrupted, the report retains **all lega
 cells**, ignoring locality and cap. Partially verified defenses remain individual
 proofs only; unexamined responses stay unknown. Search unwinds at the expired
 checkpoint and returns its last complete iteration or legal fallback. Before any
-iteration completes, an independently verified strict win may replace fallback,
-with absent score and depth zero. Later incomplete work never replaces committed
+iteration completes, fallback prefers an independently verified strict win, then
+the best fully evaluated depth-one child, then a verified defense, then the first
+ordered root candidate. With no search evidence it uses the cheap static ranking.
+The score remains absent and depth remains zero. `fallback_source` distinguishes
+these choices in the result and player diagnostics. Later incomplete work never replaces committed
 move, score, depth or PV. `SearchResult.tactics` records the latest root analysis
 and may therefore be incomplete alongside a previously committed result.
 `root_candidate_count` counts that root's selected membership; zero means generation

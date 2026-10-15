@@ -186,7 +186,9 @@ class ConfiguredEvaluator:
         captures = None
         if 'captures' in supported:
             if inspection or self.config.captures_enabled:
-                captures = scan('captures', lambda: capture_features(position, check, inspection=inspection))
+                captures = scan('captures', lambda: capture_features(
+                    position, check, inspection=inspection or
+                    ('effects' in supported and self.config.effects_enabled)))
             features.update({name: captures['black'][name] - captures['white'][name] if captures else 0
                              for name in CAPTURE_FEATURES})
         check()
@@ -196,7 +198,9 @@ class ConfiguredEvaluator:
                 values = None
                 if inspection or getattr(self.config, family + '_enabled'):
                     if family == 'effects':
-                        values = scan('effects', lambda: capture_effects(position, check, inspection=inspection))
+                        values = scan('effects', lambda: capture_effects(
+                            position, check, inspection=inspection, captures=captures,
+                            before=lines if scan_lines and scan_potential else None))
                     else:
                         assert lines is not None
                         values = scan('multiplicity', lambda: multiplicity_features(position, lines, check, inspection=inspection))

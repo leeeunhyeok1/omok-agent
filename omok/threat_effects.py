@@ -30,9 +30,21 @@ def _summary(lines: dict[str, Any], color: str) -> dict[str, Any]:
 
 
 def capture_effects(position: Position, check: Callable[[], None], *,
-                    inspection: bool = False) -> dict[str, Any]:
-    before = line_features(position, check, potential=True)
-    captures = capture_features(position, check, inspection=True)
+                    inspection: bool = False,
+                    before: dict[str, Any] | None = None,
+                    captures: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Reuse complete same-position scans when supplied by the evaluator.
+
+    ``before`` must include fours and potential; ``captures`` must include
+    inspection records. These are call-local dependencies, never cached state.
+    """
+    check()
+    if captures is None:
+        captures = capture_features(position, check, inspection=True)
+    # Without capture moves all six effect counts are zero. In particular,
+    # there is no need for another full line scan on a quiet board.
+    if before is None and any(captures[name]['moves'] for name in COLORS):
+        before = line_features(position, check, potential=True)
     result: dict[str, Any] = {}
     for color, name in enumerate(COLORS):
         enemy = COLORS[1 - color]
@@ -42,6 +54,7 @@ def capture_effects(position: Position, check: Callable[[], None], *,
         own = Position(position.board, color)
         for capture in captures[name]['moves']:
             check()
+            assert before is not None
             child = own.play(capture['move']).position
             check()  # Includes cancellation after captures; the parent is immutable.
             after = line_features(child, check, potential=True)

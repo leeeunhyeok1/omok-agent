@@ -1,7 +1,7 @@
 # AI-written by OpenAI Codex, for issue #11.
 import unittest
 
-from omok.search import FixedDepthSearch, SearchLimits
+from omok.search import FixedDepthSearch, SearchLimits, fallback_move
 from omok.simulator import Position
 from omok.player import IterativePlayer, TimePolicy
 from verification.reference import ReferencePosition
@@ -31,7 +31,7 @@ class IterativeTests(unittest.TestCase):
                                   committed.principal_variation, committed.pv_status))
             else:
                 self.assertEqual((result.move, result.score, result.completed_depth),
-                                 ((0, 0), None, 0))
+                                 ((9, 9) if limit >= 1 else fallback_move(root), None, 0))
                 self.assertEqual(result.pv_status, 'unavailable')
             self.assertEqual(result.attempted_depth, result.completed_depth + 1)
             self.assertEqual(result.cancellation, 'node_limit')
@@ -169,7 +169,7 @@ class IterativeTests(unittest.TestCase):
                 return super().__iter__()
         board = [SlowRow([-1] * 19) for _ in range(19)]
         player = IterativePlayer(0, search=FixedDepthSearch(clock=lambda: ticks[0]))
-        self.assertEqual(player.take_turn(board, 60000), (0, 0))
+        self.assertEqual(player.take_turn(board, 60000), (9, 9))
         self.assertEqual(player.last_result.completed_depth, 0)
         self.assertEqual(player.last_result.cancellation, 'soft_stop')
         self.assertGreaterEqual(player.last_elapsed_ms, 190)

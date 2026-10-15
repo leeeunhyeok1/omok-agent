@@ -53,6 +53,17 @@ def legal_moves(position: Position) -> Iterator[Coordinate]:
                 yield row, col
 
 
+def fallback_move(position: Position) -> Coordinate:
+    """Cheap legal default: nearby stones, then the center, then coordinates.
+
+    This bounded board scan needs no search budget or evaluator. Tactical and
+    evaluated choices replace it as soon as the search has useful evidence.
+    """
+    from omok.tactics import static_rank
+    return min(legal_moves(position), key=lambda move: (-static_rank(
+        position, move, lambda: None), move))
+
+
 def material_evaluation(position: Position, *,
                         check: Callable[[], None] = lambda: None) -> int:
     """Untuned black-centric material difference; range [-361, 361]."""
@@ -86,6 +97,7 @@ class SearchResult:
     evaluation_cancelled: int = 0
     evaluation_cache_hits: int = 0
     evaluation_profile: dict[str, Any] | None = None
+    fallback_source: str | None = None
 
 
 @dataclass(slots=True)
@@ -107,6 +119,8 @@ class _Traversal:
     root: Position | None = None
     root_tactics: 'TacticalResult | None' = None
     root_candidate_count: int = 0
+    root_ordered_move: Coordinate | None = None
+    partial_root_move: Coordinate | None = None
     pv_moves: dict[Position, Coordinate] = field(default_factory=dict)
 
     def report(self, result: SearchResult) -> SearchResult:
@@ -127,6 +141,22 @@ class _Traversal:
         if self.limits.max_nodes is not None and self.nodes >= self.limits.max_nodes:
             raise SearchCancelled('node_limit')
         self.nodes += 1
+
+    def fallback(self, initial: Coordinate) -> tuple[Coordinate, str]:
+        report = self.root_tactics
+        if report is not None and report.wins:
+            return report.wins[0], 'verified_win'
+        if self.partial_root_move is not None:
+            return self.partial_root_move, 'partial_depth_one'
+        # Each recorded defense has already survived the complete immediate
+        # reply check, even if enumeration of other defenses was interrupted.
+        if report is not None and report.defenses:
+            if self.root_ordered_move in report.defenses:
+                return self.root_ordered_move, 'verified_defense'
+            return report.defenses[0], 'verified_defense'
+        if self.root_ordered_move is not None:
+            return self.root_ordered_move, 'root_ordering'
+        return initial, 'static_ordering'
 
 
 @dataclass(frozen=True, slots=True, eq=False)
@@ -284,7 +314,7 @@ class FixedDepthSearch:
             raise ValueError('Depth must be a nonnegative integer.')
         if position.outcome != 'ongoing':
             return SearchResult(None, self.score(position, position.side_to_move), True)
-        fallback = next(legal_moves(position))
+        fallback = fallback_move(position)
         traversal = _Traversal(SearchLimits() if limits is None else limits, self.clock,
                                compatibility=self.cache_compatibility(), use_table=not reference,
                                root=position,
@@ -294,11 +324,11 @@ class FixedDepthSearch:
                            completed_depth=depth, attempted_depth=depth, pv_status='complete',
                            tactics=traversal.root_tactics, root_candidate_count=traversal.root_candidate_count))
         except SearchCancelled as error:
-            if traversal.root_tactics is not None and traversal.root_tactics.wins:
-                fallback = traversal.root_tactics.wins[0]
+            fallback, source = traversal.fallback(fallback)
             return traversal.report(SearchResult(fallback, None, False, tactics=traversal.root_tactics,
                                 root_candidate_count=traversal.root_candidate_count, nodes=traversal.nodes,
-                                cutoffs=traversal.cutoffs, cancellation=str(error), attempted_depth=depth))
+                                cutoffs=traversal.cutoffs, cancellation=str(error), attempted_depth=depth,
+                                fallback_source=source))
 
     def _leaf(self, position: Position, perspective: int, traversal: _Traversal) -> int:
         traversal.check()
@@ -331,7 +361,9 @@ class FixedDepthSearch:
         best = -FULL_WINDOW
         optimal: list[Coordinate] = []
         best_line: tuple[Coordinate, ...] = ()
-        for move in self._moves(position, traversal):
+        moves = self._moves(position, traversal)
+        traversal.root_ordered_move = moves[0]
+        for move in moves:
             traversal.check()
             child = position.play(move).position
             if reference:
@@ -345,6 +377,11 @@ class FixedDepthSearch:
                 best_line = (move,) + line
             elif value == best:
                 optimal.append(move)
+            if depth == 1:
+                # Every finished child has the same one-ply horizon. Retain
+                # its useful move only; a partial root has no committed score
+                # or PV and must never be cached as an exact root result.
+                traversal.partial_root_move = optimal[0]
         traversal.check()
         if not reference:
             self._store(position, depth, best, 'exact', best_line, traversal)
@@ -433,7 +470,8 @@ class FixedDepthSearch:
         if position.outcome != 'ongoing':
             return SearchResult(None, self.score(position, position.side_to_move), True,
                                 pv_status='complete')
-        committed = SearchResult(next(legal_moves(position)), None, False)
+        committed = SearchResult(fallback_move(position), None, False,
+                                 fallback_source='static_ordering')
         traversal = _Traversal(SearchLimits() if limits is None else limits, self.clock,
                                compatibility=self.cache_compatibility(), root=position,
                                profile=EvaluationProfile(self.profile_every) if self.profile_every else None)
@@ -455,11 +493,12 @@ class FixedDepthSearch:
                     traversal.pv_moves[leaf] = move
                     leaf = leaf.play(move).position
         except SearchCancelled as error:
-            if committed.completed_depth == 0 and traversal.root_tactics is not None:
-                fallback = (traversal.root_tactics.wins[0] if traversal.root_tactics.wins
-                            else committed.move)
+            if committed.completed_depth == 0:
+                assert committed.move is not None
+                fallback, source = traversal.fallback(committed.move)
                 committed = replace(committed, move=fallback, tactics=traversal.root_tactics,
-                                    root_candidate_count=traversal.root_candidate_count)
+                                    root_candidate_count=traversal.root_candidate_count,
+                                    fallback_source=source)
             return traversal.report(replace(
                 committed, tactics=traversal.root_tactics,
                 root_candidate_count=traversal.root_candidate_count,
