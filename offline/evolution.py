@@ -26,6 +26,37 @@ FORMAT = 'omok-evolution-v1'
 SUITE = ('tests/test_tactics.py', 'tests/test_simulator.py', 'tests/test_iterative.py',
          'tests/test_transposition.py', 'tests/test_evaluation.py', 'tests/test_threat_effects.py')
 SELECTION = 'incumbent elite plus best advanced training fitness; identity tie break; no validation fitness'
+EXPLORATION_SELECTION = 'incumbent elite plus best feasible screening survivors; league strength vetoes do not block exploratory parents; identity tie break; no validation fitness'
+
+
+def parent_candidates(selection: str, screened: dict[str, Any], broader: dict[str, Any],
+                      confirmed: dict[str, Any] | None = None,
+                      checks: dict[str, Any] | None = None) -> list[str]:
+    """Rank exploratory ancestors separately from qualification for champion promotion."""
+    if selection == SELECTION:
+        rank = broader['candidates']
+        return sorted(broader['advanced'], key=lambda i: (-rank[i]['fitness'], i))
+    if selection != EXPLORATION_SELECTION:
+        raise ValueError('Unsupported parent selection policy.')
+    eligible = []
+    for identity in screened['advanced']:
+        member = broader['candidates'].get(identity)
+        # Only strength rejections can be bypassed, never incomplete or unsafe evidence.
+        if (member is None or member['fitness'] is None or member['vetoes'] or
+                set(member['reasons']) - {'league_regression', 'insufficient_favorable_gain'}):
+            continue
+        fresh = (confirmed or {}).get('candidates', {}).get(identity)
+        if fresh is not None and (fresh['status'] != 'advance' or fresh['vetoes']):
+            continue
+        checked = (checks or {}).get('candidates', {}).get(identity)
+        if checked is not None:
+            # Validation scores, pairing and strength reasons never enter selection.
+            # Only reliability vetoes plus official completion/clock feasibility do.
+            if checked['vetoes'] or any(checked.get(stage, {}).get('reasons', [])
+                                       for stage in ('official', 'clock')):
+                continue
+        eligible.append(identity)
+    return sorted(eligible, key=lambda i: (-screened['candidates'][i]['fitness'], i))
 
 
 def starter_policy(incumbent: Entry) -> dict[str, Any]:
@@ -59,7 +90,7 @@ def starter_policy(incumbent: Entry) -> dict[str, Any]:
 
 
 def validate_policy(p: dict[str, Any]) -> None:
-    if p['format'] != FORMAT or p['selection'] != SELECTION:
+    if p['format'] != FORMAT or p['selection'] not in (SELECTION, EXPLORATION_SELECTION):
         raise ValueError('Unsupported evolution/selection policy.')
     if p['seed_schedule'] != 'stage seed plus round index; openings remain stage-specific' or not p['resource_basis']:
         raise ValueError('Declare the seed schedule and measured resource basis.')
@@ -586,11 +617,12 @@ def run(output: Path, *, max_games: int, max_seconds: float, max_rounds: int | N
                 current = store.load()
                 elite = current['versions'][current['current']]['bundle']['entry']
                 # Training barrier determines parents; validation values never enter this ranking.
-                rank = broader['report']['candidates']
-                ranked = sorted(broader['report']['advanced'], key=lambda i: (-rank[i]['fitness'], i))
+                ranked = parent_candidates(p['selection'], screened['report'], broader['report'],
+                    confirmed['report'] if confirmed else None, checks['report'] if checks else None)
                 records = {c['entry']['identity']: c['entry'] for c in r['population']['candidates']}
                 parents = [elite] + [records[i] for i in ranked if i != elite['identity']][:p['parent_count'] - 1]
-                r['decision'] = {'parents': parents, 'training_advanced': ranked,
+                r['decision'] = {'parents': parents, 'training_advanced': (ranked if p['selection'] == SELECTION
+                    else broader['report']['advanced']),
                     'screening': {i: {'status': c['status'], 'reasons': c['reasons']} for i, c in screened['report']['candidates'].items()},
                     'confirmation_advanced': confirmed['report']['advanced'] if confirmed else [],
                     'promotion': transaction, 'retained_incumbent': elite['identity'],
@@ -598,6 +630,9 @@ def run(output: Path, *, max_games: int, max_seconds: float, max_rounds: int | N
                     'historical_gaps': broader['report']['historical_gaps'] + [
                         {'round_index': r['index'], 'identity': i} for i, c in broader['report']['history_coverage'].items()
                         if c['due'] and not c['complete']]}
+                if p['selection'] == EXPLORATION_SELECTION:
+                    r['decision'].update(parent_selection=p['selection'], exploratory_ranked=ranked,
+                        exploratory_parents=[e['identity'] for e in parents if e['identity'] != elite['identity']])
                 review = review_batch(screening.load_stage(root / 'screening'), screened['raw'], max_failures=1)
                 review['retained_incumbent'] = elite['identity']
                 review['strongest_verified'] = elite['identity']

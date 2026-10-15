@@ -4,7 +4,7 @@ from collections.abc import Callable
 from typing import Any
 
 from omok.simulator import AXES, EMPTY, SIZE, Position
-from omok.tactics import immediate_wins
+from omok.tactics import classify
 
 POTENTIAL_FEATURES = ('open_three', 'broken_three', 'two_stone')
 
@@ -116,10 +116,21 @@ def line_features(position: Position, check: Callable[[], None], *,
                         report['broken_four'] += 1
                         four_units['broken_four'].add(tuple(cells[j] for j in range(left + 1, right) if j != i))
         check()
-        # The established tactical detector resolves captures and both-color outcomes.
+        # Simulator verification resolves captures and both-color outcomes.
         # Terminal input has no legal continuations; static geometry remains inspectable.
-        wins = (immediate_wins(Position(position.board, color), check)
-                if fours and position.outcome == 'ongoing' else ())
+        # The scan above already enumerated every exact-five placement on every
+        # axis. Captures cannot remove one's own stones, so every new own five
+        # must pass through that placement. Reuse these necessary candidates
+        # instead of repeating a full-board tactical geometry scan. Only play()
+        # establishes a strict win: captures can expose an opposing five too.
+        wins = []
+        if fours and completions and position.outcome == 'ongoing':
+            own = Position(position.board, color)
+            for move in sorted(completions):
+                check()
+                if classify(own.play(move).position, color) == 'win':
+                    wins.append(move)
+                check()
         check()
         report.update(geometric_completion=len(completions), verified_win=len(wins),
                       overline_trap=len(traps), geometric_completions=sorted(completions),

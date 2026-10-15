@@ -19,14 +19,15 @@ def capture_features(position: Position, check: Callable[[], None], *,
         cells: set[Coordinate] = set()
         if position.outcome == 'ongoing':
             check()
-            own = Position(position.board, color)
-            check()
+            # Every capture has an existing own stone at the far endpoint.
+            # Enumerate those anchors rather than all empty cells on the board;
+            # group rays by placement so simultaneous captures remain one move.
+            placements: dict[Coordinate, set[Pair]] = {}
             for row in range(SIZE):
                 check()
                 for col in range(SIZE):
-                    if position.board[row][col] != EMPTY:
+                    if position.board[row][col] != color:
                         continue
-                    captured: set[Pair] = set()
                     for dr, dc in DIRECTIONS:
                         check()
                         end_row, end_col = row + 3 * dr, col + 3 * dc
@@ -35,23 +36,25 @@ def capture_features(position: Position, check: Callable[[], None], *,
                         first, second = (row + dr, col + dc), (row + 2 * dr, col + 2 * dc)
                         if (position.board[first[0]][first[1]] == 1 - color
                                 and position.board[second[0]][second[1]] == 1 - color
-                                and position.board[end_row][end_col] == color):
-                            captured.add(tuple(sorted((first, second))))
-                    if not captured:
-                        continue
-                    check()
-                    transition = own.play((row, col))
-                    check()  # Cancellation after hypothetical removal publishes nothing.
-                    removed = [item.cell for item in transition.captured]
-                    record: dict[str, Any] = {'move': (row, col), 'pair_count': len(captured),
-                              'cell_count': len(removed)}
-                    if inspection:
-                        record.update(pairs=sorted(captured), cells=removed,
-                                      outcome=transition.position.outcome,
-                                      classification=classify(transition.position, color))
-                    moves.append(record)
-                    pairs.update(captured)
-                    cells.update(removed)
+                                and position.board[end_row][end_col] == EMPTY):
+                            placements.setdefault((end_row, end_col), set()).add(
+                                tuple(sorted((first, second))))
+            own = Position(position.board, color) if placements else None
+            for move, captured in sorted(placements.items()):
+                check()
+                assert own is not None
+                transition = own.play(move)
+                check()  # Cancellation after hypothetical removal publishes nothing.
+                removed = [item.cell for item in transition.captured]
+                record: dict[str, Any] = {'move': move, 'pair_count': len(captured),
+                          'cell_count': len(removed)}
+                if inspection:
+                    record.update(pairs=sorted(captured), cells=removed,
+                                  outcome=transition.position.outcome,
+                                  classification=classify(transition.position, color))
+                moves.append(record)
+                pairs.update(captured)
+                cells.update(removed)
         reports.append({'capture_move': len(moves), 'capture_pair': len(pairs),
                         'multi_pair_move': sum(move['pair_count'] > 1 for move in moves),
                         'moves': moves, 'captured_pairs': sorted(pairs),

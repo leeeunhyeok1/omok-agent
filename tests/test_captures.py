@@ -163,7 +163,7 @@ class CaptureTests(unittest.TestCase):
         evaluator(root, count)
         total = ticks[0]
         # Sweep checkpoints around hypothetical work as well as scan/publication boundaries.
-        for stop in (1, total // 2, total - 1, *range(1440, 1520)):
+        for stop in range(1, total + 1):
             ticks[0] = 0
             def cancel():
                 ticks[0] += 1

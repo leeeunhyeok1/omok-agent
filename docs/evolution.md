@@ -7,6 +7,11 @@ candidate declarations are parameters; the run directory contains opponent
 snapshots, checkpoints, evidence and exports. Exports are development artifacts,
 not the final submission package.
 
+For balanced training and optional exploratory parent selection, see
+[the fresh-run recipe](colab-training/balanced.md). The optional
+[SimplePlayer-focused profile](colab-training/simple-focused.md) supports targeted diagnosis. Their
+champion gates remain unchanged; the original starter policy below is retained.
+
 Initialize once, then launch a bounded invocation:
 
 ```sh

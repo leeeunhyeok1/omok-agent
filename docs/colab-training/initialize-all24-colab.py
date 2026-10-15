@@ -14,14 +14,17 @@ from offline.registry import Entry, default_catalog
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--output', type=Path, default=Path('.scratch/all24-training-colab'))
+parser.add_argument('--profile', choices=('all24', 'balanced', 'simple-focused'), default='all24',
+                    help='Fresh immutable recipe; never changes an existing run.')
 args = parser.parse_args()
-recipe = json.loads(Path(__file__).with_name('all24-colab-setup.json').read_text())
+recipe_name = args.profile + '-colab-setup.json'
+recipe = json.loads(Path(__file__).with_name(recipe_name).read_text())
 catalog, snapshot = default_catalog()
 parent = Entry.local(
-    'all24-initial', module='omok.player', factory='IterativePlayer',
+    args.profile + '-initial', module='omok.player', factory='IterativePlayer',
     options={'candidate_configuration': recipe['configuration']},
     source_paths=('omok', 'players', 'configs'), origin='local-engine', family='omok',
-    acknowledgment='Local AI-written engine', variant='all24-training-initial',
+    acknowledgment='Local AI-written engine', variant=args.profile + '-training-initial',
     diagnostics=('search',),
     limitations='Current-source experimental evaluator; playing strength unverified.')
 for name in recipe['policy']['screening']['opponents']:
@@ -30,6 +33,7 @@ for name in recipe['policy']['screening']['opponents']:
 policy = recipe['policy'] | {'proposal': ProposalPolicy.for_parent(parent, **recipe['mutation']).data}
 state = initialize(args.output, incumbent=parent, policy=policy, snapshot=snapshot)
 print(json.dumps({'output': str(args.output), 'runtime': sys.version,
+                  'profile': args.profile, 'recipe': recipe_name,
                   'incumbent': parent.identity, 'loader': parent.data['loader'],
                   'weights': len(recipe['configuration']['evaluation']['coefficients']),
                   'groups': recipe['mutation']['groups'], 'games_started': 0}))

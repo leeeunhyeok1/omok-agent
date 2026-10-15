@@ -1,0 +1,395 @@
+{
+  "configuration": {
+    "evaluation": {
+      "coefficients": {
+        "broken_four": 150,
+        "broken_three": 25,
+        "capture_break_four": 120,
+        "capture_break_potential": 20,
+        "capture_create_four": 80,
+        "capture_create_potential": 15,
+        "capture_expose_five": -300,
+        "capture_move": 30,
+        "capture_pair": 10,
+        "capture_remove_blocker": 25,
+        "closed_four": 100,
+        "defensive_urgency": 100,
+        "geometric_completion": 0,
+        "geometric_multiple": 0,
+        "material": 1,
+        "multi_pair_move": 20,
+        "offensive_opportunity": 60,
+        "open_four": 300,
+        "open_three": 40,
+        "overline_trap": -20,
+        "two_stone": 5,
+        "verified_multiple": 50,
+        "verified_win": 300,
+        "vulnerable_pair": -40
+      },
+      "enabled_families": [
+        "material",
+        "lines",
+        "potential",
+        "captures",
+        "effects",
+        "multiplicity"
+      ],
+      "feature_version": "effects-v1"
+    },
+    "settings": {
+      "candidate_cap": 24,
+      "candidate_radius": 2,
+      "extensions": "none",
+      "full_width": false,
+      "max_depth": 8,
+      "max_nodes": 10000,
+      "ordering": "omok.tactics.static_rank",
+      "table_capacity": 4096,
+      "time_policy": {
+        "max_time_ms": 250.0,
+        "reserve_fraction": 0.5,
+        "return_margin_ms": 2.0,
+        "soft_fraction": 0.8,
+        "turn_fraction": 0.1
+      }
+    }
+  },
+  "policy": {
+    "format": "omok-evolution-v1",
+    "population_size": 4,
+    "parent_count": 2,
+    "seed": 45,
+    "selection": "incumbent elite plus best feasible screening survivors; league strength vetoes do not block exploratory parents; identity tie break; no validation fitness",
+    "no_survivors": "continue with incumbent",
+    "exhaustion": "stop if no proposals; record partial populations",
+    "historical_gaps": "stop after recorded round; do not erase obligations",
+    "validation_every": 2,
+    "workers": 1,
+    "gate_timeout_seconds": 30,
+    "seed_schedule": "stage seed plus round index; openings remain stage-specific",
+    "repeat_configurations": "allowed across rounds with fresh seeded jobs; deduplicate within population and against parents",
+    "resource_basis": "Issue #36 measured 0.415 slots/s, 0.277 completed games/s under reduced clocks; start with one worker and measure locally",
+    "screening": {
+      "color_weights": {
+        "black": 1,
+        "white": 1
+      },
+      "completion": "100% requested recognized jobs, all opponents available; partial display only",
+      "denominators": "recognized games per opponent/color; normalized colors, opponents within family, then families",
+      "draw_credit": 0.5,
+      "failures": "any candidate player failure in any validated attempt vetoes; external gates required; infrastructure unresolved",
+      "family_weights": {
+        "capture-collection": 1,
+        "line-pattern": 1,
+        "provided-random": 1,
+        "provided-simple": 4,
+        "reply-minimax": 1
+      },
+      "infrastructure_retries": 1,
+      "max_cap_excess": 0,
+      "min_evidence_per_color": 2,
+      "min_gain": 0.05,
+      "move_cap": 1000,
+      "objective": "weighted game points: win=1, loss=0, draw=draw_credit; no match coins or ratings",
+      "opponent_weights": {
+        "random": 1,
+        "simple": 1,
+        "synthetic-aggressive": 1,
+        "synthetic-capture": 1,
+        "synthetic-search1": 1
+      },
+      "opponents": {
+        "random": 4,
+        "simple": 8,
+        "synthetic-aggressive": 4,
+        "synthetic-capture": 4,
+        "synthetic-search1": 4
+      },
+      "purpose": "training",
+      "seed": 45001,
+      "stopping": "fixed saved jobs; no outcome-driven resampling; advance requires strictly positive gain >= min_gain",
+      "total_ms": 10000,
+      "version": "omok-training-screening-v1"
+    },
+    "league": {
+      "history_period": 1,
+      "history_slots": {},
+      "max_color_regression": 0,
+      "max_family_regression": 0,
+      "max_matchup_regression": 0,
+      "screening": {
+        "color_weights": {
+          "black": 1,
+          "white": 1
+        },
+        "completion": "100% requested recognized jobs, all opponents available; partial display only",
+        "denominators": "recognized games per opponent/color; normalized colors, opponents within family, then families",
+        "draw_credit": 0.5,
+        "failures": "any candidate player failure in any validated attempt vetoes; external gates required; infrastructure unresolved",
+        "family_weights": {
+          "capture-collection": 1,
+          "line-pattern": 1,
+          "provided-random": 1,
+          "provided-simple": 4,
+          "reply-minimax": 1
+        },
+        "infrastructure_retries": 1,
+        "max_cap_excess": 0,
+        "min_evidence_per_color": 2,
+        "min_gain": 0.05,
+        "move_cap": 1000,
+        "objective": "weighted game points: win=1, loss=0, draw=draw_credit; no match coins or ratings",
+        "opponent_weights": {
+          "random": 1,
+          "simple": 1,
+          "synthetic-aggressive": 1,
+          "synthetic-capture": 1,
+          "synthetic-search1": 1
+        },
+        "opponents": {
+          "random": 4,
+          "simple": 8,
+          "synthetic-aggressive": 4,
+          "synthetic-capture": 4,
+          "synthetic-search1": 4
+        },
+        "purpose": "training",
+        "seed": 45001,
+        "stopping": "fixed saved jobs; no outcome-driven resampling; advance requires strictly positive gain >= min_gain",
+        "total_ms": 10000,
+        "version": "omok-training-screening-v1"
+      },
+      "version": "omok-training-league-v1"
+    },
+    "incumbent_games": 16,
+    "historical_games": 4,
+    "confirmation": {
+      "max_color_regression": 0,
+      "max_family_regression": 0,
+      "method": "paired distinct color-block effects; weighted families; leave-one-block/family sensitivity",
+      "min_families": 2,
+      "min_pairs_per_opponent": 2,
+      "screening": {
+        "color_weights": {
+          "black": 1,
+          "white": 1
+        },
+        "completion": "100% requested recognized jobs, all opponents available; partial display only",
+        "denominators": "recognized games per opponent/color; normalized colors, opponents within family, then families",
+        "draw_credit": 0.5,
+        "failures": "any candidate player failure in any validated attempt vetoes; external gates required; infrastructure unresolved",
+        "family_weights": {
+          "capture-collection": 1,
+          "line-pattern": 1,
+          "provided-random": 1,
+          "provided-simple": 4,
+          "reply-minimax": 1
+        },
+        "infrastructure_retries": 1,
+        "max_cap_excess": 0,
+        "min_evidence_per_color": 2,
+        "min_gain": 0.05,
+        "move_cap": 1000,
+        "objective": "weighted game points: win=1, loss=0, draw=draw_credit; no match coins or ratings",
+        "opponent_weights": {
+          "random": 1,
+          "simple": 1,
+          "synthetic-aggressive": 1,
+          "synthetic-capture": 1,
+          "synthetic-search1": 1
+        },
+        "opponents": {
+          "random": 4,
+          "simple": 8,
+          "synthetic-aggressive": 4,
+          "synthetic-capture": 4,
+          "synthetic-search1": 4
+        },
+        "purpose": "training",
+        "seed": 45002,
+        "stopping": "fixed saved jobs; no outcome-driven resampling; advance requires strictly positive gain >= min_gain",
+        "total_ms": 10000,
+        "version": "omok-training-screening-v1"
+      },
+      "stopping": "fixed saved jobs and bounded infrastructure retries; no outcome-driven elimination or resampling",
+      "version": "omok-training-confirmation-v1"
+    },
+    "promotion": {
+      "cadence": "every selected finalist before eligibility; incumbent on each check; fixed declared coverage",
+      "infrastructure_retries": 1,
+      "max_color_regression": 0.05,
+      "max_family_regression": 0.05,
+      "max_headroom_regression_ms": 1000,
+      "max_historical_regression": 0.05,
+      "max_matchup_regression": 0.05,
+      "max_validation_regression": 0.05,
+      "min_incumbent_games": 16,
+      "min_incumbent_score": 0.55,
+      "min_league_gain": 0.05,
+      "min_official_headroom_ms": 2,
+      "min_training_families": 2,
+      "min_validation_pairs": 2,
+      "official_opponents": [
+        "simple",
+        "random"
+      ],
+      "seed": 42,
+      "validation": {
+        "synthetic-defensive": 4
+      },
+      "validation_cap": 1000,
+      "validation_ms": 5000,
+      "version": "omok-promotion-eligibility-v1"
+    },
+    "screening_openings": [
+      [],
+      [
+        [
+          9,
+          9
+        ],
+        [
+          9,
+          10
+        ]
+      ],
+      [
+        [
+          9,
+          9
+        ],
+        [
+          10,
+          9
+        ]
+      ],
+      [
+        [
+          9,
+          9
+        ],
+        [
+          10,
+          10
+        ]
+      ]
+    ],
+    "league_openings": [
+      [],
+      [
+        [
+          9,
+          9
+        ],
+        [
+          9,
+          10
+        ]
+      ],
+      [
+        [
+          9,
+          9
+        ],
+        [
+          10,
+          9
+        ]
+      ],
+      [
+        [
+          9,
+          9
+        ],
+        [
+          10,
+          10
+        ]
+      ]
+    ],
+    "confirmation_openings": [
+      [
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          9
+        ]
+      ],
+      [
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          11
+        ]
+      ],
+      [
+        [
+          8,
+          8
+        ],
+        [
+          9,
+          8
+        ]
+      ],
+      [
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          11
+        ]
+      ]
+    ],
+    "validation_openings": [
+      [],
+      [
+        [
+          9,
+          9
+        ],
+        [
+          9,
+          10
+        ]
+      ]
+    ],
+    "prior_exposures": [
+      {
+        "source": "docs/phase-04-handoff.md and docs/verification/issue-42.md",
+        "details": "Validation already development-exposed; earlier counts retained in those reports."
+      }
+    ]
+  },
+  "mutation": {
+    "batch": "evaluation",
+    "groups": [
+      "material",
+      "lines",
+      "potential",
+      "captures",
+      "effects",
+      "multiplicity"
+    ],
+    "scales": {
+      "captures": 1.0,
+      "effects": 1.0,
+      "lines": 1.0,
+      "material": 1.0,
+      "multiplicity": 1.0,
+      "potential": 1.0
+    },
+    "diversity_probability": 0.1,
+    "max_attempts": 12,
+    "repair": "reject"
+  }
+}

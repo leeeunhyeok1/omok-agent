@@ -1,0 +1,323 @@
+{
+  "scope": "Eight local development games across two source revisions; not independent qualification or statistical strength proof",
+  "baseline_commit": "d44f054b38c073d30b7550746c76811a34d9232d",
+  "feature_equivalence": {
+    "positions": 29,
+    "exact_line_capture_and_evaluation_reports_match": true,
+    "report_sha256": "85a1c349aeeda920a2f15f9215b5d9fd4295517b1dcf73c18f4bdd0581ea238e"
+  },
+  "revisions": {
+    "baseline": {
+      "plan_sha256": "474a57ea3dffd0c90ed416660b83eb20ddd789302d6be5178e49638137916d96",
+      "runtime": "3.14.3 (v3.14.3:323c59a5e34, Feb  3 2026, 11:41:37) [Clang 16.0.0 (clang-1600.0.26.6)]",
+      "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+      "source_root": "historical Git snapshot",
+      "workers": 1,
+      "conditions": "serial local development; external load and power uncontrolled",
+      "sources": {
+        "omok/__init__.py": "8fa4256f87cb48053e42cc4b325076ddcec37235cfa8d6ce9580704b8bcfc954",
+        "omok/captures.py": "12d42ecfeffbb9ff5671230c205307f5be8a2ef69468c6e18e1172398d271062",
+        "omok/evaluation.py": "a37e1d29c28677216acb57b8753051a4084e6962a53b8b3e89c9daf3f4f19651",
+        "omok/lines.py": "5bc59ec92b7dede434132b719d11a902dc1383b6fea94d5c8c795bb8f4e6ebe6",
+        "omok/measurement.py": "dcdd28ad43ab792bb83a8efdaf7250747744370f93a5c15a8349bb3c963c2748",
+        "omok/player.py": "68ea4441175f84a7daea0914c67e4337d94f020f8074a646ed949ec93e825b4c",
+        "omok/search.py": "ae3720800899b90b08ecd9456df9d1130de49822ced966da9944debcbd5f6200",
+        "omok/simulator.py": "3dde4fd4c62df6123d920579e2b91e529d866ac608513701db38bf563acb1837",
+        "omok/tactics.py": "9cdb4f90a424157a22c7a2505c2ce6618aa16c3702f0b846485ce1020dd56a35",
+        "omok/threat_effects.py": "521023695e0fe54e09a2a7d125d7fe9617662f9ebd8670d7064ff16b0a19c79c",
+        "omok/transposition.py": "daf69437752d5b4cb8814fa1a0f3c94d3144f0f86255e4eed2296216b6b345d8",
+        "offline/__init__.py": "08bc38bc5932935a9a90b698931ee7fd4105a12655a54a66050c43a7a368465b",
+        "offline/__main__.py": "59868f1e0f1c3f246d9e92c3fb6c800f1d20ec55aabe1a1cf07173b344acb68d",
+        "offline/batches.py": "940e1814ceb643c605125b8c56f67b195138fb34f822d9557b86b0a80a13c68e",
+        "offline/champions.py": "f720c362798b7c31816dfed684f08899f365e7ad8e680ca05a2d9107cbaa6d5e",
+        "offline/champions_worker.py": "9d744726b195ed600e4cc525ed23ba04e807e7483be20ce1dae37005c5ec0784",
+        "offline/compare.py": "66381686175fab4dfc76dd77ac183c3b96fb67a351c877a0a30a609e5658e5a9",
+        "offline/confirmation.py": "da4a5c3956a6b39153af8f3f12b39c0a447c2a5649ea314ac6a33239af2bd5d9",
+        "offline/evolution.py": "ea1d6433f5c97e9e23f25877b7291f21356f1af65eda98ebd79ada9863142596",
+        "offline/experiment_cli.py": "2571840cffe5a5bda423dee7188e4d17d50866e34931c456079f2cbb976b6b73",
+        "offline/experiments.py": "2979884d042dd24a196c7a566f906d077198d5215123fad7f62906f85291048c",
+        "offline/fixtures.py": "5dcfe210da28ab98df244df883cb78f2c4da3e638d8e3aeec1e27397055a597b",
+        "offline/gates.py": "f6b6a95587b7b13a55b2ad9ea828009a029e72c9245297802dbc1eaae13d481b",
+        "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+        "offline/league.py": "108910bfb7b468b7120192098d6a0e49a55bafdb8b1e6d0ece620081c3791555",
+        "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+        "offline/measurement.py": "a46671828ebe044bb7cc29c1a6294cad8e4a1224f5c434810439ae87f9e92cca",
+        "offline/opponents.py": "a8578ee6f122c349f83152f31fb263678ce9560ef939aa70cd22ae42635cd2d2",
+        "offline/optimizer.py": "8d04cc43651c4e53dd42b5945ff64a29e56b01d8c38e78102a971b1abeb66d4c",
+        "offline/promotion.py": "aa79d096873b82c9cac7c4ff79640645c4c9464c6465ede0941ffb3603996e25",
+        "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+        "offline/provided.py": "2034f304e2cc67e3f927448b3447ad46aa8392130679a660b39df1481d48a906",
+        "offline/registry.py": "1f45d31e24878d1cca1cd4d25183f1341e0b8d69f0fe04486a1d65aaacc49d3f",
+        "offline/registry_cli.py": "a2deb06e0a2117838038c230b24c0c70b167508d78d3017a41c0cdd4c81946c1",
+        "offline/registry_worker.py": "19da544af0788616ec175325eccb44e5c430f84108a41364a1625484130d2b43",
+        "offline/regressions.py": "5a3de2ffeed2231664442172af09b9d8f3cf04688c0bc697c0dbd844452d0aa5",
+        "offline/replay.py": "84d6c4cd9498e4169e37a1adde06701439b28a79991c37ac3311cf64489756de",
+        "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+        "offline/reviews.py": "09aaaa4a233c3d43d671b8e1c628bd361bbbc4593b40dafa624ebcfed29656e3",
+        "offline/runner.py": "d304aab4be11d72a1407633f0404c4f3de9bc619156d5f0eea94fb1c64c25693",
+        "offline/screening.py": "f7d091e504455c55af428675c5ddf2e361a5630eafc88bb0ffca6603344e28fd",
+        "offline/supervised.py": "63fe5dc4bcfa11ea33834c33bd048e6155828aac80d1fa1a6621c51847da88d2",
+        "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+        "offline/worker.py": "3ca61eaac61bacac392d83b19159e876f1d898f88b65c88e34d476d0b559e022",
+        "offline/worker_players.py": "e88bb324bb302fee47b7e0365ad86144cee4526cfcef1d9b5282f3e44f4f4919",
+        "offline/worker_protocol.py": "25f8b9f678a0f6d6b8047c6f024df6614efeddc0960e72f918a463062929475f",
+        "players/player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "players/randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "players/simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "scope": "SimplePlayer development games; not holdout or qualification",
+      "games": [
+        {
+          "job": 0,
+          "candidate_color": 0,
+          "opening": [],
+          "status": "completed",
+          "reason": "exact_five",
+          "winner": 0,
+          "candidate_win": true,
+          "remaining_ms": [
+            57008.87799900738,
+            59973.79146299136
+          ],
+          "plies": 23,
+          "search_turns": 12,
+          "completed_depth_sum": 7,
+          "depth_zero_turns": 6,
+          "trace": "baseline-game-0.json.gz",
+          "trace_sha256": "5615cffde176aa185e295732679ff3b48f098b02c7166488804967bccf9b109a"
+        },
+        {
+          "job": 1,
+          "candidate_color": 1,
+          "opening": [],
+          "status": "completed",
+          "reason": "exact_five",
+          "winner": 0,
+          "candidate_win": false,
+          "remaining_ms": [
+            59909.425194990035,
+            53500.153639008204
+          ],
+          "plies": 53,
+          "search_turns": 26,
+          "completed_depth_sum": 15,
+          "depth_zero_turns": 12,
+          "trace": "baseline-game-1.json.gz",
+          "trace_sha256": "8479596e152f628f140907cd016bde742a92ee2dd2fc94b818cb4ba12b3a75fd"
+        },
+        {
+          "job": 2,
+          "candidate_color": 0,
+          "opening": [
+            [
+              9,
+              9
+            ],
+            [
+              9,
+              10
+            ]
+          ],
+          "status": "completed",
+          "reason": "exact_five",
+          "winner": 1,
+          "candidate_win": false,
+          "remaining_ms": [
+            57050.19268799515,
+            59967.11300499737
+          ],
+          "plies": 24,
+          "search_turns": 12,
+          "completed_depth_sum": 4,
+          "depth_zero_turns": 8,
+          "trace": "baseline-game-2.json.gz",
+          "trace_sha256": "73a0bb0c89cea387935d2f364976c3e88b85c45004f7a7882ad95cc526d98241"
+        },
+        {
+          "job": 3,
+          "candidate_color": 1,
+          "opening": [
+            [
+              9,
+              9
+            ],
+            [
+              9,
+              10
+            ]
+          ],
+          "status": "completed",
+          "reason": "exact_five",
+          "winner": 0,
+          "candidate_win": false,
+          "remaining_ms": [
+            59953.46972400148,
+            57495.393540990335
+          ],
+          "plies": 21,
+          "search_turns": 10,
+          "completed_depth_sum": 5,
+          "depth_zero_turns": 5,
+          "trace": "baseline-game-3.json.gz",
+          "trace_sha256": "96adab5278b017ac4c6c1ba5aae1c5a28dc109fce1d62871776f98ef96d2bbbe"
+        }
+      ]
+    },
+    "updated": {
+      "plan_sha256": "474a57ea3dffd0c90ed416660b83eb20ddd789302d6be5178e49638137916d96",
+      "runtime": "3.14.3 (v3.14.3:323c59a5e34, Feb  3 2026, 11:41:37) [Clang 16.0.0 (clang-1600.0.26.6)]",
+      "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+      "source_root": "working tree, identified by sources hashes",
+      "workers": 1,
+      "conditions": "serial local development; external load and power uncontrolled",
+      "sources": {
+        "omok/__init__.py": "8fa4256f87cb48053e42cc4b325076ddcec37235cfa8d6ce9580704b8bcfc954",
+        "omok/captures.py": "4567d91820d801172a1a04d659f4f882fd2a6c6e3007a0f3548954395d3aa8f0",
+        "omok/evaluation.py": "a37e1d29c28677216acb57b8753051a4084e6962a53b8b3e89c9daf3f4f19651",
+        "omok/lines.py": "a95071f37bf9617bcd29f4ef4755b445da91f9e537d0c2d926e6e517773b602a",
+        "omok/measurement.py": "dcdd28ad43ab792bb83a8efdaf7250747744370f93a5c15a8349bb3c963c2748",
+        "omok/player.py": "68ea4441175f84a7daea0914c67e4337d94f020f8074a646ed949ec93e825b4c",
+        "omok/search.py": "ae3720800899b90b08ecd9456df9d1130de49822ced966da9944debcbd5f6200",
+        "omok/simulator.py": "3dde4fd4c62df6123d920579e2b91e529d866ac608513701db38bf563acb1837",
+        "omok/tactics.py": "9cdb4f90a424157a22c7a2505c2ce6618aa16c3702f0b846485ce1020dd56a35",
+        "omok/threat_effects.py": "521023695e0fe54e09a2a7d125d7fe9617662f9ebd8670d7064ff16b0a19c79c",
+        "omok/transposition.py": "daf69437752d5b4cb8814fa1a0f3c94d3144f0f86255e4eed2296216b6b345d8",
+        "offline/__init__.py": "08bc38bc5932935a9a90b698931ee7fd4105a12655a54a66050c43a7a368465b",
+        "offline/__main__.py": "59868f1e0f1c3f246d9e92c3fb6c800f1d20ec55aabe1a1cf07173b344acb68d",
+        "offline/batches.py": "940e1814ceb643c605125b8c56f67b195138fb34f822d9557b86b0a80a13c68e",
+        "offline/champions.py": "f720c362798b7c31816dfed684f08899f365e7ad8e680ca05a2d9107cbaa6d5e",
+        "offline/champions_worker.py": "9d744726b195ed600e4cc525ed23ba04e807e7483be20ce1dae37005c5ec0784",
+        "offline/compare.py": "66381686175fab4dfc76dd77ac183c3b96fb67a351c877a0a30a609e5658e5a9",
+        "offline/confirmation.py": "da4a5c3956a6b39153af8f3f12b39c0a447c2a5649ea314ac6a33239af2bd5d9",
+        "offline/evolution.py": "22db21f3a5d7fc5fe3b1820df598f6309d3ab765469cc1d3d0921181266b9a32",
+        "offline/experiment_cli.py": "2571840cffe5a5bda423dee7188e4d17d50866e34931c456079f2cbb976b6b73",
+        "offline/experiments.py": "2979884d042dd24a196c7a566f906d077198d5215123fad7f62906f85291048c",
+        "offline/fixtures.py": "5dcfe210da28ab98df244df883cb78f2c4da3e638d8e3aeec1e27397055a597b",
+        "offline/gates.py": "f6b6a95587b7b13a55b2ad9ea828009a029e72c9245297802dbc1eaae13d481b",
+        "offline/inspection.py": "7f6c74010b491a8732ce9e7d05bb2670033b42e813e344da5b0a15c36c42ab1e",
+        "offline/league.py": "108910bfb7b468b7120192098d6a0e49a55bafdb8b1e6d0ece620081c3791555",
+        "offline/matches.py": "07e934c29a6cccf2576313aef6870c808806703877f51304ac2109ed38aeda54",
+        "offline/measurement.py": "a46671828ebe044bb7cc29c1a6294cad8e4a1224f5c434810439ae87f9e92cca",
+        "offline/opponents.py": "a8578ee6f122c349f83152f31fb263678ce9560ef939aa70cd22ae42635cd2d2",
+        "offline/optimizer.py": "8d04cc43651c4e53dd42b5945ff64a29e56b01d8c38e78102a971b1abeb66d4c",
+        "offline/promotion.py": "aa79d096873b82c9cac7c4ff79640645c4c9464c6465ede0941ffb3603996e25",
+        "offline/proposals.py": "838a5c068f78900f9d68751af2f872eba09d617675f3c1795590a20acb020518",
+        "offline/provided.py": "2034f304e2cc67e3f927448b3447ad46aa8392130679a660b39df1481d48a906",
+        "offline/registry.py": "1f45d31e24878d1cca1cd4d25183f1341e0b8d69f0fe04486a1d65aaacc49d3f",
+        "offline/registry_cli.py": "a2deb06e0a2117838038c230b24c0c70b167508d78d3017a41c0cdd4c81946c1",
+        "offline/registry_worker.py": "19da544af0788616ec175325eccb44e5c430f84108a41364a1625484130d2b43",
+        "offline/regressions.py": "5a3de2ffeed2231664442172af09b9d8f3cf04688c0bc697c0dbd844452d0aa5",
+        "offline/replay.py": "84d6c4cd9498e4169e37a1adde06701439b28a79991c37ac3311cf64489756de",
+        "offline/reports.py": "a41423d607d0903ebf950e5afc0a0897ce68c205987fe43e0c526c1ee02f3c57",
+        "offline/reviews.py": "09aaaa4a233c3d43d671b8e1c628bd361bbbc4593b40dafa624ebcfed29656e3",
+        "offline/runner.py": "d304aab4be11d72a1407633f0404c4f3de9bc619156d5f0eea94fb1c64c25693",
+        "offline/screening.py": "f7d091e504455c55af428675c5ddf2e361a5630eafc88bb0ffca6603344e28fd",
+        "offline/supervised.py": "63fe5dc4bcfa11ea33834c33bd048e6155828aac80d1fa1a6621c51847da88d2",
+        "offline/synthetic.py": "3a083fa35a37dd2f872b91b747574b70685b75caa47ac1588e4d85540246b01b",
+        "offline/worker.py": "3ca61eaac61bacac392d83b19159e876f1d898f88b65c88e34d476d0b559e022",
+        "offline/worker_players.py": "e88bb324bb302fee47b7e0365ad86144cee4526cfcef1d9b5282f3e44f4f4919",
+        "offline/worker_protocol.py": "25f8b9f678a0f6d6b8047c6f024df6614efeddc0960e72f918a463062929475f",
+        "players/player.py": "f2be52255ac98ed0703bf284906c246540f34d1dec3ee387de354f78c78f0d7d",
+        "players/randomplayer.py": "4aeaabc5454929d9aaa4b31cbb47780ce59677e44a6dc9c5a5fc389a69c54c51",
+        "players/simpleplayer.py": "34304e80ddba331c1a679599b81c29b15122e4777308e9960cfbe5b2644da69b"
+      },
+      "scope": "SimplePlayer development games; not holdout or qualification",
+      "games": [
+        {
+          "job": 0,
+          "candidate_color": 0,
+          "opening": [],
+          "status": "completed",
+          "reason": "exact_five",
+          "winner": 1,
+          "candidate_win": false,
+          "remaining_ms": [
+            57538.74912199535,
+            59980.83336900163
+          ],
+          "plies": 20,
+          "search_turns": 10,
+          "completed_depth_sum": 17,
+          "depth_zero_turns": 0,
+          "trace": "updated-game-0.json.gz",
+          "trace_sha256": "c7306ab611e49eb74faddb69c352c7fa25255c05210f9aec72417cf06a4ebe3d"
+        },
+        {
+          "job": 1,
+          "candidate_color": 1,
+          "opening": [],
+          "status": "completed",
+          "reason": "exact_five",
+          "winner": 1,
+          "candidate_win": true,
+          "remaining_ms": [
+            59959.075270009635,
+            55590.3907460015
+          ],
+          "plies": 36,
+          "search_turns": 18,
+          "completed_depth_sum": 18,
+          "depth_zero_turns": 4,
+          "trace": "updated-game-1.json.gz",
+          "trace_sha256": "233629a86a47c5db4b823bfeb701a9015df855d2c89ec4aa79522737b599a24a"
+        },
+        {
+          "job": 2,
+          "candidate_color": 0,
+          "opening": [
+            [
+              9,
+              9
+            ],
+            [
+              9,
+              10
+            ]
+          ],
+          "status": "completed",
+          "reason": "exact_five",
+          "winner": 1,
+          "candidate_win": false,
+          "remaining_ms": [
+            57792.324994999944,
+            59986.80801699811
+          ],
+          "plies": 18,
+          "search_turns": 9,
+          "completed_depth_sum": 14,
+          "depth_zero_turns": 0,
+          "trace": "updated-game-2.json.gz",
+          "trace_sha256": "e7f033ba16a8aeb53276d2dc636ba87ee41de8bbb793de65adb3c67898b1e50c"
+        },
+        {
+          "job": 3,
+          "candidate_color": 1,
+          "opening": [
+            [
+              9,
+              9
+            ],
+            [
+              9,
+              10
+            ]
+          ],
+          "status": "completed",
+          "reason": "exact_five",
+          "winner": 1,
+          "candidate_win": true,
+          "remaining_ms": [
+            59965.71611800027,
+            56536.89756099993
+          ],
+          "plies": 28,
+          "search_turns": 14,
+          "completed_depth_sum": 15,
+          "depth_zero_turns": 1,
+          "trace": "updated-game-3.json.gz",
+          "trace_sha256": "113abe1050fd5e6e062db325d360097749c33ec27cb906b4fa39da8a73ef12f5"
+        }
+      ]
+    }
+  }
+}
